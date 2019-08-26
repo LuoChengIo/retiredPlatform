@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平">
+  <meta name="description" content="离退休老同志服务管理平">
+  <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+  <link href="../js/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="bg-white">
+  <div class="logo-page">
+    <!-- 头部 -->
+    <div class="top">
+      <div class="con">
+        <div class="logo l">
+          <span class="fw" style="font-size:38px;color: #d20412;font-weight: 700;">离退休老同志服务管理平台</span>
+        </div>
+        <div class="set r fsong f12">
+          <a href="#" target="_blank"> 不忘初心 </a> |
+          <a href="#" target="_blank"> 精准工作 </a>
+        </div>
+      </div>
+    </div>
+    <!-- 登录框 -->
+    <div class="login-out">
+      <div class="con">
+        <div class="login r">
+          <form id="formid" name="formid" action="/html/Layout.html" method="get">
+            <input type="hidden" name="signcert" id="signcert">
+            <input type="hidden" name="signData" id="signData">
+            <input type="hidden" name="isUSBKey" id="isUSBKey">
+            <p class="b">登录</p>
+            <span class="rel dib"><input tabindex="1" class="user" type="text" name="dd" id="dd" style="width:285px"
+                maxlength="50" required="true" value="" placeholder="登录账号" title="请输入账号"></span>
+            <span class="rel dib"><input tabindex="1" class="password" style="width:285px" type="password" name="mm"
+                id="mm" value="" size="15" maxlength="50" required="true" onkeydown="if(event.keyCode == 13) login();"
+                placeholder="密码" title="请输入密码"></span>
+            <input type="submit" style="display:none" id="submitForm">
+            <label>
+              <input class="checkbox" type="checkbox" name="isRemember" value="checked" checked="checked">
+              <span class="n vm">记住</span>
+            </label>
+            <table width="100%">
+              <tbody>
+                <tr>
+                  <td style="margin-left: 5px;width: 35%;"><input type="button" class="btn button" value="登录"
+                      onclick="login();"></td>
+                  <td style="margin-left: 5px;width: 35%;"><input type="reset" class="btn reset" value="重置"
+                      onclick="reset1();"></td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- 底部 -->
+    <p class="footer"><img src="../images/login/lt_03.jpg">联通系统集成有限公司 技术支持</p>
+  </div>
+
+  <!-- 公共js start -->
+  <script src="../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../js/libs.min.js"></script>
+  <!-- 公共js end -->
+  <script>
+    //登录
+    function login() {
+      var iname = $("#dd").val();
+      var ipassword = $("#mm").val();
+      if (iname == "") {
+        alert("请输入登录账号");
+        $("#dd").focus();
+        return false;
+      }
+      if (ipassword == "") {
+        alert("请输入密码");
+        $("#mm").focus();
+        return false;
+      }
+      var isRemembered = $("input[type='checkbox']").prop("checked");
+      if (isRemembered) {
+        setCookie("sdcncsi_ict_username", iname);
+      } else { //不记住，清空
+        setCookie("sdcncsi_ict_username", "");
+      }
+      $("#submitForm").click();
+    }
+    //重置
+    function reset1() {
+      $("#dd").val("").focus();
+      $("#mm").val("");
+    }
+    $(function(){
+      $("#dd").val(getCookie("sdcncsi_ict_username"));
+    })
+  </script>
+</body>
+
+</html>

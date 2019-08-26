@@ -1,0 +1,430 @@
+@import "./lib/_variables";
+@import "./lib/_mixin";
+@import "./lib/_base";
+@import "./lib/_bootstarpUi";
+@import "./_edit";
+// 头部导航样式
+.index-navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 99;
+  box-shadow: 0px 5px 5px #a6a3a3;
+
+  .container-fluid {
+    padding-left: 126px;
+    padding-right: 100px;
+    line-height: 60px;
+
+    .logo {
+      font-size: 25px;
+      color: red;
+    }
+  }
+
+  .index-nav {
+    height: 40px;
+    padding-left: 126px;
+    background-color: #D30500;
+
+    ul {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .nav-item {
+      float: left;
+      transition: all .3s;
+
+      &.active {
+        background-color: #F41C00;
+      }
+
+      a {
+        display: block;
+        padding: 0 14px;
+        color: #fff;
+        font-size: 16px;
+        font-family: Microsoft YaHei;
+        opacity: 1;
+        transition: all .3s;
+        line-height: 40px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// 左边导航
+.hideLeftMenu {
+  position: fixed;
+  width: 40px;
+  left: -40px;
+  top: 110px;
+  bottom: 0;
+  z-index: 99px;
+  transition: all .3s;
+
+  .openMenu {
+    margin-top: 64px;
+  }
+
+  &.active {
+    left: 0;
+  }
+}
+
+.nav-side {
+  position: fixed;
+  width: 178px;
+  left: 0;
+  top: 110px;
+  bottom: 0;
+  z-index: 99px;
+  overflow-y: scroll;
+  padding-right: 2PX;
+  transition: all .3s;
+
+  &.hide-side {
+    left: -178px;
+  }
+
+  &::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 3px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 5px rgba(155, 149, 149, 0.1);
+    background: rgba(155, 149, 149, 0.1);
+  }
+
+  .topMenu {
+    height: 32px;
+    text-align: right;
+
+    img {
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+    }
+  }
+
+  .nav-side-ul {
+    .side-item {
+      position: relative;
+      height: 45px;
+      line-height: 45px;
+      background-color: #f0f0f0;
+      border-top: 1px solid #bbb8b8;
+      text-align: center;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        background-color: rgba(244, 28, 0, 1);
+        width: 4px;
+        height: 0;
+        transform: translateY(-50%);
+        transition: all .1s;
+      }
+
+      &:hover {
+        background-color: rgba(251, 243, 243, 1);
+
+        &::before {
+          height: 100%;
+        }
+      }
+
+      &.active {
+        background-color: #D30500;
+
+        a {
+          color: #FFF;
+        }
+      }
+
+      a {
+        display: block;
+        padding: 0 14px;
+        color: #2c2c2c;
+        font-size: 14px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: Microsoft YaHei;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// 布局样式
+.iframe-content {
+  padding-top: 100px;
+  padding-bottom: 20px;
+  margin-left: 185px;
+  transition: all .3s;
+
+  &.hide-side {
+    margin-left: 40px;
+  }
+
+  &.no-left {
+    margin-left: 0;
+  }
+
+  height:100%;
+}
+
+//  登录页面样式
+.logo-page {
+  ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #93b7c9;
+  }
+
+  :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #93b7c9;
+  }
+
+  ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #93b7c9;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #93b7c9;
+  }
+
+  .con {
+    width: 1000px;
+    margin: 0 auto;
+  }
+
+  .top {
+    width: 100%;
+    height: 107px;
+  }
+
+  .top .logo {
+    margin-top: 27px;
+  }
+
+  .top .set {
+    line-height: 107px;
+    color: #000;
+  }
+
+  .login-out {
+    width: 100%;
+    height: 470px;
+    background: url(../images/login/new-loginbg.png) no-repeat center;
+    background-size: 1920px;
+  }
+
+  .login-out_old {
+    width: 100%;
+    height: 470px;
+    background: url(../images/login/loginbg.jpg) no-repeat center;
+    background-size: 1920px;
+  }
+
+  .login {
+    width: 327px;
+    height: 356px;
+    background: url(../images/login/loginbg.png) no-repeat center;
+    margin-top: 57px;
+  }
+
+  .login form {
+    width: 287px;
+    margin: 0 auto;
+    color: #666;
+  }
+
+  .login form p {
+    line-height: 24px;
+    border-bottom: 1px solid #b4b4b4;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #db252b;
+  }
+
+  .login form #dd,
+  .login form #mm .login form #tenement {
+    display: block;
+    width: 100%;
+    background: #eef3f8;
+    border: 1px solid #b4b4b4;
+    height: 37px;
+    line-height: 37px;
+    margin-top: 12px;
+    text-indent: 8px;
+  }
+
+  .login form label {
+    margin-top: 12px;
+    display: block;
+  }
+
+  .login form label .checkbox {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    *display: inline-block;
+    *zoom: 1;
+    margin-left: 10px;
+    margin-right: 5px;
+    float: left
+  }
+
+  .login form .btn {
+    width: 109px;
+    height: 40px;
+    color: #fff;
+    border: none;
+    margin-top: 12px;
+  }
+
+  .btn:HOVER {
+    cursor: pointer;
+  }
+
+  .login form .button {
+    background-color: #e10202;
+    margin-right: 50px;
+    border-radius: 6px;
+  }
+
+  .login form .reset {
+    background-color: #e10202;
+    border-radius: 6px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    display: block;
+    width: 100%;
+    background: #eef3f8;
+    border: 1px solid #b4b4b4;
+    height: 37px;
+    line-height: 37px;
+    margin-top: 12px;
+    text-indent: 8px;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .footer img {
+    vertical-align: middle;
+  }
+}
+
+/**
+ *
+ * 首页
+ *
+ */
+.pct26{
+  width: 26%;
+}
+.pct74{
+  width: 74%;
+}
+.border_all {
+  border: 1px solid #CCC;
+}
+.border_bottom {
+  border-bottom: 1px solid #CCC;
+}
+.space_margin {
+  margin: 0px 5px 10px 5px;
+}
+.index-contant{
+  margin: 10px 126px;
+  .item_banner {
+    height: 34px;
+    .text-title{
+      position: absolute;
+      top: 0;
+      left: 54px;
+      color: #FFF;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 34px;
+    }
+  }
+  .item_banner_more {
+    width: 43px;
+    height: 34px;
+    float: right;
+    display: inline;
+    height: 12px;
+    margin-top: 11px;
+    margin-right: 10px;
+    background-image: url("../images/index/more.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  .list_li{
+    position: relative;
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 30px;
+    padding-right: 80px;
+    color: #333;
+    &::before{
+      position: absolute;
+      top: 50%;
+      left: 13px;
+      content: '';
+      width: 6px;
+      height: 6px;
+      margin-top: -3px;
+      background-color: #F41C00;
+    }
+    &.roud{
+      &::before{
+        border-radius: 999px;
+      }
+    }
+    &::after{
+      position: absolute;
+      top: 0;
+      right: 0;
+      content:attr(atext);
+      width: 80px;
+      text-align: center;
+      color: #ccc;
+    }
+    &.visited{
+      color: #CCC;
+    }
+    &:hover{
+      background-color: rgba(238, 238, 238, 1);
+    }
+  }
+}

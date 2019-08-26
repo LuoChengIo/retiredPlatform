@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <!-- css -->
+  <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<body>
+  <!-- 顶部导航 -->
+  <nav class="index-navbar">
+    <div class="container-fluid">
+      <h2 class="logo dib vm n fsong">离退休老同志服务管理平台</h2>
+      <div class="r">
+        <a class=" dib" href="#">
+          <img class="vm" src="../images/tubiao004.png" style="width:15px; height:18px" alt="" srcset="" />
+          <span class="vm">你好， 张哲</span>
+        </a>
+        <a class=" dib ml10" href="/html/login.html"><img src="../images/tubiao002.png" style="width:22px;" alt=""
+            srcset="" /></a>
+      </div>
+    </div>
+    <div class="index-nav ovh">
+      <ul class="clearfix"></ul>
+    </div>
+  </nav>
+  <!-- 左边导航 -->
+  <div class="hideLeftMenu ">
+    <img class="openMenu ml10 poi" src="../images/openRed.png" />
+  </div>
+  <div id="nav-side" class="nav-side hide-side">
+    <div class="topMenu tr poi">
+      <img src="../images/shouqicaidan.png" alt="" srcset="" />
+    </div>
+    <ul class="nav-side-ul">
+      <li class="side-item active">
+        <a href="javascript:" onclick="showNextLevelMenu('http:\/\/www.baidu.com',this)">全部信息</a>
+      </li>
+      <li class="side-item">
+        <a href="javascript:" onclick="showNextLevelMenu('../html/oldComradeInfo/basic-Info.html',this)">基本信息</a>
+      </li>
+      <li class="side-item">
+        <a href="javascript:showNextLevelMenu('tos.html',this)">工作经历</a>
+      </li>
+    </ul>
+  </div>
+  <!-- content -->
+  <div class="iframe-content no-left">
+    <iframe id="frame_right" src="" name="frame_right" height="100%" width="100%" marginheight="0" frameborder="0"
+      scrolling="yes"></iframe>
+  </div>
+  <!-- 公共js start -->
+  <script src="../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../js/libs.min.js"></script>
+  <!-- 公共js end -->
+  <script>
+    var navData = [{
+        text: "首页",
+        children: [],
+        src: "./index.html"
+      },
+      {
+        text: "老同志信息",
+        children: [{
+            text: "全部信息",
+            src: "./oldComradeInfo/all-info.html"
+          },
+          {
+            text: "基本信息",
+            src: "./oldComradeInfo/basic-Info.html"
+          },
+          {
+            text: "工作简历",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "家庭信息",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "照片信息",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "健康档案",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "其他信息",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "生日信息",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "离世管理",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "遗嘱信息",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "统计分析",
+            src: "http:\/\/www.baidu.com"
+          }
+        ],
+        src: ""
+      },
+      {
+        text: "党支部建设",
+        children: [{
+            text: "支部信息",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "党员信息",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "支部考勤",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "支部活动",
+            src: "http:\/\/www.baidu.com"
+          },
+          {
+            text: "支部交流",
+            src: "http:\/\/www.baidu.com"
+          }
+        ],
+        src: ""
+      },
+      {
+        text: "老年大学",
+        children: [],
+        src: ""
+      },
+      {
+        text: "增添正能量",
+        children: [],
+        src: ""
+      },
+      {
+        text: "事项管理",
+        children: [],
+        src: ""
+      },
+      {
+        text: "医疗服务",
+        children: [],
+        src: ""
+      },
+      {
+        text: "健康休养",
+        children: [],
+        src: ""
+      },
+      {
+        text: "走访慰问",
+        children: [],
+        src: ""
+      },
+      {
+        text: "信息发布",
+        children: [],
+        src: ""
+      },
+      {
+        text: "系统管理",
+        children: [],
+        src: ""
+      }
+    ];
+    // 顶部导航点击事件
+    function showTopLevelMenu(obj) {
+      var element = navData[$(obj).data("index")];
+      if (!element.children || !element.children.length) {
+        // 不存在二级菜单，首页
+        if (!element.src) {
+          return;
+        }
+        $("#nav-side").addClass("hide-side");
+        $(".iframe-content")
+          .removeClass("hide-side")
+          .addClass("no-left");
+        $(".hideLeftMenu").removeClass("active");
+        document.getElementById("frame_right").src = element.src;
+      } else {
+        // 存在二级菜单
+        $("#nav-side").removeClass("hide-side");
+        $(".iframe-content").removeClass("hide-side no-left");
+        $(".hideLeftMenu").removeClass("active");
+        var navSideHtml = "";
+        for (var index = 0; index < element.children.length; index++) {
+          var els = element.children[index];
+          if (!index) {
+            navSideHtml +=
+              '<li class="side-item active"><a href="javascript:" onclick="showNextLevelMenu(\'' +
+              els.src +
+              "',this)\" >" +
+              els.text +
+              "</a></li>";
+            document.getElementById("frame_right").src = els.src;
+          } else {
+            navSideHtml +=
+              '<li class="side-item"><a href="javascript:" onclick="showNextLevelMenu(\'' +
+              els.src +
+              "',this)\" >" +
+              els.text +
+              "</a></li>";
+          }
+        }
+        $(".nav-side .nav-side-ul")
+          .empty()
+          .append(navSideHtml);
+      }
+      $(obj)
+        .parent()
+        .addClass("active")
+        .siblings()
+        .removeClass("active");
+    }
+    // 左导航点击事件
+    function showNextLevelMenu(src, obj) {
+      document.getElementById("frame_right").src = src;
+      $(obj)
+        .parent()
+        .addClass("active")
+        .siblings()
+        .removeClass("active");
+    }
+    $(function () {
+      // 初始化导航
+      initLoad();
+
+      function initLoad() {
+        var navHtml = "";
+        for (var index = 0; index < navData.length; index++) {
+          var element = navData[index];
+          if (!index) {
+            navHtml +=
+              '<li class="nav-item active"><a href="#" onclick="showTopLevelMenu(this)" data-index="' +
+              index +
+              '">' +
+              element.text +
+              "</a></li>";
+            document.getElementById("frame_right").src = element.src;
+          } else {
+            navHtml +=
+              '<li class="nav-item"><a href="#" onclick="showTopLevelMenu(this)" data-index="' +
+              index +
+              '">' +
+              element.text +
+              "</a></li>";
+          }
+        }
+        $(".index-nav ul").append(navHtml);
+      }
+      // 左边导航隐藏展开点击事件
+      $(".topMenu").on("click", function () {
+        $("#nav-side").addClass("hide-side");
+        $(".iframe-content").addClass("hide-side");
+        $(".hideLeftMenu").addClass("active");
+      });
+      $(".openMenu").on("click", function () {
+        $("#nav-side").removeClass("hide-side");
+        $(".iframe-content").removeClass("hide-side");
+        $(".hideLeftMenu").removeClass("active");
+      });
+    });
+  </script>
+</body>
+
+</html>
