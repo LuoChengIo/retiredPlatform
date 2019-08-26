@@ -55,24 +55,21 @@ gulp.task('styles', function() {
 // JS文件压缩&重命名
 gulp.task('script', function () {
   return gulp.src([srcPath.script + '/*.js', '!' + srcPath.script + '/*.min.js']) // 指明源文件路径、并进行文件匹配，排除 .min.js 后缀的文件
-    .pipe(changed(destPath.script)) // 对应匹配的文件
-    .pipe(sourcemaps.init()) // 执行sourcemaps
-    .pipe(rename({
-      suffix: '.min'
-    })) // 重命名
-    .pipe(uglify({
-      warnings: 'verbose',
-      mangle: true, //类型：Boolean 默认：true 是否修改变量名
-      toplevel: false, //（默认false） - true如果要启用顶级变量和函数名称修改并删除未使用的变量和函数，。
-      keep_fnames: false // (默认值:) false- 传递true以防止丢弃或损坏函数名称。对于依赖的代码很有用
-    })) // 使用uglify进行压缩，并保留部分注释
-    .pipe(sourcemaps.write('maps')) // 地图输出路径（存放位置）
+    // .pipe(sourcemaps.init()) // 执行sourcemaps
+    // .pipe(rename({
+    //   suffix: '.min'
+    // })) // 重命名
+    // .pipe(uglify({
+    //   warnings: 'verbose',
+    //   mangle: true, //类型：Boolean 默认：true 是否修改变量名
+    //   toplevel: false, //（默认false） - true如果要启用顶级变量和函数名称修改并删除未使用的变量和函数，。
+    //   keep_fnames: false // (默认值:) false- 传递true以防止丢弃或损坏函数名称。对于依赖的代码很有用
+    // })) // 使用uglify进行压缩，并保留部分注释
+    // .pipe(sourcemaps.write('maps')) // 地图输出路径（存放位置）
     .pipe(gulp.dest(destPath.script)); // 输出路径
 });
 // 把一些插件直接复制过去
 gulp.task('copy', function () { // 复制css文件
-  gulp.src(srcPath.script + '/lib/*.js')
-    .pipe(gulp.dest(destPath.script));
   gulp.src(srcPath.script + '/plugins/**')
   .pipe(gulp.dest(destPath.script+'/plugins'));
   gulp.src(srcPath.fonts + '/*')
@@ -118,8 +115,9 @@ gulp.task('watch', function () {
   // 监听 images
   gulp.watch(srcPath.image + '/**/*', ['images']);
   // 监听 js
+  gulp.watch(srcPath.script + '/plugins/**', ['copy']);
   gulp.watch([srcPath.script + '/*.js', '!' + srcPath.script + '/*.min.js'], ['script']);
-  gulp.watch([srcPath.script + '/libs/*.js'], ['concat']);
+  gulp.watch(srcPath.script + '/libs/*.js', ['concat']);
 });
 // 默认任务
 gulp.task('default', ['copy','webserver', 'watch']);

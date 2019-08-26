@@ -3,6 +3,7 @@
 @import "./lib/_base";
 @import "./lib/_bootstarpUi";
 @import "./_edit";
+
 // 头部导航样式
 .index-navbar {
   position: fixed;
@@ -15,7 +16,7 @@
 
   .container-fluid {
     padding-left: 126px;
-    padding-right: 100px;
+    padding-right: 126px;
     line-height: 60px;
 
     .logo {
@@ -305,7 +306,7 @@
     margin-top: 12px;
   }
 
-  .btn:HOVER {
+  .btn:hover {
     cursor: pointer;
   }
 
@@ -347,26 +348,34 @@
  * 首页
  *
  */
-.pct26{
+.pct26 {
   width: 26%;
 }
-.pct74{
+
+.pct74 {
   width: 74%;
 }
+
 .border_all {
   border: 1px solid #CCC;
 }
+
 .border_bottom {
   border-bottom: 1px solid #CCC;
 }
+
 .space_margin {
   margin: 0px 5px 10px 5px;
 }
-.index-contant{
-  margin: 10px 126px;
+
+.index-contant {
+  width: 84%;
+  margin: 10px auto;
+
   .item_banner {
     height: 34px;
-    .text-title{
+
+    .text-title {
       position: absolute;
       top: 0;
       left: 54px;
@@ -376,6 +385,7 @@
       line-height: 34px;
     }
   }
+
   .item_banner_more {
     width: 43px;
     height: 34px;
@@ -388,7 +398,8 @@
     background-repeat: no-repeat;
     cursor: pointer;
   }
-  .list_li{
+
+  .list_li {
     position: relative;
     display: block;
     height: 32px;
@@ -396,7 +407,8 @@
     padding-left: 30px;
     padding-right: 80px;
     color: #333;
-    &::before{
+
+    &::before {
       position: absolute;
       top: 50%;
       left: 13px;
@@ -406,25 +418,326 @@
       margin-top: -3px;
       background-color: #F41C00;
     }
-    &.roud{
-      &::before{
+
+    &.roud {
+      &::before {
         border-radius: 999px;
       }
     }
-    &::after{
+
+    &::after {
       position: absolute;
       top: 0;
       right: 0;
-      content:attr(atext);
+      content: attr(atext);
       width: 80px;
       text-align: center;
       color: #ccc;
     }
-    &.visited{
+
+    &.visited {
       color: #CCC;
     }
-    &:hover{
+
+    &:hover {
       background-color: rgba(238, 238, 238, 1);
     }
   }
+
+  .slideBox {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slideBox .hd {
+    height: 15px;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    z-index: 1;
+  }
+
+  .slideBox .hd ul {
+    overflow: hidden;
+    zoom: 1;
+    float: left;
+  }
+
+  .slideBox .hd ul li {
+    float: left;
+    margin-right: 2px;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 15px;
+    border-radius: 999px;
+    text-align: center;
+    background: grey;
+    cursor: pointer;
+  }
+
+  .slideBox .hd ul li.on {
+    background: #f00;
+    color: #fff;
+  }
+
+  .slideBox .bd {
+    position: relative;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .slideBox .bd li {
+    zoom: 1;
+    vertical-align: middle;
+  }
+
+  .slideBox .bd img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .slideBox .bd ul li p {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    padding: 3px;
+  }
+
+  .single_charts {
+    float: left;
+    width: 25%;
+    .chart_height{
+      height: 140px;
+    }
+    .chart_title {
+      height: 30px;
+      line-height: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .chart_position_odd {
+      background-color: #E5E5E5;
+      color: #CA0606;
+    }
+
+    .chart_position_even {
+      background-color: #CA0606;
+      color: #FFF;
+    }
+  }
 }
+
+/*=============================================
+=            搜索框，表格样式            =
+=============================================*/
+.min-hp100{
+  min-height: 100%;
+}
+.query-content{
+  padding: 15px 4px 4px;
+}
+.serach-content{
+  border: 1px solid #D3D3D3;
+  padding: 25px 15px 10px 25px;
+  label{
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+    text-align: right;
+    margin-right: 15px;
+  }
+  .form-group{
+    margin-bottom: 10px;
+  }
+  .form-control{
+    width: 140px !important;
+    box-shadow:none;
+
+  }
+}
+.table-list{
+  margin-top: 10px;
+  width: 100%;
+  table-layout: fixed;
+  td{
+    padding: 4px 12px;
+  }
+  tr:hover{
+    background-color: #f7f7f7 !important;
+  }
+  thead>tr>td{
+    padding: 6px 12px 7px 12px;
+  }
+  &.table-striped>thead>tr{
+    background-color: #f3f3f3;
+  }
+  &.table-striped>tbody>tr:nth-of-type(even){
+    background-color: #f3f3f3;
+  }
+  &.table-striped>tbody>tr:nth-of-type(odd){
+    background-color: #fff;
+  }
+}
+.layui-laypage {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+  font-size: 0;
+  margin-right: 10px;
+}
+
+.layui-laypage>a:first-child, .layui-laypage>a:first-child em {
+	border-radius: 2px 0 0 2px
+}
+
+.layui-laypage>a:last-child, .layui-laypage>a:last-child em {
+	border-radius: 0 2px 2px 0
+}
+
+.layui-laypage>:first-child {
+	margin-left: 0 !important
+}
+
+.layui-laypage>:last-child {
+	margin-right: 0 !important
+}
+
+.layui-laypage a, .layui-laypage button, .layui-laypage input,
+	.layui-laypage select, .layui-laypage span {
+	border: 1px solid #e2e2e2
+}
+
+.layui-laypage a, .layui-laypage span {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+	padding: 0 15px;
+	height: 28px;
+	line-height: 28px;
+	margin: 0 -1px 5px 0;
+	background-color: #fff;
+	color: #333;
+	font-size: 12px;
+	float: none;
+}
+
+.layui-laypage a:hover {
+	color: #F41C00
+}
+
+.layui-laypage em {
+	font-style: normal
+}
+
+.layui-laypage .layui-laypage-spr {
+	color: #999;
+	font-weight: 700
+}
+
+.layui-laypage a {
+	text-decoration: none
+}
+
+.layui-laypage .layui-laypage-curr {
+	position: relative
+}
+
+.layui-laypage .layui-laypage-curr em {
+	position: relative;
+	color: #fff
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	padding: 1px;
+	width: 100%;
+	height: 100%;
+	background-color: #F41C00
+}
+
+.layui-laypage-em {
+	border-radius: 2px
+}
+.layui-laypage-next:hover, .layui-laypage-prev:hover {
+	background-color: #F41C00
+}
+.layui-laypage-next em, .layui-laypage-prev em {
+	font-family: Sim sun;
+	font-size: 16px
+}
+
+.layui-laypage-next em, .layui-laypage-prev em {
+	font-family: Sim sun;
+	font-size: 16px
+}
+
+.layui-laypage .layui-laypage-count, .layui-laypage .layui-laypage-limits,
+	.layui-laypage .layui-laypage-skip {
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0;
+	border: none
+}
+
+.layui-laypage .layui-laypage-limits {
+	vertical-align: top
+}
+
+.layui-laypage select {
+	height: 22px;
+	padding: 3px;
+	border-radius: 2px;
+	cursor: pointer
+}
+
+.layui-laypage .layui-laypage-skip {
+	height: 30px;
+	line-height: 30px;
+	color: #999
+}
+
+.layui-laypage button, .layui-laypage input {
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #e2e2e2;
+	border-radius: 2px;
+	vertical-align: top;
+	background-color: #fff;
+	box-sizing: border-box
+}
+
+.layui-laypage input {
+	display: inline-block;
+	width: 40px;
+	margin: 0 10px;
+	padding: 0 3px;
+	text-align: center
+}
+
+.layui-laypage input:focus, .layui-laypage select:focus {
+	border-color: #F41C00 !important
+}
+
+.layui-laypage button {
+	margin-left: 10px;
+	padding: 0 10px;
+	cursor: pointer
+}
+/*=====  End of 搜索框，表格样式  ======*/
+

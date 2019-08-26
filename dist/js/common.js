@@ -20,7 +20,6 @@ function changeURLArg(url, arg, arg_val) {
 		}
 	}
 }
-
 /**
  * 获取url里的参数
  * @param arg 参数名
@@ -66,4 +65,13 @@ function getCookie(key) {
 		}
 	}
 	return value;
+}
+
+// 处理一些公关方法
+function tooggleAllChecked(e){
+	if($(e).prop('checked')){
+　　$(e).parent().parent().parent().parent().find('[type="checkbox"]').prop("checked",true);
+	}else{
+		$(e).parent().parent().parent().parent().find('[type="checkbox"]').prop("checked",false)
+	}
 }

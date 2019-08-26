@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="renderer" content="webkit">
@@ -12,16 +13,191 @@
   <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
-<body>
-  <!-- 头部 -->
-  <div>全部信息
-    
+
+<body class="min-hp100 bg-white">
+  <div>
+    <!-- 功能区域 -->
+    <div class="query-content">
+      <div class="mb10">
+        <button type="button" class="btn btn-danger btn-sm"  data-toggle="collapse" data-target="#collapseSerach" >
+          <img src="../../images/query.png" alt="" srcset="">
+          搜索
+        </button>
+        <!-- 分页 -->
+        <div class="layui-box layui-laypage layui-laypage-molv r">
+          <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
+          <span class="c_table_list_nav_text_span">/</span> 
+          <span class="c_table_list_nav_text_span" navid="page_allPage">9</span>
+          <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span> 
+          <span class="c_table_list_nav_text_span" navid="page_allCount">共164条  </span>
+          <span navid="page_pre" class="layui-laypage-prev poi" data-page="1">上一页</span>
+          <span navid="page_next" class="layui-laypage-next poi" data-page="3">下一页</span>
+            <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input" type="text">页
+            </span>
+        </div>
+        <!-- 分页 end-->
+      </div>
+      <!-- 搜索框 -->
+      <div class="serach-content collapse" id="collapseSerach">
+        <form class="form-inline">
+          <div class="form-group">
+            <label style="width: 126px;">姓名:</label>
+            <input type="text" class="form-control" name="cx_xm" placeholder="姓名">
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">性别:</label>
+            <select class="form-control" name="cx_sex" id="cx_sex">
+              <option value="">请选择</option>
+              <option value="0">女</option>
+              <option value="1">男</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">退（离）休:</label>
+            <select class="form-control" name="cx_tlx" id="cx_tlx">
+              <option value="">请选择</option>
+              <option value="0">退休</option>
+              <option value="1">离休</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">职级:</label>
+            <select class="form-control">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <!--换行 -->
+          <br>
+          <div class="form-group">
+            <label style="width: 126px;">民族:</label>
+            <select class="form-control" name="" >
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;"> 政治面貌:</label>
+            <select class="form-control" name="" >
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">党支部:</label>
+            <select class="form-control" name="" >
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">与配偶同单位:</label>
+            <select class="form-control" name="" >
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <!--换行 -->
+          <br>
+          <div class="form-group">
+            <label style="width: 126px;">原工作单位及职务:</label>
+            <input type="text" class="form-control" name="" placeholder="原工作单位及职务">
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">年龄范围起:</label>
+            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围起">
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">年龄范围止:</label>
+            <input type="text"  class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围止">
+          </div>
+          <div class="form-group">
+              <label style="width: 126px;">现享受待遇:</label>
+              <select class="form-control" name="">
+                <option value="">请选择</option>
+              </select>
+          </div>
+          <br>
+          <button type="button" class="btn btn-danger btn-sm">
+            查询
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
+              关闭
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- 表格区域 -->
+    <table class="table-list table-hover table-striped table-bordered">
+      <thead>
+        <tr>
+          <td width="2%" ><input type="checkbox" onclick="tooggleAllChecked(this)"></td>
+          <td style="text-align: center;" width="10%">姓名</td>
+          <td style="text-align: center;" width="10%">性别</td>
+          <td style="text-align: center;" width="10%">年龄</td>
+          <td style="text-align: center;" width="10%">民族</td>
+          <td style="text-align: center;" width="10%">政治面貌</td>
+          <td style="text-align: center;" width="20%">原工作单位及职务</td>
+          <td style="text-align: center;" width="10%">现享受待遇</td>
+          <td style="text-align: center;" width="10%">退（离）休</td>
+          <td style="text-align: center;" width="8%">操作</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="poi">
+          <td width="4%" ><input type="checkbox" name="checkbox_guid" value="72708"></td>
+          <td style="text-align: center;">周立妹</td>
+          <td style="text-align: center;">女</td>
+          <td style="text-align: center;">68</td>
+          <td style="text-align: center;">汉族</td>
+          <td style="text-align: center;">中共党员</td>
+          <td style="text-align: center;">干部监督局副巡视员</td>
+          <td style="text-align: center;">副地(局)级</td>
+          <td style="text-align: center;">退休</td>
+          <td>
+            <button type="button" class="btn btn-danger btn-sm" >
+                查看
+            </button>  
+          </td>
+        </tr>
+        <tr class="poi">
+            <td width="4%" ><input type="checkbox" name="checkbox_guid" value="72708"></td>
+            <td style="text-align: center;">周立妹</td>
+            <td style="text-align: center;">女</td>
+            <td style="text-align: center;">68</td>
+            <td style="text-align: center;">汉族</td>
+            <td style="text-align: center;">中共党员</td>
+            <td style="text-align: center;">干部监督局副巡视员</td>
+            <td style="text-align: center;">副地(局)级</td>
+            <td style="text-align: center;">退休</td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm" >
+                  查看
+              </button>  
+            </td>
+          </tr>
+          <tr class="poi">
+              <td width="4%" ><input type="checkbox" name="checkbox_guid" value="72708"></td>
+              <td style="text-align: center;">周立妹</td>
+              <td style="text-align: center;">女</td>
+              <td style="text-align: center;">68</td>
+              <td style="text-align: center;">汉族</td>
+              <td style="text-align: center;">中共党员</td>
+              <td style="text-align: center;">干部监督局副巡视员</td>
+              <td style="text-align: center;">副地(局)级</td>
+              <td style="text-align: center;">退休</td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm" >
+                    查看
+                </button>  
+              </td>
+            </tr>
+      </tbody>
+    </table>
   </div>
   <!-- 公共js start -->
   <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
   <script src="../../js/libs.min.js"></script>
+  <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
   </script>
 </body>
+
 </html>
