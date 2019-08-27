@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <div class="p20 f16">
+    <div class="mb20">
+      <button type="button" class="btn btn-danger btn-sm no-print" onclick="javascript:window.print()">
+        打印
+      </button>
+    </div>
+    <form id="form_show" style="width:220mm;height:auto;">
+      <!--数据明细区起-->
+      <!-- InstanceBeginEditable name="form_show" -->
+      <input type="hidden" id="cx_yhid" name="cx_yhid" value="72709" />
+      <input type="hidden" id="homeguid" name="homeguid" value="7176942" />
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table"
+        style="border-collapse:separate;border-spacing: 0px 8px;">
+        <tbody>
+          <tr class="titleTr no-print">
+            <td colspan="5">
+              <span class="titleImg  no-print">
+                <img src="../../images/jbxx.png" /></span>
+              <span style="font-size:18px;">基本信息</span>
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="5" style="width:140px;">
+              <div style="padding: 10px;padding-right:25px;" id="imgShow"></div>
+            </td>
+            <td style="width:30px;" colspan="4">
+              <span id="xm" name="xm">李宝其</span>
+              <span id="sex" name="sex" style="margin-left:15px;">女</span>
+              <span id="birthday" name="birthday" style="margin-left:15px;">1950-11-21</span>出生
+              <span id="mz" name="mz" style="margin-left:15px;">汉族</span>
+              <span id="jg" name="jg" style="margin-left:15px;">河北徐水</span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <span id="zzmm" name="zzmm">中共党员</span>
+              <span id="rdsj" name="rdsj" style="margin-left:15px;">1979-05&nbsp;入党</span>
+              <span id="szdzb" name="szdzb" style="margin-left:15px;">二支部</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="4">
+              <span id="rzsj" name="rzsj">1966-11&nbsp;参加工作</span>
+              <span id="post" name="post" style="margin-left:15px;">党建研究所（党建研究杂志社）巡视员、副所长</span>
+              <span id="retired_date" name="retired_date" style="margin-left:15px;">2011-08</span><span
+                id="retired_type" name="retired_type">退休</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text" colspan="4">
+              <div align="left" style="width:225px;float:left">
+                退（离）休时职级：
+                <span id="retired_post" name="retired_post">正地(局)级</span>
+              </div>
+              <div align="left" style="float:left;margin-left:15px;">
+                现享受待遇：
+                <span id="treatment" name="treatment">正地(局)级</span>
+              </div>
+              <div align="left" style="float:left;margin-left:15px;">
+                批准时间：
+                <span id="treatment_date" name="treatment_date">2009-11</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table"
+        style="border-collapse:separate;border-spacing: 0px 8px;">
+        <tbody>
+          <tr class="titleTr">
+            <td colspan="4">
+              <span class="titleImg  no-print">
+                <img src="../../images/gzxx.png" style="width:30px;" /></span>
+              <span style="font-size:18px;">工作经历</span>
+            </td>
+          </tr>
+          <tr rowspan="5">
+            <td colspan="5">
+              <span id="experience" name="experience" style="width:95%;padding-left:35px;display:block;"></span>
+            </td>
+          </tr>
+          <tr class="titleTr">
+            <td colspan="5">
+              <span class="titleImg  no-print">
+                <img src="../../images/jkxx.png" style="width:23px;" /></span>
+              <span style="font-size:18px;">健康档案</span>
+            </td>
+          </tr>
+          <input type="hidden" id="healthguid" name="healthguid" value="7176942" />
+          <tr>
+            <td class="c_form_text" colspan="2">
+              <div align="left" style="margin-left:35px;">
+                健康状况：
+                <span id="health_show" name="health_show">健康</span>
+              </div>
+            </td>
+            <td class="c_form_text" colspan="2">
+              <div align="left">
+                疾病情况： <span id="disease" name="disease"></span>
+              </div>
+            </td>
+          </tr>
+          <tr class="titleTr">
+            <td colspan="4">
+              <span class="titleImg  no-print">
+                <img src="../../images/jtxx.png" /></span>
+              <span style="font-size:18px;">家庭信息</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text" colspan="2">
+              <div align="left" style="margin-left:35px;">
+                家庭地址：
+                <span id="home" name="home">北京市西城区西单北大街133号</span>
+              </div>
+            </td>
+            <td height="25" class="c_form_text" colspan="2">
+              <div align="left">
+                固定电话1：
+                <span id="phone1" name="phone1">010-66504856</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text" colspan="2">
+              <div align="left" style="margin-left:35px;">
+                常住地址：
+                <span id="address" name="address">北京市西城区西单北大街133号</span>
+              </div>
+            </td>
+            <td class="c_form_text" colspan="2">
+              <div align="left">
+                固定电话2： <span id="phone2" name="phone2"></span>
+              </div>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="c_form_text" colspan="2">
+              <div align="left" style="margin-left:35px;">
+                手机号码1： <span id="sj" name="sj">18601105856</span>
+              </div>
+            </td>
+            <td class="c_form_text" colspan="2">
+              <div align="left">
+                手机号码2： <span id="desj" name="desj">18601105856</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text" colspan="2">
+              <div align="left" style="margin-left:35px;">
+                婚姻状况：
+                <span id="marriage_show" name="marriage_show">已婚</span>
+              </div>
+            </td>
+            <td class="c_form_text" colspan="2">
+              <div align="left">
+                居住状态： <span id="live_show" name="live_show"></span>
+              </div>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table"
+        style="border-collapse:separate;border-spacing: 0px 8px;">
+        <tbody>
+          <tr class="titleTr">
+            <td colspan="8">
+              <span class="titleImg  no-print">
+                <img src="../../images/poxx.png" />
+              </span>
+              <span style="font-size:18px;">配偶信息</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text" colspan="2">
+              <div align="left" style="margin-left:35px;">
+                姓名： <span id="po_xm" name="po_xm"></span>
+              </div>
+            </td>
+            <td class="c_form_text" colspan="2">
+              <div align="left">
+                性别： <span id="po_sex_show" name="po_sex_show">男</span>
+              </div>
+            </td>
+            <td class="c_form_text" colspan="2">
+              <div align="left">
+                出生日期：
+                <span id="po_birthday" name="po_birthday">1950-02-09</span>
+              </div>
+            </td>
+            <td class="c_form_text" colspan="2">
+              <div align="left">
+                目前状况：
+                <span id="po_present_show" name="po_present_show">退休</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text" colspan="6">
+              <div align="left" style="margin-left:35px;">
+                工作单位及职务： <span id="po_post" name="po_post"></span>
+              </div>
+            </td>
+          </tr>
+          <tr class="titleTr">
+            <td colspan="8">
+              <span class="titleImg  no-print">
+                <img src="../../images/znxx.png" /></span>
+              <span style="font-size:18px;">子女信息</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table id="table_list" class="c_form_table" width="90%" style="margin-left:35px;">
+        <thead id="table_list_thead">
+          <tr>
+            <td style="text-align: left;" width="15%">姓名</td>
+            <td style="text-align: left;" width="10%">性别</td>
+            <td style="text-align: left;" width="20%">出生日期</td>
+            <td style="text-align: left;" width="20%">目前状况</td>
+            <td style="text-align: left;" width="20%">工作单位及职务</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="c_trEven">
+            <td style="text-align: left;">213</td>
+            <td style="text-align: left;">213</td>
+            <td style="text-align: left;">3213</td>
+            <td style="text-align: left;">12331</td>
+            <td style="text-align: left;">213123</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script></script>
+</body>
+
+</html>

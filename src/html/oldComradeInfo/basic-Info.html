@@ -29,17 +29,17 @@
           <img src="../../images/delete.png" alt="" srcset="">
           删除
         </button>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
+        <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
           <img src="../../images/query.png" alt="" srcset="">
           搜索
         </button>
         <!-- 分页 -->
         <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
-          <span navid="page_cur" class="c_table_list_nav_text_span"></span>
+          <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
           <span class="c_table_list_nav_text_span">/</span>
-          <span class="c_table_list_nav_text_span" navid="page_allPage"></span>
+          <span class="c_table_list_nav_text_span" navid="page_allPage">1</span>
           <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
-          <span class="c_table_list_nav_text_span" navid="page_allCount">共 条 </span>
+          <span class="c_table_list_nav_text_span" navid="page_allCount">共0 条 </span>
           <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
           <span navid="page_next" class="layui-laypage-next poi">下一页</span>
           <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input"
@@ -95,7 +95,7 @@
             <button type="button" class="btn btn-danger btn-sm">
               查询
             </button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
+            <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
               关闭
             </button>
           </div>

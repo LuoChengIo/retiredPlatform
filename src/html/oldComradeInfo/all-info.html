@@ -21,17 +21,20 @@
     <!-- 功能区域 -->
     <div class="query-content">
       <div class="mb10">
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
+        <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
           <img src="../../images/query.png" alt="" srcset="">
           搜索
         </button>
+        <button type="button" class="btn btn-danger btn-sm" onclick="lookInfo()">
+            详情
+        </button>
         <!-- 分页 -->
         <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
-          <span navid="page_cur" class="c_table_list_nav_text_span"></span>
+          <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
           <span class="c_table_list_nav_text_span">/</span>
-          <span class="c_table_list_nav_text_span" navid="page_allPage"></span>
+          <span class="c_table_list_nav_text_span" navid="page_allPage">1</span>
           <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
-          <span class="c_table_list_nav_text_span" navid="page_allCount">共  条 </span>
+          <span class="c_table_list_nav_text_span" navid="page_allCount">共 0 条 </span>
           <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
           <span navid="page_next" class="layui-laypage-next poi">下一页</span>
           <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input"
@@ -45,7 +48,7 @@
         <form class="form-inline" style="max-width: 1200px;">
           <div class="form-group">
             <label style="width: 126px;">姓名:</label>
-            <input type="text" class="form-control Wdate" name="cx_xm" placeholder="姓名"  onclick="WdatePicker()">
+            <input type="text" class="form-control" name="cx_xm" placeholder="姓名">
           </div>
           <div class="form-group">
             <label style="width: 126px;">性别:</label>
@@ -117,7 +120,7 @@
             <button type="button" class="btn btn-danger btn-sm">
               查询
             </button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
+            <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
                 关闭
             </button>
           </div>
@@ -137,11 +140,22 @@
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
+    // 查看详情
+    function lookInfo(){
+      window.location.href = "./全部信息-详情.html";
+    }
+    // 打印详情
+    function printDetails(guid){
+      var re= window.open('./全部信息-打印.html','','dialogWidth=594px,height=623px,scrollbars=yes,toolbar=no, menubar=no, location=no, status=no')
+        if(re==1){
+            window.location.reload();
+        }
+    }
     $(function () {
       var actionFormatter = function (value, row, index) {
         var id = value;
         var result = "";
-        result += '<button type="button" class="btn btn-danger btn-sm">查看</button>';
+        result += '<button type="button" class="btn btn-danger btn-sm" onclick="printDetails()">查看</button>';
         return result;
       }
       PageTable($("#table"), {

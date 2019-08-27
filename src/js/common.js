@@ -67,15 +67,13 @@ function getCookie(key) {
 	return value;
 }
 
-// 处理一些公关方法
-function tooggleAllChecked(e){
-	if($(e).prop('checked')){
-　　$(e).parent().parent().parent().parent().find('[type="checkbox"]').prop("checked",true);
-	}else{
-		$(e).parent().parent().parent().parent().find('[type="checkbox"]').prop("checked",false)
-	}
-}
-
+// 处理一些公共方法
+$(function(){	
+	// 隐藏显示对应的区域
+	$("[data-collapse]").on('click',function(){
+		$("#"+$(this).data("collapse")).toggleClass('in');
+	})
+})
 //表格通用方法 周祥 2019年8月26日 02:42:33
 
 var PageTable = function (table, config) {

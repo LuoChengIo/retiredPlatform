@@ -1,0 +1,257 @@
+<!-- 老同志信息-基础信息 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平">
+  <meta name="description" content="离退休老同志服务管理平">
+  <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body class="min-hp100 bg-white">
+  <div class="pl15 pr15">
+    <!-- 功能区域 -->
+    <div class="query-content">
+      <div class="mb10">
+        <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+          <img src="../../images/query.png" alt="" srcset="">
+          搜索
+        </button>
+      </div>
+      <!-- 搜索框 -->
+      <div class="serach-content collapse" id="collapseSerach">
+        <form class="form-inline" style="max-width: 1200px;">
+          <div class="form-group">
+            <label>年龄段:</label>
+            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')"
+              onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="起">
+            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')"
+              onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="止">
+          </div>
+          <div class="form-group">
+            <label>退（离）休:</label>
+            <select class="form-control" name="cx_tlx" id="cx_tlx">
+              <option value="">请选择</option>
+              <option value="0">退休</option>
+              <option value="1">离休</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>现享受待遇:</label>
+            <select class="form-control" name="">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>民族:</label>
+            <select class="form-control" name="">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div>
+            <button type="button" class="btn btn-danger btn-sm">
+              查询
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+              关闭
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- 信息统计 -->
+      <div class="panel panel-default" style="width:100%;height:150px">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            老同志信息统计
+          </h3>
+        </div>
+        <div class="panel-body">
+          <form id="form_show">
+            <table class="table table-striped c_form_table" id="table_list">
+              <thead>
+                <tr>
+                  <th>老同志人数</th>
+                  <th>平均年龄</th>
+                  <th>今年新增</th>
+                  <th>今年离世</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span id="ltzsum">164</span></td>
+                  <td><span id="avgage">72</span>(退休：<span id="txage">69</span>，离休：<span id="lxage">91</span>)</td>
+                  <td><span id="addtx">0</span></td>
+                  <td><span id="dietx">1</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+
+      <!-- 统计图表 -->
+      <div class="panel panel-default">
+        <div class="panel panel-default left">
+          <div class="panel-body">
+            <!-- 退（离）休 -->
+            <div style="height:300px" id="retire_chart"></div>
+          </div>
+        </div>
+        <div class="panel panel-default right">
+          <div class="panel-body">
+            <!-- 性别-->
+            <div style="height:300px" id="sex_chart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel panel-default left">
+          <div class="panel-body">
+            <!-- 现享受待遇-->
+            <div style="height:300px" id="level_chart"></div>
+          </div>
+        </div>
+        <div class="panel panel-default right">
+          <div class="panel-body">
+            <!-- 民族-->
+            <div style="height:300px" id="nation_chart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel panel-default left">
+          <div class="panel-body">
+            <!-- 党员比例-->
+            <div style="height:300px" id="party_chart"></div>
+          </div>
+        </div>
+        <div class="panel panel-default right">
+          <div class="panel-body">
+            <!-- 年龄-->
+            <div style="height:300px" id="age_chart"></div>
+          </div>
+        </div>
+      </div>
+      <!-- 统计图表 end-->
+    </div>
+  </div>
+  </div>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    $(function () {
+      var retire_chart = echarts.init(document.getElementById('retire_chart'));
+      var sex_chart = echarts.init(document.getElementById('sex_chart'));
+      var level_chart = echarts.init(document.getElementById('level_chart'));
+      var nation_chart = echarts.init(document.getElementById('nation_chart'));
+      var party_chart = echarts.init(document.getElementById('party_chart'));
+      var age_chart = echarts.init(document.getElementById('age_chart'));
+      ChartOption(retire_chart,'退（离）休',[{name:'退休',value:12},{name:"离休",value:122}])
+      ChartOption(sex_chart,'性别',[{name:'男',value:12},{name:"女",value:122}])
+      ChartOption(level_chart,'现享受待遇',[{name:'部级',value:12},{name:"局级",value:122},{name:"处级及以下",value:122}])
+      ChartOption(nation_chart,'民族',[{name:'少数民族',value:12},{name:"汉族",value:122}])
+      ChartOption(party_chart,'党员比例',[{name:'党员',value:12},{name:"非党员",value:122}])
+      ChartOption(age_chart,'年龄',[
+        {name:'100以上',value:12},
+        {name:'90~99',value:12},
+        {name:'80~89',value:12},
+        {name:'70~79',value:112},
+        {name:'70以下',value:122}
+      ])
+      $(window).resize(function () {
+        //重置容器高宽
+        retire_chart.resize();
+        sex_chart.resize();
+        level_chart.resize();
+        nation_chart.resize();
+        party_chart.resize();
+        age_chart.resize();
+      });
+      // 设置图表属性
+      function ChartOption(obj,name,seriesData) {
+        console.log(obj)
+        obj.setOption({
+          title: {
+            text: name,
+            x: 'center'
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+          },
+          toolbox: {
+            show: true,
+            feature: {
+              mark: {
+                show: true
+              },
+              dataView: {
+                show: true,
+                readOnly: false
+              },
+              magicType: {
+                show: true,
+                type: ['pie', 'funnel'],
+                option: {
+                  funnel: {
+                    x: '25%',
+                    width: '50%',
+                    funnelAlign: 'left',
+                    max: 1548
+                  }
+                }
+              },
+              restore: {
+                show: true
+              },
+              saveAsImage: {
+                show: true
+              }
+            }
+          },
+          calculable: true,
+          legend: {
+            orient: 'vertical',
+            left: 'left',
+            top: '15'
+          },
+          series: [{
+            type: 'pie',
+            name: name,
+            radius: '60%',
+            center: ['54%', '50%'],
+            label: { //饼图图形上的文本标签
+              normal: {
+                show: true,
+                position: 'top', //标签的位置
+                textStyle: {
+                  fontWeight: 300,
+                  fontSize: 14 //文字的字体大小
+                },
+                formatter: '{b}：{c} ({d}%)'
+              }
+            },
+            data: seriesData
+          }]
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

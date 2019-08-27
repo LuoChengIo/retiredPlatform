@@ -2,20 +2,536 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="renderer" content="webkit">
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
   <title>离退休老同志服务管理平</title>
-  <meta name="keywords" content="离退休老同志服务管理平">
-  <meta name="description" content="离退休老同志服务管理平">
-  <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
 </head>
 
 <body class="bg-white">
+  <div class="pl30 pr30 pt15">
+    <div class="mb20">
+      <button type="button" class="btn btn-danger btn-sm" onclick="javascript:history.go(-1)">
+        返回
+      </button>
+    </div>
+    <form id="form_show">
+      <!--数据明细区起-->
+      <!-- InstanceBeginEditable name="form_show" -->
+      <input type="hidden" id="cx_yhid" name="cx_yhid" value="72708" />
+      <input type="hidden" id="homeguid" name="homeguid" value="7174941" />
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr class="titleTr">
+            <td colspan="9">
+              <span
+                style="padding-left:25px;background:url(../../images/jbxx.png) no-repeat left center;background-size: 20px;">基本信息</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">姓名</div>
+            </td>
+            <td><span id="xm" name="xm">周立妹</span></td>
+
+            <td class="c_form_text">
+              <div align="right">曾用名</div>
+            </td>
+            <td><span id="xm_old" name="xm_old"></span></td>
+
+            <td class="c_form_text">
+              <div align="right">性别</div>
+            </td>
+            <td><span id="sex" name="sex">女</span></td>
+            <td rowspan="5" colspan="3">
+              <div style="padding: 10px;" id="../../imagesShow"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="6">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">民族</div>
+            </td>
+            <td><span id="mz" name="mz">汉族</span></td>
+            <td class="c_form_text">
+              <div align="right">籍贯</div>
+            </td>
+            <td><span id="jg" name="jg">河北青县</span></td>
+
+            <td class="c_form_text">
+              <div align="right">文化程度</div>
+            </td>
+            <td><span id="xl" name="xl">大专</span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="6">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">出生日期</div>
+            </td>
+            <td><span id="birthday" name="birthday">1951-04-21</span></td>
+            <td class="c_form_text">
+              <div align="right">年龄</div>
+            </td>
+            <td><span id="age" name="age">68</span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="6">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">政治面貌</div>
+            </td>
+            <td><span id="zzmm" name="zzmm">中共党员</span></td>
+            <td class="c_form_text">
+              <div align="right">入党时间</div>
+            </td>
+            <td><span id="rdsj" name="rdsj">1982-12</span></td>
+            <td class="c_form_text">
+              <div align="right">所在党支部</div>
+            </td>
+            <td><span id="szdzb" name="szdzb">二支部</span></td>
+          </tr>
+
+          <tr class="titleTr">
+            <td colspan="9">
+              <span
+                style="padding-left:25px;background:url(../../images/gzxx.png) no-repeat left center;background-size: 25px;">工作信息</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">参加工作时间</div>
+            </td>
+            <td><span id="rzsj" name="rzsj">1968-12</span></td>
+            <td class="c_form_text">
+              <div align="right">原工作单位及职务</div>
+            </td>
+            <td colspan="2">
+              <span id="post" name="post">干部监督局副巡视员</span>
+            </td>
+            <td class="c_form_text">
+              <div align="right">退（离）休</div>
+            </td>
+            <td><span id="retired_type" name="retired_type">退休</span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">退（离）休时间</div>
+            </td>
+            <td>
+              <span id="retired_date" name="retired_date">2011-05</span>
+            </td>
+
+            <td class="c_form_text">
+              <div align="right">退（离）休时职级</div>
+            </td>
+            <td>
+              <span id="retired_post" name="retired_post">副地(局)级</span>
+            </td>
+            <td class="c_form_text">
+              <div align="right">现享受待遇</div>
+            </td>
+            <td><span id="treatment" name="treatment">副地(局)级</span></td>
+
+            <td class="c_form_text">
+              <div align="right">享受待遇批准时间</div>
+            </td>
+            <td>
+              <span id="treatment_date" name="treatment_date">2011-02</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">提高享受待遇情况</div>
+            </td>
+            <td><span id="raise_treatment" name="raise_treatment"></span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr rowspan="4">
+            <td class="c_form_text">
+              <div align="right">工作简历</div>
+            </td>
+            <td colspan="7">
+              <span id="experience" name="experience" style="width:95%;">工作经历</span>
+            </td>
+          </tr>
+          <tr class="titleTr">
+            <td colspan="9">
+              <span
+                style="padding-left:25px;background:url(../../images/qtxx.png) no-repeat left center;background-size: 20px;">其他信息</span>
+            </td>
+          </tr>
+          <input type="hidden" id="otherguid" name="otherguid" value="4171749" />
+          <tr>
+            <td class="c_form_text">
+              <div align="right">是否在京</div>
+            </td>
+            <td><span id="inbj_show" name="inbj_show"></span></td>
+
+            <td class="c_form_text">
+              <div align="right">联系单位</div>
+            </td>
+            <td><span id="contact_unit" name="contact_unit"></span></td>
+            <td height="25" class="c_form_text">
+              <div align="right">身份证号码</div>
+            </td>
+            <td>
+              <span id="identity_num" name="identity_num">11010219290730xxxx</span>
+            </td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">是否持有因私出国（境）证件</div>
+            </td>
+            <td><span id="passport_show" name="passport_show"></span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div align="right">普通护照号码</div>
+            </td>
+            <td><span id="passport_num" name="passport_num"></span></td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">普通护照有效期</div>
+            </td>
+            <td><span id="passport_date" name="passport_date"></span></td>
+            <td height="25" class="c_form_text">
+              <div align="right">港澳通行证号码</div>
+            </td>
+            <td><span id="gangao_num" name="gangao_num">W82455619</span></td>
+            <td height="25" class="c_form_text">
+              <div align="right">港澳通行证有效期</div>
+            </td>
+            <td><span id="gangao_date" name="gangao_date"></span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div align="right">台湾通行证号码</div>
+            </td>
+            <td><span id="taiwan_num" name="taiwan_num"></span></td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">台湾通行证有效期</div>
+            </td>
+            <td><span id="taiwam_date" name="taiwam_date"></span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">是否从事社会兼职</div>
+            </td>
+            <td>
+              <span id="affiliations_show" name="affiliations_show"></span>
+            </td>
+            <td>
+              <div align="right">兼职性质</div>
+            </td>
+            <td>
+              <span id="affiliations_nature" name="affiliations_nature"></span>
+            </td>
+            <td height="25" class="c_form_text">
+              <div align="right">兼职单位</div>
+            </td>
+            <td>
+              <span id="affiliations_unit" name="affiliations_unit"></span>
+            </td>
+            <td height="25" class="c_form_text">
+              <div align="right">兼任职务</div>
+            </td>
+            <td>
+              <span id="affiliations_post" name="affiliations_post"></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div align="right">兼职时间</div>
+            </td>
+            <td>
+              <span id="affiliations_date" name="affiliations_date"></span>
+            </td>
+            <td height="25" class="c_form_text">
+              <div align="right">其他信息</div>
+            </td>
+            <td colspan="4"><span id="duties" name="duties"></span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div align="right">困难和诉求</div>
+            </td>
+            <td colspan="7"><span id="difficult" name="difficult"></span></td>
+          </tr>
+
+          <tr class="titleTr">
+            <td colspan="9">
+              <span
+                style="padding-left:25px;background:url(../../images/jkxx.png) no-repeat left center;background-size: 20px;">健康档案</span>
+            </td>
+          </tr>
+          <input type="hidden" id="healthguid" name="healthguid" value="7174941" />
+          <tr>
+            <td class="c_form_text">
+              <div align="right">健康状况</div>
+            </td>
+            <td><span id="health_show" name="health_show"></span></td>
+            <td class="c_form_text">
+              <div align="right">疾病情况</div>
+            </td>
+            <td><span id="disease" name="disease"></span></td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">活动能力</div>
+            </td>
+            <td><span id="action" name="action"></span></td>
+            <td height="25" class="c_form_text">
+              <div align="right">评残情况</div>
+            </td>
+            <td><span id="disability" name="disability"></span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div align="right">合同医院</div>
+            </td>
+            <td>
+              <span id="assignedhospital" name="assignedhospital">北大医院</span>
+            </td>
+            <td height="25" class="c_form_text">
+              <div align="right">就近医院</div>
+            </td>
+            <td><span id="nearhospital" name="nearhospital"></span></td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">医疗照顾</div>
+            </td>
+            <td>
+              <span id="medical_care_show" name="medical_care_show"></span>
+            </td>
+          </tr>
+          <tr class="titleTr">
+            <td colspan="9">
+              <span
+                style="padding-left:25px;background:url(../../images/jtxx.png) no-repeat left center;background-size: 20px;">家庭信息</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">家庭地址</div>
+            </td>
+            <td>
+              <span id="home" name="home">北京市西城区西单北大街133号</span>
+            </td>
+            <td class="c_form_text">
+              <div align="right">常住地址</div>
+            </td>
+            <td>
+              <span id="address" name="address">北京市西城区西单北大街133号</span>
+            </td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">婚姻状况</div>
+            </td>
+            <td><span id="marriage_show" name="marriage_show"></span></td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">居住状态</div>
+            </td>
+            <td><span id="live_show" name="live_show"></span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">手机号码1</div>
+            </td>
+            <td><span id="sj" name="sj">18601105856</span></td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">手机号码2</div>
+            </td>
+            <td><span id="desj" name="desj">18601105856</span></td>
+            <td height="25" class="c_form_text">
+              <div align="right">
+                固定电话1
+              </div>
+            </td>
+            <td><span id="phone1" name="phone1">010-66504856</span></td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">
+                固定电话2
+              </div>
+            </td>
+            <td><span id="phone2" name="phone2">010-59560781</span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div align="right">
+                集团号码&nbsp;
+              </div>
+            </td>
+            <td>
+              <span type="text" name="jt_phone" id="jt_phone" style="width:180px" maxlength="20"
+                onkeyup="value=value.replace(/[^\d]/g,'')"></span>
+            </td>
+          </tr>
+          <tr class="titleTr">
+            <td colspan="9">
+              <span
+                style="padding-left:25px;background:url(../../images/poxx.png) no-repeat left center;background-size: 20px;">配偶信息</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div align="right">姓名</div>
+            </td>
+            <td><span id="po_xm" name="po_xm"></span></td>
+            <td class="c_form_text">
+              <div align="right">性别</div>
+            </td>
+            <td><span id="po_sex_show" name="po_sex_show"></span></td>
+            <td height="25" class="c_form_text">
+              <div align="right">出生日期</div>
+            </td>
+            <td>
+              <span id="po_birthday" name="po_birthday">1949-12-01</span>
+            </td>
+
+            <td height="25" class="c_form_text">
+              <div align="right">目前状况</div>
+            </td>
+            <td><span id="po_present_show" name="po_present_show"></span></td>
+          </tr>
+          <tr>
+            <td class="borderTd" colspan="8">
+              <div style="border:1px dashed  #f9dfdf;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div align="right">工作单位及职务</div>
+            </td>
+            <td><span id="po_post" name="po_post"></span></td>
+            <td height="25" class="c_form_text">
+              <div align="right">联系电话</div>
+            </td>
+            <td><span id="po_phone" name="po_phone"></span></td>
+          </tr>
+          <tr class="titleTr">
+            <td colspan="9">
+              <span
+                style="padding-left:25px;background:url(../../images/znxx.png) no-repeat left center;background-size: 20px;">子女信息</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="div_list" class="c_table_bar_content" style="margin-bottom:20px;">
+        <div id="div_table_list">
+          <div class="c_div_table_list">
+            <!--列表区域起，列表要显示10条记录-->
+            <table id="table_list" class="c_table_list" width="90%">
+              <thead id="table_list_thead">
+                <tr>
+                  <td style="text-align: center;" width="20%">姓名</td>
+                  <td style="text-align: center;" width="20%">性别</td>
+                  <td style="text-align: center;" width="20%">出生日期</td>
+                  <td style="text-align: center;" width="20%">是否同住</td>
+                  <td style="text-align: center;" width="20%">联系电话</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="c_trOdd" style="cursor: pointer;">
+                  <td style="text-align: center;">姓名</td>
+                  <td style="text-align: center;">男</td>
+                  <td style="text-align: center;">2019-06</td>
+                  <td style="text-align: center;">是</td>
+                  <td style="text-align: center;">123123123</td>
+                </tr>
+                <tr class="c_trEven" style="cursor: pointer;">
+                  <td style="text-align: center;">姓名</td>
+                  <td style="text-align: center;">男</td>
+                  <td style="text-align: center;">2019-07</td>
+                  <td style="text-align: center;">是</td>
+                  <td style="text-align: center;">213123</td>
+                </tr>
+              </tbody>
+            </table>
+            <!--列表区域止-->
+          </div>
+          <div class="c_div_table_list_nav"></div>
+        </div>
+      </div>
+    </form>
+  </div>
   <!-- 公共js start -->
   <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
   <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
@@ -25,8 +541,8 @@
   <script src="../../js/libs.min.js"></script>
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
-  <script></script>
-
+  <script>
+  </script>
 </body>
 
 </html>

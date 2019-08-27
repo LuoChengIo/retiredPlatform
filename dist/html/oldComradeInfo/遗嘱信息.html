@@ -21,14 +21,6 @@
     <!-- 功能区域 -->
     <div class="query-content">
       <div class="mb10">
-        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()" >
-          <img src="../../images/add.png" alt="" srcset="">
-          新增
-        </button>
-        <button type="button" class="btn btn-danger btn-sm" onclick="delClick()">
-          <img src="../../images/delete.png" alt="" srcset="">
-          删除
-        </button>
         <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
           <img src="../../images/query.png" alt="" srcset="">
           搜索
@@ -53,44 +45,32 @@
         <form class="form-inline" style="max-width: 1200px;">
           <div class="form-group">
             <label style="width: 126px;">姓名:</label>
-            <input type="text" class="form-control" name="cx_xm" placeholder="姓名" >
+            <input type="text" class="form-control" name="cx_xm" placeholder="姓名">
           </div>
           <div class="form-group">
-            <label style="width: 126px;">退（离）休:</label>
-            <select class="form-control" name="cx_tlx" id="cx_tlx">
-              <option value="">请选择</option>
-              <option value="0">退休</option>
-              <option value="1">离休</option>
-            </select>
-          </div>
+              <label style="width: 126px;">遗属姓名:</label>
+              <input type="text" class="form-control" name="cx_xm" placeholder="姓名">
+            </div>
           <div class="form-group">
-            <label style="width: 126px;">党支部:</label>
-            <select class="form-control">
-              <option value="">请选择</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label style="width: 126px;">原工作单位及职务:</label>
+            <label style="width: 126px;">目前状况:</label>
             <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
           <div class="form-group">
-            <label style="width: 126px;">年龄范围起:</label>
-            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')"
-              onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围起">
-          </div>
-          <div class="form-group">
-            <label style="width: 126px;">年龄范围止:</label>
-            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')"
-              onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围止">
-          </div>
-          <div class="form-group">
-            <label style="width: 126px;">现享受待遇:</label>
-            <select class="form-control" name="">
-              <option value="">请选择</option>
-            </select>
-          </div>
+              <label style="width: 126px;">现享受待遇:</label>
+              <select class="form-control" name="">
+                <option value="">请选择</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label style="width: 126px;">离世日期起:</label>
+                <input type="text" class="form-control Wdate" name="" placeholder="" onclick="WdatePicker()">
+              </div>
+              <div class="form-group">
+                <label style="width: 126px;">离世日期止:</label>
+                <input type="text" class="form-control Wdate" name="" placeholder="" onclick="WdatePicker()">
+              </div>
           <div>
             <button type="button" class="btn btn-danger btn-sm">
               查询
@@ -116,13 +96,13 @@
   <!-- 公共js end -->
   <script>
     // 新增
-    function addClick(){
+    function addClick() {
 
     }
     // 删除
-    function delClick (){
+    function delClick() {
       var checkboxList = $('#table').find("input[type='checkbox']:checked");
-      if(!checkboxList.length){
+      if (!checkboxList.length) {
         alert('请先选择要删除的数据');
       }
     }
@@ -136,10 +116,10 @@
       PageTable($("#table"), {
         url: 'table.json',
         columns: [{
-          checkbox: true,
-          visible: true
+          checkbox: false,
+          visible: false
         }, {
-          width: "15",
+          width: "10",
           widthUnit: "%",
           align: 'center',
           field: 'data1',
@@ -149,44 +129,32 @@
           align: 'center',
           widthUnit: "%",
           field: 'data2',
-          title: '性别'
+          title: '遗属姓名'
         }, {
           width: "10",
           widthUnit: "%",
           align: 'center',
           field: 'data3',
-          title: '年龄'
+          title: '性别'
         }, {
           width: "10",
           widthUnit: "%",
           align: 'center',
           field: 'data4',
-          title: '民族'
-        }, {
-          width: "10",
-          widthUnit: "%",
-          align: 'center',
-          field: 'data5',
-          title: '政治面貌'
+          title: '出生日期'
         }, {
           width: "20",
           widthUnit: "%",
           align: 'center',
-          field: 'data6',
+          field: 'data5',
           title: '原工作单位及职务'
         }, {
-          width: "10",
+          width: "15",
           widthUnit: "%",
           align: 'center',
-          field: 'data7',
-          title: '现享受待遇'
-        }, {
-          width: "10",
-          widthUnit: "%",
-          align: 'center',
-          field: 'data8',
-          title: '退（离）休'
-        } ],
+          field: 'data5',
+          title: '目前状况'
+        }],
       })
     });
   </script>
