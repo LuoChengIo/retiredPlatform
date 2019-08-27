@@ -84,7 +84,7 @@
   top: 110px;
   bottom: 0;
   z-index: 99px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-right: 2PX;
   transition: all .3s;
 
@@ -231,7 +231,7 @@
   }
 
   .top .set {
-    line-height: 107px;
+    line-height: 106px;
     color: #000;
   }
 
@@ -276,7 +276,7 @@
     width: 100%;
     background: #eef3f8;
     border: 1px solid #b4b4b4;
-    height: 37px;
+    height: 39px;
     line-height: 37px;
     margin-top: 12px;
     text-indent: 8px;
@@ -327,7 +327,7 @@
     width: 100%;
     background: #eef3f8;
     border: 1px solid #b4b4b4;
-    height: 37px;
+    height: 39px;
     line-height: 37px;
     margin-top: 12px;
     text-indent: 8px;
@@ -433,10 +433,14 @@
       width: 80px;
       text-align: center;
       color: #ccc;
+      font-size: 12px;
     }
 
     &.visited {
       color: #CCC;
+      &::before {
+        background-color: #ccc;
+      }
     }
 
     &:hover {

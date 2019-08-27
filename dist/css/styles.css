@@ -599,13 +599,18 @@ a.udl-h:hover {
 
 .btn-danger {
   background-color: #d70000;
-  border-color: #d70000; }
+  border-color: #d70000;
+  outline: none !important; }
 
 .btn-group-sm > .btn, .btn-sm {
   padding: 2px 10px;
   font-size: 14px;
   line-height: 1.5;
   border-radius: 2px; }
+
+.btn-danger.focus, .btn-danger:focus {
+  background-color: #d70000;
+  border-color: #d70000; }
 
 .form-control {
   border-radius: 0; }
@@ -699,7 +704,7 @@ a.udl-h:hover {
   top: 110px;
   bottom: 0;
   z-index: 99px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-right: 2PX;
   -webkit-transition: all .3s;
   -o-transition: all .3s;
@@ -825,7 +830,7 @@ a.udl-h:hover {
   margin-top: 27px; }
 
 .logo-page .top .set {
-  line-height: 107px;
+  line-height: 106px;
   color: #000; }
 
 .logo-page .login-out {
@@ -863,7 +868,7 @@ a.udl-h:hover {
   width: 100%;
   background: #eef3f8;
   border: 1px solid #b4b4b4;
-  height: 37px;
+  height: 39px;
   line-height: 37px;
   margin-top: 12px;
   text-indent: 8px; }
@@ -906,7 +911,7 @@ a.udl-h:hover {
   width: 100%;
   background: #eef3f8;
   border: 1px solid #b4b4b4;
-  height: 37px;
+  height: 39px;
   line-height: 37px;
   margin-top: 12px;
   text-indent: 8px; }
@@ -991,10 +996,14 @@ a.udl-h:hover {
   content: attr(atext);
   width: 80px;
   text-align: center;
-  color: #ccc; }
+  color: #ccc;
+  font-size: 12px; }
 
 .index-contant .list_li.visited {
   color: #CCC; }
+
+.index-contant .list_li.visited::before {
+  background-color: #ccc; }
 
 .index-contant .list_li:hover {
   background-color: #eeeeee; }
