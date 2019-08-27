@@ -6,7 +6,7 @@
 
 //自带分页隐藏
 .fixed-table-pagination{
-  display: none;
+  display: none !important;
 }
 // 头部导航样式
 .index-navbar {
@@ -580,7 +580,7 @@
   width: 100%;
   table-layout: fixed;
   td{
-    padding: 4px 12px;
+    padding: 4px 12px !important;
   }
   tr:hover{
     background-color: #f7f7f7 !important;
@@ -597,6 +597,9 @@
   &.table-striped>tbody>tr:nth-of-type(odd){
     background-color: #fff;
   }
+}
+.bootstrap-table .fixed-table-container .table tbody tr.selected td{
+  background-color: transparent;
 }
 .layui-laypage {
 	display: inline-block;

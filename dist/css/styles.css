@@ -631,7 +631,7 @@ a.udl-h:hover {
   font-size: 12px; }
 
 .fixed-table-pagination {
-  display: none; }
+  display: none !important; }
 
 .index-navbar {
   position: fixed;
@@ -1127,7 +1127,7 @@ a.udl-h:hover {
   table-layout: fixed; }
 
 .table-list td {
-  padding: 4px 12px; }
+  padding: 4px 12px !important; }
 
 .table-list tr:hover {
   background-color: #f7f7f7 !important; }
@@ -1143,6 +1143,9 @@ a.udl-h:hover {
 
 .table-list.table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #fff; }
+
+.bootstrap-table .fixed-table-container .table tbody tr.selected td {
+  background-color: transparent; }
 
 .layui-laypage {
   display: inline-block;

@@ -124,7 +124,7 @@
       </div>
     </div>
     <!-- 表格区域 -->
-    <table id="table"></table>
+    <table id="table" class="table-list table-hover table-striped table-bordered"></table>
   </div>
   <!-- 公共js start -->
   <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
@@ -148,34 +148,59 @@
           checkbox: true,
           visible: true
         }, {
+          width: "10",
+          widthUnit:"%",
+          align:'center',
           field: 'data1',
           title: '姓名'
         }, {
+          width: "10",
+          align:'center',
+          widthUnit:"%",
           field: 'data2',
           title: '性别'
         }, {
+          width: "10",
+          widthUnit:"%",
+          align:'center',
           field: 'data3',
           title: '年龄'
         }, {
+          width: "10",
+          widthUnit:"%",
+          align:'center',
           field: 'data4',
           title: '民族'
         }, {
+          width: "10",
+          widthUnit:"%",
+          align:'center',
           field: 'data5',
           title: '政治面貌'
         }, {
+          width: "20",
+          widthUnit:"%",
+          align:'center',
           field: 'data6',
           title: '原工作单位及职务'
         }, {
+          width: "10",
+          widthUnit:"%",
+          align:'center',
           field: 'data7',
           title: '现享受待遇'
         }, {
+          width: "10",
+          widthUnit:"%",
+          align:'center',
           field: 'data8',
           title: '退（离）休'
         }, {
           field: 'data1',
           title: '操作',
-          width: 120,
-          valign: 'middle',
+          width: "8",
+          widthUnit:"%",
+          align:'center',
           formatter: actionFormatter
         },],
       })
