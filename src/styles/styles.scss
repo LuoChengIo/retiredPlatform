@@ -4,6 +4,10 @@
 @import "./lib/_bootstarpUi";
 @import "./_edit";
 
+//自带分页隐藏
+.fixed-table-pagination{
+  display: none;
+}
 // 头部导航样式
 .index-navbar {
   position: fixed;

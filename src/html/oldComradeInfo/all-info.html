@@ -11,6 +11,7 @@
   <meta name="description" content="离退休老同志服务管理平">
   <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
 
@@ -19,21 +20,22 @@
     <!-- 功能区域 -->
     <div class="query-content">
       <div class="mb10">
-        <button type="button" class="btn btn-danger btn-sm"  data-toggle="collapse" data-target="#collapseSerach" >
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
           <img src="../../images/query.png" alt="" srcset="">
           搜索
         </button>
         <!-- 分页 -->
-        <div class="layui-box layui-laypage layui-laypage-molv r">
+        <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
           <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
-          <span class="c_table_list_nav_text_span">/</span> 
+          <span class="c_table_list_nav_text_span">/</span>
           <span class="c_table_list_nav_text_span" navid="page_allPage">9</span>
-          <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span> 
-          <span class="c_table_list_nav_text_span" navid="page_allCount">共164条  </span>
-          <span navid="page_pre" class="layui-laypage-prev poi" data-page="1">上一页</span>
-          <span navid="page_next" class="layui-laypage-next poi" data-page="3">下一页</span>
-            <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input" type="text">页
-            </span>
+          <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
+          <span class="c_table_list_nav_text_span" navid="page_allCount">共 164 条 </span>
+          <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
+          <span navid="page_next" class="layui-laypage-next poi">下一页</span>
+          <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input"
+              type="text">页
+          </span>
         </div>
         <!-- 分页 end-->
       </div>
@@ -70,25 +72,25 @@
           <br>
           <div class="form-group">
             <label style="width: 126px;">民族:</label>
-            <select class="form-control" name="" >
+            <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
           <div class="form-group">
             <label style="width: 126px;"> 政治面貌:</label>
-            <select class="form-control" name="" >
+            <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
           <div class="form-group">
             <label style="width: 126px;">党支部:</label>
-            <select class="form-control" name="" >
+            <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
           <div class="form-group">
             <label style="width: 126px;">与配偶同单位:</label>
-            <select class="form-control" name="" >
+            <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
@@ -100,103 +102,87 @@
           </div>
           <div class="form-group">
             <label style="width: 126px;">年龄范围起:</label>
-            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围起">
+            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')"
+              onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围起">
           </div>
           <div class="form-group">
             <label style="width: 126px;">年龄范围止:</label>
-            <input type="text"  class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围止">
+            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')"
+              onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围止">
           </div>
           <div class="form-group">
-              <label style="width: 126px;">现享受待遇:</label>
-              <select class="form-control" name="">
-                <option value="">请选择</option>
-              </select>
+            <label style="width: 126px;">现享受待遇:</label>
+            <select class="form-control" name="">
+              <option value="">请选择</option>
+            </select>
           </div>
           <br>
           <button type="button" class="btn btn-danger btn-sm">
             查询
           </button>
           <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
-              关闭
+            关闭
           </button>
         </form>
       </div>
     </div>
     <!-- 表格区域 -->
-    <table class="table-list table-hover table-striped table-bordered">
-      <thead>
-        <tr>
-          <td width="2%" ><input type="checkbox" onclick="tooggleAllChecked(this)"></td>
-          <td style="text-align: center;" width="10%">姓名</td>
-          <td style="text-align: center;" width="10%">性别</td>
-          <td style="text-align: center;" width="10%">年龄</td>
-          <td style="text-align: center;" width="10%">民族</td>
-          <td style="text-align: center;" width="10%">政治面貌</td>
-          <td style="text-align: center;" width="20%">原工作单位及职务</td>
-          <td style="text-align: center;" width="10%">现享受待遇</td>
-          <td style="text-align: center;" width="10%">退（离）休</td>
-          <td style="text-align: center;" width="8%">操作</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="poi">
-          <td width="4%" ><input type="checkbox" name="checkbox_guid" value="72708"></td>
-          <td style="text-align: center;">周立妹</td>
-          <td style="text-align: center;">女</td>
-          <td style="text-align: center;">68</td>
-          <td style="text-align: center;">汉族</td>
-          <td style="text-align: center;">中共党员</td>
-          <td style="text-align: center;">干部监督局副巡视员</td>
-          <td style="text-align: center;">副地(局)级</td>
-          <td style="text-align: center;">退休</td>
-          <td>
-            <button type="button" class="btn btn-danger btn-sm" >
-                查看
-            </button>  
-          </td>
-        </tr>
-        <tr class="poi">
-            <td width="4%" ><input type="checkbox" name="checkbox_guid" value="72708"></td>
-            <td style="text-align: center;">周立妹</td>
-            <td style="text-align: center;">女</td>
-            <td style="text-align: center;">68</td>
-            <td style="text-align: center;">汉族</td>
-            <td style="text-align: center;">中共党员</td>
-            <td style="text-align: center;">干部监督局副巡视员</td>
-            <td style="text-align: center;">副地(局)级</td>
-            <td style="text-align: center;">退休</td>
-            <td>
-              <button type="button" class="btn btn-danger btn-sm" >
-                  查看
-              </button>  
-            </td>
-          </tr>
-          <tr class="poi">
-              <td width="4%" ><input type="checkbox" name="checkbox_guid" value="72708"></td>
-              <td style="text-align: center;">周立妹</td>
-              <td style="text-align: center;">女</td>
-              <td style="text-align: center;">68</td>
-              <td style="text-align: center;">汉族</td>
-              <td style="text-align: center;">中共党员</td>
-              <td style="text-align: center;">干部监督局副巡视员</td>
-              <td style="text-align: center;">副地(局)级</td>
-              <td style="text-align: center;">退休</td>
-              <td>
-                <button type="button" class="btn btn-danger btn-sm" >
-                    查看
-                </button>  
-              </td>
-            </tr>
-      </tbody>
-    </table>
+    <table id="table"></table>
   </div>
   <!-- 公共js start -->
   <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
   <script src="../../js/plugins/echarts.min.js"></script>
   <script src="../../js/libs.min.js"></script>
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
+    $(function () {
+      var actionFormatter = function (value, row, index) {
+        var id = value;
+        var result = "";
+        result += '<button type="button" class="btn btn-danger btn-sm">查看</button>';
+        return result;
+      }
+      PageTable($("#table"), {
+        url: 'table.json',
+        columns: [{
+          checkbox: true,
+          visible: true
+        }, {
+          field: 'data1',
+          title: '姓名'
+        }, {
+          field: 'data2',
+          title: '性别'
+        }, {
+          field: 'data3',
+          title: '年龄'
+        }, {
+          field: 'data4',
+          title: '民族'
+        }, {
+          field: 'data5',
+          title: '政治面貌'
+        }, {
+          field: 'data6',
+          title: '原工作单位及职务'
+        }, {
+          field: 'data7',
+          title: '现享受待遇'
+        }, {
+          field: 'data8',
+          title: '退（离）休'
+        }, {
+          field: 'data1',
+          title: '操作',
+          width: 120,
+          valign: 'middle',
+          formatter: actionFormatter
+        },],
+      })
+    });
   </script>
 </body>
 

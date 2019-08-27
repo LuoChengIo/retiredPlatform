@@ -68,10 +68,70 @@ function getCookie(key) {
 }
 
 // 处理一些公关方法
-function tooggleAllChecked(e){
-	if($(e).prop('checked')){
-　　$(e).parent().parent().parent().parent().find('[type="checkbox"]').prop("checked",true);
-	}else{
-		$(e).parent().parent().parent().parent().find('[type="checkbox"]').prop("checked",false)
+function tooggleAllChecked(e) {
+	if ($(e).prop('checked')) {
+		$(e).parent().parent().parent().parent().find('[type="checkbox"]').prop("checked", true);
+	} else {
+		$(e).parent().parent().parent().parent().find('[type="checkbox"]').prop("checked", false)
 	}
+}
+
+//表格通用方法 周祥 2019年8月26日 02:42:33
+
+var PageTable = function (table, config) {
+	var pageBind = function (self, config) {
+		var pagecount = parseInt(config.totalRows / config.pageSize) + (config.totalRows % config.pageSize > 0 ? 1 : 0);
+		$("#pagebind").find("[navid='page_cur']").text(config.pageNumber);
+		$("#pagebind").find("[navid='page_allPage']").text(pagecount);
+		$("#pagebind").find("[navid='page_allCount']").text("共" + config.totalRows + "条");
+		$("#pagebind").find("[navid='page_pre']").click(function () {
+			var pagenum = config.pageNumber;
+			pagenum--;
+			if (pagenum <= 0) {
+				pagenum = 1;
+			}
+			self.bootstrapTable('selectPage', pagenum);
+		});
+		$("#pagebind").find("[navid='page_next']").click(function () {
+			var pagenum = config.pageNumber;
+			pagenum++;
+			if (pagenum > pagecount) {
+				pagenum = pagecount;
+			}
+			self.bootstrapTable('selectPage', pagenum);
+		});
+		$("#pagebind").find("[navid='page_goto']").bind('keypress', function (event) {
+			if (event.keyCode == "13") {
+				var pagenum = parseInt($(this).val());
+				if (pagenum <= 0) {
+					alert('输入页码不能小于等于0')
+					return;
+				}
+				if (pagenum > pagecount) {
+					alert('输入页码不能超出最大页码')
+					return;
+				}
+				self.bootstrapTable('selectPage', pagenum);
+			}
+		})
+	}
+	table.bootstrapTable({
+		method: config.method ? config.method : 'get',
+		url: config.url,
+		striped: true,
+		cache: false,
+		pagination: true,
+		pageNumber: 1,
+		pageSize: 3,
+		sidePagination: "server",
+		columns: config.columns,
+		onLoadSuccess: function (result) {
+			var _self = table.bootstrapTable("getOptions");
+			pageBind(table, {
+				pageSize: _self.pageSize,
+				totalRows: result.total,
+				pageNumber: _self.pageNumber
+			})
+		}
+	});
 }
