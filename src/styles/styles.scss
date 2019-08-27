@@ -558,7 +558,9 @@
 }
 .serach-content{
   border: 1px solid #D3D3D3;
-  padding: 25px 15px 10px 25px;
+  .form-inline{
+    padding: 25px 15px 10px 25px;
+  }
   label{
     font-size: 14px;
     font-weight: normal;
@@ -572,15 +574,19 @@
   .form-control{
     width: 140px !important;
     box-shadow:none;
-
+  }
+  .Wdate{
+    border-color: #ccc;
+    height: 37px;
   }
 }
 .table-list{
   margin-top: 10px;
   width: 100%;
   table-layout: fixed;
-  td{
-    padding: 4px 12px !important;
+  tbody>tr>td{
+    padding: 4px 12px ;
+    line-height: 27px;
   }
   tr:hover{
     background-color: #f7f7f7 !important;
@@ -597,6 +603,9 @@
   &.table-striped>tbody>tr:nth-of-type(odd){
     background-color: #fff;
   }
+}
+.bootstrap-table .fixed-table-container .table thead th .th-inner{
+  padding: 6px 12px 7px 12px;
 }
 .bootstrap-table .fixed-table-container .table tbody tr.selected td{
   background-color: transparent;

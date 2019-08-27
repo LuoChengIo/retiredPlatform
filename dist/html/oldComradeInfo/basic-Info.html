@@ -1,5 +1,7 @@
+<!-- 老同志信息-基础信息 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="renderer" content="webkit">
@@ -10,21 +12,184 @@
   <meta name="description" content="离退休老同志服务管理平">
   <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
-<body>
-  <!-- 头部 -->
-  asdasdasdsad
-  <div>sdsd
-    
+
+<body class="min-hp100 bg-white">
+  <div>
+    <!-- 功能区域 -->
+    <div class="query-content">
+      <div class="mb10">
+        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()" >
+          <img src="../../images/add.png" alt="" srcset="">
+          新增
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" onclick="delClick()">
+          <img src="../../images/delete.png" alt="" srcset="">
+          删除
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
+          <img src="../../images/query.png" alt="" srcset="">
+          搜索
+        </button>
+        <!-- 分页 -->
+        <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
+          <span navid="page_cur" class="c_table_list_nav_text_span"></span>
+          <span class="c_table_list_nav_text_span">/</span>
+          <span class="c_table_list_nav_text_span" navid="page_allPage"></span>
+          <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
+          <span class="c_table_list_nav_text_span" navid="page_allCount">共 条 </span>
+          <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
+          <span navid="page_next" class="layui-laypage-next poi">下一页</span>
+          <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input"
+              type="text">页
+          </span>
+        </div>
+        <!-- 分页 end-->
+      </div>
+      <!-- 搜索框 -->
+      <div class="serach-content collapse" id="collapseSerach">
+        <form class="form-inline" style="max-width: 1200px;">
+          <div class="form-group">
+            <label style="width: 126px;">姓名:</label>
+            <input type="text" class="form-control" name="cx_xm" placeholder="姓名" >
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">退（离）休:</label>
+            <select class="form-control" name="cx_tlx" id="cx_tlx">
+              <option value="">请选择</option>
+              <option value="0">退休</option>
+              <option value="1">离休</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">党支部:</label>
+            <select class="form-control">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">原工作单位及职务:</label>
+            <select class="form-control" name="">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">年龄范围起:</label>
+            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')"
+              onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围起">
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">年龄范围止:</label>
+            <input type="text" class="form-control" name="" onkeyup="this.value=this.value.replace(/\D/g,'')"
+              onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围止">
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">现享受待遇:</label>
+            <select class="form-control" name="">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div>
+            <button type="button" class="btn btn-danger btn-sm">
+              查询
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseSerach">
+              关闭
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- 表格区域 -->
+    <table id="table" class="table-list table-hover table-striped table-bordered"></table>
   </div>
   <!-- 公共js start -->
   <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
   <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
   <script src="../../js/libs.min.js"></script>
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
+    // 新增
+    function addClick(){
+
+    }
+    // 删除
+    function delClick (){
+      var checkboxList = $('#table').find("input[type='checkbox']:checked");
+      if(!checkboxList.length){
+        alert('请先选择要删除的数据');
+      }
+    }
+    $(function () {
+      var actionFormatter = function (value, row, index) {
+        var id = value;
+        var result = "";
+        result += '<button type="button" class="btn btn-danger btn-sm">查看</button>';
+        return result;
+      }
+      PageTable($("#table"), {
+        url: 'table.json',
+        columns: [{
+          checkbox: true,
+          visible: true
+        }, {
+          width: "15",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data1',
+          title: '姓名'
+        }, {
+          width: "10",
+          align: 'center',
+          widthUnit: "%",
+          field: 'data2',
+          title: '性别'
+        }, {
+          width: "10",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data3',
+          title: '年龄'
+        }, {
+          width: "10",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data4',
+          title: '民族'
+        }, {
+          width: "10",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data5',
+          title: '政治面貌'
+        }, {
+          width: "20",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data6',
+          title: '原工作单位及职务'
+        }, {
+          width: "10",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data7',
+          title: '现享受待遇'
+        }, {
+          width: "10",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data8',
+          title: '退（离）休'
+        } ],
+      })
+    });
   </script>
 </body>
+
 </html>
