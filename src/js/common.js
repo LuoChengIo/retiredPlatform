@@ -130,6 +130,21 @@ var PageTable = function (table, config) {
 				totalRows: result.total,
 				pageNumber: _self.pageNumber
 			})
+		},
+		onClickRow: function (row, $element) {
+			typeof config.onClickRow == "function" && config.onClickRow(row, $element);
 		}
 	});
 }
+
+//公共弹出 https://www.layui.com/doc/modules/layer.html
+var PageAlert = function (config) {
+	layer.open({
+		type: 2,
+		title: config.title,
+		anim: 5,
+		area: [config.width, config.height],
+		content: config.url,
+		scrollbar: false
+	});
+},
