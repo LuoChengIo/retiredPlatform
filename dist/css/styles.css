@@ -630,6 +630,9 @@ a.udl-h:hover {
   color: #fff;
   font-size: 12px; }
 
+.fixed-table-pagination {
+  display: none; }
+
 .index-navbar {
   position: fixed;
   left: 0;
