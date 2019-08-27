@@ -147,4 +147,4 @@ var PageAlert = function (config) {
 		content: config.url,
 		scrollbar: false
 	});
-},
+}
