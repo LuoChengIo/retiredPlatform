@@ -147,7 +147,7 @@ var PageAlert = function (config, flg) {
 		window.open(config.url, '', str)
 		return
 	}
-	// 弹框
+	// 在父页面弹框
 	parent.layer.open({
 		type: 2,
 		title: config.title,
