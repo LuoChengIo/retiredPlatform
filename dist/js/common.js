@@ -68,10 +68,10 @@ function getCookie(key) {
 }
 
 // 处理一些公共方法
-$(function(){	
+$(function () {
 	// 隐藏显示对应的区域
-	$("[data-collapse]").on('click',function(){
-		$("#"+$(this).data("collapse")).toggleClass('in');
+	$("[data-collapse]").on('click', function () {
+		$("#" + $(this).data("collapse")).toggleClass('in');
 	})
 })
 //表格通用方法 周祥 2019年8月26日 02:42:33
@@ -139,7 +139,7 @@ var PageTable = function (table, config) {
 
 //公共弹出 https://www.layui.com/doc/modules/layer.html
 var PageAlert = function (config) {
-	layer.open({
+	parent.layer.open({
 		type: 2,
 		title: config.title,
 		anim: 5,
@@ -147,4 +147,8 @@ var PageAlert = function (config) {
 		content: config.url,
 		scrollbar: false
 	});
+}
+//跳转页面
+var PageGo = function (url) {
+	location.href = url;
 }
