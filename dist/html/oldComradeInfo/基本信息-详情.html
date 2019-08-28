@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <form class="from-detail" id="infoForm">
+    <div class="btn-tool-bar">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+      <tbody>
+        <tr id="dlm_div" style="display: table-row;">
+          <td class="c_form_text">
+            <div >
+              登录名&nbsp;<font color="#ff0000">*</font>
+            </div>
+          </td>
+          <td>
+            <input type="text" name="dlmc" id="dlmc" style="width:180px" required="true" maxlength="20" showname="登录名" />
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div >姓名&nbsp;<font color="#ff0000">*</font>
+            </div>
+          </td>
+          <td>
+            <input type="text" name="xm" id="xm" style="width:180px" maxlength="10" required="true" showname="姓名" />
+          </td>
+          <td class="c_form_text">
+            <div >曾用名&nbsp;</div>
+          </td>
+          <td>
+            <input type="text" name="xm_old" id="xm_old" style="width:180px" maxlength="20" showname="曾用名" />
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div >
+              性别&nbsp;
+            </div>
+          </td>
+          <td>
+            <input type="radio" name="sex" value="1" /> 男&nbsp;<input type="radio" name="sex" value="0" />
+            女
+          </td>
+
+          <td  class="c_form_text">
+            <div >
+              民族&nbsp;
+            </div>
+          </td>
+          <td>
+            <select name="mz" id="mz" style="width:180px;" showname="民族">
+              <option value="">请选择</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td  class="c_form_text">
+            <div >
+              籍贯&nbsp;
+            </div>
+          </td>
+          <td>
+            <input type="text" name="jg" id="jg" style="width:180px" maxlength="20" showname="籍贯" />
+          </td>
+          <td  class="c_form_text">
+            <div >文化程度&nbsp;</div>
+          </td>
+          <td>
+            <select name="xl" id="xl" style="width:180px">
+              <option value="">请选择</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td  class="c_form_text">
+            <div >
+              出生日期&nbsp;<font color="#ff0000">*</font>
+            </div>
+          </td>
+          <td>
+            <input id="birthday" name="birthday" size="20" class="Wdate" style="width:180px;height: 30px;"
+              required="true" showname="出生日期"
+              onclick="WdatePicker({maxDate:'%y-%M-%d'})" />
+          </td>
+          <td  class="c_form_text">
+            <div >
+              生日（个人意愿）&nbsp;
+            </div>
+          </td>
+          <td>
+            <input id="birthday_bz" name="birthday_bz" size="20" class="Wdate" style="width:100px;height: 30px;"
+              showname="生日（个人意愿）"
+              onfocus="WdatePicker({maxDate:'%y-%M-%d'})" />
+            <input type="radio" name="birth_bz" value="0" checked="" />
+            阳历&nbsp; <input type="radio" name="birth_bz" value="1" /> 阴历
+          </td>
+        </tr>
+        <tr>
+          <td  class="c_form_text">
+            <div >政治面貌<font color="#ff0000">*</font>
+            </div>
+          </td>
+          <td>
+            <select name="zzmm" id="zzmm" style="width:180px" required="true" showname="政治面貌">
+              <option value="">请选择</option>
+              <option value="01">中共党员</option>
+              <option value="13">群众</option>
+            </select>
+          </td>
+          <td  class="c_form_text">
+            <div >
+              所在党支部&nbsp;<font color="#ff0000">*</font>
+            </div>
+          </td>
+          <td>
+            <select name="szdzb" id="szdzb" style="width:180px" required="true" showname="所在党支部">
+              <option value="">请选择</option>
+              <option value="01">支部1</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td  class="c_form_text">
+            <div >入党时间&nbsp;</div>
+          </td>
+          <td>
+            <input id="rdsj" name="rdsj" size="20" class="Wdate" style="width:180px;height: 30px;"
+              onfocus="WdatePicker({startDate:'%y-%M',dateFmt:'yyyy-MM',alwaysUseStartDate:true,maxDate:new Date()})" />
+          </td>
+          <td  class="c_form_text">
+            <div >参加工作时间&nbsp;</div>
+          </td>
+          <td>
+            <input id="rzsj" name="rzsj" size="20" class="Wdate" style="width:180px;height: 30px;"
+            onclick="WdatePicker({startDate:'%y-%M',dateFmt:'yyyy-MM',alwaysUseStartDate:true,maxDate:new Date()})" />
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div >
+              原工作单位及职务&nbsp;
+            </div>
+          </td>
+          <td colspan="3">
+            <input type="text" name="post" id="post" style="width:89%" maxlength="50" showname="原工作单位及职务" />
+          </td>
+        </tr>
+        <tr>
+          <td  class="c_form_text">
+            <div >
+              退（离）休&nbsp;
+            </div>
+          </td>
+          <td>
+            <input type="radio" name="retired_type" value="0" />
+            退休&nbsp;<input type="radio" name="retired_type" value="1" />
+            离休
+          </td>
+          <td  class="c_form_text">
+            <div >
+              退（离）休时间&nbsp;
+            </div>
+          </td>
+          <td>
+            <input id="retired_date" name="retired_date" size="20" class="Wdate" style="width:180px;height: 30px;"
+              showname="退（离）休时间"
+              onfocus="WdatePicker({startDate:'%y-%M',dateFmt:'yyyy-MM',alwaysUseStartDate:true,maxDate:new Date()})" />
+          </td>
+        </tr>
+        <tr>
+          <td  class="c_form_text">
+            <div >
+              退（离）休时职级&nbsp;
+            </div>
+          </td>
+          <td>
+            <select name="retired_post" id="retired_post" style="width:180px" showname="退休时职级">
+              <option value="">请选择</option>
+            </select>
+          </td>
+          <td  class="c_form_text">
+            <div >
+              现享受待遇&nbsp;
+            </div>
+          </td>
+          <td>
+            <select name="treatment" id="treatment" style="width:180px" showname="现享受待遇">
+              <option value="">请选择</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div >享受待遇批准时间&nbsp;</div>
+          </td>
+          <td>
+            <input id="treatment_date" name="treatment_date" size="20" class="Wdate Wdateas" style="width:180px;height: 30px;"
+              onfocus="WdatePicker({startDate:'%y-%M',dateFmt:'yyyy-MM',alwaysUseStartDate:true,maxDate:new Date()})" />
+          </td>
+          <td  class="c_form_text">
+            <div >提高享受待遇情况&nbsp;</div>
+          </td>
+          <td>
+            <input type="text" name="raise_treatment" id="raise_treatment" style="width:180px" maxlength="50" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) { 
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#"+formId)[0])) {
+        return;
+      }
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if(parmsID){
+        // 存在id说明是修改详情
+      }else{
+        // 不存在，新增详情
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+
+      //如果完成当前操作需要关闭弹框 
+      setTimeout(function(){
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      },2000)
+     
+    }
+    $(function(){
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if(parmsID){
+        // 存在id说明是查询详情，修改详情
+      }else{
+        // 不存在，新增详情
+      }
+    })
+  </script>
+</body>
+
+</html>

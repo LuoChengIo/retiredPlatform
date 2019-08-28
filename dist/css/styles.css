@@ -630,6 +630,19 @@ a.udl-h:hover {
   color: #fff;
   font-size: 12px; }
 
+select {
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  border-radius: 2px;
+  height: 32px;
+  line-height: normal;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: url(../images/arrow.png) no-repeat scroll right center transparent !important;
+  background-image: url(../images/arrow.png) !important;
+  padding-right: 14px; }
+
 .fixed-table-pagination {
   display: none !important; }
 
@@ -1182,6 +1195,9 @@ a.udl-h:hover {
   height: 36px;
   line-height: 36px; }
 
+.all-detiel td {
+  min-width: 122px; }
+
 .c_form_text {
   text-align: right;
   padding-right: 5px;
@@ -1218,7 +1234,7 @@ a.udl-h:hover {
   opacity: .8;
   color: #fff; }
 
-.c_form_table .WDate {
+.c_form_table .Wdate {
   font-size: 12px;
   height: 30px;
   line-height: 30px;
@@ -1226,7 +1242,7 @@ a.udl-h:hover {
   background-color: #fff;
   border-radius: 2px; }
 
-.c_form_table .WDate:hover {
+.c_form_table .Wdate:hover {
   border-color: #C9C9C9 !important; }
 
 .c_form_table textarea {
@@ -1236,7 +1252,8 @@ a.udl-h:hover {
   resize: vertical;
   border: 1px solid #e6e6e6;
   background-color: #fff;
-  border-radius: 2px; }
+  border-radius: 2px;
+  line-height: normal; }
 
 .c_form_table textarea:focus {
   border-color: #C9C9C9 !important; }
@@ -1519,3 +1536,136 @@ table.c_table_list input {
   padding: 15px; }
 
 /*=====  End of 面板样式  ======*/
+/*=============================================
+=            修改layui样式            =
+=============================================*/
+.layui-layer-shade {
+  opacity: 0.40 !important;
+  background: #ccc !important; }
+
+.layui-layer {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  background: #eee url(../images/panel_title.gif) repeat-x !important;
+  padding: 5px !important;
+  padding-top: 27px !important;
+  border: 1px solid #D3D3D3;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  border-radius: 5px !important; }
+
+.layui-layer .layui-layer-title {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  line-height: 15px;
+  color: #3F3F3F;
+  font-weight: bold;
+  font-size: 14px;
+  height: auto;
+  background: url(../images/panel_title.gif) repeat-x;
+  background: transparent;
+  padding: 2px 0px 4px 0px;
+  border-bottom: 1px solid #D3D3D3; }
+
+.layui-layer .layui-layer-setwin {
+  top: 5px;
+  right: 5px; }
+
+.layui-layer .layui-layer-setwin a {
+  cursor: pointer;
+  opacity: 0.6;
+  background: url(../images/panel_tools.gif) no-repeat -16px 0px; }
+
+.layui-layer-content {
+  background: #fff;
+  border: 1px solid #D3D3D3;
+  border-top-width: 0px;
+  height: 100% !important; }
+
+.layui-layer-content iframe {
+  height: 100% !important; }
+
+/*=====  End of 修改layui样式  ======*/
+/*=============================================
+=            详情页面样式            =
+=============================================*/
+.from-detail .btn-tool-bar {
+  padding: 6px 4px 25px 4px; }
+
+.from-detail .btn-tool-bar .btn-sm {
+  font-size: 12px;
+  padding: 2px 8px; }
+
+fieldset {
+  margin-bottom: 5px;
+  border: 1px solid #e5e5e5;
+  padding: 10px 10px 10px;
+  font-size: 14px;
+  word-break: break-all;
+  margin: 10px; }
+
+fieldset legend {
+  width: auto;
+  margin: 0 0 0 -5px;
+  font-size: 15px;
+  font-weight: bold;
+  border-bottom: 0;
+  padding: 0 5px; }
+
+/*=====  End of 详情页面样式  ======*/
+/*=============================================
+=            组件树样式            =
+=============================================*/
+.tree-content {
+  width: 700px;
+  margin: 0 auto;
+  font-size: 14px;
+  counter-reset: icecream; }
+
+.tree-content .my-tab li {
+  display: inline-block;
+  line-height: 25px;
+  padding: 0 10px;
+  color: #666;
+  font-size: 12px;
+  cursor: pointer; }
+
+.tree-content .my-tab li:hover {
+  color: #000; }
+
+.tree-content .my-tab li.active {
+  color: #D30500;
+  font-weight: bold; }
+
+.tree-content .item-ct {
+  height: 270px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-style: inset;
+  border-width: thin;
+  background-color: white; }
+
+.tree-content .item-ct.bd-lf {
+  border-left: 0; }
+
+.tree-content .checklist li {
+  font-size: 14px;
+  line-height: 20px;
+  counter-increment: icecream; }
+
+.tree-content .btn-sm {
+  font-size: 12px; }
+
+.tree-content .tips-ct {
+  line-height: 25px;
+  font-size: 12px;
+  padding: 0 10px; }
+
+.tree-content .tips-ct .total::after {
+  content: counter(icecream);
+  font-weight: bold; }
+
+/*=====  End of 组件树样式  ======*/

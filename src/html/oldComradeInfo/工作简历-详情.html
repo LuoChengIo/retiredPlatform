@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <form class="from-detail" id="infoForm">
+    <div class="btn-tool-bar">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+    <!-- 基本信息 -->
+    <fieldset>
+      <legend>基本信息</legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr>
+            <td class="c_form_text">
+              <div >姓名</div>
+            </td>
+            <td>
+              <span id="xm" name="xm" style="margin-left: 10px;">周立妹</span>
+              <!-- 新增状态显示这个 -->
+              <div id="selectYh" stule="width: 180px;" style="display: none;">
+                <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:65%"></select>
+                <input name="depanniu" class="btn"
+                  onclick="openWinSelect('../用户选择控件.html')"
+                  type="button" value=">>">
+              </div>
+            </td>
+
+            <td class="c_form_text">
+              <div >性别</div>
+            </td>
+            <td><span id="sex" name="sex" style="margin-left: 10px;">女</span></td>
+
+            <td class="c_form_text">
+              <div >年龄</div>
+            </td>
+            <td><span id="age" name="age" style="margin-left: 10px;">68</span></td>
+          </tr>
+          <td class="c_form_text">
+            <div >退（离）休</div>
+          </td>
+          <td><span id="retired_type" name="retired_type" style="margin-left: 10px;">退休</span></td>
+
+          <td class="c_form_text">
+            <div >原工作单位及职务</div>
+          </td>
+          <td colspan="3"><span id="post" name="post" style="margin-left: 10px;">干部监督局副巡视员</span></td>
+          </td>
+
+          <tr>
+            <td class="c_form_text">
+              <div >职级</div>
+            </td>
+            <td><span id="post_mc" name="post_mc" style="margin-left: 10px;">副地(局)级</span></td>
+            <td class="c_form_text">
+              <div >籍贯</div>
+            </td>
+            <td><span id="jg" name="jg" style="margin-left: 10px;">河北青县</span></td>
+
+            <td class="c_form_text">
+              <div >所在党支部</div>
+            </td>
+            <td><span id="szdzb" name="szdzb" style="margin-left: 10px;">二支部</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <!-- 工作经历 -->
+    <fieldset>
+      <legend>工作经历</legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr>
+            <td><textarea rows="15" style="width:100%;" name="experience" id="experience" maxlength="500"></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是修改详情
+      } else {
+        // 不存在，新增详情
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+
+      //如果完成当前操作需要关闭弹框 
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000)
+
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+      } else {
+        // 不存在，新增详情
+        $('#xm').hide();
+        $('#selectYh').show();
+      }
+    })
+  </script>
+</body>
+
+</html>

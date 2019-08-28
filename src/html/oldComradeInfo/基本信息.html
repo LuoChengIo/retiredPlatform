@@ -21,7 +21,7 @@
     <!-- 功能区域 -->
     <div class="query-content">
       <div class="mb10">
-        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()">
+        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()" >
           <img src="../../images/add.png" alt="" srcset="">
           新增
         </button>
@@ -53,15 +53,7 @@
         <form class="form-inline" style="max-width: 1200px;">
           <div class="form-group">
             <label style="width: 126px;">姓名:</label>
-            <input type="text" class="form-control" name="cx_xm" placeholder="姓名">
-          </div>
-          <div class="form-group">
-            <label style="width: 126px;">性别:</label>
-            <select class="form-control" name="cx_sex" id="cx_sex">
-              <option value="">请选择</option>
-              <option value="0">女</option>
-              <option value="1">男</option>
-            </select>
+            <input type="text" class="form-control" name="cx_xm" placeholder="姓名" >
           </div>
           <div class="form-group">
             <label style="width: 126px;">退（离）休:</label>
@@ -72,8 +64,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label style="width: 126px;">现享受待遇:</label>
-            <select class="form-control" name="">
+            <label style="width: 126px;">党支部:</label>
+            <select class="form-control">
               <option value="">请选择</option>
             </select>
           </div>
@@ -94,14 +86,8 @@
               onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围止">
           </div>
           <div class="form-group">
-            <label style="width: 126px;">党支部:</label>
-            <select class="form-control">
-              <option value="">请选择</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label style="width: 126px;">政治面貌:</label>
-            <select class="form-control">
+            <label style="width: 126px;">现享受待遇:</label>
+            <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
@@ -121,24 +107,41 @@
   </div>
   <!-- 公共js start -->
   <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
-  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
   <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
   <script src="../../js/plugins/echarts.min.js"></script>
   <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
   <script src="../../js/plugins/layer/layer.js"></script>
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
     // 新增
-    function addClick() {
-
+    function showDetailInfo(url){
+      PageAlert({
+        title: '详细信息',
+        width: '800px',
+        height: '550px',
+        url: url
+      });
+    }
+    function addClick(){
+      showDetailInfo('基本信息-详情.html')
     }
     // 删除
-    function delClick() {
-      var checkboxList = $('#table').find("input[type='checkbox']:checked");
-      if (!checkboxList.length) {
+    function delClick (){
+      var checkboxList = $("#table").bootstrapTable('getSelections');
+      if(!checkboxList.length){
         alert('请先选择要删除的数据');
       }
+      var idsArr = []
+      for (var index = 0; index < checkboxList.length; index++) {
+        var element = checkboxList[index];
+        idsArr.push(element.id);
+      }
+      // 获得选择数据的id集合，并转换成字符串
+      var ids = idsArr.join(',');
+      console.log(ids)
     }
     $(function () {
       var actionFormatter = function (value, row, index) {
@@ -153,7 +156,7 @@
           checkbox: true,
           visible: true
         }, {
-          width: "10",
+          width: "15",
           widthUnit: "%",
           align: 'center',
           field: 'data1',
@@ -200,7 +203,11 @@
           align: 'center',
           field: 'data8',
           title: '退（离）休'
-        }],
+        } ],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+          showDetailInfo("基本信息-详情.html?id="+row.id)
+        }
       })
     });
   </script>
