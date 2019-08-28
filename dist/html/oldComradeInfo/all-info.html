@@ -25,9 +25,6 @@
           <img src="../../images/query.png" alt="" srcset="">
           搜索
         </button>
-        <button type="button" class="btn btn-danger btn-sm" onclick="lookInfo()">
-            详情
-        </button>
         <!-- 分页 -->
         <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
           <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
@@ -141,28 +138,30 @@
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
-    // 查看详情
-    function lookInfo(){
-      window.location.href = "./全部信息-详情.html";
-    }
     // 打印详情
-    function printDetails(guid){
-      var re= window.open('./全部信息-打印.html','','dialogWidth=594px,height=623px,scrollbars=yes,toolbar=no, menubar=no, location=no, status=no')
-        if(re==1){
-            window.location.reload();
-        }
+    function printDetails(id){
+      var re= window.open('./全部信息-打印.html?id='+id,'','dialogWidth=594px,height=623px,scrollbars=yes,toolbar=no, menubar=no, location=no, status=no')
+      if(re==1){
+          window.location.reload();
+      }
+      if (event.stopPropagation){
+        event.stopPropagation(); 
+      }else{
+        event.cancelBubble=true;
+      }
     }
     $(function () {
-      PageAlert({
-        title: '弹出',
-        width: '800px',
-        height: '500px',
-        url: "all-info.html"
-      });
+      // PageAlert({
+      //   title: '弹出',
+      //   width: '800px',
+      //   height: '500px',
+      //   url: "其他信息.html"
+      // });
       var actionFormatter = function (value, row, index) {
+        // 操作里面的按钮处理
         var id = value;
         var result = "";
-        result += '<button type="button" class="btn btn-danger btn-sm" onclick="printDetails()">查看</button>';
+        result += '<button type="button" class="btn btn-danger btn-sm" onclick="printDetails('+row.id+')">查看</button>';
         return result;
       }
       PageTable($("#table"), {
@@ -170,7 +169,7 @@
         columns: [{
           checkbox: true,
           visible: true
-        }, {
+        },{
           width: "10",
           widthUnit: "%",
           align: 'center',
@@ -227,7 +226,8 @@
           formatter: actionFormatter
         }],
         onClickRow: function (row, $element) {
-          console.log(row)
+          // 点击行事件，
+          window.location.href = "./全部信息-详情.html?id="+row.id;
         }
       })
     });

@@ -148,3 +148,18 @@ var PageAlert = function (config) {
 		scrollbar: false
 	});
 }
+
+/**
+ * ajax的提示信息
+ * @param msg key值
+ * @returns
+ */
+function ajaxMsg(msg) {
+	var str = '<div class="tc pt30" >'+msg+'</div>';
+	layer.open({
+		type: 1, 
+		area: ["200px", "80px"],
+		time:2000,
+		content: str
+	})
+}

@@ -115,24 +115,40 @@
   </div>
   <!-- 公共js start -->
   <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
-  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/libs.min.js"></script>
   <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
   <script src="../../js/plugins/echarts.min.js"></script>
   <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
-  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
     // 新增
-    function addClick() {
-
+    function showDetailInfo(url){
+      PageAlert({
+        title: '详细信息',
+        width: '800px',
+        height: '609px',
+        url: url
+      });
+    }
+    function addClick(){
+      showDetailInfo('工作简历-详情.html')
     }
     // 删除
-    function delClick() {
-      var checkboxList = $('#table').find("input[type='checkbox']:checked");
-      if (!checkboxList.length) {
+    function delClick (){
+      var checkboxList = $("#table").bootstrapTable('getSelections');
+      if(!checkboxList.length){
         alert('请先选择要删除的数据');
       }
+      var idsArr = []
+      for (var index = 0; index < checkboxList.length; index++) {
+        var element = checkboxList[index];
+        idsArr.push(element.id);
+      }
+      // 获得选择数据的id集合，并转换成字符串
+      var ids = idsArr.join(',');
+      console.log(ids)
     }
     $(function () {
       var actionFormatter = function (value, row, index) {
@@ -195,6 +211,10 @@
           field: 'data8',
           title: '退（离）休'
         }],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+          showDetailInfo("工作简历-详情.html?id="+row.id)
+        }
       })
     });
   </script>

@@ -1,4 +1,4 @@
-<!-- 老同志信息-基础信息 -->
+<!-- 老同志信息-全部信息 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,14 +21,6 @@
     <!-- 功能区域 -->
     <div class="query-content">
       <div class="mb10">
-        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()">
-          <img src="../../images/add.png" alt="" srcset="">
-          新增
-        </button>
-        <button type="button" class="btn btn-danger btn-sm" onclick="delClick()">
-          <img src="../../images/delete.png" alt="" srcset="">
-          删除
-        </button>
         <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
           <img src="../../images/query.png" alt="" srcset="">
           搜索
@@ -39,7 +31,7 @@
           <span class="c_table_list_nav_text_span">/</span>
           <span class="c_table_list_nav_text_span" navid="page_allPage">1</span>
           <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
-          <span class="c_table_list_nav_text_span" navid="page_allCount">共0 条 </span>
+          <span class="c_table_list_nav_text_span" navid="page_allCount">共 0 条 </span>
           <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
           <span navid="page_next" class="layui-laypage-next poi">下一页</span>
           <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input"
@@ -72,16 +64,38 @@
             </select>
           </div>
           <div class="form-group">
-            <label style="width: 126px;">现享受待遇:</label>
+            <label style="width: 126px;">职级:</label>
+            <select class="form-control">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">民族:</label>
+            <select class="form-control" name="">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;"> 政治面貌:</label>
+            <select class="form-control" name="">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">党支部:</label>
+            <select class="form-control" name="">
+              <option value="">请选择</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label style="width: 126px;">与配偶同单位:</label>
             <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
           <div class="form-group">
             <label style="width: 126px;">原工作单位及职务:</label>
-            <select class="form-control" name="">
-              <option value="">请选择</option>
-            </select>
+            <input type="text" class="form-control" name="" placeholder="原工作单位及职务">
           </div>
           <div class="form-group">
             <label style="width: 126px;">年龄范围起:</label>
@@ -94,14 +108,8 @@
               onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="年龄范围止">
           </div>
           <div class="form-group">
-            <label style="width: 126px;">党支部:</label>
-            <select class="form-control">
-              <option value="">请选择</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label style="width: 126px;">政治面貌:</label>
-            <select class="form-control">
+            <label style="width: 126px;">现享受待遇:</label>
+            <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
@@ -110,7 +118,7 @@
               查询
             </button>
             <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
-              关闭
+                关闭
             </button>
           </div>
         </form>
@@ -129,22 +137,24 @@
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
-    // 新增
-    function addClick() {
-
-    }
-    // 删除
-    function delClick() {
-      var checkboxList = $('#table').find("input[type='checkbox']:checked");
-      if (!checkboxList.length) {
-        alert('请先选择要删除的数据');
+    // 打印详情
+    function printDetails(id){
+      var re= window.open('./全部信息-打印.html?id='+id,'','dialogWidth=594px,height=623px,scrollbars=yes,toolbar=no, menubar=no, location=no, status=no')
+      if(re==1){
+          window.location.reload();
+      }
+      if (event.stopPropagation){
+        event.stopPropagation(); 
+      }else{
+        event.cancelBubble=true;
       }
     }
     $(function () {
       var actionFormatter = function (value, row, index) {
+        // 操作里面的按钮处理
         var id = value;
         var result = "";
-        result += '<button type="button" class="btn btn-danger btn-sm">查看</button>';
+        result += '<button type="button" class="btn btn-danger btn-sm" onclick="printDetails('+row.id+')">查看</button>';
         return result;
       }
       PageTable($("#table"), {
@@ -152,7 +162,7 @@
         columns: [{
           checkbox: true,
           visible: true
-        }, {
+        },{
           width: "10",
           widthUnit: "%",
           align: 'center',
@@ -200,7 +210,18 @@
           align: 'center',
           field: 'data8',
           title: '退（离）休'
+        }, {
+          field: 'data1',
+          title: '操作',
+          width: "8",
+          widthUnit: "%",
+          align: 'center',
+          formatter: actionFormatter
         }],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+          window.location.href = "./全部信息-详情.html?id="+row.id;
+        }
       })
     });
   </script>
