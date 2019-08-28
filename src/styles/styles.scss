@@ -1119,3 +1119,65 @@ fieldset {
 }
 /*=====  End of 详情页面样式  ======*/
 
+
+/*=============================================
+=            组件树样式            =
+=============================================*/
+.tree-content{
+  width: 700px;
+  margin: 0 auto;
+  font-size: 14px;
+  counter-reset: icecream;
+  .my-tab{
+    li{
+      display: inline-block;
+      line-height: 25px;
+      padding: 0 10px;
+      color: #666;
+      font-size: 12px;
+      cursor: pointer;
+      &:hover{
+        color: #000;
+      }
+      &.active{
+        color: #D30500;
+        font-weight: bold;
+      }
+    }
+  }
+  .item-ct{
+    height: 270px;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    border-style: inset;
+    border-width: thin;
+    background-color: white;
+    &.bd-lf{
+      border-left: 0;
+    }
+  }
+  .checklist{
+    li{
+      font-size: 14px;
+      line-height: 20px;
+      counter-increment: icecream;
+    }
+  }
+  .btn-sm{
+    font-size: 12px;
+  }
+  .tips-ct{
+    line-height: 25px;
+    font-size: 12px;
+    padding: 0 10px;
+    .total::after {
+      content: counter(icecream);
+      font-weight: bold;
+    }
+  }
+}
+
+
+/*=====  End of 组件树样式  ======*/
+

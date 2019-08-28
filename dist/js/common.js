@@ -138,7 +138,16 @@ var PageTable = function (table, config) {
 }
 
 //公共弹出 https://www.layui.com/doc/modules/layer.html
-var PageAlert = function (config) {
+var PageAlert = function (config,flg) {
+	// 是否新开窗口
+	if(flg){
+		var l=(screen.availWidth-config.width)/2;
+		var t=(screen.availHeight-config.height)/2;   
+		var str = 'width='+config.width+',height='+config.height+',top='+t+',left='+l+',scrollbars=yes,toolbar=no, menubar=no, location=no, status=no'
+		window.open(config.url,'',str)
+		return
+	}
+	// 弹框
 	layer.open({
 		type: 2,
 		title: config.title,
@@ -148,7 +157,21 @@ var PageAlert = function (config) {
 		scrollbar: false
 	});
 }
-
+/**
+ * 新开窗口选择用户
+ * @param url 页面url
+ * @returns
+ */
+function openWinSelect(url) {
+	// multiple  true/false/20 是否多选 如果有最大个数，直接传递人数
+	// id // 选择框id 用于回显
+	// callback // 回调函数名称 该函数必须在window下面，回传选中的数组{name:'',value:''}
+	PageAlert({
+		width:'720',
+		height:"450",
+		url:url
+	},true)
+}
 /**
  * ajax的提示信息
  * @param msg key值

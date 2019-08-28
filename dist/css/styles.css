@@ -1615,3 +1615,57 @@ fieldset legend {
   padding: 0 5px; }
 
 /*=====  End of 详情页面样式  ======*/
+/*=============================================
+=            组件树样式            =
+=============================================*/
+.tree-content {
+  width: 700px;
+  margin: 0 auto;
+  font-size: 14px;
+  counter-reset: icecream; }
+
+.tree-content .my-tab li {
+  display: inline-block;
+  line-height: 25px;
+  padding: 0 10px;
+  color: #666;
+  font-size: 12px;
+  cursor: pointer; }
+
+.tree-content .my-tab li:hover {
+  color: #000; }
+
+.tree-content .my-tab li.active {
+  color: #D30500;
+  font-weight: bold; }
+
+.tree-content .item-ct {
+  height: 270px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-style: inset;
+  border-width: thin;
+  background-color: white; }
+
+.tree-content .item-ct.bd-lf {
+  border-left: 0; }
+
+.tree-content .checklist li {
+  font-size: 14px;
+  line-height: 20px;
+  counter-increment: icecream; }
+
+.tree-content .btn-sm {
+  font-size: 12px; }
+
+.tree-content .tips-ct {
+  line-height: 25px;
+  font-size: 12px;
+  padding: 0 10px; }
+
+.tree-content .tips-ct .total::after {
+  content: counter(icecream);
+  font-weight: bold; }
+
+/*=====  End of 组件树样式  ======*/
