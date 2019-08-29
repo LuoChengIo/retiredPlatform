@@ -144,7 +144,10 @@ var PageAlert = function (config, flg) {
 		var l = (screen.availWidth - config.width) / 2;
 		var t = (screen.availHeight - config.height) / 2;
 		var str = 'width=' + config.width + ',height=' + config.height + ',top=' + t + ',left=' + l + ',scrollbars=yes,toolbar=no, menubar=no, location=no, status=no'
-		window.open(config.url, '', str)
+		//window.open(config.url, '', str)
+		//防拦截 zx
+		var newTab = window.open('about:blank', '', str);
+		newTab.location.href = config.url;
 		return
 	}
 	// 在父页面弹框
@@ -179,7 +182,7 @@ function openWinSelect(url) {
  */
 function ajaxMsg(msg) {
 	var str = '<div class="tc pt30" >' + msg + '</div>';
-	layer.open({
+	parent.layer.open({
 		type: 1,
 		area: ["200px", "80px"],
 		time: 2000,
