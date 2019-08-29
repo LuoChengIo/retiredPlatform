@@ -246,6 +246,38 @@
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
+
+    var userlist = [{
+      "id": 2323,
+      "data1": "周立妹",
+      "data2": "女",
+      "data3": "68",
+      "data4": "汉族",
+      "data5": "中共党员",
+      "data6": "干部监督局副巡视员",
+      "data7": "副地(局)级",
+      "data8": "退休"
+    }, {
+      "id": 2323,
+      "data1": "周立妹",
+      "data2": "女",
+      "data3": "68",
+      "data4": "汉族",
+      "data5": "中共党员",
+      "data6": "干部监督局副巡视员",
+      "data7": "副地(局)级",
+      "data8": "退休"
+    }, {
+      "id": 2323,
+      "data1": "周立妹",
+      "data2": "女",
+      "data3": "68",
+      "data4": "汉族",
+      "data5": "中共党员",
+      "data6": "干部监督局副巡视员",
+      "data7": "副地(局)级",
+      "data8": "退休"
+    }];
     // 保存信息
     function saveInfo(formId) {
       // 校验form里面必填字段
@@ -272,17 +304,19 @@
       if (!checkboxList.length) {
         alert('请先选择要删除的数据');
       }
-      var idsArr = []
-      for (var index = 0; index < checkboxList.length; index++) {
-        var element = checkboxList[index];
-        idsArr.push(element.id);
-      }
-      // 获得选择数据的id集合，并转换成字符串
-      var ids = idsArr.join(',');
-      console.log(ids)
+      // var idsArr = []
+      // for (var index = 0; index < checkboxList.length; index++) {
+      //   var element = checkboxList[index];
+      //   idsArr.push(element.id);
+      // }
+      // // 获得选择数据的id集合，并转换成字符串
+      // var ids = idsArr.join(',');
+      // console.log(ids)
 
-      //重新调用刷新 会自动ajax
-      $("#table").bootstrapTable('refresh')
+      userlist.splice(0, 1)
+      console.log(userlist)
+      //重新调用刷新
+      $("#table").bootstrapTable('refreshOptions', { data: userlist })
 
     }
     // 用户选择回调事件
@@ -299,7 +333,7 @@
         height: '380px',
         url: '家庭信息-子女信息.html',
         end: function () {
-          $("#table").bootstrapTable('refresh')
+          $("#table").bootstrapTable('refreshOptions', { data: userlist })
         },
       });
     }
@@ -313,9 +347,10 @@
         $('#xm').hide();
         $('#selectYh').show();
       }
-      PageTable($("#table"), {
-        url: 'table.json',
-        pagination: false,
+      $("#table").bootstrapTable({
+        data: userlist,
+        striped: true,
+        cache: false,
         columns: [{
           checkbox: true,
           visible: true
@@ -350,7 +385,8 @@
           field: 'data5',
           title: '联系电话'
         }]
-      })
+      });
+
     })
   </script>
 

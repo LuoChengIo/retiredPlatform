@@ -122,7 +122,7 @@ var PageTable = function (table, config) {
 		url: config.url,
 		striped: true,
 		cache: false,
-		pagination: config.pagination !== undefined ? config.pagination : true,
+		pagination: true,
 		pageNumber: 1,
 		pageSize: 3,
 		sidePagination: "server",
