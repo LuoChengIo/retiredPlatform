@@ -21,7 +21,7 @@
     <!-- 功能区域 -->
     <div class="query-content">
       <div class="mb10">
-        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()" >
+        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()">
           <img src="../../images/add.png" alt="" srcset="">
           新增
         </button>
@@ -53,7 +53,7 @@
         <form class="form-inline" style="max-width: 1200px;">
           <div class="form-group">
             <label style="width: 126px;">姓名:</label>
-            <input type="text" class="form-control" name="cx_xm" placeholder="姓名" >
+            <input type="text" class="form-control" name="cx_xm" placeholder="姓名">
           </div>
           <div class="form-group">
             <label style="width: 126px;">退（离）休:</label>
@@ -117,7 +117,7 @@
   <!-- 公共js end -->
   <script>
     // 新增
-    function showDetailInfo(url){
+    function showDetailInfo(url) {
       PageAlert({
         title: '详细信息',
         width: '800px',
@@ -125,13 +125,14 @@
         url: url
       });
     }
-    function addClick(){
+
+    function addClick() {
       showDetailInfo('基本信息-详情.html')
     }
     // 删除
-    function delClick (){
+    function delClick() {
       var checkboxList = $("#table").bootstrapTable('getSelections');
-      if(!checkboxList.length){
+      if (!checkboxList.length) {
         alert('请先选择要删除的数据');
       }
       var idsArr = []
@@ -203,10 +204,10 @@
           align: 'center',
           field: 'data8',
           title: '退（离）休'
-        } ],
+        }],
         onClickRow: function (row, $element) {
           // 点击行事件，
-          showDetailInfo("基本信息-详情.html?id="+row.id)
+          showDetailInfo("基本信息-详情.html?id=" + row.id)
         }
       })
     });

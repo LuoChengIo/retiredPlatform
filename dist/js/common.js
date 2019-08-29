@@ -154,7 +154,9 @@ var PageAlert = function (config,flg) {
 		anim: 5,
 		area: [config.width, config.height],
 		content: config.url,
-		scrollbar: false
+		offset: '20px',
+		fixed:false,
+		scrollbar: true
 	});
 }
 /**

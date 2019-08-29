@@ -6,12 +6,16 @@
 
 // select
 select {
+  &::-ms-expand { display: none; }  
   border: 1px solid #e6e6e6;
   background-color: #fff;
   border-radius: 2px;
   height: 32px;
   line-height: normal;
-  appearance: none;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  -ms-appearance:none;
   background: url(../images/arrow.png) no-repeat scroll right center transparent !important;
   background-image: url(../images/arrow.png) !important;
   padding-right: 14px;
@@ -92,7 +96,6 @@ select {
     left: 0;
   }
 }
-
 .nav-side {
   position: fixed;
   width: 178px;
@@ -107,15 +110,13 @@ select {
   &.hide-side {
     left: -178px;
   }
-
   &::-webkit-scrollbar {
     /*滚动条整体样式*/
     width: 3px;
     /*高宽分别对应横竖滚动条的尺寸*/
     height: 2px;
   }
-
-  &::-webkit-scrollbar-thumb {
+  &::scrollbar-thumb {
     /*滚动条里面小方块*/
     border-radius: 5px;
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
@@ -390,15 +391,16 @@ select {
 
   .item_banner {
     height: 34px;
-
     .text-title {
-      position: absolute;
-      top: 0;
-      left: 54px;
       color: #FFF;
       font-size: 16px;
       font-weight: bold;
       line-height: 34px;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      span{
+        margin-left: 54px;
+      }
     }
   }
 
