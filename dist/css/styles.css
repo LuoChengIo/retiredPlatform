@@ -1199,7 +1199,8 @@ select::-ms-expand {
 
 .c_form_table td {
   height: 36px;
-  line-height: 36px; }
+  line-height: 36px;
+  padding-bottom: 10px; }
 
 .all-detiel td {
   min-width: 122px; }
@@ -1217,7 +1218,8 @@ select::-ms-expand {
   line-height: 30px;
   border: 1px solid #e6e6e6;
   background-color: #fff;
-  border-radius: 2px; }
+  border-radius: 2px;
+  text-indent: 10px; }
 
 .c_form_table td input[type="radio"] {
   height: auto; }

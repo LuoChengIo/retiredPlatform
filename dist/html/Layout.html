@@ -61,144 +61,193 @@
   <!-- 公共js end -->
   <script>
     var navData = [{
-        text: "首页",
-        children: [],
-        src: "./index.html"
+      text: "首页",
+      children: [],
+      src: "./index.html"
+    },
+    {
+      text: "老同志信息",
+      children: [{
+        text: "全部信息",
+        src: "./oldComradeInfo/全部信息.html"
       },
       {
-        text: "老同志信息",
-        children: [{
-            text: "全部信息",
-            src: "./oldComradeInfo/全部信息.html"
-          },
-          {
-            text: "基本信息",
-            src: "./oldComradeInfo/基本信息.html"
-          },
-          {
-            text: "工作简历",
-            src: "./oldComradeInfo/工作简历.html"
-          },
-          {
-            text: "家庭信息",
-            src: "./oldComradeInfo/家庭信息.html"
-          },
-          {
-            text: "照片信息",
-            src: "./oldComradeInfo/照片信息.html"
-          },
-          {
-            text: "健康档案",
-            src: "./oldComradeInfo/健康档案.html"
-          },
-          {
-            text: "其他信息",
-            src: "./oldComradeInfo/其他信息.html"
-          },
-          {
-            text: "生日提醒",
-            src: "./oldComradeInfo/生日提醒.html"
-          },
-          {
-            text: "离世管理",
-            src: "./oldComradeInfo/离世管理.html"
-          },
-          {
-            text: "遗嘱信息",
-            src: "./oldComradeInfo/遗嘱信息.html"
-          },
-          {
-            text: "统计分析",
-            src: "./oldComradeInfo/统计分析.html"
-          }
-        ],
-        src: ""
+        text: "基本信息",
+        src: "./oldComradeInfo/基本信息.html"
       },
       {
-        text: "党支部建设",
-        children: [{
-            text: "支部信息",
-            src: "./党支部建设/支部信息.html"
-          },
-          {
-            text: "党员信息",
-            src: "./党支部建设/党员信息.html"
-          },
-          {
-            text: "支部考勤",
-            src: "./党支部建设/支部考勤.html"
-          },
-          {
-            text: "支部活动",
-            src: "./党支部建设/支部活动.html"
-          },
-          {
-            text: "支部交流",
-            src: "./党支部建设/支部交流.html"
-          }
-        ],
-        src: ""
+        text: "工作简历",
+        src: "./oldComradeInfo/工作简历.html"
       },
       {
-        text: "老年大学",
-        children: [{
-            text: "课程管理",
-            src: "./老年大学/课程管理.html"
-          },{
-            text: "课程报名",
-            src: "./老年大学/课程报名.html"
-          },{
-            text: "学习交流",
-            src: "./老年大学/学习交流.html"
-          },{
-            text: "教学剪影",
-            src: "./老年大学/教学剪影.html"
-          },{
-            text: "学员风采",
-            src: "./老年大学/学员风采.html"
-          },{
-            text: "书画展示",
-            src: "./老年大学/书画展示.html"
-          },{
-            text: "摄影",
-            src: "./老年大学/摄影.html"
-          }]
+        text: "家庭信息",
+        src: "./oldComradeInfo/家庭信息.html"
       },
       {
-        text: "增添正能量",
-        children: [],
-        src: ""
+        text: "照片信息",
+        src: "./oldComradeInfo/照片信息.html"
       },
       {
-        text: "事项管理",
-        children: [],
-        src: ""
+        text: "健康档案",
+        src: "./oldComradeInfo/健康档案.html"
       },
       {
-        text: "医疗服务",
-        children: [],
-        src: ""
+        text: "其他信息",
+        src: "./oldComradeInfo/其他信息.html"
       },
       {
-        text: "健康休养",
-        children: [],
-        src: ""
+        text: "生日提醒",
+        src: "./oldComradeInfo/生日提醒.html"
       },
       {
-        text: "走访慰问",
-        children: [],
-        src: ""
+        text: "离世管理",
+        src: "./oldComradeInfo/离世管理.html"
       },
       {
-        text: "信息发布",
-        children: [],
-        src: ""
+        text: "遗嘱信息",
+        src: "./oldComradeInfo/遗嘱信息.html"
       },
       {
-        text: "系统管理",
-        children: [],
-        src: ""
+        text: "统计分析",
+        src: "./oldComradeInfo/统计分析.html"
       }
+      ],
+      src: ""
+    },
+    {
+      text: "党支部建设",
+      children: [{
+        text: "支部信息",
+        src: "./党支部建设/支部信息.html"
+      },
+      {
+        text: "党员信息",
+        src: "./党支部建设/党员信息.html"
+      },
+      {
+        text: "支部考勤",
+        src: "./党支部建设/支部考勤.html"
+      },
+      {
+        text: "支部活动",
+        src: "./党支部建设/支部活动.html"
+      },
+      {
+        text: "支部交流",
+        src: "./党支部建设/支部交流.html"
+      }
+      ],
+      src: ""
+    },
+    {
+      text: "老年大学",
+      children: [{
+        text: "课程管理",
+        src: "./老年大学/课程管理.html"
+      }, {
+        text: "课程报名",
+        src: "./老年大学/课程报名.html"
+      }, {
+        text: "学习交流",
+        src: "./老年大学/学习交流.html"
+      }, {
+        text: "教学剪影",
+        src: "./老年大学/教学剪影.html"
+      }, {
+        text: "学员风采",
+        src: "./老年大学/学员风采.html"
+      }, {
+        text: "书画展示",
+        src: "./老年大学/书画展示.html"
+      }, {
+        text: "摄影",
+        src: "./老年大学/摄影.html"
+      }]
+    },
+    {
+      text: "增添正能量",
+      children: [
+        {
+          text: "添加正能量共筑中国梦",
+          src: "./增添正能量/添加正能量共筑中国梦.html"
+        }, {
+          text: "摄影",
+          src: "./增添正能量/我看改革开放新成就.html"
+        }
+      ]
+    },
+    {
+      text: "事项管理",
+      children: [],
+      src: ""
+    },
+    {
+      text: "医疗服务",
+      children: [],
+      src: ""
+    },
+    {
+      text: "健康休养",
+      children: [],
+      src: ""
+    },
+    {
+      text: "走访慰问",
+      children: [{
+        text: "日常走访",
+        src: "./走访慰问/日常走访.html"
+      }, {
+        text: "节日慰问",
+        src: "./走访慰问/节日慰问.html"
+      }, {
+        text: "生日看望",
+        src: "./走访慰问/生日看望.html"
+      }, {
+        text: "遗属看望",
+        src: "./走访慰问/遗属看望.html"
+      },]
+    },
+    {
+      text: "信息发布",
+      children: [{
+        text: "手机端图片新闻",
+        src: "./信息发布/手机端图片新闻.html"
+      }, {
+        text: "新闻播报",
+        src: "./信息发布/新闻播报.html"
+      }, {
+        text: "通知公告",
+        src: "./信息发布/通知公告.html"
+      }, {
+        text: "工作动态管理",
+        src: "./信息发布/工作动态管理.html"
+      }, {
+        text: "晚枫苑",
+        src: "./信息发布/晚枫苑.html"
+      }, {
+        text: "信息推荐",
+        src: "./信息发布/信息推荐.html"
+      }, {
+        text: "工作人员学习资料",
+        src: "./信息发布/工作人员学习资料.html"
+      }, {
+        text: "离退休干部党支部学习参考",
+        src: "./信息发布/离退休干部党支部学习参考.html"
+      }, {
+        text: "学习专栏",
+        src: "./信息发布/学习专栏.html"
+      },]
+    },
+    {
+      text: "系统管理",
+      children: [{
+        text: "人设置",
+        src: "./系统管理/人设置.html"
+      }, {
+        text: "使用帮助",
+        src: "./系统管理/使用帮助.html"
+      },]
+    }
     ];
     // 顶部导航点击事件
     function showTopLevelMenu(obj) {
