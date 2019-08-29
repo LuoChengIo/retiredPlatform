@@ -35,10 +35,10 @@
               <span id="xm" name="xm" style="margin-left: 10px;">周立妹</span>
               <!-- 新增状态显示这个 -->
               <div id="selectYh" stule="width: 180px;" style="display: none;">
-                <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:65%"></select>
-                <input name="depanniu" class="btn"
-                  onclick="openWinSelect('../用户选择控件.html')"
-                  type="button" value=">>">
+                <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
+                <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                  >>
+                </button>
               </div>
             </td>
 
@@ -126,6 +126,12 @@
         parent.layer.close(parent.layer.getFrameIndex(window.name));
       }, 2000)
 
+    }
+    // 用户选择回调事件
+    function selectUserAction(arr) {
+      console.log(arr)
+      $('#xm').show();
+      $('#selectYh').hide();
     }
     $(function () {
       // 获取当前连接所传id

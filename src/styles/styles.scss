@@ -1180,6 +1180,21 @@ fieldset {
       font-weight: bold;
     }
   }
+  .c_search_inputbox{
+    width: 165px;
+    height:26px;
+    margin: 2px;
+    border-radius: 3px;
+    border: 1px solid #999;
+    text-indent: 10px;
+  }
+  .c_search_btn{
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background: url(../images/oa_search_btn.gif)no-repeat center;
+    cursor: pointer;
+  }
 }
 
 

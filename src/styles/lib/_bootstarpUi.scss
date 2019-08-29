@@ -9,6 +9,9 @@
   font-size: 14px;
   line-height: 1.5;
   border-radius: 2px;
+  &.f12{
+    font-size: 12px
+  }
 }
 .btn-danger.focus, .btn-danger:focus{
   background-color: #d70000;

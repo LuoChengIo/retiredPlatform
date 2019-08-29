@@ -608,6 +608,9 @@ a.udl-h:hover {
   line-height: 1.5;
   border-radius: 2px; }
 
+.btn-group-sm > .btn.f12, .btn-sm.f12 {
+  font-size: 12px; }
+
 .btn-danger.focus, .btn-danger:focus {
   background-color: #d70000;
   border-color: #d70000; }
@@ -1675,5 +1678,20 @@ fieldset legend {
 .tree-content .tips-ct .total::after {
   content: counter(icecream);
   font-weight: bold; }
+
+.tree-content .c_search_inputbox {
+  width: 165px;
+  height: 26px;
+  margin: 2px;
+  border-radius: 3px;
+  border: 1px solid #999;
+  text-indent: 10px; }
+
+.tree-content .c_search_btn {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  background: url(../images/oa_search_btn.gif) no-repeat center;
+  cursor: pointer; }
 
 /*=====  End of 组件树样式  ======*/

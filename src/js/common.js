@@ -87,6 +87,8 @@ var PageTable = function (table, config) {
 			pagenum--;
 			if (pagenum <= 0) {
 				pagenum = 1;
+				alert('已到达第一页')
+				return
 			}
 			self.bootstrapTable('selectPage', pagenum);
 		});
@@ -95,6 +97,8 @@ var PageTable = function (table, config) {
 			pagenum++;
 			if (pagenum > pagecount) {
 				pagenum = pagecount;
+				alert('已是最后一页')
+				return
 			}
 			self.bootstrapTable('selectPage', pagenum);
 		});
