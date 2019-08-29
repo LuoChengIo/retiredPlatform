@@ -151,7 +151,7 @@ var PageAlert = function (config, flg) {
 		return
 	}
 	// 在父页面弹框
-	parent.layer.open({
+	layer.open({
 		type: 2,
 		title: config.title,
 		anim: 5,
