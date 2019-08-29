@@ -15,33 +15,33 @@
     <link rel="stylesheet" href="../../css/styles.css" />
 </head>
 
-<body class="bg-white">
+<body class="bg-white" style="margin-left: 15px;">
     <form class="from-detail" id="infoForm">
         <div class="btn-tool-bar">
             <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
                 保存
             </button>
         </div>
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <table border="0" cellspacing="0" cellpadding="0" width="98%" class="c_form_table" align="center">
+
             <tbody>
-                <tr id="dlm_div" style="display: table-row;">
-                    <td class="c_form_text">
-                        <div>
-                            标题&nbsp;<font color="#ff0000">*</font>
-                        </div>
-                    </td>
-                    <td>
-                        <input type="text" name="dlmc" id="dlmc" style="width:560px" required="true" showname="标题" />
+                <tr>
+                    <td class="c_form_text" width="120px">标 题</td>
+                    <td colspan="3">
+                        <input type="text" id="zt" name="zt" maxlength="100" style="width: 520px;" check=""
+                            required="true" showname="标题">
+
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>
+
+                <tr id="des">
+                    <td colspan="4">
                         <script id="container" name="content" type="text/plain">这里写你的初始化内容</script>
                     </td>
                 </tr>
             </tbody>
         </table>
+
     </form>
     <!-- 公共js start -->
     <script src="../../js/plugins/jquery-3.3.1.min.js"></script>

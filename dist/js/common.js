@@ -122,7 +122,7 @@ var PageTable = function (table, config) {
 		url: config.url,
 		striped: true,
 		cache: false,
-		pagination: true,
+		pagination: config.pagination !== undefined ? config.pagination : true,
 		pageNumber: 1,
 		pageSize: 3,
 		sidePagination: "server",
@@ -162,8 +162,12 @@ var PageAlert = function (config, flg) {
 		area: [config.width, config.height],
 		content: config.url,
 		offset: '20px',
-		fixed:false,
-		scrollbar: true
+		fixed: false,
+		scrollbar: true,
+		//销毁后调用
+		end: function () {
+			typeof config.end == "function" && config.end();
+		}
 	});
 }
 /**

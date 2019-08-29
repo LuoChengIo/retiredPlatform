@@ -58,12 +58,18 @@
   <script src="../../js/plugins/echarts.min.js"></script>
   <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
   <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
     // 新增
     function addClick(){
-
+      PageAlert({
+        title: '详细信息',
+        width: '850px',
+        height: '219px',
+        url: '课程安排-编辑.html'
+      });
     }
     // 删除
     function delClick (){
@@ -105,6 +111,10 @@
           field: 'data4',
           title: '上课时间'
         }],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+          addClick("基本信息-详情.html?id=" + row.id)
+        }
       })
     });
   </script>

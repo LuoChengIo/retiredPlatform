@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+    <form class="from-detail" id="infoForm">
+        <div class="btn-tool-bar">
+            <button type="button" class="btn btn-danger btn-sm">
+                新建
+            </button>
+            <button type="button" class="btn btn-danger btn-sm">
+                复制
+            </button>
+            <button type="button" class="btn btn-danger btn-sm">
+                发布
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+                保存
+            </button>
+        </div>
+        <table border="0" cellspacing="0" cellpadding="0" width="98%" class="c_form_table" align="center">
+
+            <tbody>
+
+                <tr>
+                    <td class="c_form_text" width="120px">标 题</td>
+                    <td colspan="3">
+                        <input type="text" id="zt" name="zt" maxlength="100"
+                            style="width: 520px; font-weight: 400; font-style: normal; text-decoration: none;" check=""
+                            required="true" showname="标题">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c_form_text">发布时间</td>
+                    <td colspan="3">
+                        <input class="Wdate" type="text" id="cjsj" name="cjsj" style="WIDTH: 150px;"
+                            onclick="WdatePicker()"
+                            onfocus="WdatePicker({startDate:'%y-%M-01',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:false})"
+                            required="true" showname="发布时间">
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td id="tdfjxxlabel" class="c_form_text">附件信息</td>
+                    <td colspan="3" valign="middle">
+                        <span id="sys_attachment_span" name="sys_attachment_span"><span spanid="att_upload_new"
+                                id="att_upload_new" name="att_upload_new">0 个 附件 </span>
+                            <input type="button" name="sys_attachment_wjsc" id="sys_attachment_wjsc"
+                                class="sys_attachment_wjsc" onclick="showup()" value="文件上传"></span>
+                    </td>
+                </tr>
+                <tr id="xinxifb_slt" style="height: 30px">
+                    <td class="c_form_text"><label>缩略图</label></td>
+                    <td colspan="3">
+                        <span id="sys_attachment_span_slt" name="sys_attachment_span_slt"><select
+                                class="sys_attachment_attachment" id="sys_attachment_publish_slt"
+                                name="sys_attachment_publish_slt" style="WIDTH: 150px;  ">
+                                <option value="">(1)个附件</option>
+                                <option value="2018051011153078244980">mmexport1525921287543.jpg(1217.55KB)</option>
+                            </select>
+                            <input type="button" name="sys_attachment_publish_sltxzck"
+                                id="sys_attachment_publish_sltxzck" class="sys_attachment_xzck" value="查看缩略图"
+                                onclick="showimg()">&nbsp;<input type="button" name="sys_attachment_publish_sltsc"
+                                id="sys_attachment_publish_sltsc" onclick="showup()" class="sys_attachment_wjsc"
+                                value="上传缩略图">
+                        </span>
+                    </td>
+                </tr>
+
+                <tr id="des">
+                    <td colspan="4">
+                        <script id="container" name="content" type="text/plain">这里写你的初始化内容</script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/plugins/ueditor/ueditor.config.js"></script>
+    <script src="../../js/plugins/ueditor/ueditor.all.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+
+        //初始化编辑器
+        var ue = UE.getEditor('container');
+        //上传
+        function showup() {
+            PageAlert({
+                title: '上传',
+                width: '600px',
+                height: '378px',
+                url: '../上传.html'
+            }, 1);
+        }
+        //查看缩略图
+        function showimg() {
+            //获取当前选中的值 $("#sys_attachment_publish_slt").val();
+            location.href = 'http://119.188.117.54:8081/attachment/default.do?method=download&sltxz=1&mk_dm=publish&guid=2018051011153078244980'
+        }
+        // 保存信息
+        function saveInfo(formId) {
+            // 校验form里面必填字段
+            if (!Validate.CheckForm($("#" + formId)[0])) {
+                return;
+            }
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是修改详情
+            } else {
+                // 不存在，新增详情
+            }
+            // 这个是提示信息方法
+            ajaxMsg('保存成功')
+
+            //如果完成当前操作需要关闭弹框 
+            setTimeout(function () {
+                parent.layer.close(parent.layer.getFrameIndex(window.name));
+            }, 2000)
+
+        }
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>

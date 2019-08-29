@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+    <form class="from-detail" id="infoForm">
+        <div class="btn-tool-bar">
+            <button type="button" class="btn btn-danger btn-sm">
+                新增
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+                保存
+            </button>
+        </div>
+        <fieldset>
+            <legend>课程安排</legend>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+                <tbody>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">课程名称</div>
+                        </td>
+                        <td width="20%"><input type="text" id="kcmc" name="kcmc" maxlength="50" required=""
+                                showname="课程名称" style="margin-left: 10px;width: 40%;"></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">课程简介</div>
+                        </td>
+                        <td width="20%"><textarea onpropertychange="checkLength(this,200);"
+                                oninput="checkLength(this,200);" type="text" id="kcjj" name="kcjj" required=""
+                                showname="课程简介" style="margin-left: 10px;width: 70%;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">任课老师</div>
+                        </td>
+                        <td width="20%"><input type="text" id="rkls" name="rkls" maxlength="100" required=""
+                                showname="任课老师" style="margin-left: 10px;width: 40%;"></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">老师简介</div>
+                        </td>
+                        <td width="20%"><textarea onpropertychange="checkLength(this,250);"
+                                oninput="checkLength(this,250);" type="text" id="lsjj" name="lsjj" required=""
+                                showname="老师简介" style="margin-left: 10px;width: 70%;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">上课开始日期</div>
+                        </td>
+                        <td width="20%"><input id="kksj" name="kksj" size="20" class="Wdate"
+                                style="width: 40%; margin-left: 10px;" showname="上课开始日期"
+                                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"
+                                }="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">上课结束日期</div>
+                        </td>
+                        <td width="20%"><input id="jksj" name="jksj" size="20" class="Wdate"
+                                style="width: 40%; margin-left: 10px;" showname="上课结束日期"
+                                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"
+                                }="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">上课地点</div>
+                        </td>
+                        <td width="20%"><input id="skdd" name="skdd" maxlength="100" required="" showname="上课地点"
+                                style="margin-left: 10px;width: 40%;"></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">上课频次</div>
+                        </td>
+                        <td width="20%"><input id="skpc" name="skpc" maxlength="120" required="" showname="上课频次"
+                                style="margin-left: 10px;width: 40%;"></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="c_form_text">
+                            <div align="right">是否允许报名</div>
+                        </td>
+                        <td width="20%">
+                            <input type="radio" name="sfyybm" value="0" style="margin-left: 10px;">否
+                            <input type="radio" name="sfyybm" value="1" style="margin-left: 10px;" checked="">是
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        // 保存信息
+        function saveInfo(formId) {
+            // 校验form里面必填字段
+            if (!Validate.CheckForm($("#" + formId)[0])) {
+                return;
+            }
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是修改详情
+            } else {
+                // 不存在，新增详情
+            }
+            // 这个是提示信息方法
+            ajaxMsg('保存成功')
+
+            //如果完成当前操作需要关闭弹框 
+            setTimeout(function () {
+                parent.layer.close(parent.layer.getFrameIndex(window.name));
+            }, 2000)
+
+        }
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>

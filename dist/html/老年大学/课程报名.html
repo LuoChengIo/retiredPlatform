@@ -21,7 +21,7 @@
         <!-- 功能区域 -->
         <div class="query-content">
             <div class="mb10">
-                <button type="button" class="btn btn-danger btn-sm" onclick="addClick()">
+                <button type="button" class="btn btn-danger btn-sm" onclick="addClick('')">
                     <img src="../../images/add.png" alt="" srcset="">
                     新增
                 </button>
@@ -97,12 +97,18 @@
     <script src="../../js/plugins/echarts.min.js"></script>
     <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
     <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
     <script src="../../js/common.js"></script>
     <!-- 公共js end -->
     <script>
         // 新增
-        function addClick() {
-
+        function addClick(id) {
+            PageAlert({
+                title: '详细信息',
+                width: '850px',
+                height: '550px',
+                url: '课程报名-编辑.html?id='+id
+            });
         }
         //以下方法 如果业务不复杂可以自行合并
         function okClick() {
@@ -197,6 +203,10 @@
                     field: 'data8',
                     title: '状态'
                 }],
+                onClickRow: function (row, $element) {
+                    // 点击行事件，
+                    addClick(row.data1)
+                }
             })
         });
     </script>

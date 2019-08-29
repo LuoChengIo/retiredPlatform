@@ -228,7 +228,7 @@
       <div id="div_list" class="c_table_bar_content" style="margin-bottom:20px;">
         <div id="div_table_list">
           <div class="c_div_table_list">
-              <table id="table" class="table-list table-hover table-striped table-bordered"></table>
+            <table id="table" class="table-list table-hover table-striped table-bordered"></table>
           </div>
           <div class="c_div_table_list_nav"></div>
         </div>
@@ -280,6 +280,10 @@
       // 获得选择数据的id集合，并转换成字符串
       var ids = idsArr.join(',');
       console.log(ids)
+
+      //重新调用刷新 会自动ajax
+      $("#table").bootstrapTable('refresh')
+
     }
     // 用户选择回调事件
     function selectUserAction(arr) {
@@ -287,13 +291,16 @@
       $('#xm').show();
       $('#selectYh').hide();
     }
-        // 新增
-    function addChild(url){
+    // 新增
+    function addChild(url) {
       PageAlert({
         title: '子女信息',
         width: '890px',
         height: '380px',
-        url: '家庭信息-子女信息.html'
+        url: '家庭信息-子女信息.html',
+        end: function () {
+          $("#table").bootstrapTable('refresh')
+        },
       });
     }
     $(function () {
@@ -308,6 +315,7 @@
       }
       PageTable($("#table"), {
         url: 'table.json',
+        pagination: false,
         columns: [{
           checkbox: true,
           visible: true

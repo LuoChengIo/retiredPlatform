@@ -76,6 +76,7 @@
     <script src="../../js/plugins/echarts.min.js"></script>
     <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
     <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
     <script src="../../js/common.js"></script>
     <!-- 公共js end -->
     <script>
@@ -105,7 +106,7 @@
                     checkbox: true,
                     visible: true
                 }, {
-                    width: "60",
+                    width: "50",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data1',
@@ -117,7 +118,7 @@
                     field: 'data2',
                     title: '发布人'
                 }, {
-                    width: "10",
+                    width: "15",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data3',
@@ -130,6 +131,10 @@
                     title: '查看回复',
                     formatter: actionFormatter
                 }],
+                onClickRow: function (row, $element) {
+                    // 点击行事件，
+                    addClick()
+                }
             })
         });
     </script>

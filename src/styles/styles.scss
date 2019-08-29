@@ -685,8 +685,8 @@ select {
 
 .c_form_table td {
   height: 36px;
-  line-height: 36px;
-  padding-bottom: 10px; //new zx
+  line-height: 0;
+  padding-bottom: 0; //new zx
 }
 
 .from-detail {

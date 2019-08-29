@@ -21,9 +21,9 @@
         <!-- 功能区域 -->
         <div class="query-content">
             <div class="mb10">
-                <button type="button" class="btn btn-danger btn-sm" onclick="addClick()">
-                    <img src="../../images/add.png" alt="" srcset="">
-                    新增
+                <button type="button" class="btn btn-danger btn-sm" onclick="PageGo('学习交流.html')">
+                    <img src="../../images/back.png" alt="" srcset="">
+                    返回
                 </button>
                 <button type="button" class="btn btn-danger btn-sm" onclick="delClick()">
                     <img src="../../images/delete.png" alt="" srcset="">
@@ -52,8 +52,16 @@
             <div class="serach-content collapse" id="collapseSerach">
                 <form class="form-inline" style="max-width: 1200px;">
                     <div class="form-group">
-                        <label style="width: 126px;">主题:</label>
-                        <input type="text" class="form-control" name="kcmc" placeholder="主题">
+                        <label style="width: 126px;">姓名:</label>
+                        <input type="text" class="form-control" name="kcmc" placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">时间起:</label>
+                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="时间起">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">时间止:</label>
+                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="时间止">
                     </div>
                     <div>
                         <button type="button" class="btn btn-danger btn-sm">
@@ -76,14 +84,9 @@
     <script src="../../js/plugins/echarts.min.js"></script>
     <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
     <script src="../../js/libs.min.js"></script>
-    <script src="../../js/plugins/layer/layer.js"></script>
     <script src="../../js/common.js"></script>
     <!-- 公共js end -->
     <script>
-        // 新增
-        function addClick() {
-            PageAlert({ url: '我看改革开放新成就-编辑.html', width: 950, height: 600 }, 1)
-        }
         // 删除
         function delClick() {
             var checkboxList = $('#table').bootstrapTable('getSelections');
@@ -94,47 +97,36 @@
             //ajax
         }
         $(function () {
-            var actionFormatter = function (value, row, index) {
-                var id = value;
-                var result = "";
-                result += '<button type="button" onclick="PageGo(\'查看回复.html\')" class="btn btn-danger btn-sm">查看回复</button>';
-                return result;
-            }
             PageTable($("#table"), {
-                url: 'table.json',
+                url: 'table2.json',
                 columns: [{
                     checkbox: true,
                     visible: true
                 }, {
-                    width: "50",
+                    width: "4",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data1',
-                    title: '标题'
+                    title: '序号'
                 }, {
-                    width: "15",
+                    width: "60",
                     align: 'center',
                     widthUnit: "%",
                     field: 'data2',
-                    title: '发布人'
+                    title: '回复内容'
                 }, {
-                    width: "15",
+                    width: "14",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data3',
-                    title: '发布时间'
+                    title: '回复人'
                 }, {
-                    width: "10",
+                    width: "14",
                     widthUnit: "%",
                     align: 'center',
-                    field: 'data3',
-                    title: '查看回复',
-                    formatter: actionFormatter
+                    field: 'data4',
+                    title: '回复时间'
                 }],
-                onClickRow: function (row, $element) {
-                    // 点击行事件，
-                    addClick()
-                }
             })
         });
     </script>

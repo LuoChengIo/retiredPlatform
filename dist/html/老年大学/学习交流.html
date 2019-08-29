@@ -21,7 +21,7 @@
     <!-- 功能区域 -->
     <div class="query-content">
       <div class="mb10">
-        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()" >
+        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()">
           <img src="../../images/add.png" alt="" srcset="">
           新增
         </button>
@@ -53,7 +53,7 @@
         <form class="form-inline" style="max-width: 1200px;">
           <div class="form-group">
             <label style="width: 126px;">标题:</label>
-            <input type="text" class="form-control" name="kcmc" placeholder="标题" >
+            <input type="text" class="form-control" name="kcmc" placeholder="标题">
           </div>
           <div>
             <button type="button" class="btn btn-danger btn-sm">
@@ -76,17 +76,23 @@
   <script src="../../js/plugins/echarts.min.js"></script>
   <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
   <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
     // 新增
-    function addClick(){
-
+    function addClick() {
+      PageAlert({
+        title: '详细信息',
+        width: '850px',
+        height: '280px',
+        url: '学习交流-编辑.html'
+      });
     }
     // 删除
-    function delClick (){
+    function delClick() {
       var checkboxList = $('#table').bootstrapTable('getSelections');
-      if(!checkboxList.length){
+      if (!checkboxList.length) {
         alert('请先选择要删除的数据');
       }
       console.log(checkboxList)
@@ -96,7 +102,7 @@
       var actionFormatter = function (value, row, index) {
         var id = value;
         var result = "";
-        result += '<button type="button" onclick="PageGo(\'查看回复.html\')" class="btn btn-danger btn-sm">查看回复</button>';
+        result += '<button type="button" onclick="PageGo(\'查看回复2.html\')" class="btn btn-danger btn-sm">查看回复</button>';
         return result;
       }
       PageTable($("#table"), {
@@ -129,7 +135,11 @@
           field: 'data1',
           title: '操作',
           formatter: actionFormatter
-        } ],
+        }],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+          addClick("基本信息-详情.html?id=" + row.id)
+        }
       })
     });
   </script>
