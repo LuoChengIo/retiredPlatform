@@ -130,8 +130,16 @@
   <!-- 公共js end -->
   <script>
     // 新增
-    function addClick() {
-
+    function showDetailInfo(url){
+      PageAlert({
+        title: '详细信息',
+        width: '800px',
+        height: '620px',
+        url: url
+      });
+    }
+    function addClick(){
+      showDetailInfo('其他信息-详情.html')
     }
     // 删除
     function delClick() {
@@ -201,6 +209,10 @@
           field: 'data8',
           title: '退（离）休'
         }],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+          showDetailInfo("其他信息-详情.html?id="+row.id)
+        }
       })
     });
   </script>

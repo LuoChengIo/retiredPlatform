@@ -135,14 +135,22 @@
   <script>
     // 新增
     function addClick() {
-
+      window.location.href = "./家庭信息-详情.html";
     }
     // 删除
     function delClick() {
-      var checkboxList = $('#table').find("input[type='checkbox']:checked");
+      var checkboxList = $("#table").bootstrapTable('getSelections');
       if (!checkboxList.length) {
         alert('请先选择要删除的数据');
       }
+      var idsArr = []
+      for (var index = 0; index < checkboxList.length; index++) {
+        var element = checkboxList[index];
+        idsArr.push(element.id);
+      }
+      // 获得选择数据的id集合，并转换成字符串
+      var ids = idsArr.join(',');
+      console.log(ids)
     }
     $(function () {
       var actionFormatter = function (value, row, index) {
@@ -205,6 +213,10 @@
           field: 'data8',
           title: '退（离）休'
         }],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+          window.location.href = "./家庭信息-详情.html?id="+row.id;
+        }
       })
     });
   </script>

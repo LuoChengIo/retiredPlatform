@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>家庭信息</title>
+  <meta name="keywords" content="离退休老同志服务管理平">
+  <meta name="description" content="离退休老同志服务管理平">
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body class="bg-white">
+  <div class="pl30 pr30 pt15 all-detiel">
+    <div class="mb20">
+      <button type="button" class="btn btn-danger btn-sm" onclick="javascript:history.go(-1)">
+        返回
+      </button>
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+    <form id="infoForm" style="width:900px;">
+      <!--数据明细区起-->
+      <div class="x_title">
+        <h2>基本信息</h2>
+      </div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table min-w-td">
+        <tr>
+          <td class="c_form_text">
+            <div>姓名</div>
+          </td>
+          <td><span id="xm" name="xm" style="margin-left: 10px;"></span>
+            <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:60%"></select>
+            <button type="button" class="btn btn-danger btn-sm f12"
+              onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+              &gt;&gt;
+            </button>
+          </td>
+
+          <td class="c_form_text">
+            <div>性别</div>
+          </td>
+          <td><span id="sex" name="sex" style="margin-left: 10px;"></span></td>
+
+          <td class="c_form_text">
+            <div>年龄</div>
+          </td>
+          <td><span id="age" name="age" style="margin-left: 10px;"></span></td>
+        </tr>
+
+        <tr>
+          <td class="c_form_text">
+            <div>退（离）休</div>
+          </td>
+          <td><span id="retired_type" name="retired_type" style="margin-left: 10px;"></span></td>
+
+          <td class="c_form_text">
+            <div>原工作单位及职务</div>
+          </td>
+          <td colspan="3"><span id="post" name="post" style="margin-left: 10px;"></span></td>
+        </tr>
+
+        <tr>
+          <td class="c_form_text">
+            <div>职级</div>
+          </td>
+          <td><span id="post_mc" name="post_mc" style="margin-left: 10px;"></span></td>
+          <td class="c_form_text">
+            <div>籍贯</div>
+          </td>
+          <td><span id="jg" name="jg" style="margin-left: 10px;"></span></td>
+
+          <td class="c_form_text">
+            <div>所在党支部</div>
+          </td>
+          <td><span id="szdzb" name="szdzb" style="margin-left: 10px;"></span></td>
+        </tr>
+      </table>
+      <!-- InstanceEndEditable -->
+      <!--数据明细区止-->
+
+      <div class="x_title">
+        <h2>家庭信息</h2>
+      </div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tr>
+          <td class="c_form_text">
+            <div>
+              家庭地址&nbsp;
+            </div>
+          </td>
+          <td><input type="text" name="home" id="home" style="width:180px" maxlength="50" showName="家庭地址" /></td>
+
+          <td class="c_form_text">
+            <div>
+              常住地址&nbsp;
+            </div>
+          </td>
+          <td><input type="text" name="address" id="address" style="width:180px" maxlength="50" showName="常住地址" /></td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div>
+              手机号码1
+            </div>
+          </td>
+          <td><input type="text" name="sj" id="sj" style="width:180px" onkeyup="value=value.replace(/[^\d]/g,'')"
+              maxlength="20"></td>
+
+          <td height="25" class="c_form_text">
+            <div>手机号码2</div>
+          </td>
+          <td><input type="text" name="desj" id="desj" style="width:180px;" maxlength="20"
+              onkeyup="value=value.replace(/[^\d]/g,'')"></td>
+        </tr>
+        <tr>
+          <td height="25" class="c_form_text">
+            <div>
+              固定电话1</font>
+            </div>
+          </td>
+          <td><input type="text" name="phone1" id="phone1" style="width:180px" maxlength="20"
+              onkeyup="value=value.replace(/[^\d]/g,'')" /></td>
+
+          <td height="25" class="c_form_text">
+            <div>
+              固定电话2</font>
+            </div>
+          </td>
+          <td><input type="text" name="phone2" id="phone2" style="width:180px" maxlength="20"
+              onkeyup="value=value.replace(/[^\d]/g,'')" /></td>
+
+        </tr>
+        <tr>
+          <td height="25" class="c_form_text">
+            <div>
+              婚姻状况&nbsp;
+            </div>
+          </td>
+          <td><select name="marriage" id="marriage" style="width:180px" showName="婚姻状况"></select></td>
+
+          <td height="25" class="c_form_text">
+            <div>
+              居住状态&nbsp;
+            </div>
+          </td>
+          <td><select name="live" id="live" style="width:180px" showName="居住状态"></select></td>
+        </tr>
+        <tr>
+          <td height="25" class="c_form_text">
+            <div>
+              集团号码&nbsp;</font>
+            </div>
+          </td>
+          <td><input type="text" name="jt_phone" id="jt_phone" style="width:180px" maxlength="20"
+              onkeyup="value=value.replace(/[^\d]/g,'')" /></td>
+        </tr>
+      </table>
+      <div id="poxx">
+        <div class="x_title">
+          <h2>配偶信息</h2>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+          <tr>
+            <td class="c_form_text">
+              <div>姓名</div>
+            </td>
+            <td><input type="text" name="po_xm" id="po_xm" style="width:180px" maxlength="10"></td>
+            <td class="c_form_text">
+              <div>性别</div>
+            </td>
+            <td><input type="radio" name="po_sex" value="1" />
+              男&nbsp; <input type="radio" name="po_sex" value="0" /> 女</td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div>出生日期</div>
+            </td>
+            <td><input id="po_birthday" name="po_birthday" size="20" class="Wdate" style="width:180px;height: 30px;"
+                onFocus="WdatePicker({startDate:'%y-%M',dateFmt:'yyyy-MM',alwaysUseStartDate:true,maxDate:new Date()})" />
+            </td>
+
+            <td height="25" class="c_form_text">
+              <div>目前状况</div>
+            </td>
+            <td><select name="po_present" id="po_present" style="width:180px;"></select></td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div>工作单位及职务</div>
+            </td>
+            <td><input type="text" id="po_post" name="po_post" style="width:180px;" maxlength="25" /></td>
+
+            <td height="25" class="c_form_text">
+              <div>与配偶同单位</div>
+            </td>
+            <td><input type="radio" name="po_isunit" value="1" />
+              是&nbsp; <input type="radio" name="po_isunit" value="0" /> 否</td>
+          </tr>
+
+          <tr>
+            <td height="25" class="c_form_text">
+              <div>联系电话</div>
+            </td>
+            <td><input type="text" id="po_phone" name="po_phone" maxlength="20" style="width:180px;"
+                onkeyup="value=value.replace(/[^\d]/g,'')" /></td>
+          </tr>
+        </table>
+      </div>
+      <div class="x_title">
+        <h2>子女信息</h2>
+      </div>
+      <div style="margin-right: 10px;float: right;">
+        <button type="button" class="btn btn-danger btn-sm f12" onclick="addChild()">
+          新建
+        </button>
+        <button type="button" class="btn btn-danger btn-sm f12" onclick="delClick()">
+          删除
+        </button>
+      </div>
+
+      <div id="div_list" class="c_table_bar_content" style="margin-bottom:20px;">
+        <div id="div_table_list">
+          <div class="c_div_table_list">
+              <table id="table" class="table-list table-hover table-striped table-bordered"></table>
+          </div>
+          <div class="c_div_table_list_nav"></div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是修改详情
+      } else {
+        // 不存在，新增详情
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+      //如果完成当前操作返回页面
+      setTimeout(function () {
+        history.go(-1)
+      }, 2000)
+    }
+    // 删除
+    function delClick() {
+      var checkboxList = $("#table").bootstrapTable('getSelections');
+      if (!checkboxList.length) {
+        alert('请先选择要删除的数据');
+      }
+      var idsArr = []
+      for (var index = 0; index < checkboxList.length; index++) {
+        var element = checkboxList[index];
+        idsArr.push(element.id);
+      }
+      // 获得选择数据的id集合，并转换成字符串
+      var ids = idsArr.join(',');
+      console.log(ids)
+    }
+    // 用户选择回调事件
+    function selectUserAction(arr) {
+      console.log(arr)
+      $('#xm').show();
+      $('#selectYh').hide();
+    }
+        // 新增
+    function addChild(url){
+      PageAlert({
+        title: '子女信息',
+        width: '890px',
+        height: '380px',
+        url: '家庭信息-子女信息.html'
+      });
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+      } else {
+        // 不存在，新增详情
+        $('#xm').hide();
+        $('#selectYh').show();
+      }
+      PageTable($("#table"), {
+        url: 'table.json',
+        columns: [{
+          checkbox: true,
+          visible: true
+        }, {
+          width: "20",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data1',
+          title: '姓名'
+        }, {
+          width: "20",
+          align: 'center',
+          widthUnit: "%",
+          field: 'data2',
+          title: '性别'
+        }, {
+          width: "20",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data3',
+          title: '出生日期'
+        }, {
+          width: "20",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data4',
+          title: '是否同住'
+        }, {
+          width: "20",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data5',
+          title: '联系电话'
+        }]
+      })
+    })
+  </script>
+
+</body>
+
+</html>

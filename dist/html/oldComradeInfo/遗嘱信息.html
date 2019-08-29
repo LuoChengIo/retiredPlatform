@@ -95,10 +95,6 @@
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
-    // 新增
-    function addClick() {
-
-    }
     // 删除
     function delClick() {
       var checkboxList = $('#table').find("input[type='checkbox']:checked");
@@ -116,9 +112,6 @@
       PageTable($("#table"), {
         url: 'table.json',
         columns: [{
-          checkbox: false,
-          visible: false
-        }, {
           width: "10",
           widthUnit: "%",
           align: 'center',
@@ -155,6 +148,10 @@
           field: 'data5',
           title: '目前状况'
         }],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+           window.location.href = "./遗嘱信息-详情.html?id="+row.id;
+        }
       })
     });
   </script>

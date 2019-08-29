@@ -25,70 +25,116 @@
     <!-- 基本信息 -->
     <fieldset>
       <legend>基本信息</legend>
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table min-w-td">
         <tbody>
           <tr>
             <td class="c_form_text">
-              <div >姓名</div>
+              <div>姓名</div>
             </td>
             <td>
               <span id="xm" name="xm" style="margin-left: 10px;">周立妹</span>
               <!-- 新增状态显示这个 -->
               <div id="selectYh" stule="width: 180px;" style="display: none;">
                 <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
-                <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
-                  &gt;&gt;
+                <button type="button" class="btn btn-danger btn-sm f12"
+                  onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                  >>
                 </button>
               </div>
             </td>
 
             <td class="c_form_text">
-              <div >性别</div>
+              <div>性别</div>
             </td>
             <td><span id="sex" name="sex" style="margin-left: 10px;">女</span></td>
 
             <td class="c_form_text">
-              <div >年龄</div>
+              <div>年龄</div>
             </td>
             <td><span id="age" name="age" style="margin-left: 10px;">68</span></td>
           </tr>
           <td class="c_form_text">
-            <div >退（离）休</div>
+            <div>退（离）休</div>
           </td>
           <td><span id="retired_type" name="retired_type" style="margin-left: 10px;">退休</span></td>
 
           <td class="c_form_text">
-            <div >原工作单位及职务</div>
+            <div>原工作单位及职务</div>
           </td>
           <td colspan="3"><span id="post" name="post" style="margin-left: 10px;">干部监督局副巡视员</span></td>
           </td>
 
           <tr>
             <td class="c_form_text">
-              <div >职级</div>
+              <div>职级</div>
             </td>
             <td><span id="post_mc" name="post_mc" style="margin-left: 10px;">副地(局)级</span></td>
             <td class="c_form_text">
-              <div >籍贯</div>
+              <div>籍贯</div>
             </td>
             <td><span id="jg" name="jg" style="margin-left: 10px;">河北青县</span></td>
 
             <td class="c_form_text">
-              <div >所在党支部</div>
+              <div>所在党支部</div>
             </td>
             <td><span id="szdzb" name="szdzb" style="margin-left: 10px;">二支部</span></td>
           </tr>
         </tbody>
       </table>
     </fieldset>
-    <!-- 工作经历 -->
+    <!-- 离世管理 -->
     <fieldset>
-      <legend>工作经历</legend>
+      <legend>离世管理</legend>
       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <input type="hidden" id="cx_yhid" name="cx_yhid" value="73671">
+        <input type="hidden" id="dieguid" name="dieguid" value="2018081711283388460338">
         <tbody>
           <tr>
-            <td><textarea rows="15" style="width:100%;" name="experience" id="experience" maxlength="500"></textarea>
+            <td class="c_form_text">
+              <div>离世时间</div>
             </td>
+            <td><input id="diedate" name="diedate" size="20" class="Wdate" style="width:180px;height: 30px;"
+                onfocus="WdatePicker({maxDate: '%y-%M-%d'})">
+            </td>
+            <td class="c_form_text">
+              <div>原因</div>
+            </td>
+            <td><input type="text" id="diereason" name="diereason" style="width:180px;" maxlength="100"></td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div>送别方式</div>
+            </td>
+            <td><input type="text" name="farewell" id="farewell" style="width:180px" maxlength="25"></td>
+            <td height="25" class="c_form_text">
+              <div>送别时间</div>
+            </td>
+            <td><input id="farewell_date" name="farewell_date" size="20" class="Wdate" style="width:180px;height: 30px;"
+                onfocus="{maxDate: '%y-%M-%d'}"></td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div>抚恤金等领取时间</div>
+            </td>
+            <td><input id="consolation_date" name="consolation_date" size="20" class="Wdate"
+                style="width:180px;height: 30px;" onfocus="{maxDate: '%y-%M-%d'}"></td>
+            <td height="25" class="c_form_text">
+              <div>领取人</div>
+            </td>
+            <td><input type="text" id="consolation_per" name="consolation_per" style="width:180px" maxlength="25"></td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div>抚恤金等未领取原因</div>
+            </td>
+            <td><input type="text" id="no_consolationdate" name="no_consolationdate" style="width:180px"
+                maxlength="100"></td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div>备注</div>
+            </td>
+            <td colspan="4"><input type="text" id="bz" name="bz" style="width:90%" maxlength="100"></td>
           </tr>
         </tbody>
       </table>

@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-  <title>工作简历</title>
+  <title>健康档案</title>
   <meta name="keywords" content="离退休老同志服务管理平" />
   <meta name="description" content="离退休老同志服务管理平" />
   <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
@@ -25,70 +25,117 @@
     <!-- 基本信息 -->
     <fieldset>
       <legend>基本信息</legend>
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table min-w-td">
         <tbody>
           <tr>
             <td class="c_form_text">
-              <div >姓名</div>
+              <div>姓名</div>
             </td>
-            <td>
-              <span id="xm" name="xm" style="margin-left: 10px;">周立妹</span>
+            <td><span id="xm" name="xm" style="margin-left: 10px;">李宝其</span>
               <!-- 新增状态显示这个 -->
               <div id="selectYh" stule="width: 180px;" style="display: none;">
                 <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
-                <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                <button type="button" class="btn btn-danger btn-sm f12"
+                  onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
                   &gt;&gt;
                 </button>
               </div>
             </td>
-
             <td class="c_form_text">
-              <div >性别</div>
+              <div>性别</div>
             </td>
             <td><span id="sex" name="sex" style="margin-left: 10px;">女</span></td>
-
             <td class="c_form_text">
-              <div >年龄</div>
+              <div>年龄</div>
             </td>
             <td><span id="age" name="age" style="margin-left: 10px;">68</span></td>
           </tr>
-          <td class="c_form_text">
-            <div >退（离）休</div>
-          </td>
-          <td><span id="retired_type" name="retired_type" style="margin-left: 10px;">退休</span></td>
-
-          <td class="c_form_text">
-            <div >原工作单位及职务</div>
-          </td>
-          <td colspan="3"><span id="post" name="post" style="margin-left: 10px;">干部监督局副巡视员</span></td>
-          </td>
-
           <tr>
             <td class="c_form_text">
-              <div >职级</div>
+              <div>退（离）休</div>
             </td>
-            <td><span id="post_mc" name="post_mc" style="margin-left: 10px;">副地(局)级</span></td>
+            <td><span id="retired_type" name="retired_type" style="margin-left: 10px;">退休</span></td>
             <td class="c_form_text">
-              <div >籍贯</div>
+              <div>原工作单位及职务</div>
             </td>
-            <td><span id="jg" name="jg" style="margin-left: 10px;">河北青县</span></td>
-
+            <td colspan="3"><span id="post" name="post" style="margin-left: 10px;">党建研究所（党建研究杂志社）巡视员、副所长</span></td>
+          </tr>
+          <tr>
             <td class="c_form_text">
-              <div >所在党支部</div>
+              <div>职级</div>
+            </td>
+            <td><span id="post_mc" name="post_mc" style="margin-left: 10px;">正地(局)级</span></td>
+            <td class="c_form_text">
+              <div>籍贯</div>
+            </td>
+            <td><span id="jg" name="jg" style="margin-left: 10px;">河北徐水</span></td>
+            <td class="c_form_text">
+              <div>所在党支部</div>
             </td>
             <td><span id="szdzb" name="szdzb" style="margin-left: 10px;">二支部</span></td>
           </tr>
         </tbody>
       </table>
     </fieldset>
-    <!-- 工作经历 -->
+    <!-- 健康档案 -->
     <fieldset>
-      <legend>工作经历</legend>
+      <legend>健康档案</legend>
       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <input type="hidden" id="cx_yhid" name="cx_yhid" value="72709">
+        <input type="hidden" id="healthguid" name="healthguid" value="7176942">
         <tbody>
           <tr>
-            <td><textarea rows="15" style="width:100%;" name="experience" id="experience" maxlength="500"></textarea>
+            <td class="c_form_text">
+              <div>目前状况</div>
             </td>
+            <td><input type="radio" name="status" value="0" checked="">
+              健在&nbsp; <input type="radio" name="status" value="1"> 死亡</td>
+            <td class="c_form_text">
+              <div>健康状况</div>
+            </td>
+            <td><select type="text" id="health" name="health" style="width:180px;">
+                <option value="">请选择</option>
+                <option value="01">健康</option>
+                <option value="02">一般</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td class="c_form_text">
+              <div>疾病情况</div>
+            </td>
+            <td><input type="text" name="disease" id="disease" style="width:180px" maxlength="50"></td>
+            <td height="25" class="c_form_text">
+              <div>活动能力</div>
+            </td>
+            <td><input type="text" name="action" id="action" style="width:180px" maxlength="50"></td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div>评残情况</div>
+            </td>
+            <td><input type="text" id="disability" name="disability" style="width:180px" maxlength="50"></td>
+            <td height="25" class="c_form_text">
+              <div>合同医院</div>
+            </td>
+            <td><input type="text" id="assignedhospital" name="assignedhospital" style="width:180px" maxlength="50">
+            </td>
+          </tr>
+          <tr>
+            <td height="25" class="c_form_text">
+              <div>就近医院</div>
+            </td>
+            <td><input type="text" id="nearhospital" name="nearhospital" style="width:180px" maxlength="50"></td>
+            <td height="25" class="c_form_text">
+              <div>医疗照顾</div>
+            </td>
+            <td><select type="text" id="medical_care" name="medical_care" style="width:180px;">
+                <option value="">请选择</option>
+                <option value="01">卫生部直管</option>
+                <option value="02">医疗证、社保卡结算</option>
+                <option value="03">医疗证、无社保卡结算</option>
+                <option value="04">无医疗证、北大医院照顾</option>
+                <option value="05">无医疗证、无北大医院照顾</option>
+              </select></td>
           </tr>
         </tbody>
       </table>

@@ -1205,6 +1205,9 @@ select::-ms-expand {
   line-height: 36px;
   padding-bottom: 10px; }
 
+.from-detail .c_form_table td {
+  padding-bottom: 0; }
+
 .all-detiel td {
   min-width: 122px; }
 
@@ -1625,6 +1628,21 @@ fieldset legend {
   border-bottom: 0;
   padding: 0 5px; }
 
+.x_title {
+  border-bottom: 2px solid #E6E9ED;
+  padding: 1px 5px 5px;
+  margin-top: 20px;
+  margin-bottom: 5px; }
+
+.x_title h2 {
+  font-size: 17px;
+  font-weight: bold;
+  color: #666;
+  display: block; }
+
+.c666 {
+  color: #666; }
+
 /*=====  End of 详情页面样式  ======*/
 /*=============================================
 =            组件树样式            =
@@ -1695,3 +1713,182 @@ fieldset legend {
   cursor: pointer; }
 
 /*=====  End of 组件树样式  ======*/
+/*=============================================
+=            图片上传样式            =
+=============================================*/
+.sys_img_show {
+  float: left;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow-y: auto; }
+
+.sys_img_show_item {
+  margin: 2px;
+  padding: 0px; }
+
+.sys_img_show_image {
+  width: 100%;
+  vertical-align: middle;
+  border: 1px solid #cacdd1; }
+
+.sys_img_show_image .imgsrc {
+  width: 100%;
+  height: 100%; }
+
+.sys_img_show_icon {
+  width: 100%;
+  margin: 0 auto; }
+
+.sys_img_show_text {
+  width: 99%;
+  height: 16px;
+  font-size: 14px;
+  font-family: Helvetica;
+  text-align: center; }
+
+.sys_img_divinput {
+  height: 30px;
+  padding: 2px;
+  background: url("../images/file.png") no-repeat;
+  margin: 2px;
+  background-position: center;
+  text-align: center; }
+
+.sys_img_span {
+  width: 65px;
+  height: 30px;
+  outline: none;
+  margin: 0px; }
+
+.sys_img_file {
+  width: 114px;
+  height: 30px;
+  margin-left: -50px;
+  outline: none;
+  border: 0 none;
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  -moz-opacity: .0;
+  opacity: 0.0;
+  cursor: pointer; }
+
+.sysimg_loading {
+  position: fixed;
+  _position: absolute;
+  display: none;
+  top: 25%;
+  left: 35%;
+  width: 124px;
+  height: 124px;
+  overflow: hidden;
+  background: url(../images/folder1.gif) no-repeat;
+  z-index: 30007;
+  margin: 0px; }
+
+.sysimg_popDiv {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #F0F0F0;
+  z-index: 30000;
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5; }
+
+.sys_img_mobile_div {
+  width: 96%;
+  height: 230px;
+  line-height: 230px;
+  background-color: #ffffff; }
+
+.sys_img_mobile_img {
+  max-height: 230px;
+  max-width: 100%;
+  border: 0px; }
+
+.content-box {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box; }
+
+.min-w-td td {
+  min-width: 120px; }
+
+@media print {
+  .printDiv {
+    display: block; } }
+
+/*=====  End of 图片上传样式  ======*/
+/*=============================================
+=            文章样式            =
+=============================================*/
+.article-header {
+  border-bottom: 5px solid #D30500; }
+
+.article-header .ac-title {
+  font-size: 25px;
+  color: red;
+  text-align: left;
+  line-height: 70px; }
+
+.article-content {
+  width: auto;
+  margin: 0 100px; }
+
+.article-content .left-list-ct {
+  margin-right: 350px;
+  width: auto; }
+
+.article-content .list_li {
+  height: 35px;
+  line-height: 35px; }
+
+.article-ct {
+  width: 900px;
+  margin: 0 auto; }
+
+.article-ct .details_title {
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  padding-top: 10px; }
+
+.article-ct .details_info {
+  font-size: 14px;
+  color: #C0BFBF;
+  text-align: center;
+  margin: 5px 0px; }
+
+.article-ct .article-details {
+  word-break: break-all;
+  line-height: 1.8;
+  font-size: 16px;
+  color: #000000;
+  text-decoration: none;
+  font-family: "宋体";
+  min-height: 400px;
+  height: auto;
+  border-top: 1px solid #C0BFBF;
+  border-bottom: 1px solid #C0BFBF; }
+
+.article-ct .article-details img {
+  max-width: 100%; }
+
+.article-ct .details_att_info {
+  margin: 10px 0px; }
+
+.div_list_location {
+  height: 34px;
+  line-height: 34px;
+  font-size: 15px;
+  border-bottom: 1px solid #CCC; }
+
+/*=====  End of 文章样式  ======*/

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>工作简历</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <form class="from-detail" id="infoForm">
+    <div class="btn-tool-bar">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+    <!-- 基本信息 -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table min-w-td">
+      <tbody>
+        <tr>
+          <td rowspan="4" style="min-width: 120px;">
+            <!-- 头像上传 -->
+            <label class="sys_img_divinput content-box" style="min-width: 169px">
+              <input type="file" class="sys_img_file" name="sys_imgupload_input_per_photo"
+                id="sys_imgupload_input_per_photo"
+                accept="image/gif,image/png,image/jpg,image/jpeg,image/bmpimage/gif,">
+            </label>
+            <!-- 头像展示 -->
+            <div id="avatarCont" class="dn pl5">
+              <div class="sys_img_show_image " style="width: 155px;height:210px;">
+                <img class=" db imgsrc" src="" alt="" srcset="">
+              </div>
+              <p class="imgname">
+                <span></span>
+                <a style="color: gray" href="javascript:">删除</a>
+              </p>
+            </div>
+          </td>
+          <td class="c_form_text">
+            <div>姓名</div>
+          </td>
+          <td> <span id="xm" name="xm" style="margin-left: 10px;">周立妹</span>
+            <!-- 新增状态显示这个 -->
+            <div id="selectYh" stule="width: 180px;" style="display: none;">
+              <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
+              <button type="button" class="btn btn-danger btn-sm f12"
+                onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                &gt;&gt;
+              </button>
+            </div>
+          </td>
+          <td class="c_form_text">
+            <div>性别</div>
+          </td>
+          <td><span id="sex" name="sex" style="margin-left: 10px;">男</span></td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div>年龄</div>
+          </td>
+          <td><span id="age" name="age" style="margin-left: 10px;">66</span></td>
+          <td class="c_form_text">
+            <div>退（离）休</div>
+          </td>
+          <td><span id="retired_type" name="retired_type" style="margin-left: 10px;">退休</span></td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div>原工作单位及职务</div>
+          </td>
+          <td><span id="post" name="post" style="margin-left: 10px;">机关事务管理局机关服务中心计财部调研员、副主任</span></td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div>职级</div>
+          </td>
+          <td><span id="post_mc" name="post_mc" style="margin-left: 10px;">正县(处)级</span></td>
+          <td class="c_form_text">
+            <div>籍贯</div>
+          </td>
+          <td><span id="jg" name="jg" style="margin-left: 10px;">河北景县</span></td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div class="tc">个人照片</div>
+          </td>
+          <td class="c_form_text">
+            <div>所在党支部</div>
+          </td>
+          <td><span id="szdzb" name="szdzb" style="margin-left: 10px;">四支部</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- 工作经历 -->
+    <div class="x_title mt20">
+      <div class="f14">照片文件
+        <button type="button" class="btn btn-danger btn-sm ml20" onclick="printPhoto()">
+          打印
+        </button>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="float-two">
+        <div class="tc">
+          <!-- 身份证正面上传 -->
+          <label class="sys_img_divinput content-box">
+            <input type="file" class="sys_img_file" name="sys_imgupload_input_identity_face"
+              id="sys_imgupload_input_identity_face"
+              accept="image/gif,image/png,image/jpg,image/jpeg,image/bmpimage/gif,">
+          </label>
+        </div>
+        <div style="min-height:30px;">
+          <div id="faceCont" class="dn pl5">
+            <div class="sys_img_show_image" style="width: 205px;height:126px;">
+              <img class=" db imgsrc" src="" alt="" srcset="">
+            </div>
+            <p class="imgname">
+              <span></span>
+              <a style="color: gray" href="javascript:">删除</a>
+            </p>
+          </div>
+        </div>
+        <div class="tc">
+          身份证反面
+        </div>
+      </div>
+      <div class="float-two">
+        <div class="tc">
+          <!-- 身份证反面上传 -->
+          <label class="sys_img_divinput content-box">
+            <input type="file" class="sys_img_file" name="sys_imgupload_input_identity_bace"
+              id="sys_imgupload_input_identity_bace"
+              accept="image/gif,image/png,image/jpg,image/jpeg,image/bmpimage/gif,">
+          </label>
+        </div>
+        <div style="min-height:30px;">
+          <div id="baceCont" class="dn pl5">
+            <div class="sys_img_show_image" style="width: 205px;height:126px;">
+              <img class=" db imgsrc" src="" alt="" srcset="">
+            </div>
+            <p class="imgname">
+              <span></span>
+              <a style="color: gray" href="javascript:">删除</a>
+            </p>
+          </div>
+        </div>
+        <div class="tc">
+          身份证正面
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="printDiv dn" id="printDiv"></div>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是修改详情
+      } else {
+        // 不存在，新增详情
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+
+      //如果完成当前操作需要关闭弹框 
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000)
+
+    }
+    // 用户选择回调事件
+    function selectUserAction(arr) {
+      console.log(arr)
+      $('#xm').show();
+      $('#selectYh').hide();
+    }
+    // 打印照片
+    function printPhoto() {
+      // 拿到身份证上传后的路径
+      var identity_bace = '';
+      var identity_face = '';
+      var imgHtml = "";
+      if (identity_bace && identity_face) {
+        // 给图片设置宽高
+        identity_bace = identity_bace.src.replace("?size=200*126", "?size=400*252");
+        identity_face = identity_face.src.replace("?size=200*126", "?size=400*252");
+        imgHtml += "<img style='margin-top: 20px;' src='" + identity_face + "' /><br\>";
+        imgHtml += "<img style='margin-top: 20px;' src='" + identity_bace + "' /><br\>";
+      } else {
+        alert("图片信息不全，请补全图片！");
+        return;
+      }
+      $("#printDiv").html(imgHtml);
+      $("#printDiv").printArea();
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+      } else {
+        // 不存在，新增详情
+        $('#xm').hide();
+        $('#selectYh').show();
+      }
+      // 头像上传
+      $("#sys_imgupload_input_per_photo").change(function (e) {
+        var file = e.target.files[0] || e.dataTransfer.files[0];
+        randerImage(file, 'avatarCont');
+        uploadImg(file)
+      });
+      $("#sys_imgupload_input_identity_face").change(function (e) {
+        var file = e.target.files[0] || e.dataTransfer.files[0];
+        randerImage(file, 'faceCont');
+        uploadImg(file)
+      });
+      $("#sys_imgupload_input_identity_bace").change(function (e) {
+        var file = e.target.files[0] || e.dataTransfer.files[0];
+        randerImage(file, 'baceCont');
+        uploadImg(file)
+      });
+      // 预览图片
+      function randerImage(file, contId) {
+        $('#' + contId).show();
+        $('#' + contId + ' .imgname span').text(file.name);
+        $('#' + contId + ' a').on('click', function () {
+          // 删除操作
+          $('#' + contId).hide();
+        });
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function () {
+            $('#' + contId + ' .imgsrc').attr("src", this.result);
+          }
+          reader.readAsDataURL(file);
+        }
+      }
+      // 上传图片
+      function uploadImg(file) {
+        var formData = new FormData();
+        formData.append('file', file);
+        $.ajax({
+          url: "/uploadimg",
+          type: "post",
+          data: formData,
+          contentType: false,
+          processData: false,
+          mimeType: "multipart/form-data",
+          success: function (data) {
+            console.log(data);
+            // 上传成功图片赋值
+          },
+          error: function (data) {
+            console.log(data);
+          }
+        });
+      }
+    })
+  </script>
+</body>
+
+</html>
