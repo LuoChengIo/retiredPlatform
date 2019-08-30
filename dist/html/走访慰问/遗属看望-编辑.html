@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+    <div style="width: 900px;margin: 0 auto;">
+        <form class="from-detail" id="infoForm">
+            <div style="margin: 10px;padding:0;" class="btn-tool-bar">
+                <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+                    保存
+                </button>
+            </div>
+            <fieldset>
+                <legend>遗属基本信息</legend>
+                <table class="c_form_table" style="margin-top:2px; width:100%; border:0; cellspacing:0; cellpadding:0;">
+                    <tbody>
+                        <tr>
+                            <td width="10%" align="right" class="c_form_text">老同志姓名</td>
+                            <td width="20%">
+                                <input type="text" name="xm" id="xm" style=" border: 0px;" disabled="disabled">
+                                <input type="hidden" name="ltzid" id="ltzid" value="">
+                                <input type="button" class="selectLtz btn" value="选择"
+                                    onclick="selectLtz('ltzid','xm');">
+                            </td>
+                            <td width="10%" align="right" class="c_form_text">遗属姓名</td>
+                            <td width="20%">
+                                <input type="text" name="po_xm" id="po_xm" style=" border: 0px;" disabled="disabled">
+                            </td>
+                            <td width="10%" align="right" class="c_form_text">遗属性别</td>
+                            <td width="20%">
+                                <input type="text" name="po_sex" id="po_sex" style=" border: 0px;" disabled="disabled">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" class="c_form_text">出生日期</td>
+                            <td>
+                                <input type="text" name="po_birthday" id="po_birthday" style=" border: 0px;"
+                                    disabled="disabled">
+                            </td>
+                            <td align="right" class="c_form_text">家庭住址</td>
+                            <td>
+                                <input type="text" name="home" id="home" style=" border: 0px;" disabled="disabled">
+                            </td>
+                            <td align="right" class="c_form_text">联系电话</td>
+                            <td>
+                                <input type="text" name="sj" id="sj" style=" border: 0px;" disabled="disabled">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend class="zfww_title_all"></legend>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+                    <tbody>
+                        <tr>
+                            <td width="15%" align="right" class="c_form_text">慰问工作人员</td>
+                            <td width="35%">
+                                <input id="zfld" name="zfld" required="true" maxlength="100" type="text"
+                                    style="width:80%" showname="慰问工作人员" placeholder="五处同志" value="五处同志">
+                            </td>
+
+                            <td width="15%" align="right" class="c_form_text">慰问时间</td>
+                            <td width="35%">
+                                <input id="zfsj" name="zfsj" class="Wdate" required="true" style="width:80%"
+                                    showname="时间"
+                                    onfocus="WdatePicker({startDate:'%y-%M-01',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:false})">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="right" class="c_form_text">慰问金</td>
+                            <td>
+                                <input id="wwj" name="wwj" type="text" style="width:80%" showname="慰问金" value="1500元"
+                                    placeholder="1500元">
+                            </td>
+
+                            <td align="right" class="c_form_text">反映问题</td>
+                            <td>
+                                <textarea class="biinput" style="width: 80%;height:60px;margin-bottom:5px;" name="fywt"
+                                    id="fywt"></textarea>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        // 保存信息
+        function saveInfo(formId) {
+            // 校验form里面必填字段
+            if (!Validate.CheckForm($("#" + formId)[0])) {
+                return;
+            }
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是修改详情
+            } else {
+                // 不存在，新增详情
+            }
+            // 这个是提示信息方法
+            ajaxMsg('保存成功')
+
+            //如果完成当前操作需要关闭弹框 
+            setTimeout(function () {
+                parent.layer.close(parent.layer.getFrameIndex(window.name));
+            }, 2000)
+
+        }
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+                $("#xqzyltz2").show();
+                $("#xqzyltz").hide();
+            }
+        })
+    </script>
+</body>
+
+</html>
