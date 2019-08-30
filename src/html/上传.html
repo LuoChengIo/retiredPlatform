@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>附件上传</title>
+    <meta name="keywords" content="离退休老同志服务管理平">
+    <meta name="description" content="离退休老同志服务管理平">
+    <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../js/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="../js/plugins/webuploader/default.css">
+</head>
+
+<body class="bg-white">
+    <table width="100%" cellspacing="4" cellpadding="4" border="0" bgcolor="#FCFCFC">
+        <tr>
+            <td class="DH1">
+                <table width="100%" cellspacing="4" cellpadding="4" border="0" bgcolor="#FCFCFC">
+                    <tr>
+                        <td class="DH2">
+                            <font color="#ff0000">
+                                说明：支持的文件类型（*.gif;*.jpg;*.png;*.jpeg;*.bmp;*.doc;*.txt;*.xls;*.docx;*.xlsx;*.zip;*.rar;*.pdf）；
+                            </font>
+                        </td>
+                        <td class="DH2" align="right"></td>
+                    </tr>
+                </table>
+                <div id="uploader" class="wu-example">
+                    <div class="btnup">
+                        <span id="picker">选择文件</span>&nbsp;
+                        <input id="ctlBtn" type="button" value="上传" class="btn" />&nbsp;
+                        <input id="btnCancel" type="button" value="取消全部上传" class="btn" />
+                    </div>
+                    <table id="idFileList" class="uploadFileList">
+                        <tr class="uploadTitle">
+                            <td width="40%" style="text-align:center"><B>文件名</B></td>
+                            <td width="15%"><B>文件大小</B></td>
+                            <td width="15%"><B>状态</B></td>
+                            <td width="15%"><B>进度</B></td>
+                            <td width="15%"><B>操作</B></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+    <!-- 公共js start -->
+    <script src="../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../js/plugins/layer/layer.js"></script>
+    <script src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/plugins/webuploader/webuploader.js"></script>
+
+    <!-- 公共js end -->
+    <script>
+        var parms_callback = getURLString('callback');
+        var uploader = WebUploader.create({
+            swf: '/js/plugins/webuploader/Uploader.swf',
+            server: 'http://webuploader.duapp.com/server/fileupload.php',
+            pick: '#picker',
+            resize: false
+        });
+        var DeleteFile = function (id) {
+            uploader.cancelFile(id);
+            $('#' + id).remove();
+        }
+        //开始上传
+        $("#ctlBtn").click(function () {
+            uploader.upload();
+        })
+        $("#btnCancel").click(function () {
+            uploader.reset();
+            $("#idFileList .filetd").remove();
+        })
+        uploader.on('uploadProgress', function (file, percentage) {
+            var $li = $('#' + file.id);
+            $li.find('td.state').text('上传中');
+            $li.find('td.jindu').text(percentage * 100 + '%');
+        });
+        uploader.on('fileQueued', function (file) {
+            $("#idFileList tbody").append('<tr class="filetd" id="' + file.id + '"><td width="40%">' + file.name + '</td><td width="15%">' + parseFloat(file.size / 1000).toFixed(2) + 'kb</td><td width="15%" class="state">等待上传</td><td width="15%" class="jindu">0%</td><td width="15%" onclick="DeleteFile(\'' + file.id + '\')" class="delete">删除</td></tr>');
+        });
+        uploader.on('uploadSuccess', function (file) {
+            //上传成功
+            $('#' + file.id).find('td.state').text('已上传');
+        });
+
+        uploader.on('uploadError', function (file) {
+            //上传出错
+            $('#' + file.id).find('td.state').text('上传出错');
+        });
+
+        uploader.on('uploadComplete', function (file) {
+            //上传完成后 回调父页面
+            parms_callback &&window.opener[parms_callback](file);
+        });
+    </script>
+</body>
+
+</html>
