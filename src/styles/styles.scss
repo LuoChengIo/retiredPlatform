@@ -686,6 +686,9 @@ select {
 .c_form_table td {
   height: 36px;
   line-height: 36px;
+  div{
+    line-height: normal;
+  }
 }
 
 .from-detail {

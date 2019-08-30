@@ -44,7 +44,7 @@
           <td>
             <span class="search_form_span">
               0个附件
-              <button type="button" class="btn btn-danger btn-sm">
+              <button type="button" class="btn btn-danger btn-sm" onclick="showup()">
                 文件上传
               </button>
             </span>
@@ -71,6 +71,15 @@
   <script src="../../js/common.js"></script>
   <!-- 公共js end -->
   <script>
+    //上传
+    function showup() {
+      PageAlert({
+        title: '上传',
+        width: '600px',
+        height: '378px',
+        url: '../上传.html'
+      }, 1);
+    }
     // 保存信息
     function saveInfo(formId) {
       // 校验form里面必填字段

@@ -1204,6 +1204,9 @@ select::-ms-expand {
   height: 36px;
   line-height: 36px; }
 
+.c_form_table td div {
+  line-height: normal; }
+
 .from-detail .c_form_table td {
   padding-bottom: 0; }
 
