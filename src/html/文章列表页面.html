@@ -84,18 +84,7 @@
       <a class="list_li ell" target="_blank" href="文章页面.html" atext="18/07/05">第19期全国老干部局长轮训班成功举办</a>
       <div class="mt10 clearfix">
         <!-- 分页 -->
-        <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
-          <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
-          <span class="c_table_list_nav_text_span">/</span>
-          <span class="c_table_list_nav_text_span" navid="page_allPage">1</span>
-          <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
-          <span class="c_table_list_nav_text_span" navid="page_allCount">共0 条 </span>
-          <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
-          <span navid="page_next" class="layui-laypage-next poi">下一页</span>
-          <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input"
-              type="text">页
-          </span>
-        </div>
+        <div id="pagebind" class="r"> </div>
         <!-- 分页 end-->
       </div>
     </div>
@@ -111,7 +100,17 @@
   <script src="../js/common.js"></script>
   <!-- 公共js end -->
   <script>
-
+    $(function(){
+      $('#pagebind').paging({
+          pageNumber:1, // 当前页
+					pagecount:10, // 总页数 
+					total:120, // 总条数
+					callback:function(pageNumber){
+            // 回传页码数
+            console.log(pageNumber)
+					}
+      })
+    })
   </script>
 
 </body>

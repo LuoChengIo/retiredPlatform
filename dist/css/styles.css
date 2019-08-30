@@ -1147,7 +1147,7 @@ select::-ms-expand {
 
 .serach-content .Wdate {
   border-color: #ccc;
-  height: 37px; }
+  height: 34px; }
 
 .table-list {
   margin-top: 10px;
@@ -1202,8 +1202,7 @@ select::-ms-expand {
 
 .c_form_table td {
   height: 36px;
-  line-height: 0;
-  padding-bottom: 0; }
+  line-height: 36px; }
 
 .from-detail .c_form_table td {
   padding-bottom: 0; }

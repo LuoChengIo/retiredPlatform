@@ -74,6 +74,86 @@ $(function () {
 		$("#" + $(this).data("collapse")).toggleClass('in');
 	})
 })
+// 分页插件
+!(function ($) {
+	/**
+ * 分页
+ * @param config {pageNumber  当前页码 pagecount 总页数 total 总条数,callback 回调方法}
+ * @returns
+ */
+	$.fn.extend({
+			"paging": function (config) {
+				var defaultConfig={ 
+					pageNumber:1, 
+					pagecount:0, 
+					total:0,
+					callback:function(){
+					}
+				}; 
+				$.extend(defaultConfig,config); 
+				this.addClass('layui-box layui-laypage layui-laypage-molv');
+				var pageHtml = '<span navid="page_cur" class="c_table_list_nav_text_span">1</span>'+
+				'<span class="c_table_list_nav_text_span">/</span>'+
+				'<span class="c_table_list_nav_text_span" navid="page_allPage">1</span>'+
+				'<span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>'+
+				'<span class="c_table_list_nav_text_span" navid="page_allCount">共0 条 </span>'+
+				'<span navid="page_pre" class="layui-laypage-prev poi">上一页</span>'+
+				'<span navid="page_next" class="layui-laypage-next poi">下一页</span>'+
+				'<span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input" type="text">页</span>';
+				this.append(pageHtml);
+				var updatePageNum =  function(pageNumber){
+					// 更新页码
+					defaultConfig.pageNumber = pageNumber
+					this.find("[navid='page_cur']").text(defaultConfig.pageNumber);
+				}
+				updatePageNum = updatePageNum.bind(this)
+				this.find("[navid='page_cur']").text(defaultConfig.pageNumber);
+				this.find("[navid='page_allPage']").text(defaultConfig.pagecount);
+				this.find("[navid='page_allCount']").text("共" + defaultConfig.total + "条");
+				this.find("[navid='page_pre']").click(function () {
+					var pagenum = defaultConfig.pageNumber;
+					pagenum--;
+					if (pagenum <= 0) {
+						pagenum = 1;
+						alert('已到达第一页')
+						return
+					}
+					defaultConfig.callback(pagenum);
+					updatePageNum(pagenum);
+				});
+				this.find("[navid='page_next']").click(function () {
+					var pagenum = defaultConfig.pageNumber;
+					pagenum++;
+					if (pagenum > defaultConfig.pagecount) {
+						pagenum = defaultConfig.pagecount;
+						alert('已是最后一页')
+						return
+					}
+					defaultConfig.callback(pagenum);
+					updatePageNum(pagenum);
+				});
+				this.find("[navid='page_goto']").bind('keypress', function (event) {
+					if (event.keyCode == "13") {
+						var pagenum = parseInt($(this).val());
+						if(isNaN(pagenum)){
+							alert('请输入正确的页码')
+							return;
+						}
+						if (pagenum <= 0) {
+							alert('输入页码不能小于等于0')
+							return;
+						}
+						if (pagenum > defaultConfig.pagecount) {
+							alert('输入页码不能超出最大页码')
+							return;
+						}
+						defaultConfig.callback(pagenum);
+						updatePageNum(pagenum);
+					}
+				})
+			}
+	});
+})(jQuery);
 //表格通用方法 周祥 2019年8月26日 02:42:33
 
 var PageTable = function (table, config) {

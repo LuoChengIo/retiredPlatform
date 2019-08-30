@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <!-- 新增考勤 -->
+  <form class="from-detail dn" id="addForm">
+    <div class="btn-tool-bar">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('addForm')">
+        保存
+      </button>
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+      <tbody>
+        <tr>
+          <td class="c_form_text">
+            <div align="right">姓名：</div>
+          </td>
+          <td>
+            <span id="xm" name="xm" style="display:inline-block;"></span>
+            <input type="hidden" name="org_yh" id="org_yh" required="true" value="" showname="姓名" />
+            <select name="org_yh_select" id="org_yh_select" style="width:140px;" showname="姓名">
+            </select>
+            <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=true&id=org_yh_select')">
+              &gt;&gt;
+            </button>
+            <font color="#ff0000">*</font>
+          </td>
+          <td class="c_form_text">
+            <div align="right">年度：</div>
+          </td>
+          <td>
+            <input id="year" name="year" size="20" class="Wdate" style="width:180px;height: 30px;" required="true"
+              showname="年度" value=""
+              onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy',alwaysUseStartDate:true,maxDate:new Date(),defaultDate:new Date()})" />
+            <font color="#ff0000">*</font>
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div align="right">请选择月份：</div>
+          </td>
+          <td>
+            <select name="month" id="month" required="" style="width:180px;" showname="考勤月份">
+              <option value="">请选择</option>
+              <option value="3">三月</option>
+              <option value="4">四月</option>
+              <option value="5">五月</option>
+              <option value="6">六月</option>
+              <option value="9">九月</option>
+              <option value="10">十月</option>
+              <option value="11">十一月</option>
+              <option value="12">十二月</option>
+            </select>
+            <font color="#ff0000">*</font>
+          </td>
+
+          <td class="c_form_text">
+            <div align="right">请选择考勤类型：</div>
+          </td>
+          <td>
+            <select name="types" required="" id="types" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+            <font color="#ff0000">*</font>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 修改考勤 -->
+  <form class="from-detail dn" id="infoForm">
+    <div class="btn-tool-bar">
+      <button type="button" class="btn btn-danger btn-sm" onclick="updateInfo('infoForm')">
+        修改
+      </button>
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+      <tbody>
+        <tr>
+          <td class="c_form_text">
+            <div align="right">姓名：</div>
+          </td>
+          <td>
+            <span id="xm" name="xm" style="display:inline-block;width:180px;">侯仁嘉</span>
+            <input type="hidden" name="org_yh" id="org_yh" required="true" value="a" showname="姓名" />
+            <font color="#ff0000">*</font>
+          </td>
+          <td class="c_form_text">
+            <div align="right">年度：</div>
+          </td>
+          <td>
+            <input id="year" name="year" size="20" class="WDate" style="width:180px;height: 30px;" required="true"
+              showname="年度" value=""
+              onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy',alwaysUseStartDate:true,maxDate:new Date(),defaultDate:new Date()})" />
+            <font color="#ff0000">*</font>
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div align="right">三月：</div>
+          </td>
+          <td>
+            <select name="march" id="march" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+          </td>
+
+          <td class="c_form_text">
+            <div align="right">四月：</div>
+          </td>
+          <td>
+            <select name="april" id="april" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div align="right">五月：</div>
+          </td>
+          <td>
+            <select name="may" id="may" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+          </td>
+
+          <td class="c_form_text">
+            <div align="right">六月：</div>
+          </td>
+          <td>
+            <select name="june" id="june" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div align="right">九月：</div>
+          </td>
+          <td>
+            <select name="september" id="september" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+          </td>
+
+          <td class="c_form_text">
+            <div align="right">十月：</div>
+          </td>
+          <td>
+            <select name="october" id="october" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="c_form_text">
+            <div align="right">十一月：</div>
+          </td>
+          <td>
+            <select name="november" id="november" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+          </td>
+
+          <td class="c_form_text">
+            <div align="right">十二月：</div>
+          </td>
+          <td>
+            <select name="december" id="december" style="width:180px;" showname="考勤类型">
+              <option value="">请选择</option>
+              <option value="01">参加</option>
+              <option value="02">请假</option>
+              <option value="03">缺勤</option>
+              <option value="04">行动不便</option>
+              <option value="05">其他</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td style="width:120px;">
+            <div align="right">备注：</div>
+          </td>
+          <td colspan="3">
+            <input type="text" name="remarks" id="remarks" value="" style="width:563px;" showname="备注" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      ajaxMsg("保存成功");
+      //如果完成当前操作需要关闭弹框
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000);
+    }
+    // 修改信息
+    function updateInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      ajaxMsg("保存成功");
+      //如果完成当前操作需要关闭弹框
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000);
+    }
+    // 用户选择回调事件
+    function selectUserAction(arr) {
+      console.log(arr);
+      $("#xm").show();
+      $("#selectYh").hide();
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString("id");
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+        $("#infoForm").show();
+      } else {
+        // 不存在，新增详情
+        $("#addForm").show();
+      }
+    });
+  </script>
+</body>
+
+</html>
