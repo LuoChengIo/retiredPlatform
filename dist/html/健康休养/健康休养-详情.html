@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <!-- 新增 -->
+  <form class="from-detail dn" id="addForm">
+    <fieldset>
+      <legend>休养信息</legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">休养时间&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="30%">
+              <input id="xysjq" name="xysjq" size="20" class="WDate" style="width:100%;" required="true" showname="休养时间"
+                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})">
+            </td>
+            <td width="10%" align="right" class="c_form_text">休养地点&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="30%">
+              <select name="add_xydd" id="add_xydd" style="width:100%;" required="" showname="休养地点">
+                <option value="">请选择</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>老同志信息</legend>
+      <div class="title overflow">
+        <div style="margin: 0 10px;float: left;line-height: 30px;">选择老同志&nbsp;<font color="#ff0000">*</font>
+        </div>
+        <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=true&callback=selectUserAction')">
+          &gt;&gt;
+        </button>
+      </div>
+      <div class="c_table_bar_content pt10">
+        <table id="table" class="table-list table-hover table-striped table-bordered"></table>
+      </div>
+    </fieldset>
+    <div class="tr pr10">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('addForm')">
+        保存
+      </button>
+    </div>
+  </form>
+  <!-- 修改-->
+  <form class="from-detail dn" id="infoForm">
+    <!-- 休养信息 -->
+    <fieldset>
+      <legend>休养信息</legend>
+      <input type="hidden" name="guid" id="guid" value="2018122009443352592095">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">休养时间&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input id="xysjq" name="xysjq" size="20" class="WDate" style="width:100%;" required="true" showname="休养时间"
+                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})">
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">休养地点&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <select name="xydd" id="xydd" style="width:100%;" required="" showname="休养地点">
+                <option value="">请选择</option>
+                <option value="01">山东</option>
+                <option value="02">广东</option>
+                <option value="03">四川</option>
+                <option value="04">承德</option>
+                <option value="05">北戴河</option>
+                <option value="06">京郊</option>
+                <option value="GD">广东</option>
+                <option value="SC">四川</option>
+                <option value="SD">山东</option>
+              </select>
+            </td>
+            <td width="15%" align="right" class="c_form_text">是否带配偶</td>
+            <td width="20%">
+              <select name="peiou" id="peiou" style="width:100%;height:38px;">
+                <option value="">请选择</option>
+                <option value="01">是</option>
+                <option value="02">否</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <!-- 老同志信息 -->
+    <fieldset>
+      <legend>老同志信息</legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">姓名</td>
+            <td width="20%">
+              <span id="text_xm" style="display: inline;">张政达</span>
+            </td>
+            <td width="20%" align="right" class="c_form_text">性别</td>
+            <td width="10%">
+              <span id="xb" name="xb">男</span>
+            </td>
+            <td width="10%" align="right" class="c_form_text">退(离)休</td>
+            <td width="20%">
+              <span id="tlx" name="tlx">离休</span>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">年龄</td>
+            <td>
+              <span id="age" name="age">94</span>
+            </td>
+            <td align="right" class="c_form_text">原工作单位及职务</td>
+            <td colspan="3">
+              <span id="zw" name="zw">办公厅副主任</span>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">籍贯</td>
+            <td><span name="jg" id="jg">河北满城</span></td>
+            <td align="right" class="c_form_text">党支部</td>
+            <td>
+              <span id="dzb" name="dzb">三支部</span>
+            </td>
+            <td align="right" class="c_form_text">职级</td>
+            <td>
+              <span id="zj" name="zj">副地(局)级</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <div class="tr pr10">
+      <button type="button" class="btn btn-danger btn-sm" onclick="updateInfo('addForm')">
+        保存
+      </button>
+    </div>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      ajaxMsg("保存成功");
+      //如果完成当前操作需要关闭弹框
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000);
+    }
+    // 修改信息
+    function updateInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      ajaxMsg("保存成功");
+      //如果完成当前操作需要关闭弹框
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000);
+    }
+    // 用户选择回调事件
+    function selectUserAction(arr) {
+      // 选择的用户集合
+      console.log(arr);
+      $("#table").bootstrapTable('refreshOptions', { data: [{
+        data1:'吴崇南',
+        data2:'三支部',
+        data3:'离休',
+        data4:'副地(局)级',
+      }] })
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString("id");
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+        $("#infoForm").show();
+      } else {
+        // 不存在，新增详情
+        $("#addForm").show();
+      }
+      var actionFormatter = function (value, row, index) {
+        var id = value;
+        var result = "";
+        result += '<select name="sfdpo" style="width:100%;height:38px;"><option value="">请选择</option><option value="01">是</option><option value="02">否</option></select>';
+        return result;
+      }
+      $("#table").bootstrapTable({
+        data: [],
+        striped: true,
+        cache: false,
+        columns: [{
+          width: "10",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data1',
+          title: '姓名'
+        }, {
+          width: "20",
+          align: 'center',
+          widthUnit: "%",
+          field: 'data2',
+          title: '所在党支部'
+        }, {
+          width: "20",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data3',
+          title: '退（离）休'
+        }, {
+          width: "20",
+          widthUnit: "%",
+          align: 'center',
+          field: 'data4',
+          title: '现享受待遇'
+        }, {
+          field: 'data1',
+          title: '是否带配偶',
+          width: "30",
+          widthUnit: "%",
+          align: 'center',
+          formatter: actionFormatter
+        }]
+      });
+    });
+  </script>
+</body>
+
+</html>

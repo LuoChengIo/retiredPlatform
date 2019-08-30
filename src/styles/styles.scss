@@ -1514,3 +1514,25 @@ fieldset {
 }
 /*=====  End of 文章样式  ======*/
 
+/*=============================================
+=            tab切换            =
+=============================================*/
+.fun-tab{
+  padding: 15px;
+  li{
+    display: inline-block;
+    font-size: 16px;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid transparent;
+    margin-right: 5px;
+    &.active{
+      color: #D30500;
+      border-color:#D30500;
+    }
+  }
+}
+
+
+/*=====  End of tab切换  ======*/
+
+
