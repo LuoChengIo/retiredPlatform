@@ -1,0 +1,56 @@
+<!-- 老同志信息-基础信息 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>离退休老同志服务管理平</title>
+    <meta name="keywords" content="离退休老同志服务管理平">
+    <meta name="description" content="离退休老同志服务管理平">
+    <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body class="min-hp100 bg-white">
+    <div>
+        <!-- 功能区域 -->
+        <table width="100%" cellspacing="0" >
+                <tr class="toolbar_zdy"><td align="left" class="bt_css">修改密码</td></tr>
+                </table>
+                <table width="100%" cellspacing="0" >
+                <tr>
+                <td width="410px">
+                <table  class="c_form_table" border="0" cellpadding="0" width="100%">
+                
+               <tr>
+                <td width="80px" height="25" class="c_form_text"><div align="right">新密码：</div></td>
+                <td width="120px"><input type="password" name="new_pwd" id ="new_pwd" required="true" showName="新密码" style="width:100px" maxlength="15" required="true" onkeyup="pwdCheck(); return true;"/></td>
+                <td width="80px" class="c_form_text"><div align="right">密码确认：</div></td>
+                <td width="130"><input type="password" name="new_pwd2" id="new_pwd2" required="true" showName="密码确认"  maxlength="15" style="width:100px" required="true"/></td>
+               </tr>
+                </table>
+                 </td>
+                 <td align="left"><span id = "msgid"></span>&nbsp;&nbsp;<input type="button"  id="btn_pwd_save" value="保存" onClick="save_pwd();"/></td>
+                </tr>
+                </table>
+        
+    </div>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    
+</body>
+
+</html>

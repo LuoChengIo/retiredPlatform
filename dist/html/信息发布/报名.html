@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <style>
+        .c_form_table_td {
+            width: 25%;
+            text-align: right;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <form class="from-detail" id="infoForm">
+        <table width="470px" class="c_form_table" border="0" cellpadding="0" align="center">
+            <tbody>
+                <tr style="border-bottom: 1px solid #CCC;">
+                    <td class="c_form_table_td"><label class="c_label">活动主题</label></td>
+                    <td>
+                        <div id="zt">中秋赏月活动报名</div>
+                    </td>
+                </tr>
+                <tr style="height: 15px;"></tr>
+                <tr>
+                    <td class="c_form_table_td"><label>报名人员</label></td>
+                    <td><select name="fbfw" id="fbfw" style="WIDTH: 200px; "></select>
+                        <input type="button" name="btn_fbfw" id="btn_fbfw" value=">>"
+                            onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')"
+                            class="btn">
+                    </td>
+                </tr>
+                <tr class="tr_sign_up" style="display: table-row;">
+                    <td class="c_form_table_td"><label>是否报名</label></td>
+                    <td>
+                        <input type="radio" name="is_sign_up" value="1" checked="checked">是 &nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="is_sign_up" value="0">否
+                    </td>
+
+                </tr>
+
+                <tr class="tr_ride" style="display: table-row;">
+                    <td class="c_form_table_td"><label>是否乘车</label></td>
+                    <td>
+                        <input type="radio" name="is_ride" value="1" checked="checked">是 &nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="is_ride" value="0">否
+                    </td>
+
+                </tr>
+                <tr class="tr_ride ride_place" style="display: table-row;">
+                    <td class="c_form_table_td"><label>乘车地点</label></td>
+                    <td>
+                        <select id="place" name="place" style="width:200px;">
+                            <option value="">请选择</option>
+                            <option value="01">【10点】万寿路（车库）</option>
+                            <option value="02">【9点】背阴（北门）</option>
+                            <option value="03">【11点】永定路（玉海园东门）</option>
+                        </select>
+                    </td>
+
+                </tr>
+
+
+                <tr class="tr_msgnr">
+                    <td class="c_form_table_td"><label>留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言</label></td>
+                    <td>
+                        <textarea id="msgnr" name="msgnr" rows="3" style="width:300px;"></textarea>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div style="margin-top: 20px" align="center">
+        <input type="button" id="btn_send" name="btn_send" value="确定" class="btn btn-danger btn-sm">
+    </div>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        var parms_callback = getURLString('callback');
+        // 保存信息
+        function saveInfo(formId) {
+            // 校验form里面必填字段
+            if (!Validate.CheckForm($("#" + formId)[0])) {
+                return;
+            }
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是修改详情
+            } else {
+                // 不存在，新增详情
+            }
+            // 这个是提示信息方法
+            ajaxMsg('保存成功')
+
+            //如果完成当前操作需要关闭弹框 
+            setTimeout(function () {
+                parent.layer.close(parent.layer.getFrameIndex(window.name));
+            }, 2000)
+
+        }
+        $(function () {
+            $("#btn_send").click(function () {
+                parms_callback && window.opener[parms_callback](selectArr);
+                window.close();
+            })
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>

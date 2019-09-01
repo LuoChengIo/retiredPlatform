@@ -30,6 +30,12 @@
                     删除
                 </button>
                 <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+                    查看阅读状态
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+                    查看报名情况
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
                     <img src="../../images/query.png" alt="" srcset="">
                     搜索
                 </button>
@@ -52,16 +58,25 @@
             <div class="serach-content collapse" id="collapseSerach">
                 <form class="form-inline" style="max-width: 1200px;">
                     <div class="form-group">
-                        <label style="width: 126px;">列表主题:</label>
+                        <label style="width: 126px;">通知类型:</label>
+                        <select name="cx_gglb" id="cx_gglb">
+                            <option value="">-通知类型-</option>
+                            <option value="1">其他事项</option>
+                            <option value="2">欢迎新成员</option>
+                            <option value="3">追忆与思念</option>
+                            <option value="4">支部工作</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">主题:</label>
                         <input type="text" class="form-control" name="kcmc" placeholder="列表主题">
                     </div>
                     <div class="form-group">
-                        <label style="width: 126px;">时间起:</label>
-                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="时间起">
-                    </div>
-                    <div class="form-group">
-                        <label style="width: 126px;">时间止:</label>
-                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="时间止">
+                        <label style="width: 126px;">发布日期起:</label>
+                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc"
+                            placeholder="时间起">
+                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc"
+                            placeholder="时间止">
                     </div>
                     <div>
                         <button type="button" class="btn btn-danger btn-sm">
@@ -94,8 +109,16 @@
                 title: '详细信息',
                 width: '920px',
                 height: '710px',
-                url: '教学剪影-编辑.html'
-            },1);
+                url: '手机端图片新闻-编辑.html'
+            }, 1);
+        }
+        function BaoMing() {
+            PageAlert({
+                title: '报名',
+                width: '500px',
+                height: '480px',
+                url: '报名.html'
+            }, 1);
         }
         // 删除
         function delClick() {
@@ -107,41 +130,66 @@
             //ajax
         }
         $(function () {
+            var actionFormatter = function (value, row, index) {
+                var id = value;
+                var result = "";
+                result += '<button type="button" onclick="BaoMing(\'报名.html\')" class="btn btn-danger btn-sm">报名</button>';
+                return result;
+            }
             PageTable($("#table"), {
                 url: 'table.json',
                 columns: [{
                     checkbox: true,
                     visible: true
                 }, {
-                    width: "45",
+                    width: "27",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data1',
                     title: '标题'
                 }, {
+                    width: "10",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data1',
+                    title: '通知类型'
+                }, {
                     width: "13",
-                    align: 'center',
-                    widthUnit: "%",
-                    field: 'data2',
-                    title: '发布人'
-                }, {
-                    width: "14",
-                    widthUnit: "%",
-                    align: 'center',
-                    field: 'data3',
-                    title: '发布时间'
-                }, {
-                    width: "15",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data4',
                     title: '发布部门'
                 }, {
+                    width: "14",
+                    align: 'center',
+                    widthUnit: "%",
+                    field: 'data2',
+                    title: '发布人'
+                }, {
                     width: "10",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data5',
+                    title: '是否需要报名'
+                }, {
+                    width: "15",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data3',
+                    title: '发布时间'
+                }, {
+                    width: "8",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data5',
                     title: '发布状态'
+                }, {
+                    width: "8",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data5',
+                    title: '操作',
+                    formatter: actionFormatter
                 }],
                 onClickRow: function (row, $element) {
                     // 点击行事件，

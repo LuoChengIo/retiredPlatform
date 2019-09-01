@@ -98,6 +98,7 @@
         uploader.on('uploadComplete', function (file) {
             //上传完成后 回调父页面
             parms_callback &&window.opener[parms_callback](file);
+            window.close();
         });
     </script>
 </body>

@@ -52,16 +52,13 @@
             <div class="serach-content collapse" id="collapseSerach">
                 <form class="form-inline" style="max-width: 1200px;">
                     <div class="form-group">
-                        <label style="width: 126px;">列表主题:</label>
-                        <input type="text" class="form-control" name="kcmc" placeholder="列表主题">
+                        <label style="width: 126px;">标题:</label>
+                        <input type="text" class="form-control" name="kcmc" placeholder="标题">
                     </div>
                     <div class="form-group">
-                        <label style="width: 126px;">时间起:</label>
-                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="时间起">
-                    </div>
-                    <div class="form-group">
-                        <label style="width: 126px;">时间止:</label>
-                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="时间止">
+                        <label style="width: 126px;">创建时间:</label>
+                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="创建时间起">
+                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="创建时间止">
                     </div>
                     <div>
                         <button type="button" class="btn btn-danger btn-sm">
@@ -92,10 +89,10 @@
         function addClick() {
             PageAlert({
                 title: '详细信息',
-                width: '920px',
-                height: '710px',
-                url: '教学剪影-编辑.html'
-            },1);
+                width: '500px',
+                height: '438px',
+                url: '晚枫苑-编辑.html'
+            });
         }
         // 删除
         function delClick() {
@@ -113,35 +110,17 @@
                     checkbox: true,
                     visible: true
                 }, {
-                    width: "45",
+                    width: "77",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data1',
                     title: '标题'
-                }, {
-                    width: "13",
-                    align: 'center',
-                    widthUnit: "%",
-                    field: 'data2',
-                    title: '发布人'
-                }, {
-                    width: "14",
+                },  {
+                    width: "20",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data3',
-                    title: '发布时间'
-                }, {
-                    width: "15",
-                    widthUnit: "%",
-                    align: 'center',
-                    field: 'data4',
-                    title: '发布部门'
-                }, {
-                    width: "10",
-                    widthUnit: "%",
-                    align: 'center',
-                    field: 'data5',
-                    title: '发布状态'
+                    title: '创建时间'
                 }],
                 onClickRow: function (row, $element) {
                     // 点击行事件，

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <style>
+        .c_form_table_td {
+            width: 25%;
+            text-align: right;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <form class="from-detail" id="infoForm">
+        <div class="btn-tool-bar">
+            <button type="button" class="btn btn-danger btn-sm">
+                新建
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+                保存
+            </button>
+        </div>
+        <table border="0" cellspacing="0" cellpadding="0" class="c_form_table" width="100%">
+            <tbody>
+                <tr>
+                    <td width="20%" class="c_form_text">名 称</td>
+                    <td>
+                        <input type="text" id="mc" name="mc" style="width: 90%;" required="true" showname="名称"
+                            maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c_form_text">嵌入方式</td>
+                    <td>&nbsp;&nbsp;
+                        <input type="radio" name="embed" value="1">跳转外部 &nbsp;&nbsp;
+                        <input type="radio" name="embed" value="0">内部嵌入
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c_form_text">网站链接地址</td>
+                    <td>
+                        <input type="text" id="link_url" name="link_url" maxlength="500" style="width: 90%;"
+                            required="true" showname="网站链接地址">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c_form_text">上传板块图标</td>
+                    <td>
+                        <span id="sys_attachment_span" name="sys_attachment_span"><select
+                                class="sys_attachment_attachment" id="sys_attachment_attachment"
+                                name="sys_attachment_attachment" style="WIDTH: 150px; HEIGHT: 20px; "></select><input
+                                type="button" name="sys_attachment_wjsc" id="sys_attachment_wjsc"
+                                class="sys_attachment_wjsc" value="文件上传" onclick="showup()"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="c_form_text">序 号</td>
+                    <td>
+                        <input type="text" id="xh" name="xh" maxlength="100" style="width: 90%;" required="true"
+                            showname="序号" checked="checked" check="isInt">
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </form>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        function showup() {
+            PageAlert({
+                title: '上传',
+                width: '600px',
+                height: '378px',
+                url: '../上传.html'
+            }, 1);
+        }
+        // 保存信息
+        function saveInfo(formId) {
+            // 校验form里面必填字段
+            if (!Validate.CheckForm($("#" + formId)[0])) {
+                return;
+            }
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是修改详情
+            } else {
+                // 不存在，新增详情
+            }
+            // 这个是提示信息方法
+            ajaxMsg('保存成功')
+
+            //如果完成当前操作需要关闭弹框 
+            setTimeout(function () {
+                parent.layer.close(parent.layer.getFrameIndex(window.name));
+            }, 2000)
+
+        }
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>
