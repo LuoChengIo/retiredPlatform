@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>基本信息</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <form class="from-detail" id="infoForm">
+    <fieldset>
+      <legend>提出人信息</legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr id="person_choose" style="display: none;">
+            <td colspan="6">
+              <span>请选择老同志：</span>
+              <input type="button" id="choose" value=">>" onclick="selectLtz();" style="height:30px;" class="btn">
+            </td>
+          </tr>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">姓名&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input type="hidden" name="ltzid" id="ltzid" required="true" showname="老同志" value="hy72716,">
+              <span id="text_xm">张政达</span>
+              <!-- 新增状态显示这个 -->
+              <div id="selectYh" stule="width: 180px;" style="display: none;">
+                <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
+                <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                  &gt;&gt;
+                </button>
+              </div>
+            </td>
+            <td width="15%" align="right" class="c_form_text">性别</td>
+            <td width="20%">
+              <span id="xb" name="xb">男</span>
+            </td>
+            <td width="10%" align="right" class="c_form_text">退(离)休</td>
+            <td width="20%">
+              <span id="tlx" name="tlx">离休</span>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">年龄&nbsp;&nbsp;</td>
+            <td>
+              <span id="age" name="age">94</span>
+            </td>
+            <td align="right" class="c_form_text">原工作单位及职务</td>
+            <td colspan="3">
+              <span id="zw" name="zw">办公厅副主任</span>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">籍贯&nbsp;&nbsp;</td>
+            <td><span name="jg" id="jg">河北满城</span></td>
+
+            <td align="right" class="c_form_text">党支部</td>
+            <td>
+              <span id="dzb" name="dzb">三支部</span>
+            </td>
+
+            <td align="right" class="c_form_text">职级</td>
+            <td>
+
+              <span id="zj" name="zj">副地(局)级</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>挂号服务</legend>
+      <table border="0" cellspacing="0" cellpadding="0" class="c_form_table" width="100%">
+        <tbody>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">科室&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <select id="department" name="department" maxlength="50" style="width: 90%;" required="true"
+                showname="科室">
+                <option value="">请选择</option>
+              </select>
+            </td>
+            <td width="10%" align="right" class="c_form_text">专家&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input id="expert_name" name="expert_name" style="width:90%" showname="专家" maxlength="50">
+            </td>
+            <td width="12%" align="right" class="c_form_text">提出时间&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input id="tcsj" name="tcsj" size="20" class="Wdate" style="width: 90%;" showname="提出时间" required="true"
+                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})">
+            </td>
+
+          </tr>
+          <tr>
+            <td width="12%" align="right" class="c_form_text">备选日期&nbsp;</td>
+            <td width="20%">
+              <input id="bxrq" name="bxrq" maxlength="50" style="width: 90%;" showname="请输入备选日期">
+            </td>
+            <td width="15%" align="right" class="c_form_text">预约就诊日期&nbsp;</td>
+            <td width="20%">
+              <input id="jzrq" name="jzrq" size="20" class="Wdate" style="width: 90%;" showname="预约就诊日期"
+                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" }="">
+            </td>
+            <td width="12%">预约上下午</td>
+            <td width="20%"><input type="radio" name="sxw" value="0" checked="">上午<input type="radio" name="sxw"
+                value="1">下午 </td>
+          </tr>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">简要病情&nbsp;</td>
+            <td width="20%" colspan="5">
+              <textarea id="nr" name="nr" style="width:90%" showname="简要病情" maxlength="250"></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>办理情况</legend>
+      <table border="0" cellspacing="0" cellpadding="0" class="c_form_table" width="100%">
+        <tbody>
+          <tr>
+            <td width="12%" align="right" class="c_form_text">办理人&nbsp;&nbsp;</td>
+            <td width="18%">
+              <input type="text" id="blr" name="blr" maxlength="25" style="width: 90%;">
+            </td>
+            <td width="10%" align="right" class="c_form_text">办理时间&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input id="blsj" name="blsj" size="20" class="Wdate" showname="办理时间" required="true"
+                onfocus="WdatePicker({startDate:'%y-%M-%d HH:mm',dateFmt:'yyyy-MM-dd HH:mm',alwaysUseStartDate:true})"
+                }="">
+            </td>
+            <td width="10%" align="right" class="c_form_text">办理状态&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <select name="blzt" id="blzt" style="WIDTH: 98px;" required="" showname="办理状态">
+                <option value="">请选择</option>
+                <option value="01">等待申请</option>
+                <option value="02">挂号成功</option>
+                <option value="03">挂号失败</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">就诊日期&nbsp;</td>
+            <td width="20%">
+              <input id="jzrqgzry" name="jzrqgzry" size="20" class="Wdate" style="width: 90%;" showname="就诊日期"
+                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" }="">
+            </td>
+            <td width="10%" colspan="3"><input type="radio" name="sxwgzry" value="0" checked="">上午<input type="radio"
+                name="sxwgzry" value="1">下午</td>
+            <td width="20%"></td>
+          </tr>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">办理说明&nbsp;&nbsp;</td>
+            <td colspan="5">
+              <textarea id="blsm" name="blsm" style="width:90%" showname="需求内容" maxlength="250"></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <div class="btn-tool-bar tr">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是修改详情
+      } else {
+        // 不存在，新增详情
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+
+      //如果完成当前操作需要关闭弹框 
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000)
+
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+      } else {
+        // 不存在，新增详情
+        $('#text_xm').hide();
+        $('#selectYh').show();
+      }
+    })
+  </script>
+</body>
+
+</html>

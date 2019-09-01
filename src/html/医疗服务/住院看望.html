@@ -1,0 +1,172 @@
+<!-- 老同志信息-基础信息 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>离退休老同志服务管理平</title>
+  <meta name="keywords" content="离退休老同志服务管理平">
+  <meta name="description" content="离退休老同志服务管理平">
+  <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body class="min-hp100 bg-white">
+  <div>
+    <!-- 功能区域 -->
+    <div class="query-content">
+      <div class="mb10">
+        <button type="button" class="btn btn-danger btn-sm" onclick="addClick()">
+          <img src="../../images/add.png" alt="" srcset="">
+          新增
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" onclick="delClick()">
+          <img src="../../images/delete.png" alt="" srcset="">
+          删除
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+          <img src="../../images/query.png" alt="" srcset="">
+          搜索
+        </button>
+        <!-- 分页 -->
+        <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
+          <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
+          <span class="c_table_list_nav_text_span">/</span>
+          <span class="c_table_list_nav_text_span" navid="page_allPage">1</span>
+          <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
+          <span class="c_table_list_nav_text_span" navid="page_allCount">共0 条 </span>
+          <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
+          <span navid="page_next" class="layui-laypage-next poi">下一页</span>
+          <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input"
+              type="text">页
+          </span>
+        </div>
+        <!-- 分页 end-->
+      </div>
+      <!-- 搜索框 -->
+      <div class="serach-content collapse" id="collapseSerach">
+        <form class="form-inline" style="max-width: 1200px;">
+          <div class="form-group">
+            <label style="width: 100px;">老同志姓名:</label>
+            <input type="text" class="form-control" name="cx_xm" placeholder="姓名">
+          </div>
+          <div class="form-group">
+            <label style="width: 100px;">看望时间范围:</label>
+            <input type="text" class="form-control Wdate" name="" onclick="WdatePicker()" placeholder="时间起">
+            <input type="text" class="form-control Wdate" name="" onclick="WdatePicker()" placeholder="时间止">
+          </div>
+          <div>
+            <button type="button" class="btn btn-danger btn-sm">
+              查询
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+              关闭
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- 表格区域 -->
+    <table id="table" class="table-list table-hover table-striped table-bordered"></table>
+  </div>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 新增
+    function showDetailInfo(url) {
+      PageAlert({
+        title: '详细信息',
+        width: '800px',
+        height: '550px',
+        url: url
+      });
+    }
+
+    function addClick() {
+      showDetailInfo('住院看望-详情.html')
+    }
+    // 删除
+    function delClick() {
+      var checkboxList = $("#table").bootstrapTable('getSelections');
+      if (!checkboxList.length) {
+        alert('请先选择要删除的数据');
+      }
+      var idsArr = []
+      for (var index = 0; index < checkboxList.length; index++) {
+        var element = checkboxList[index];
+        idsArr.push(element.id);
+      }
+      // 获得选择数据的id集合，并转换成字符串
+      var ids = idsArr.join(',');
+      console.log(ids)
+    }
+    $(function () {
+      var actionFormatter = function (value, row, index) {
+        var id = value;
+        var result = "";
+        result += '<button type="button" class="btn btn-danger btn-sm">查看</button>';
+        return result;
+      }
+      PageTable($("#table"), {
+        url: 'table.json',
+        columns: [{
+          checkbox: true,
+          visible: true
+        }, {
+          width: "140",
+          align: 'center',
+          field: 'data1',
+          title: '姓名'
+        }, {
+          width: "100",
+          align: 'center',
+          field: 'data1',
+          title: '年龄'
+        }, {
+          width: "170",
+          align: 'center',
+          field: 'data1',
+          title: '医院'
+        }, {
+          width: "170",
+          align: 'center',
+          field: 'data1',
+          title: '看望领导'
+        }, {
+          width: "140",
+          align: 'center',
+          field: 'data1',
+          title: '看望时间'
+        }, {
+          width: "140",
+          align: 'center',
+          field: 'data1',
+          title: '陪同人员'
+        },  {
+          align: 'center',
+          field: 'data1',
+          title: '慰问品'
+        }],
+        onClickRow: function (row, $element) {
+          // 点击行事件，
+          showDetailInfo("住院看望-详情.html?id=" + row.id)
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>

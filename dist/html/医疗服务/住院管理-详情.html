@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>基本信息</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <form class="from-detail" id="infoForm">
+    <div class="btn-tool-bar">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+    <fieldset>
+      <legend> 基本信息 </legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">姓名</td>
+            <td width="20%" id="xqzyltz">
+              <span id="xm" name="xm" style="margin-left: 10px;">周立妹</span>
+              <!-- 新增状态显示这个 -->
+              <div id="selectYh" stule="width: 180px;" style="display: none;">
+                <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
+                <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                  &gt;&gt;
+                </button>
+              </div>
+            </td>
+            <td width="10%" align="right" class="c_form_text">性别</td>
+            <td width="20%">
+              <span id="sex" name="sex">女</span>
+            </td>
+            <td width="10%" align="right" class="c_form_text">退(离)休</td>
+            <td width="20%">
+              <span id="retired_type" name="retired_type">退休</span>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">年龄</td>
+            <td>
+              <span id="age" name="age">65</span>
+            </td>
+            <td align="right" class="c_form_text">原工作单位</td>
+            <td>
+              <span id="fomerwork" name="fomerwork">干部一局（公务员管理办公室）副巡视员</span>
+            </td>
+            <td align="right" class="c_form_text">职级</td>
+            <td>
+              <span id="post_mc" name="post_mc">副地(局)级</span>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">籍贯</td>
+            <td><span name="jg" id="jg">河北河间</span></td>
+
+            <td align="right" class="c_form_text">党支部</td>
+            <td>
+              <span id="szdzb" name="szdzb">三支部</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>住院信息</legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr>
+            <td width="15%" align="right" class="c_form_text">医院</td>
+            <td width="35%">
+              <input id="yiyuan" name="yiyuan" maxlength="100" size="20" type="text" style="width:80%" showname="医院"
+                required="true">
+            </td>
+            <td width="15%" align="right" class="c_form_text">入院时间</td>
+            <td width="35%">
+              <input id="rysj" name="rysj" size="20" class="Wdate" style="width:80%" showname="入院时间" required="true"
+                onfocus="WdatePicker({startDate:'%y-%M-01',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:false})">
+            </td>
+          </tr>
+
+          <tr>
+            <td align="right" class="c_form_text">科室病床</td>
+            <td>
+              <input id="ksbc" name="ksbc" type="text" maxlength="100" size="20" style="width:80%" showname="科室病床"
+                required="true">
+            </td>
+            <td align="right" class="c_form_text">是否看望</td>
+            <td>
+              <select id="sfkw" name="sfkw" style="width:80%">
+                <option value="0">未看望</option>
+                <option value="1">已看望</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">状态</td>
+            <td>
+              <select id="sfcy" name="sfcy" style="width:80%">
+                <option value="0">住院</option>
+                <option value="1">出院</option>
+              </select>
+            </td>
+            <td align="right" class="c_form_text">出院时间</td>
+            <td>
+              <input id="cysj" name="cysj" size="20" class="Wdate" style="width:80%" showname="出院时间"
+                onfocus="WdatePicker({startDate:'%y-%M-01',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:false})">
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">陪护人</td>
+            <td><input class="biinput" type="text" style="width: 80%;" name="phr" id="phr" maxlength="100"
+                showname="陪护人"></td>
+            <td align="right" class="c_form_text">陪护人电话</td>
+            <td><input class="biinput" type="text" style="width: 80%;" name="phrdh" id="phrdh" maxlength="100"
+                showname="陪护人电话"></td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">住院病情</td>
+            <td colspan="3">
+              <input id="bq" name="bq" required="true" size="20" type="text" maxlength="250" style="width:92%"
+                showname="住院病情">
+            </td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">治疗结果</td>
+            <td colspan="3"><input class="biinput" type="text" style="width: 92%;" maxlength="250" name="zljg" id="zljg"
+                showname="治疗结果"></td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">未看望原因</td>
+            <td colspan="3"><input class="biinput" type="text" style="width: 92%;" maxlength="250" name="wkwyy"
+                id="wkwyy" showname="未看望原因"></td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <fieldset id="kwjl_fieldset" class="dn">
+      <legend>
+        看望记录
+      </legend>
+      <table id="table" class="table-list table-hover table-striped table-bordered"></table>
+    </fieldset>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是修改详情
+      } else {
+        // 不存在，新增详情
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+
+      //如果完成当前操作需要关闭弹框 
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000)
+    }
+    // 用户选择回调事件
+    function selectUserAction(arr) {
+      console.log(arr)
+      $('#xm').show();
+      $('#selectYh').hide();
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+        $('#kwjl_fieldset').show();
+        PageTable($("#table"), {
+          url: 'table.json',
+          columns: [{
+            align: 'left',
+            field: 'data1',
+            title: '看望时间'
+          },{
+            align: 'left',
+            field: 'data1',
+            title: '看望地点'
+          },{
+            align: 'left',
+            field: 'data1',
+            title: '看望领导'
+          },{
+            align: 'left',
+            field: 'data1',
+            title: '陪同人员'
+          },{
+            align: 'left',
+            field: 'data1',
+            title: '慰问品'
+          }]
+        })
+      } else {
+        // 不存在，新增详情
+        $('#xm').hide();
+        $('#selectYh').show();
+      }
+
+    })
+  </script>
+</body>
+
+</html>

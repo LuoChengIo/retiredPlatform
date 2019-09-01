@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>基本信息</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <form class="from-detail p10" id="infoForm">
+    <div class="btn-tool-bar">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table border_all" style="margin-top:2px;">
+      <tbody>
+        <tr>
+          <td colspan="6"><span style="font-size:18px;font-weight:bold;">&nbsp;&nbsp;基本信息</span></td>
+        </tr>
+        <tr>
+          <td width="10%" align="right" class="c_form_text">姓名</td>
+          <td width="20%" id="xqzyltz">
+            <span id="text_xm">张政达</span>
+            <!-- 新增状态显示这个 -->
+            <div id="selectYh" stule="width: 180px;" style="display: none;">
+              <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
+              <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                &gt;&gt;
+              </button>
+            </div>
+          </td>
+          <td width="10%" align="right" class="c_form_text">性别</td>
+          <td width="20%">
+            <span id="sex" name="sex"></span>
+          </td>
+          <td width="10%" align="right" class="c_form_text">退(离)休</td>
+          <td width="20%">
+            <span id="retired_type" name="retired_type"></span>
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="c_form_text">年龄</td>
+          <td>
+            <span id="age" name="age"></span>
+          </td>
+          <td align="right" class="c_form_text">原工作单位</td>
+          <td>
+            <span id="fomerwork" name="fomerwork"></span>
+          </td>
+          <td align="right" class="c_form_text">职务</td>
+          <td>
+            <span id="post" name="post"></span>
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="c_form_text">籍贯</td>
+          <td><span name="jg" id="jg"></span></td>
+          <td align="right" class="c_form_text">党支部</td>
+          <td>
+            <span id="szdzb" name="szdzb"></span>
+          </td>
+          <td align="right" class="c_form_text">职级</td>
+          <td>
+            <span id="post_mc" name="post_mc"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table border_all">
+      <tbody>
+        <tr>
+          <td colspan="4"><span style="font-size:18px;font-weight:bold;">&nbsp;&nbsp;救助详情</span></td>
+        </tr>
+        <tr>
+          <td width="15%" align="right" class="c_form_text">审核时间</td>
+          <td width="35%">
+            <input id="jzsj" name="jzsj" required="true" class="Wdate" style="width:80%" showname="审核时间"
+              onfocus="WdatePicker({startDate:'%y-%M-01',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:false})">
+          </td>
+          <td width="15%" align="right" class="c_form_text">救助金额</td>
+          <td width="35%">
+            <input id="jzje" name="jzje" required="true" type="text" style="width:80%" showname="救助金额">
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="c_form_text">救助原因</td>
+          <td colspan="3"><textarea class="biinput" required="true" maxlength="250" style="width: 92%;height:100px;"
+              name="jzyy" id="jzyy" showname="救助原因"></textarea></td>
+        </tr>
+        <tr>
+          <td width="15%" align="right" class="c_form_text">发放时间</td>
+          <td width="35%">
+            <input id="ffsj" name="ffsj" required="true" class="Wdate" style="width:80%" showname="发放时间"
+              onfocus="WdatePicker({startDate:'%y-%M-01',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:false})">
+          </td>
+          <td width="15%" align="right" class="c_form_text">发放人员</td>
+          <td width="35%">
+            <input id="ffry" name="ffry" required="true" type="text" style="width:80%" showname="发放人员">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是修改详情
+      } else {
+        // 不存在，新增详情
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+
+      //如果完成当前操作需要关闭弹框 
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000)
+
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+      } else {
+        // 不存在，新增详情
+        $('#text_xm').hide();
+        $('#selectYh').show();
+      }
+    })
+  </script>
+</body>
+
+</html>

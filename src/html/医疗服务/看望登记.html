@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>基本信息</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <form class="from-detail" id="infoForm">
+    <div class="btn-tool-bar">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table" style="margin-top:2px;">
+      <tbody>
+        <tr>
+          <td colspan="6"><span style="font-size:18px;font-weight:bold;">&nbsp;&nbsp;基本信息</span></td>
+        </tr>
+        <tr>
+          <td width="10%" align="right" class="c_form_text">姓名</td>
+          <td width="20%" id="xqzyltz">
+            <span id="xm">蒋佳玲</span>
+            <input type="hidden" name="ltzid" id="ltzid" value="72737">
+          </td>
+          <td width="10%" align="right" class="c_form_text">性别</td>
+          <td width="20%">
+            <span id="sex" name="sex">女</span>
+          </td>
+          <td width="10%" align="right" class="c_form_text">退(离)休</td>
+          <td width="20%">
+            <span id="retired_type" name="retired_type">退休</span>
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="c_form_text">年龄</td>
+          <td>
+            <span id="age" name="age">65</span>
+          </td>
+          <td align="right" class="c_form_text">原工作单位</td>
+          <td>
+            <span id="fomerwork" name="fomerwork">干部一局（公务员管理办公室）副巡视员</span>
+          </td>
+          <td align="right" class="c_form_text">职级</td>
+          <td>
+            <span id="post_mc" name="post_mc">副地(局)级</span>
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="c_form_text">籍贯</td>
+          <td><span name="jg" id="jg">河北河间</span></td>
+
+          <td align="right" class="c_form_text">党支部</td>
+          <td>
+            <span id="szdzb" name="szdzb">三支部</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+      <tbody>
+        <tr>
+          <td colspan="4"><span style="font-size:18px;font-weight:bold;">&nbsp;&nbsp;看望详情</span></td>
+        </tr>
+        <tr>
+          <td width="15%" align="right" class="c_form_text">看望时间</td>
+          <td width="35%">
+            <input id="zfsj" name="zfsj" class="Wdate" style="width:80%" showname="走访时间" required="true"
+              onfocus="WdatePicker({startDate:'%y-%M-01',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:false})">
+          </td>
+          <td width="15%" align="right" class="c_form_text">看望地点</td>
+          <td width="35%">
+            <input id="zfdd" name="zfdd" type="text" style="width:80%" required="true" maxlength="100" showname="走访地点">
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="c_form_text">看望领导</td>
+          <td>
+            <input id="zfld" name="zfld" type="text" required="true" maxlength="100" style="width:80%" showname="看望领导">
+          </td>
+          <td align="right" class="c_form_text">陪同人员</td>
+          <td>
+            <input id="ptry" name="ptry" type="text" maxlength="100" style="width:80%" showname="陪同人员">
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="c_form_text">其他人员</td>
+          <td>
+            <input id="qtry" name="qtry" type="text" maxlength="100" style="width:80%" showname="其他人员">
+          </td>
+          <td align="right" class="c_form_text">慰问品</td>
+          <td>
+            <input id="wwp" name="wwp" type="text" maxlength="100" style="width:80%" showname="慰问品">
+          </td>
+        </tr>
+        <tr>
+          <td align="right" class="c_form_text">反映问题</td>
+          <td colspan="3"><textarea class="biinput" maxlength="250" style="width: 92%;height:100px;" name="fywt"
+              id="fywt" required="true" showname="反映问题"></textarea></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+
+      //如果完成当前操作需要关闭弹框 
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000)
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+
+    })
+  </script>
+</body>
+
+</html>
