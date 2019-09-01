@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>基本信息</title>
+  <meta name="keywords" content="离退休老同志服务管理平" />
+  <meta name="description" content="离退休老同志服务管理平" />
+  <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+  <form class="from-detail" id="infoForm">
+    <fieldset>
+      <legend>老同志基本信息</legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr id="person_choose" style="display: none;">
+            <td colspan="6"><span>请选择老同志：</span> <input type="button" id="choose" value=">>" onclick="selectLtz();"
+                style="height: 30px;" class="btn"></td>
+          </tr>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">姓名&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+                <span id="text_xm">张政达</span>
+                <!-- 新增状态显示这个 -->
+                <div id="selectYh" stule="width: 180px;" style="display: none;">
+                  <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
+                  <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                    &gt;&gt;
+                  </button>
+                </div>
+            </td>
+            <td width="15%" align="right" class="c_form_text">性别</td>
+            <td width="20%"><span id="xb" name="xb">女</span></td>
+            <td width="10%" align="right" class="c_form_text">退(离)休</td>
+            <td width="20%"><span id="tlx" name="tlx">离休</span></td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">年龄&nbsp;&nbsp;</td>
+            <td><span id="age" name="age">0</span></td>
+            <td align="right" class="c_form_text">原工作单位及职务</td>
+            <td colspan="3"><span id="zw" name="zw"></span></td>
+          </tr>
+          <tr>
+            <td align="right" class="c_form_text">籍贯&nbsp;&nbsp;</td>
+            <td><span name="jg" id="jg">vfdv</span></td>
+            <td align="right" class="c_form_text">党支部</td>
+            <td><span id="dzb" name="dzb">一支部</span></td>
+            <td align="right" class="c_form_text">职级</td>
+            <td><span id="zj" name="zj"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>医疗报销信息</legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+        <tbody>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">票据金额 &nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input type="text" id="bills" name="bills" style="width: 80%;" maxlength="50" required="true"
+                showname="票据金额">
+            </td>
+            <td width="10%" align="right" class="c_form_text">扣款金额 &nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input type="text" id="charges" name="charges" style="width: 80%;" maxlength="50" required="true"
+                showname="扣款金额 ">
+            </td>
+            <td width="10%" align="right" class="c_form_text">实报金额&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input type="text" id="actuals" name="actuals" style="width: 80%;" maxlength="50" required="true"
+                showname="实报金额 ">
+            </td>
+          </tr>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">报销时间&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input id="handlet" name="handlet" size="20" class="WDate" style="width:80%;" required="true"
+                showname="报销时间"
+                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})">
+            </td>
+            <td width="10%" align="right" class="c_form_text">审核人&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <input type="text" id="auditor" name="auditor" style="width: 80%;" maxlength="50" required="true"
+                showname="审核人 ">
+            </td>
+            <td width="10%" align="right" class="c_form_text">办理进度&nbsp;<font color="#ff0000">*</font>
+            </td>
+            <td width="20%">
+              <select name="handle" id="handle" style="width:80%;" required="true" showname="办理进度">
+                <option value="">请选择</option>
+                <option value="0">办理中</option>
+                <option value="1">已转账</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td width="10%" align="right" class="c_form_text">备注 &nbsp;</td>
+            <td width="20%">
+              <input type="text" id="remark" name="remark" style="width: 80%;" maxlength="50">
+            </td>
+            <td width="10%" align="right" class="c_form_text"></td>
+            <td width="20%">
+            </td>
+            <td width="10%" align="right" class="c_form_text"></td>
+            <td width="20%">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <div class="btn-tool-bar tr">
+      <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+        保存
+      </button>
+    </div>
+  </form>
+  <!-- 公共js start -->
+  <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../../js/plugins/echarts.min.js"></script>
+  <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../js/libs.min.js"></script>
+  <script src="../../js/plugins/layer/layer.js"></script>
+  <script src="../../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    // 保存信息
+    function saveInfo(formId) {
+      // 校验form里面必填字段
+      if (!Validate.CheckForm($("#" + formId)[0])) {
+        return;
+      }
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是修改详情
+      } else {
+        // 不存在，新增详情
+      }
+      // 这个是提示信息方法
+      ajaxMsg('保存成功')
+
+      //如果完成当前操作需要关闭弹框 
+      setTimeout(function () {
+        parent.layer.close(parent.layer.getFrameIndex(window.name));
+      }, 2000)
+
+    }
+    $(function () {
+      // 获取当前连接所传id
+      var parmsID = getURLString('id')
+      if (parmsID) {
+        // 存在id说明是查询详情，修改详情
+      } else {
+        // 不存在，新增详情
+        $('#text_xm').hide();
+        $('#selectYh').show();
+      }
+    })
+  </script>
+</body>
+
+</html>
