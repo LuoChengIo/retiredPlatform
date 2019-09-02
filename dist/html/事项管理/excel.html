@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+    <form action="upload_do.jsp" method="post" enctype="multipart/form-data" name="form1">
+        <table algin="center">
+            <tbody>
+                <tr>
+                    <td height="12" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td height="15" colspan="2">
+                        <div align="center">
+                            <b>工资养老金数据导入</b>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td height="5" colspan="2"></td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td height="5" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td height="15" align="center">&nbsp;&nbsp;&nbsp;&nbsp;Excel文件：</td>
+                    <td><span id="pfile"> <input type="file" name="file1" id="file1"
+                                style="width:300pt;height:23px;font-size:12px;border-style: solid;border-width: 1px;height: 18px;line-height: 18px;border-color: #A6A6A6;"
+                                contenteditable="false"></span>
+                    </td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td height="5" colspan="2"></td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td height="5" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td height="20" colspan="2" align="center">
+                        <input type="button" name="tijiao" id="tijiao" onclick="validate()" value="提交" onclick="validate()"
+                            class="btn btn-danger btn-sm">&nbsp;
+                        <input type="button" name="guanbi" id="guanbi" value="关闭" onclick="closeWin();"
+                            class="btn btn-danger btn-sm">
+                    </td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td height="20" colspan="2">
+                        <div id="tishi"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div align="left">
+                            <font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;说明：导入文件格式必须为 .xls</font>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="工资养老金导入模板.xls">
+                                <font color="#ff0000">点击下载数据导入模版</font>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        function closeWin() {
+            window.close();
+        }
+        function validate() {
+            var newfile = document.all("file1").value;
+            if (newfile == "") {
+                alert("上传文件不能为空！");
+                document.all("file1").focus();
+                return false;
+            }
+            var yz = newfile.substring(newfile.length - 4, newfile.length);
+            if (yz != ".xls") {
+                alert("文件格式不正确！");
+                return false;
+            }
+            //表单提交上传文件
+            //form.submit();
+            return true;
+        }
+
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>
