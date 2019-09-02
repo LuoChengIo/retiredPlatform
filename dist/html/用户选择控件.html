@@ -306,9 +306,9 @@
           optionHtml+="<option value='" + element.id + "'>"+element.text+"</option>"
         }
         if(parms_id){
-          window.opener.$("#"+parms_id).append(optionHtml);
+          window.opener.$("#"+parms_id).length&&window.opener.$("#"+parms_id).append(optionHtml);
         }
-        parms_callback &&window.opener[parms_callback](selectArr);
+        parms_callback &&window.opener[parms_callback]&&window.opener[parms_callback](selectArr);
         window.close();
       })
       // 查询事件
