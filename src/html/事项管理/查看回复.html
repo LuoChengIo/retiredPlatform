@@ -21,9 +21,9 @@
         <!-- 功能区域 -->
         <div class="query-content">
             <div class="mb10">
-                <button type="button" class="btn btn-danger btn-sm" onclick="addClick('调查问卷-添加.html')">
-                    <img src="../../images/add.png" alt="" srcset="">
-                    新增
+                <button type="button" class="btn btn-danger btn-sm" onclick="PageGo('我爱我文.html')">
+                    <img src="../../images/back.png" alt="" srcset="">
+                    返回
                 </button>
                 <button type="button" class="btn btn-danger btn-sm" onclick="delClick()">
                     <img src="../../images/delete.png" alt="" srcset="">
@@ -52,15 +52,16 @@
             <div class="serach-content collapse" id="collapseSerach">
                 <form class="form-inline" style="max-width: 1200px;">
                     <div class="form-group">
-                        <label style="width: 126px;">问卷名称:</label>
-                        <input type="text" class="form-control" name="kcmc" placeholder="问卷名称">
+                        <label style="width: 126px;">姓名:</label>
+                        <input type="text" class="form-control" name="kcmc" placeholder="姓名">
                     </div>
                     <div class="form-group">
-                        <label style="width: 126px;">有效时间:</label>
-                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc"
-                            placeholder="时间起">
-                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc"
-                            placeholder="时间止">
+                        <label style="width: 126px;">时间起:</label>
+                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="时间起">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">时间止:</label>
+                        <input type="text" class="form-control Wdate" onClick="WdatePicker()" name="kcmc" placeholder="时间止">
                     </div>
                     <div>
                         <button type="button" class="btn btn-danger btn-sm">
@@ -83,19 +84,9 @@
     <script src="../../js/plugins/echarts.min.js"></script>
     <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
     <script src="../../js/libs.min.js"></script>
-    <script src="../../js/plugins/layer/layer.js"></script>
     <script src="../../js/common.js"></script>
     <!-- 公共js end -->
     <script>
-        // 新增
-        function addClick(url) {
-            PageAlert({
-                title: '详细信息',
-                width: '900px',
-                height: '580px',
-                url: url
-            }, 1);
-        }
         // 删除
         function delClick() {
             var checkboxList = $('#table').bootstrapTable('getSelections');
@@ -112,28 +103,24 @@
                     checkbox: true,
                     visible: true
                 }, {
-                    width: "65",
+                    width: "15",
                     widthUnit: "%",
                     align: 'center',
                     field: 'data1',
-                    title: '问卷名称'
+                    title: '姓名'
                 }, {
-                    width: "15",
+                    width: "65",
                     align: 'center',
                     widthUnit: "%",
                     field: 'data2',
-                    title: '开始时间'
+                    title: '回复内容'
                 }, {
                     width: "15",
                     widthUnit: "%",
                     align: 'center',
-                    field: 'data3',
-                    title: '结束时间'
+                    field: 'data4',
+                    title: '回复时间'
                 }],
-                onClickRow: function (row, $element) {
-                    // 点击行事件，
-                    addClick('调查问卷-编辑.html')
-                }
             })
         });
     </script>

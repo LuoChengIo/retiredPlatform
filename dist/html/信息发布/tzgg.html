@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+    <form class="from-detail" id="infoForm">
+        <div class="btn-tool-bar">
+            <button type="button" class="btn btn-danger btn-sm">
+                新建
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+                保存
+            </button>
+        </div>
+        <table border="0" cellspacing="0" cellpadding="0" class="c_form_table" width="100%">
+            <tbody>
+                <tr>
+                    <td width="15%" class="c_form_text">标题</td>
+                    <td>
+                        <input type="text" id="bt" name="bt" maxlength="100" style="width: 90%;" required="true"
+                            showname="标题">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c_form_text">上传封面</td>
+                    <td>
+                        <div id="sys_imgupload" style="width:80%;height:200px;">
+                            <form id="form_sysimg" method="post" name="form_sysimg" enctype="multipart/form-data"
+                                target="sysImghidden_frame">
+                                <div id="sys_inputImg" class="sys_img_divinput" style="height: 35px;"><span class="sys_img_span">
+                                        <input class="sys_img_file" type="file" name="sys_imgupload_input"
+                                            id="sys_imgupload_input" multiple=""
+                                            accept="image/gif,image/png,image/jpg,image/jpeg,image/bmpimage/gif,image/png,image/jpg,image/jpeg,image/bmpimage/gif,image/png,image/jpg,image/jpeg,image/bmpimage/gif,image/png,image/jpg,image/jpeg,image/bmpimage/gif,image/png,image/jpg,image/jpeg,image/bmp"></span>
+                                </div>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="c_form_text">上传文档</td>
+                    <td>
+                        <span id="sys_attachment_span" name="sys_attachment_span"><span spanid="att_upload_new"
+                                id="att_upload_new" name="att_upload_new">0个附件</span><input type="button"
+                                name="sys_attachment_wjsc" onclick="showup" id="sys_attachment_wjsc"
+                                class="sys_attachment_wjsc" value="文件上传"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="color: red;padding-left: 10px;">备注：建议封面图片比例为(宽:高=3:4)</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </form>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        //上传
+        function showup() {
+            PageAlert({
+                title: '上传',
+                width: '600px',
+                height: '378px',
+                url: '../上传.html'
+            }, 1);
+        }
+        // 保存信息
+        function saveInfo(formId) {
+            // 校验form里面必填字段
+            if (!Validate.CheckForm($("#" + formId)[0])) {
+                return;
+            }
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是修改详情
+            } else {
+                // 不存在，新增详情
+            }
+            // 这个是提示信息方法
+            ajaxMsg('保存成功')
+
+            //如果完成当前操作需要关闭弹框 
+            setTimeout(function () {
+                parent.layer.close(parent.layer.getFrameIndex(window.name));
+            }, 2000)
+
+        }
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>

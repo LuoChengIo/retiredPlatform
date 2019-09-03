@@ -1,0 +1,218 @@
+<!-- 老同志信息-基础信息 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>离退休老同志服务管理平</title>
+    <meta name="keywords" content="离退休老同志服务管理平">
+    <meta name="description" content="离退休老同志服务管理平">
+    <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body class="min-hp100 bg-white">
+    <div>
+        <!-- 功能区域 -->
+        <div class="query-content">
+            <div class="mb10">
+                <button type="button" class="btn btn-danger btn-sm" onclick="addClick()">
+                    <img src="../../images/add.png" alt="" srcset="">
+                    新增
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="delClick()">
+                    <img src="../../images/delete.png" alt="" srcset="">
+                    删除
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+                    <img src="../../images/query.png" alt="" srcset="">
+                    搜索
+                </button>
+                <!-- 分页 -->
+                <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
+                    <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
+                    <span class="c_table_list_nav_text_span">/</span>
+                    <span class="c_table_list_nav_text_span" navid="page_allPage">1</span>
+                    <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
+                    <span class="c_table_list_nav_text_span" navid="page_allCount">共0 条 </span>
+                    <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
+                    <span navid="page_next" class="layui-laypage-next poi">下一页</span>
+                    <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="form-control"
+                            type="text">页
+                    </span>
+                </div>
+                <!-- 分页 end-->
+            </div>
+            <!-- 搜索框 -->
+            <div class="serach-content collapse" id="collapseSerach">
+                <form class="form-inline" style="max-width: 1200px;">
+                    <div class="form-group">
+                        <label style="width: 126px;">姓名:</label>
+                        <input type="text" class="form-control" name="kcmc" placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">退（离）休:</label>
+                        <select name="cx_tlx" id="cx_tlx" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="0">退休</option>
+                            <option value="1">离休</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">现享受待遇:</label>
+                        <select name="treatment" id="treatment" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="01">正部级</option>
+                            <option value="02">副部级</option>
+                            <option value="06">正地(局)级</option>
+                            <option value="07">副地(局)级</option>
+                            <option value="08">正县(处)级</option>
+                            <option value="09">副县(处)级</option>
+                            <option value="10">正乡(科)级</option>
+                            <option value="11">副乡(科)级</option>
+                            <option value="12">科员及以下</option>
+                            <option value="13">离休干部</option>
+                            <option value="14">其他</option>
+                            <option value="15">转干</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">原工作单位及职务:</label>
+                        <input type="text" name="cx_ygzdw" id="cx_ygzdw" placeholder="请输入原工作单位及职务"
+                            class="form-control search_form_input">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">办理进度:</label>
+                        <select name="cx_handle_state" id="cx_handle_state" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="01">局内运转</option>
+                            <option value="02">报人事局</option>
+                            <option value="03">已批准</option>
+                            <option value="04">已备案</option>
+                            <option value="05">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 126px;">是否在国（境）外:</label>
+                        <select name="cx_zt" id="cx_zt" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="0">未出国（境）</option>
+                            <option value="1">出国（境）中</option>
+                            <option value="2">已回国（入境）</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            查询
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+                            关闭
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- 表格区域 -->
+        <table id="table" class="table-list table-hover table-striped table-bordered"></table>
+    </div>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        // 新增
+        function addClick() {
+            PageAlert({ url: '出国（境）申请-编辑.html', width: "900px", height: "540px" })
+        }
+        // 删除
+        function delClick() {
+            var checkboxList = $('#table').bootstrapTable('getSelections');
+            if (!checkboxList.length) {
+                alert('请先选择要删除的数据');
+            }
+            console.log(checkboxList)
+            //ajax
+        }
+
+        $(function () {
+
+            PageTable($("#table"), {
+                url: 'table.json',
+                columns: [{
+                    checkbox: true,
+                    visible: true
+                }, {
+                    width: "10",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data1',
+                    title: '姓名'
+                }, {
+                    width: "15",
+                    align: 'center',
+                    widthUnit: "%",
+                    field: 'data2',
+                    title: '原工作单位及职务'
+                }, {
+                    width: "10",
+                    align: 'center',
+                    widthUnit: "%",
+                    field: 'data2',
+                    title: '现享受待遇'
+                }, {
+                    width: "10",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data3',
+                    title: '退离休'
+                }, {
+                    width: "10",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data3',
+                    title: '申请时间'
+                }, {
+                    width: "10",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data3',
+                    title: '目的地'
+                }, {
+                    width: "10",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data3',
+                    title: '出国（境）时间'
+                }, {
+                    width: "10",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data3',
+                    title: '返回时间'
+                }, {
+                    width: "10",
+                    widthUnit: "%",
+                    align: 'center',
+                    field: 'data3',
+                    title: '办理进度'
+                }],
+                onClickRow: function (row, $element) {
+                    addClick()
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

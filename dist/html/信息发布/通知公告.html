@@ -29,10 +29,10 @@
                     <img src="../../images/delete.png" alt="" srcset="">
                     删除
                 </button>
-                <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+                <button type="button" class="btn btn-danger btn-sm">
                     查看阅读状态
                 </button>
-                <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
+                <button type="button" class="btn btn-danger btn-sm">
                     查看报名情况
                 </button>
                 <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
@@ -105,12 +105,7 @@
     <script>
         // 新增
         function addClick() {
-            PageAlert({
-                title: '详细信息',
-                width: '920px',
-                height: '710px',
-                url: '手机端图片新闻-编辑.html'
-            }, 1);
+            PageGo('通知公告-编辑.html');
         }
         function BaoMing() {
             PageAlert({

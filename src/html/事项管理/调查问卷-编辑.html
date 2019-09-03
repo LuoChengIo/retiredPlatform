@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+    <div id="div_show" class="c_table_bar_content" style="width:898px;margin:0 auto;margin-bottom:50px;">
+        <div id="wjxx">
+            <table width="99%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+                <tbody>
+                    <tr style="font-size:18px;font-weight:bold;">
+                        <td class="c_form_text" width="20%"> 问卷名称：</td>
+                        <td> <span id="wjmc_show">测试问卷</span> </td>
+                    </tr>
+                    <tr>
+                        <td height="25" class="c_form_text"> 有效时间：</td>
+                        <td align="left"> <span id="sj_show">2019-05-16至2019-05-31</span> &nbsp;&nbsp;
+                            <input type="button" onclick="updateWj()" value="修改问卷信息" class="btn"> </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="tmxx">
+            <table width="99%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+                <tbody>
+                    <tr>
+                        <td class="c_form_text" width="20%"> 第1题： </td>
+                        <td> 1&nbsp;&nbsp;(单选) <input type="button"
+                                onclick="deleteTm(&quot;2019051717111172935541&quot;)" value="删除题目"> </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>选项1:1<br>选项2:2<br>选项3:3</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table width="99%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+                <tbody>
+                    <tr>
+                        <td class="c_form_text" width="20%"> 第2题： </td>
+                        <td> 1&nbsp;&nbsp;(单选) <input type="button"
+                                onclick="deleteTm(&quot;2019090323201137775953&quot;)" value="删除题目"> </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>选项1:2<br>选项2:3<br>选项3:4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 新增试题 -->
+        <fieldset id="addtm" style="">
+            <legend>添加题目</legend>
+            <form id="form_show_tm" onsubmit="return CheckForm(this)">
+
+                <table width="99%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+                    <tbody>
+                        <tr>
+                            <td class="c_form_text" width="20%">
+                                <div align="right">标题：</div>
+                            </td>
+                            <td><input type="text" name="tmmc" id="tmmc" style="width:80%;" maxlength="200"
+                                    required="true" value="" showname="标题">
+                                <font color="#ff0000">*</font>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td height="25" class="c_form_text">
+                                <div align="right">类型：</div>
+                            </td>
+                            <td>
+                                <select name="tmlx" id="tmlx" style="width:80%;" showname="类型" value="">
+                                    <option value="Single">单选题</option>
+                                    <option value="Multiple">多选题</option>
+                                </select>
+                                <font color="#ff0000">*</font>
+                            </td>
+                        </tr>
+
+                        <tr class="xuanxiang">
+                            <td height="25" class="c_form_text">
+                                <div align="right">选项1：</div>
+                            </td>
+                            <td>
+                                <input type="text" name="xxmc" id="xxmc" style="width:80%;" maxlength="50" value="">
+                                <font color="#ff0000">*</font>
+                            </td>
+                        </tr>
+                        <tr class="xuanxiang">
+                            <td height="25" class="c_form_text">
+                                <div align="right">选项2：</div>
+                            </td>
+                            <td><input type="text" name="xxmc" id="xxmc" style="width:80%;" maxlength="50"
+                                    value="">&nbsp;<font color="#ff0000">*</font>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="delTr(this)"
+                                    style="color: #d70000;cursor:pointer;">删除</a></td>
+                        </tr>
+                        <tr class="xuanxiang">
+                            <td height="25" class="c_form_text">
+                                <div align="right">选项3：</div>
+                            </td>
+                            <td><input type="text" name="xxmc" id="xxmc" style="width:80%;" maxlength="50"
+                                    value="">&nbsp;<font color="#ff0000">*</font>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="delTr(this)"
+                                    style="color: #d70000;cursor:pointer;">删除</a></td>
+                        </tr>
+                        <tr class="xuanxiang">
+                            <td height="25" class="c_form_text">
+                                <div align="right">新增选项：</div>
+                                <input type="hidden" id="xxs" value="3">
+                            </td>
+                            <td>
+                                <input type="button" onclick="addTr(this)" value="新增选项" class="btn">
+                                &nbsp;&nbsp;
+                                <input type="button" onclick="saveTm()" value="保存题目" class="btn">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </fieldset>
+    </div>
+
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+
+
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <style>
+        .c_form_table_cg td {
+            height: 36px;
+            line-height: 36px;
+        }
+
+        .c_form_table tbody tr {
+            height: 45px;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <form class="from-detail" id="infoForm">
+        <fieldset>
+            <legend>老同志基本信息</legend>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+                <tbody>
+                    <tr id="person_choose" style="display: table-row;">
+                        <td colspan="6"><span>请选择老同志：</span> <input type="button" id="choose" value=">>"
+                                onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')"
+                                style="height: 30px;" class="btn"></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" align="right" class="c_form_table_cg">姓名&nbsp;<font color="#ff0000">*</font>
+                        </td>
+                        <td width="20%"><input type="hidden" name="ltzid" id="ltzid" required="true" showname="老同志"
+                                value=""> <span id="text_xm"></span>
+                        </td>
+                        <td width="15%" align="right" class="c_form_table_cg">性别</td>
+                        <td width="20%"><span id="xb" name="xb"></span></td>
+                        <td width="10%" align="right" class="c_form_table_cg">退(离)休</td>
+                        <td width="20%"><span id="tlx" name="tlx"></span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="c_form_table_cg">年龄&nbsp;&nbsp;</td>
+                        <td><span id="age" name="age"></span></td>
+                        <td align="right" class="c_form_table_cg">原工作单位及职务</td>
+                        <td colspan="3"><span id="zw" name="zw"></span></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="c_form_table_cg">籍贯&nbsp;&nbsp;</td>
+                        <td><span name="jg" id="jg"></span></td>
+
+                        <td align="right" class="c_form_table_cg">党支部</td>
+                        <td><span id="dzb" name="dzb"></span></td>
+
+                        <td align="right" class="c_form_table_cg">职级</td>
+                        <td><span id="zj" name="zj"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>出国(境)信息</legend>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="c_form_table">
+                <tbody>
+                    <tr>
+                        <td width="15%" align="right" class="c_form_table_cg">出国（境）时间&nbsp;<font color="#ff0000">*
+                            </font>
+                        </td>
+                        <td width="20%"><input id="go_date" name="go_date" size="20" class="Wdate" style="width: 100%;"
+                                required="true" showname="出国（境）时间"
+                                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"
+                                }="">
+                        </td>
+                        <td width="10%" align="right" class="c_form_table_cg">返回时间&nbsp;<font color="#ff0000">*</font>
+                        </td>
+                        <td width="20%"><input id="back_date" name="back_date" size="20" class="Wdate"
+                                style="width: 100%;" required="true" showname="返回时间"
+                                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})"
+                                }="">
+                        </td>
+                        <td width="10%" align="right" class="c_form_table_cg">目的地&nbsp;<font color="#ff0000">*</font>
+                        </td>
+                        <td width="20%"><input type="text" id="destination" name="destination" style="width: 100%;"
+                                required="true" showname="目的地" maxlength="50"></td>
+                    </tr>
+
+                    <tr>
+                        <td align="right" class="c_form_table_cg">申请时间&nbsp;<font color="#ff0000">*</font>
+                        </td>
+                        <td><input id="apply_time" name="apply_time" size="20" class="Wdate" style="width: 100%;"
+                                required="true" showname="申请时间"
+                                onfocus="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true,maxDate:new Date()})">
+                        </td>
+                        <td align="right" class="c_form_table_cg">办理进度&nbsp;</td>
+                        <td><select name="handle_state" id="handle_state" style="width: 100%;" showname="办理进度">
+                                <option value="">请选择</option>
+                                <option value="01">局内运转</option>
+                                <option value="02">报人事局</option>
+                                <option value="03">已批准</option>
+                                <option value="04">已备案</option>
+                                <option value="05">其他</option>
+                            </select></td>
+                        <td colspan="2" id="handleqt_" style="display:none"><input type="text" id="handleqt"
+                                name="handleqt" style="width: 93%; height: 32; margin-left: 18px;" showname="办理进度"
+                                maxlength="50"></td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td align="right" class="c_form_table_cg">出国（境）事由&nbsp;</td>
+                        <td><select name="reason" id="reason" style="width: 100%;" showname="出国（境）事由">
+                                <option value="">请选择</option>
+                                <option value="01">旅游</option>
+                                <option value="02">探亲</option>
+                                <option value="03">其他</option>
+                            </select></td>
+                        <td colspan="2" id="reasonqt_" style="display:none"><input type="text" id="reasonqt"
+                                name="reasonqt" style="width: 93%; margin-left: 18px;" showname="出国（境）事由"
+                                maxlength="250"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right" class="c_form_table_cg">出国（境）证件是否交由组织统一管理</td>
+                        <td colspan="2"><select name="cgjzj" id="cgjzj" style="width: 93%; margin-left: 18px;"
+                                showname="出国（境）证件是否交由组织统一管理">
+                                <option value="">请选择</option>
+                                <option value="01">已交</option>
+                                <option value="02">未交</option>
+                            </select></td>
+                        <td colspan="2"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <div class="btn-tool-bar" style="text-align: right;
+        margin-right: 6px;">
+            <button type="button" class="btn btn-danger btn-sm">
+                新建
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+                保存
+            </button>
+        </div>
+    </form>
+
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        // 保存信息
+        function saveInfo(formId) {
+            // 校验form里面必填字段
+            if (!Validate.CheckForm($("#" + formId)[0])) {
+                return;
+            }
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是修改详情
+            } else {
+                // 不存在，新增详情
+            }
+            // 这个是提示信息方法
+            ajaxMsg('保存成功')
+
+            //如果完成当前操作需要关闭弹框 
+            setTimeout(function () {
+                parent.layer.close(parent.layer.getFrameIndex(window.name));
+            }, 2000)
+
+        }
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>

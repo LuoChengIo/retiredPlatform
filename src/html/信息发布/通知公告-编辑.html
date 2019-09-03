@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>基本信息</title>
+    <meta name="keywords" content="离退休老同志服务管理平" />
+    <meta name="description" content="离退休老同志服务管理平" />
+    <link rel="Shortcut Icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body class="bg-white">
+    <form class="from-detail" id="infoForm">
+        <div class="btn-tool-bar" style="padding: 10px">
+            <button type="button" class="btn btn-danger btn-sm" onclick="PageGo('通知公告.html')">
+                返回
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
+                保存
+            </button>
+            <button type="button" class="btn btn-danger btn-sm">
+                发布
+            </button>
+        </div>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%" class="c_form_table" style="">
+            <tbody style="">
+                <tr>
+                    <td class="c_form_text" width="80px"><label>通知类型&nbsp;</label></td>
+                    <td colspan="3">
+                        <select name="lb2_dm" id="lb2_dm" required="true" showname="通知类型" style="WIDTH: 220px;  ">
+                            <option value="">请选择</option>
+                            <option value="1">其他事项</option>
+                            <option value="2">欢迎新成员</option>
+                            <option value="3">追忆与思念</option>
+                            <option value="4">支部工作</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="xinxifb_fbtx">
+                    <td class="c_form_text"><label>发布范围&nbsp;</label></td>
+                    <td colspan="3">
+                        <select name="fbfw" id="fbfw" style="WIDTH: 220px; "></select>
+                        <input type="button" name="btn_fbfw" id="btn_fbfw" value=">>" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')"
+                            class="btn">
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="c_form_text"><label>主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题&nbsp;</label></td>
+                    <td colspan="3">
+                        <input type="text" id="zt" name="zt" maxlength="100" style="width: 520px;" check=""
+                            required="true" showname="主题">
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td class="c_form_text"><label>参与报名&nbsp;</label></td>
+                    <td colspan="3">
+                        <input type="radio" name="is_sign_up" value="1">是 &nbsp;&nbsp;
+                        <input type="radio" name="is_sign_up" value="0" checked="checked">否
+
+                        <span style="display: none;" id="span_close_up">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"
+                                id="close_up" name="close_up" value="1" style="height: auto;"> 关闭报名&nbsp;</span>
+                    </td>
+
+                </tr>
+                <tr id="tr_ride" style="">
+                    <td class="c_form_text"><label>安排乘车&nbsp;</label></td>
+                    <td colspan="3">
+                        <input type="radio" name="is_ride" value="1">是 &nbsp;&nbsp;
+                        <input type="radio" name="is_ride" value="0" checked="checked">否
+
+                    </td>
+                </tr>
+                <tr id="tr_ride_place" style="">
+                    <td class="c_form_text"><label>乘车地点&nbsp;</label></td>
+                    <td colspan="3" id="td_ride_place">&nbsp;<span id="span_ride_place_01"><input type="checkbox"
+                                id="ride_place_dm_01" name="ride_place_dm" value="01"
+                                style="height:auto">万寿路（车库）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_02"><input type="checkbox" id="ride_place_dm_02" name="ride_place_dm"
+                                value="02" style="height:auto">背阴（北门）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_03"><input type="checkbox" id="ride_place_dm_03" name="ride_place_dm"
+                                value="03" style="height:auto">永定路（玉海园东门）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_05"><input type="checkbox" id="ride_place_dm_05" name="ride_place_dm"
+                                value="05" style="height:auto">月坛（七彩云南）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_06"><input type="checkbox" id="ride_place_dm_06" name="ride_place_dm"
+                                value="06" style="height:auto">马连道（二区北门）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_07"><input type="checkbox" id="ride_place_dm_07" name="ride_place_dm"
+                                value="07" style="height:auto">宝轩（路边）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_08"><input type="checkbox" id="ride_place_dm_08" name="ride_place_dm"
+                                value="08" style="height:auto">宏汇园（大槐树）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_09"><input type="checkbox" id="ride_place_dm_09" name="ride_place_dm"
+                                value="09" style="height:auto">宏汇园（院门口）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_10"><input type="checkbox" id="ride_place_dm_10" name="ride_place_dm"
+                                value="10" style="height:auto">万寿路（北门）&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            id="span_ride_place_11"><input type="checkbox" id="ride_place_dm_11" name="ride_place_dm"
+                                value="11" style="height:auto">月坛（门口）&nbsp;</span>
+                    </td>
+                </tr>
+                <tr id="tr_questionnaire" style="display: none">
+                    <td class="c_form_text"><label>调查问卷&nbsp;</label></td>
+                    <td colspan="3">
+                        <input type="radio" name="is_questionnaire" value="1">是 &nbsp;&nbsp;
+                        <input type="radio" name="is_questionnaire" value="0" checked="checked">否 &nbsp;&nbsp;
+
+                        <select id="id_questionnaire" name="id_questionnaire" style="WIDTH: 400px; display: none">
+                            <option value="">请选择</option>
+                            <option value="2019090323123550430723">123(2019-09-03至2019-09-12)</option>
+                            <option value="2019071011235601976585">qwweg(2019-07-01至2019-07-08)</option>
+                            <option value="2019052110404910829349">测试问卷(2019-05-20至2019-08-29)</option>
+                            <option value="2019051717211422674982">测试问卷0517(2019-05-16至2019-05-31)</option>
+                            <option value="2019051717105552413826">测试问卷(2019-05-16至2019-05-31)</option>
+                            <option value="2019032510200513118895">测试(2019-03-12至2019-07-26)</option>
+                            <option value="2019030613314585667736">关于休养调查问卷(2019-03-25至2019-04-19)</option>
+                            <option value="2019030515082735018850">1234(2019-03-05至2019-03-14)</option>
+                            <option value="2019022209231726449694">DPF(2019-02-21至2019-02-27)</option>
+                            <option value="2019021514432437792369">0215(2019-02-14至2019-02-15)</option>
+                            <option value="2018122411372636352304">12312(2018-12-11至2018-12-25)</option>
+                            <option value="2018121316495793872443">测试dfgsdfgsdfg(2018-12-13至2018-12-15)</option>
+                            <option value="2018111810155581118516">太阳(2018-10-31至2018-11-06)</option>
+                            <option value="2018111519325476163461">12(2018-11-15至2018-12-01)</option>
+                            <option value="2018102613010580799153">wew(2018-10-03至2018-10-02)</option>
+                        </select>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td id="tdfjxxlabel" class="c_form_text"><label>附件信息&nbsp;</label></td>
+                    <td colspan="3" valign="top" style="padding-top:3px;">
+                        <span id="sys_attachment_span" name="sys_attachment_span"><span spanid="att_upload_new"
+                                id="att_upload_new" name="att_upload_new">0个附件</span><input type="button"
+                                name="sys_attachment_wjsc" onclick="showup()" id="sys_attachment_wjsc"
+                                class="sys_attachment_wjsc" value="文件上传"></span>
+                    </td>
+                </tr>
+                <tr id="des">
+                    <td colspan="4" style="padding-left: 15px;">
+                        <script id="container" name="content" type="text/plain">这里写你的初始化内容</script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/plugins/ueditor/ueditor.config.js"></script>
+    <script src="../../js/plugins/ueditor/ueditor.all.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        //初始化编辑器
+        var ue = UE.getEditor('container');
+        //上传
+        function showup() {
+            PageAlert({
+                title: '上传',
+                width: '600px',
+                height: '378px',
+                url: '../上传.html'
+            }, 1);
+        }
+        // 保存信息
+        function saveInfo(formId) {
+            // 校验form里面必填字段
+            if (!Validate.CheckForm($("#" + formId)[0])) {
+                return;
+            }
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是修改详情
+            } else {
+                // 不存在，新增详情
+            }
+            // 这个是提示信息方法
+            ajaxMsg('保存成功')
+
+            //如果完成当前操作需要关闭弹框 
+            setTimeout(function () {
+                parent.layer.close(parent.layer.getFrameIndex(window.name));
+            }, 2000)
+
+        }
+        $(function () {
+            // 获取当前连接所传id
+            var parmsID = getURLString('id')
+            if (parmsID) {
+                // 存在id说明是查询详情，修改详情
+            } else {
+                // 不存在，新增详情
+            }
+        })
+    </script>
+</body>
+
+</html>
