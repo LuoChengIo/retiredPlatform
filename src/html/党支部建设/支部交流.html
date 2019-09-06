@@ -114,26 +114,26 @@
         }, {
           width: "65",
           widthUnit: "%",
-          align: 'center',
+          align: 'left',
           field: 'data1',
           title: '标题'
         }, {
           width: "15",
-          align: 'center',
+          align: 'left',
           widthUnit: "%",
           field: 'data2',
           title: '发布人'
         }, {
           width: "10",
           widthUnit: "%",
-          align: 'center',
+          align: 'left',
           field: 'data3',
           title: '发布时间'
         }, {
           title: '操作',
           width: "10",
           widthUnit: "%",
-          align: 'center',
+          align: 'left',
           formatter: actionFormatter
         }],
         onClickRow: function (row, $element) {
@@ -141,7 +141,7 @@
           PageAlert({
             title: '详细信息',
             width: '800px',
-            height: '316px',
+            height: '224px',
             url: "支部交流-详情.html?id=" + row.id
           });
         }

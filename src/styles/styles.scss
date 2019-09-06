@@ -4,6 +4,21 @@
 @import "./lib/_bootstarpUi";
 @import "./_edit";
 
+.c000{
+  color: #000;
+}
+.c111{
+  color: #111;
+}
+.c222{
+  color: #222;
+}
+.c333{
+  color: #333;
+}
+body{
+  color: #000;
+}
 // select
 select {
   &::-ms-expand {
@@ -19,6 +34,7 @@ select {
   -moz-appearance:none;
   -webkit-appearance:none;
   -ms-appearance:none;
+  color: initial;
   background: url(../images/arrow.png) no-repeat scroll right center transparent !important;
   background-image: url(../images/arrow.png) !important;
   padding-right: 14px;
@@ -188,12 +204,12 @@ select {
 
       a {
         display: block;
-        padding: 0 14px;
+        padding: 0;
         color: #2c2c2c;
         font-size: 14px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
+        // text-overflow: ellipsis;
+        // overflow: hidden;
+        // white-space: nowrap;
         font-family: Microsoft YaHei;
         font-weight: 600;
       }
@@ -221,6 +237,10 @@ select {
 
 //  登录页面样式
 .logo-page {
+  box-sizing: border-box;
+  *{
+    box-sizing: inherit;
+  }
   ::-webkit-input-placeholder {
     /* WebKit browsers */
     color: #93b7c9;
@@ -589,13 +609,13 @@ select {
   border: 1px solid #D3D3D3;
 
   .form-inline {
-    padding: 25px 15px 10px 25px;
+    padding: 25px 15px 10px 10px;
   }
 
   label {
     font-size: 14px;
     font-weight: normal;
-    color: #333;
+    color: #000;
     text-align: right;
     margin-right: 15px;
   }
@@ -631,8 +651,8 @@ table{
     background-color: #f7f7f7 !important;
   }
 
-  thead>tr>td {
-    padding: 6px 0px 7px 12px;
+  thead>tr {
+    height: 35px;
   }
 
   &.table-striped>thead>tr {
@@ -647,12 +667,24 @@ table{
     background-color: #fff;
   }
 }
-
-.bootstrap-table .fixed-table-container .table thead th .th-inner {
-  padding: 4px 0px 4px 12px;
-  line-height: 27px;
+.bootstrap-table .fixed-table-container .table thead th {
+  padding: 0 0 0 12px;
+  vertical-align: middle;
 }
-
+.bootstrap-table .fixed-table-container .table thead th .th-inner {
+  padding: 0;
+  line-height: normal;
+  overflow: initial;
+  text-overflow: initial;
+  white-space: initial;
+}
+.bootstrap-table .fixed-table-container .table .bs-checkbox{
+  padding: 1px 0 1px 5px;
+  text-align: left;
+  .th-inner {
+    padding: 0;
+  }
+}
 .bootstrap-table .fixed-table-container .table tbody tr.selected td {
   background-color: transparent;
 }
@@ -1196,6 +1228,7 @@ table.c_table_list input {
     .btn-sm {
       font-size: 12px;
       padding: 2px 8px;
+      font-family: "宋体";
     }
   }
 }
@@ -1230,6 +1263,9 @@ fieldset {
   font-weight: bold;
   color: #666;
   display: block;
+  &.c000{
+    color: #000;
+  }
 }
 
 .c666 {

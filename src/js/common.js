@@ -110,7 +110,7 @@ $(function () {
 				this.find("[navid='page_cur']").text(defaultConfig.pageNumber);
 				this.find("[navid='page_allPage']").text(defaultConfig.pagecount);
 				this.find("[navid='page_allCount']").text("共" + defaultConfig.total + "条");
-				this.find("[navid='page_pre']").click(function () {
+				this.find("[navid='page_pre']").on('click',function(){
 					var pagenum = defaultConfig.pageNumber;
 					pagenum--;
 					if (pagenum <= 0) {
@@ -121,7 +121,7 @@ $(function () {
 					defaultConfig.callback(pagenum);
 					updatePageNum(pagenum);
 				});
-				this.find("[navid='page_next']").click(function () {
+				this.find("[navid='page_next']").on('click',function(){
 					var pagenum = defaultConfig.pageNumber;
 					pagenum++;
 					if (pagenum > defaultConfig.pagecount) {
@@ -132,7 +132,7 @@ $(function () {
 					defaultConfig.callback(pagenum);
 					updatePageNum(pagenum);
 				});
-				this.find("[navid='page_goto']").bind('keypress', function (event) {
+				this.find("[navid='page_goto']").on('keypress', function (event) {
 					if (event.keyCode == "13") {
 						var pagenum = parseInt($(this).val());
 						if(isNaN(pagenum)){
@@ -162,27 +162,31 @@ var PageTable = function (table, config) {
 		$("#pagebind").find("[navid='page_cur']").text(config.pageNumber);
 		$("#pagebind").find("[navid='page_allPage']").text(pagecount);
 		$("#pagebind").find("[navid='page_allCount']").text("共" + config.totalRows + "条");
-		$("#pagebind").find("[navid='page_pre']").click(function () {
+		$("#pagebind").find("[navid='page_pre']").off().on('click',function(){
 			var pagenum = config.pageNumber;
 			pagenum--;
+			console.log('page_pre',pagenum)
 			if (pagenum <= 0) {
 				pagenum = 1;
 				alert('已到达第一页')
 				return
 			}
+			console.log('page_pre1',pagenum)
 			self.bootstrapTable('selectPage', pagenum);
 		});
-		$("#pagebind").find("[navid='page_next']").click(function () {
+		$("#pagebind").find("[navid='page_next']").off().on('click',function(){
 			var pagenum = config.pageNumber;
 			pagenum++;
+			console.log('page_next',pagenum)
 			if (pagenum > pagecount) {
 				pagenum = pagecount;
 				alert('已是最后一页')
 				return
 			}
+			console.log('page_next1',pagenum)
 			self.bootstrapTable('selectPage', pagenum);
 		});
-		$("#pagebind").find("[navid='page_goto']").bind('keypress', function (event) {
+		$("#pagebind").find("[navid='page_goto']").off().on('keypress', function (event) {
 			if (event.keyCode == "13") {
 				var pagenum = parseInt($(this).val());
 				if (pagenum <= 0) {

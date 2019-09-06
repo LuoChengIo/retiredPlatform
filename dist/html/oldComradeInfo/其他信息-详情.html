@@ -156,7 +156,7 @@
               </div>
             </td>
             <td colspan="3"><input type="radio" name="affiliations" value="1"> 是&nbsp; <input type="radio"
-                name="affiliations" value="0"> 否</td>
+                name="affiliations" value="0" checked> 否</td>
           </tr>
           <tr class="jzxx" style="display: none;">
             <td height="25" class="c_form_text">
@@ -250,6 +250,13 @@
         $('#xm').hide();
         $('#selectYh').show();
       }
+      $('input:radio[name="affiliations"]').on('change',function(){
+        if($('input:radio[name="affiliations"]:checked').val() == '1'){
+          $('.jzxx').css('display','table-row');
+        }else{
+          $('.jzxx').css('display','none');
+        }
+      })
     })
   </script>
 </body>

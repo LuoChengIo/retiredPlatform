@@ -305,8 +305,9 @@
           var element = selectArr[j];
           optionHtml+="<option value='" + element.id + "'>"+element.text+"</option>"
         }
-        if(parms_id){
-          window.opener.$("#"+parms_id).length&&window.opener.$("#"+parms_id).append(optionHtml);
+        if(parms_id&&window.opener.$("#"+parms_id).length){
+          window.opener.$("#"+parms_id).empty();
+          window.opener.$("#"+parms_id).append(optionHtml);
         }
         parms_callback &&window.opener[parms_callback]&&window.opener[parms_callback](selectArr);
         window.close();

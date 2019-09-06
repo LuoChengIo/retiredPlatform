@@ -4011,7 +4011,7 @@
 	          var halign = Utils.sprintf('text-align: %s; ', column.halign ? column.halign : column.align);
 	          var align = Utils.sprintf('text-align: %s; ', column.align);
 	          var style = Utils.sprintf('vertical-align: %s; ', column.valign);
-	          style += Utils.sprintf('width: %s; ', (column.checkbox || column.radio) && !width ? !column.showSelectTitle ? '38px' : undefined : width ? width + unitWidth : undefined);
+	          style += Utils.sprintf('width: %s; ', (column.checkbox || column.radio) && !width ? !column.showSelectTitle ? '34px' : undefined : width ? width + unitWidth : undefined);
 
 	          if (typeof column.fieldIndex === 'undefined' && !column.visible) {
 	            return;
