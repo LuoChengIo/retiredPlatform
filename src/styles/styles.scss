@@ -617,7 +617,7 @@ select {
     font-weight: normal;
     color: #000;
     text-align: right;
-    margin-right: 15px;
+    margin-right: 10px;
   }
 
   .form-group {
@@ -633,9 +633,6 @@ select {
     border-color: #ccc;
     height: 34px;
   }
-}
-table{
-  box-sizing: content-box;
 }
 .table-list {
   margin-top: 10px;
@@ -739,7 +736,11 @@ table{
   }
 
 }
-
+.fw-bold{
+  .c_form_text {
+    font-weight: bold
+  }
+}
 .c_form_text {
   text-align: right;
   padding-right: 5px;

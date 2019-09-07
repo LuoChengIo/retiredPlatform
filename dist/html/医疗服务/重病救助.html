@@ -61,7 +61,7 @@
                 <input type="text" class="form-control Wdate" name="" onclick="WdatePicker()" placeholder="时间止">
               </div>
               <div>
-          <div>
+          <div class="form-group">
             <button type="button" class="btn btn-danger btn-sm">
               查询
             </button>
@@ -90,10 +90,10 @@
     function showDetailInfo(url) {
       PageAlert({
         title: '详细信息',
-        width: '800px',
-        height: '550px',
+        width: '800',
+        height: '550',
         url: url
-      });
+      },1);
     }
 
     function addClick() {
@@ -127,37 +127,37 @@
           checkbox: true,
           visible: true
         }, {
-          width: "10",
+          width: "15",
           widthUnit: "%",
           align: 'center',
           field: 'data1',
           title: '姓名'
         }, {
-          width: "10",
+          width: "15",
           align: 'center',
           widthUnit: "%",
           field: 'data2',
           title: '审核时间'
         }, {
-          width: "10",
+          width: "25",
           widthUnit: "%",
           align: 'center',
           field: 'data3',
           title: '救助原因'
         }, {
-          width: "10",
+          width: "15",
           widthUnit: "%",
           align: 'center',
           field: 'data4',
           title: '救助金额'
         }, {
-          width: "10",
+          width: "15",
           widthUnit: "%",
           align: 'center',
           field: 'data5',
           title: '发放时间'
         }, {
-          width: "10",
+          width: "15",
           widthUnit: "%",
           align: 'center',
           field: 'data6',

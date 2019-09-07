@@ -52,11 +52,11 @@
       <div class="serach-content collapse" id="collapseSerach">
         <form class="form-inline" style="max-width: 950px;">
           <div class="form-group">
-            <label style="width: 100px;">老同志姓名:</label>
+            <label style="width: 96px;">老同志姓名:</label>
             <input type="text" class="form-control" name="cx_xm" placeholder="姓名">
           </div>
           <div class="form-group">
-            <label style="width: 100px;">是否看望:</label>
+            <label style="width: 96px;">是否看望:</label>
             <select class="form-control" name="cx_tlx" id="cx_tlx">
               <option value="">请选择</option>
               <option value="0">退休</option>
@@ -64,26 +64,26 @@
             </select>
           </div>
           <div class="form-group">
-            <label style="width: 100px;">住院状态:</label>
+            <label style="width: 96px;">住院状态:</label>
             <select class="form-control">
               <option value="">请选择</option>
             </select>
           </div>
           <div class="form-group">
-            <label style="width: 100px;">现享受待遇:</label>
+            <label style="width: 96px;">现享受待遇:</label>
             <select class="form-control" name="">
               <option value="">请选择</option>
             </select>
           </div>
           <div class="form-group">
-            <label style="width: 100px;">入院时间范围:</label>
-            <input type="text" class="form-control Wdate" name="" onclick="WdatePicker()" placeholder="时间起">
-            <input type="text" class="form-control Wdate" name="" onclick="WdatePicker()" placeholder="时间止">
+            <label style="width: 96px;">入院时间范围:</label>
+            <input type="text" style="width: 100px;" class=" Wdate" name="" onclick="WdatePicker()" placeholder="时间起">
+            <input type="text" style="width: 100px;" class="Wdate" name="" onclick="WdatePicker()" placeholder="时间止">
           </div>
           <div class="form-group">
-            <label style="width: 100px;">出院时间范围:</label>
-            <input type="text" class="form-control Wdate" name="" onclick="WdatePicker()" placeholder="时间起">
-            <input type="text" class="form-control Wdate" name="" onclick="WdatePicker()" placeholder="时间止">
+            <label style="width: 96px;">出院时间范围:</label>
+            <input type="text" style="width: 100px;" class=" Wdate" name="" onclick="WdatePicker()" placeholder="时间起">
+            <input type="text" style="width: 100px;" class=" Wdate" name="" onclick="WdatePicker()" placeholder="时间止">
           </div>
           <div>
             <button type="button" class="btn btn-danger btn-sm">
@@ -114,10 +114,10 @@
     function showDetailInfo(url) {
       PageAlert({
         title: '详细信息',
-        width: '800px',
-        height: '550px',
+        width: '898',
+        height: '600',
         url: url
-      });
+      },1);
     }
 
     function addClick() {

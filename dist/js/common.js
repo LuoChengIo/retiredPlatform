@@ -229,6 +229,8 @@ var PageTable = function (table, config) {
 var PageAlert = function (config, flg) {
 	// 是否新开窗口
 	if (flg) {
+		config.width = parseInt(config.width)||0;
+		config.height = parseInt(config.height)||0;
 		var l = (screen.availWidth - config.width) / 2;
 		var t = (screen.availHeight - config.height) / 2;
 		var str = 'width=' + config.width + ',height=' + config.height + ',top=' + t + ',left=' + l + ',scrollbars=yes,toolbar=no, menubar=no, location=no, status=no'
@@ -286,4 +288,9 @@ function ajaxMsg(msg) {
 
 var PageGo = function (url) {
 	location.href = url;
+	if (event.stopPropagation){
+		event.stopPropagation(); 
+	}else{
+		event.cancelBubble=true;
+	}
 }

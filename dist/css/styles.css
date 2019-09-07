@@ -1155,7 +1155,7 @@ select::-ms-expand {
   font-weight: normal;
   color: #000;
   text-align: right;
-  margin-right: 15px; }
+  margin-right: 10px; }
 
 .serach-content .form-group {
   margin-bottom: 10px; }
@@ -1168,10 +1168,6 @@ select::-ms-expand {
 .serach-content .Wdate {
   border-color: #ccc;
   height: 34px; }
-
-table {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box; }
 
 .table-list {
   margin-top: 10px;
@@ -1254,6 +1250,9 @@ table {
 
 .all-detiel td {
   min-width: 122px; }
+
+.fw-bold .c_form_text {
+  font-weight: bold; }
 
 .c_form_text {
   text-align: right;
