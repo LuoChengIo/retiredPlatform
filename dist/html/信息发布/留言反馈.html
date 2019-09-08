@@ -1,0 +1,104 @@
+<!-- 老同志信息-基础信息 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>留言反馈</title>
+    <meta name="keywords" content="离退休老同志服务管理平">
+    <meta name="description" content="离退休老同志服务管理平">
+    <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body class="min-hp100 bg-white">
+    <div>
+        <!-- 功能区域 -->
+        <div class="query-content">
+            <div class="mb10">
+                <!-- 分页 -->
+                <div id="pagebind" class="layui-box layui-laypage layui-laypage-molv r">
+                    <span navid="page_cur" class="c_table_list_nav_text_span">1</span>
+                    <span class="c_table_list_nav_text_span">/</span>
+                    <span class="c_table_list_nav_text_span" navid="page_allPage">1</span>
+                    <span class="c_table_list_nav_text_span">&nbsp;页&nbsp;</span>
+                    <span class="c_table_list_nav_text_span" navid="page_allCount">共0 条 </span>
+                    <span navid="page_pre" class="layui-laypage-prev poi">上一页</span>
+                    <span navid="page_next" class="layui-laypage-next poi">下一页</span>
+                    <span class="layui-laypage-skip">到第<input navid="page_goto" min="1" value="1" class="layui-input"
+                            type="text">页
+                    </span>
+                </div>
+                <!-- 分页 end-->
+            </div>
+        </div>
+        <!-- 表格区域 -->
+        <table id="table" class="table-list table-hover table-striped table-bordered"></table>
+        <div class="query-content">
+            <div class="mb10">
+                <button type="button" class="btn btn-danger btn-sm">
+                    保存
+                </button>
+            </div>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td align="center">请录入留言反馈内容：</td>
+                </tr>
+                <tr>
+                    <td align="center"><textarea required="true" showname="留言内容" id="msgnr" name="msgnr"
+                            style="width:680px;" rows="4"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 公共js start -->
+    <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="../../js/plugins/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../js/libs.min.js"></script>
+    <script src="../../js/plugins/layer/layer.js"></script>
+    <script src="../../js/common.js"></script>
+    <!-- 公共js end -->
+    <script>
+        function clear() {
+            $("#is_read_search").val("")
+        }
+        $(function () {
+            PageTable($("#table"), {
+                url: 'table.json',
+                columns: [{
+                    width: 14,
+                    widthUnit: "%",
+                    align: 'left',
+                    field: 'data1',
+                    title: '留言人'
+                }, {
+                    width: 65,
+                    widthUnit: "%",
+                    align: 'left',
+                    field: 'data1',
+                    title: '留言内容'
+                }, {
+                    width: 20,
+                    widthUnit: "%",
+                    align: 'left',
+                    field: 'data1',
+                    title: '留言时间'
+                }],
+                onClickRow: function (row, $element) {
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -21,7 +21,7 @@
             <button type="button" class="btn btn-danger btn-sm">
                 新建
             </button>
-            <button type="button" class="btn btn-danger btn-sm">
+            <button type="button" style="display: none" class="btn btn-danger btn-sm">
                 复制
             </button>
             <button type="button" class="btn btn-danger btn-sm">
@@ -29,6 +29,9 @@
             </button>
             <button type="button" class="btn btn-danger btn-sm" onclick="saveInfo('infoForm')">
                 保存
+            </button>
+            <button type="button" onclick="liuyan()" class="btn btn-danger btn-sm">
+                留言反馈(3)条
             </button>
         </div>
         <table border="0" cellspacing="0" cellpadding="0" width="98%" class="c_form_table" align="center">
@@ -78,6 +81,7 @@
                                 id="sys_attachment_publish_sltsc" onclick="showup()" class="sys_attachment_wjsc"
                                 value="上传缩略图">
                         </span>
+                        <span id="pic_sm">注意：请上传宽高比8:5图片，效果最佳。</span>
                     </td>
                 </tr>
 
@@ -112,6 +116,14 @@
                 width: '600px',
                 height: '378px',
                 url: '../上传.html'
+            }, 1);
+        }
+        function liuyan(){
+            PageAlert({
+                title: '留言反馈',
+                width: '860px',
+                height: '440px',
+                url: './留言反馈.html'
             }, 1);
         }
         //查看缩略图

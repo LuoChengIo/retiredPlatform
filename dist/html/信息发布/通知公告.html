@@ -29,10 +29,10 @@
                     <img src="../../images/delete.png" alt="" srcset="">
                     删除
                 </button>
-                <button type="button" class="btn btn-danger btn-sm">
+                <button type="button" class="btn btn-danger btn-sm" onclick="showalert(0)">
                     查看阅读状态
                 </button>
-                <button type="button" class="btn btn-danger btn-sm">
+                <button type="button" class="btn btn-danger btn-sm" onclick="showalert(1)">
                     查看报名情况
                 </button>
                 <button type="button" class="btn btn-danger btn-sm" data-collapse="collapseSerach">
@@ -104,7 +104,40 @@
         function addClick() {
             PageGo('通知公告-编辑.html');
         }
-
+        // 新增
+        function showClick() {
+            PageGo('通知公告-查看.html');
+        }
+        function showalert(type) {
+            var checkboxList = $('#table').bootstrapTable('getSelections');
+            if (!checkboxList.length) {
+                alert('请先选择要查看的通知');
+                return;
+            }
+            if (checkboxList.length > 1) {
+                alert('选择的通知数不能大于1！');
+                return;
+            }
+            //传id
+            if (type) {
+                goshow('通知公告-查看报名.html?id=1');
+            } else {
+                goshow('通知公告-查看阅读.html?id=1');
+            }
+        }
+        function goshow(url) {
+            PageAlert({
+                title: '查看',
+                width: '1000px',
+                height: '580px',
+                url: url
+            }, 1);
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
         function BaoMing() {
             PageAlert({
                 title: '报名',
@@ -112,10 +145,10 @@
                 height: '480px',
                 url: '报名.html'
             }, 1);
-            if (event.stopPropagation){
-                event.stopPropagation(); 
-            }else{
-                event.cancelBubble=true;
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
             }
         }
         // 删除
@@ -123,6 +156,7 @@
             var checkboxList = $('#table').bootstrapTable('getSelections');
             if (!checkboxList.length) {
                 alert('请先选择要删除的数据');
+                return;
             }
             console.log(checkboxList)
             //ajax
@@ -192,7 +226,7 @@
                 }],
                 onClickRow: function (row, $element) {
                     // 点击行事件，
-                    addClick()
+                    showClick()
                 }
             })
         });
