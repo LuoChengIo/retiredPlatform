@@ -181,8 +181,31 @@
     <script src="../../js/common.js"></script>
     <!-- 公共js end -->
     <script>
-
-
+        function delTr(obj){
+            var tr=$(obj).parent('td').parent('tr');
+            $(tr).remove();
+            
+            var xxs = $("#xxs").val();
+            xxs = parseInt(xxs)-1;
+            $("#xxs").val(xxs);
+        }
+        function addTr(obj){
+            var xxs = $("#xxs").val();
+            xxs = parseInt(xxs)+1;
+            var tr=$(obj).parent('td').parent('tr');
+            var trHtml = '<tr class="xuanxiang">';
+                trHtml+='<td height="25" class="c_form_text">';
+                trHtml+='<div align="right">选项'+xxs+'：</div>';
+                trHtml+='</td>';
+                trHtml+='<td>';
+                trHtml+='<input type="text" name="xxmc" id="xxmc" style="width:80%;" maxlength="50"  value="" />';
+                trHtml+='&nbsp;<font color="#ff0000">*</font>';
+                trHtml+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="delTr(this)" style="color: #d70000;cursor:pointer;">删除</a>';
+                trHtml+='</td>';
+                trHtml+='</tr>';	
+            $(tr).before(trHtml);
+            $("#xxs").val(xxs);
+        }
         $(function () {
             // 获取当前连接所传id
             var parmsID = getURLString('id')
@@ -192,6 +215,7 @@
                 // 不存在，新增详情
             }
         })
+        
     </script>
 </body>
 
