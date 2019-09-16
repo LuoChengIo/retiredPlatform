@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="../../js/plugins/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../js/plugins/bootstrap-table/bootstrap-table.min.css" />
     <link rel="stylesheet" href="../../css/styles.css" />
+    <style>
+        .c_form_table td div,
+        .c_form_text {
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body class="bg-white">
@@ -66,7 +72,7 @@
                     <tr>
                         <td class="c_form_text" width="20%"> 第3题： </td>
                         <td> 你叫什么？&nbsp;&nbsp;(单选) <input type="button"
-                            onclick="deleteTm(&quot;2019090323201137775953&quot;)" value="删除题目"></td>
+                                onclick="deleteTm(&quot;2019090323201137775953&quot;)" value="删除题目"></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -169,7 +175,7 @@
             </form>
         </fieldset>
     </div>
-
+   
     <!-- 公共js start -->
     <script src="../../js/plugins/jquery-3.3.1.min.js"></script>
     <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
@@ -181,28 +187,28 @@
     <script src="../../js/common.js"></script>
     <!-- 公共js end -->
     <script>
-        function delTr(obj){
-            var tr=$(obj).parent('td').parent('tr');
+        function delTr(obj) {
+            var tr = $(obj).parent('td').parent('tr');
             $(tr).remove();
-            
+
             var xxs = $("#xxs").val();
-            xxs = parseInt(xxs)-1;
+            xxs = parseInt(xxs) - 1;
             $("#xxs").val(xxs);
         }
-        function addTr(obj){
+        function addTr(obj) {
             var xxs = $("#xxs").val();
-            xxs = parseInt(xxs)+1;
-            var tr=$(obj).parent('td').parent('tr');
+            xxs = parseInt(xxs) + 1;
+            var tr = $(obj).parent('td').parent('tr');
             var trHtml = '<tr class="xuanxiang">';
-                trHtml+='<td height="25" class="c_form_text">';
-                trHtml+='<div align="right">选项'+xxs+'：</div>';
-                trHtml+='</td>';
-                trHtml+='<td>';
-                trHtml+='<input type="text" name="xxmc" id="xxmc" style="width:80%;" maxlength="50"  value="" />';
-                trHtml+='&nbsp;<font color="#ff0000">*</font>';
-                trHtml+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="delTr(this)" style="color: #d70000;cursor:pointer;">删除</a>';
-                trHtml+='</td>';
-                trHtml+='</tr>';	
+            trHtml += '<td height="25" class="c_form_text">';
+            trHtml += '<div align="right">选项' + xxs + '：</div>';
+            trHtml += '</td>';
+            trHtml += '<td>';
+            trHtml += '<input type="text" name="xxmc" id="xxmc" style="width:80%;" maxlength="50"  value="" />';
+            trHtml += '&nbsp;<font color="#ff0000">*</font>';
+            trHtml += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="delTr(this)" style="color: #d70000;cursor:pointer;">删除</a>';
+            trHtml += '</td>';
+            trHtml += '</tr>';
             $(tr).before(trHtml);
             $("#xxs").val(xxs);
         }
@@ -215,7 +221,7 @@
                 // 不存在，新增详情
             }
         })
-        
+
     </script>
 </body>
 
