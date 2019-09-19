@@ -31,8 +31,8 @@
               <span id="text_xm">张政达</span>
               <!-- 新增状态显示这个 -->
               <div id="selectYh" stule="width: 180px;" style="display: none;">
-                <select name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></select>
-                <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('../用户选择控件.html?multiple=false&id=sys_fsfw_lb&callback=selectUserAction')">
+                <input name="sys_fsfw_lb" id="sys_fsfw_lb" style="width:73px"></input>
+                <button type="button" class="btn btn-danger btn-sm f12" onclick="openWinSelect('./住院人员选择.html?id=sys_fsfw_lb&callback=selectUserAction')">
                   &gt;&gt;
                 </button>
               </div>
@@ -185,6 +185,10 @@
       setTimeout(function () {
         parent.layer.close(parent.layer.getFrameIndex(window.name));
       }, 2000);
+    }
+    // 用户选择回调事件
+    function selectUserAction(row){
+      console.log(row)
     }
     $(function () {
       // 获取当前连接所传id
