@@ -298,9 +298,9 @@
           }
         }
         var optionHtml = ''
-        // if(selectArr.length>1){
-        //   optionHtml='<option value="" >已选择'+selectArr.length+'个</option>'
-        // }
+        if(selectArr.length>1){
+          optionHtml='<option value="" >已选择'+selectArr.length+'个</option>'
+        }
         for (var j = 0; j < selectArr.length; j++) {
           var element = selectArr[j];
           optionHtml+="<option value='" + element.id + "'>"+element.text+"</option>"
