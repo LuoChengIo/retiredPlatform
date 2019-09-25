@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>请选择</title>
+  <meta name="keywords" content="离退休老同志服务管理平台">
+  <meta name="description" content="离退休老同志服务管理平台">
+  <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../js/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../js/plugins/bootstrap-table/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../js/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/skin.css">
+  <style>
+    .btn{
+      margin:1px 1px 0 0;
+      padding:3px 10px 3px 10px;
+      font-size:12px;
+      padding:2px 3px 1px 3px\9;
+      padding-left:5px\9;
+      padding-right:5px\9;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <table width="700" align="center">
+    <tr>
+      <td>
+        <div id="c_tab">
+          <ul>
+            <li  style="display: none" id="tab_bmyh"><a href="#" onClick="choose('s_td_7')"><span>部门人员</span></a></li>
+            <li style="display: none" id="tab_bm"><a href="#" onClick="choose('s_td_1')"><span>部门</span></a></li>
+            <li  style="display: none" id="tab_gw"><a href="#"  onClick="choose('s_td_2')"><span>岗位</span></a></li>
+            <li  style="display: none" id="tab_yh"><a href="#" onClick="choose('s_td_3')"><span>人员</span></a></li>
+            <li  style="display: none" id="tab_js"><a href="#" onClick="choose('s_td_4')"><span>角色</span></a></li>
+            <li  style="display: none" id="tab_zdy"><a href="#" onClick="choose('s_td_5')"><span>自定义组</span></a></li>
+            <li   id="tab_cx"><a href="#" onClick="choose('s_td_6')"><span>查询</span></a></li>
+          </ul>
+        </div>
+        <div id="bmyh" style="display:none;clear: both;">
+          <table width="100%">
+            <tr>
+              <td width="302">
+                <div
+                  style="height:270px;width:350px; overflow-y:auto;overflow-x:auto;border-style:inset;border-width:thin;background-color:white">
+                  <ul id="bmyh_tree" class="ztree" style="width:290px;"></ul>
+                </div>
+                <div style="height:25px;width:350px;"></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="bm" style="display:none;clear: both;">
+          <table width="100%">
+            <tr>
+            <td width="302">
+              <div style="height:270px;width:350px; overflow-y:auto;overflow-x:auto;border-style:inset;border-width:thin;background-color:white">
+                  <ul id="dept_tree" class="ztree" style="width:290px;">
+                  </ul>
+              </div>
+              <div style="height:25px;width:350px;"></div>
+            </td>
+            </tr>
+          </table>
+        </div>
+        <div id="yh" style="display:none;clear: both;">
+          <table width="100%">
+            <tr>
+              <td width="302">
+                <div
+                  style="height:270px;width:350px; overflow-y:auto;overflow-x:auto;border-style:inset;border-width:thin;background-color:white">
+                  <ul id="yh_tree" class="ztree" style="width:290px;"></ul>
+                </div>
+                <div style="height:25px;width:350px;"></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="js" style="display:none;clear: both;">
+          <table width="100%">
+            <tr>
+              <td width="302">
+                <div
+                  style="height:270px;width:350px; overflow-y:auto;overflow-x:auto;border-style:inset;border-width:thin;background-color:white">
+                  <ul id="js_tree" class="ztree" style="width:290px;"></ul>
+                </div>
+                <div style="height:25px;width:350px;"></div>
+              </td>
+
+            </tr>
+          </table>
+        </div>
+        <div id="gw" style="display:none;clear: both;">
+          <table width="100%">
+            <tr>
+              <td width="302">
+                <div
+                  style="height:270px;width:350px; overflow-y:auto;overflow-x:auto;border-style:inset;border-width:thin;background-color:white">
+                  <ul id="gw_tree" class="ztree" style="width:290px;"></ul>
+                </div>
+                <div style="height:25px;width:350px;"></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="zdy" style="display:none;clear: both;">
+          <table width="100%">
+            <tr>
+              <td width="302">
+                <div
+                  style="height:270px;width:350px; overflow-y:auto;overflow-x:auto;border-style:inset;border-width:thin;background-color:white">
+                  <ul id="zdy_tree" class="ztree" style="width:290px;"></ul>
+                </div>
+                <div style="height:25px;width:350px;">
+                  &nbsp;<a href="#" onclick="yhzwh()">
+                    <font color=black>维护自定义组</font>
+                  </a> |
+                  <a href="#" onclick="shuaxin()">
+                    <font color=black>刷新自定义组</font>
+                  </a></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="cx" style="display:none;clear: both;">
+          <table width="100%">
+            <tr>
+              <td width="302">
+                <div
+                  style="height:270px;width:350px; overflow-y:auto;overflow-x:auto;border-style:inset;border-width:thin;background-color:white">
+                  <div id="div_query_tree" class="c_table_bar_content">
+                    <form id="form_query">
+                      <table width="100%">
+                        <tr>
+                          <td>
+                            <div class="c_search">
+                              <input type="textbox" id="txtSearchKey" name="key" class="c_search_inputbox"
+                                placeholder="请输入名称或拼音" style="width:150px" />
+                            </div>
+                            <div class="c_search_btn"></div>
+                          </td>
+                        </tr>
+                      </table>
+                    </form>
+                  </div>
+                  <div id="div_list" class="c_table_bar_content">
+                    <div id="div_table_list">
+                      <div class="c_div_table_list">
+                        <!--列表区域起，列表要显示10条记录-->
+                        <!-- InstanceBeginEditable name="table_list" -->
+                        <table id="table_list" class="c_table_list" width="100%">
+                          <thead id="table_list_thead">
+                            <tr>
+                              <td width="1%" style="display:none">guid</td>
+                              <td width="28%" height="22" class="lieb">类型</td>
+                              <td width="68%" height="22" class="lieb">名称</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr style="display:none">
+                              <!--模板行-->
+                              <td style="display:none">{lxid},{guid}</td>
+                              <td style="cursor:hand;">{lxmc}</td>
+                              <td style="cursor:hand;">{mc}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <!-- InstanceEndEditable -->
+                        <!--列表区域止-->
+                      </div>
+                    </div>
+                  </div>
+                  <div id="div_show" class="c_table_bar_content">
+                  </div>
+                </div>
+                <div style="height:25px;width:350px;"></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+      <td>
+        <div id="c_tab">
+          <ul>
+            <li><a href="#"><span>已选择用户</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <table width="100%">
+            <tr>
+              <td width="302">
+                <div
+                  style="height:270px;width:342px; overflow-y:auto;overflow-x:auto;border-top-style:inset;border-top-width:thin;border-bottom-style:inset;border-bottom-width:thin;border-right-style:inset;border-right-width:thin;background-color:white">
+                  <ul id="xz" showName="已选项" size="21" style="WIDTH:290px;list-style:none;margin:0px;"></ul>
+
+                </div>
+                <div style="height:25px;width:340px;">&nbsp;&nbsp;<a href="#"
+                    onclick="removeAllSelected();">清空选择人员</a>&nbsp;&nbsp;<a href="#" id="yxzgs">已选择个数:<font id="yznum"
+                      color="black" style="font-weight:bold;">0</font></a></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div id="div1" align="center" style="width:700;height:35px;">
+    <input type="button" name="btn_confirm" checked onClick="confirmSelect()" value="确认选择" class="btn"
+      style="height:26px;"></input></div>
+  <!-- 公共js start -->
+  <script src="../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../js/libs.min.js"></script>
+  <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../js/plugins/echarts.min.js"></script>
+  <script src="../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../js/plugins/layer/layer.js"></script>
+  <script src="../js/plugins/zTree_v3/js/jquery.ztree.all.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/ict.js"></script>
+  <!-- 公共js end -->
+  <script>
+    var isOrg = true;  //标识是否组织目录的数据
+    var searchUrl = '/ryxz/default.do?method=sel_pubSearch';  //查询URL
+    var sys_ctx = "";
+    var isAsnycLoad = true; //用户树是否异步加载
+    var gw_flag = false; //是否初始化岗位树
+    var yh_flag = false; //是否初始化用户树,当非异步加载
+    var js_flag = false; //是否初始化角色树
+    var zdy_flag = false; //是否初始化自定义组树
+    var renew_yxz = true;	//是否需要更新已选择个数  目前只是自定义组需要 add 201308
+    var openry = false; //选择角色、岗位是否展开到人员 add 201311
+    var bmyhflag =getURLString('showsingle')? '0':'1'; ////1 部门、用户选择合并为1个 
+    var paramShow = getURLString('show');
+    var sys_fsfw = getURLString('fbfw_value');
+    var sys_fsfw_lb = getURLString('sys_fsfw_lb');
+    var paramShowArr = paramShow.split(',');
+    var defaultTab = getURLString('defaultTab');
+    function getBrowserType() {
+      var oType = "";
+      if ($.browser.msie) {
+        oType = "IE";
+      }
+      return oType;
+    }
+    var names = "", ids = "";//选择的所有选项的名称和id
+    
+
+    var bm_tree;
+    var gw_tree;
+    var yh_tree;
+    var bmyh_tree;
+    var js_tree;
+    var zdy_tree;
+
+    function szbjs(liid) {
+      $("#xz li").each(function () {
+        var curid = this.id;
+        if (curid == liid) {
+          $(this).addClass("bz");
+        } else {
+          $(this).removeClass("bz");
+        }
+      });
+    }
+    function qxxz(type, nodeid) {
+      // document.getElementById(type+"_"+nodeid).style="border-bottom: 1px solid #ffc; list-style: none; display: inline;";
+      var tree = null;
+      if (type == 'bm' && bmyhflag == '0') {
+        tree = bm_tree;
+      }
+      if (type == 'gw') { tree = gw_tree; }
+      if ((type == 'yh' || type == 'txl') && bmyhflag == '0') { tree = yh_tree; }
+      if (bmyhflag == '1') { tree = bmyh_tree; }
+      if (type == 'js') { tree = js_tree; }
+      if (type == 'zdy' || type == 'user') { tree = zdy_tree; }
+      var typeid = nodeid.replace(type, '');
+      //if (isOrg) { 
+      $("#xz li[id='" + type + typeid + "']").remove();
+      if (renew_yxz) {
+        $("#yznum").html($("#xz li").length);
+      }
+      //}else{
+      //	$("#xz li[id='"+typeid+"']").remove();
+      //}    
+      // $("#xz li[id='"+type+nodeid+"']").addClass("bz");
+      var node = '';
+      node = tree.getNodeByParam("id", typeid, null);
+      if (type == 'gw') {
+        node = gw_tree.getNodeByParam("id", typeid, null);
+      }
+      if (node) {
+        tree.checkNode(node, false, false, false);
+        if (bmyhflag == '1') {
+          var node_children = tree.getNodesByParamFuzzy("sjid", node.id, node); //去除子节点
+          if (node_children.length > 0) {
+            for (var i = 0; i < node_children.length; i++) {
+              tree.checkNode(node_children[i], false, false, false);
+            }
+          }
+        }
+      }
+    }
+
+    function add_treeNode(tree, type, prefix, treenode, selectname, bmshow) {
+      var node = treenode;
+      if (node.lx_dm != 204 && type == 'yh') {
+        return;
+      }
+      found = false;
+      $("#xz li").each(function () {
+        val = this.id;
+
+        if (type == 'user' || type == 'yh' || type == 'txl') {
+          val = val.replace('user', '').replace('yh', '').replace('txl', '');
+        } else {
+          val = val.replace(type, '');
+        }
+
+        if (val == node.id || (val == node.yhid && type == 'yh') || (val == node.yhid && type == 'txl')) {
+          found = true;
+          return;
+        }
+      });
+      if (!found) {
+        var text = node.mc;
+        var optionid = node.id;
+        if (isOrg) {
+          text = prefix + text;
+          if (bmshow || type == 'user') {
+            text += '(' + node.bmmc + ')';
+          }
+          if (type == 'bm' && node.sjbmmc) {
+            text += '(' + node.sjbmmc + ')';
+          }
+          if (type == 'zdy' && node.sjbmmc && node.sjbmmc != 'null') {
+            text += '(' + node.sjbmmc + ')';
+          }
+          if (type == 'yh') {
+            optionid = node.yhid;
+          }
+          optionid = type + optionid;
+        } else {
+          if (type == 'yh' || type == 'txl') {
+            optionid = node.yhid;
+          }
+          if (type == 'txz') {
+            text = prefix + text;
+          }
+          optionid = type + optionid;
+        }
+
+        //var opstr="<option value='"+optionid+"'>" +text+"</option>";
+        var opstr = "<li  onclick='szbjs(this.id);qxxz(\"" + type + '","' + node.id + "\")' id='" + optionid + "'><a style='cursor:pointer;'>" + text + "</a></li>";
+
+        $(opstr).appendTo("#xz");
+
+        if (renew_yxz) {
+          $("#yznum").html($("#xz li").length);
+        }
+      }
+      /* var optionid=treenode.id;
+      var text = prefix + treenode.mc;
+      if(bmshow){
+         text += '(' + treenode.bmmc + ')';
+       }
+        //var opstr="<li  id='"+type+"_"+optionid+"' ondblclick='qxxz(\""+type+'","'+optionid+"\")'>" +text+"</li>";
+     var opstr="<li   id='"+type+optionid+"' ondblclick='qxxz(\""+type+'","'+optionid+"\")'>" +text+"</li>";
+      
+      $(opstr).appendTo("#"+selectname);
+      */
+
+
+    }
+    function removeNode(treenode, selectname, type) {
+
+      var optionid = treenode.id;
+
+      $("#" + selectname + " li[id='" + type + optionid + "']").remove();
+
+      //$("#"+selectname+" option[value='"+optionid+"']").remove(); 
+      if (renew_yxz) {
+        $("#yznum").html($("#xz li").length);
+      }
+    }
+    function add_treeNodes(tree, type, prefix, bmshow) {
+      var val = "";
+      var found = false;
+
+      var treeNodes = tree.getSelectedNodes();
+      //var treeNodes = tree.getCheckedNodes(true);
+      $.each(treeNodes, function (n, node) {
+        if (node.lx_dm != 204 && type == 'yh') {
+          return;
+        }
+        found = false;
+        $("#xz option").each(function () {
+          val = $(this).val();
+
+          if (type == 'user' || type == 'yh') {
+            val = val.replace('user', '').replace('yh', '');
+          } else {
+            val = val.replace(type, '');
+          }
+
+          if (val == node.id || (val == node.yhid && type == 'yh')) {
+            found = true;
+            return;
+          }
+        });
+        if (!found) {
+          var text = node.mc;
+          var optionid = node.id;
+          if (isOrg) {
+            text = prefix + text;
+            if (bmshow) {
+              text += '(' + node.bmmc + ')';
+            }
+            if (type == 'yh') {
+              optionid = node.yhid;
+            }
+            optionid = type + optionid;
+          } else {
+            if (type == 'yh') {
+              optionid = node.yhid;
+            }
+          }
+
+          var opstr = "<option value='" + optionid + "'>" + text + "</option>";
+          $(opstr).appendTo("#xz");
+
+
+        }
+      });
+    }
+
+    function add_zdytreeNodes() {
+
+      var val = "";
+      var found = false;
+
+      var treeNodes = zdy_tree.getSelectedNodes();
+      $.each(treeNodes, function (n, node) {
+        found = false;
+        $("#xz option").each(function () {
+          val = $(this).val().replace('user', '').replace('yh', '').replace('zdy', '');
+          if (val == node.id) {
+            found = true;
+            return;
+          }
+        });
+        if (!found) {
+          var type = "user";
+          var prefix = "(用户)";
+          if (node.sjid == '0') {
+            type = "zdy";
+            prefix = "(用户组)";
+          }
+
+          var text = prefix + node.mc;
+
+          var opstr = "<option value='" + type + node.id + "'>" + text + "</option>";
+          $(opstr).appendTo("#xz");
+        }
+      });
+    }
+
+    function delSelected(tree, type) {
+      $("#xz option:selected").each(function () {
+        var node = tree.getNodeByParam("id", $(this).val().replace(type, ''));
+
+        if (node) {
+          tree.cancelSelectedNode(node);
+        }
+        $(this).remove();
+      });
+
+    }
+
+    function del_zdySelected() {
+      $("#xz option:selected").each(function () {
+        var node = zdy_tree.getNodeByParam("id", $(this).val().replace('zdy', '').replace('user', '').replace('yh', ''));
+        if (node) {
+          zdy_tree.cancelSelectedNode(node);
+        }
+        $(this).remove();
+      });
+    }
+
+    function bmTreeOnDblClick(event, treeId, treeNode) {
+      if (treeNode.id == 'checkAll') {
+        checkAll(bm_tree, treeNode, 'bm');
+        return;
+      }
+
+      if (treeNode.checked) {
+
+        add_treeNode(bm_tree, "bm", "(部门)", treeNode, "xz");
+
+      } else {
+        // bm_tree.getNodeByTId("dept_tree_1");
+        bm_tree.checkNode(bm_tree.getNodeByTId("dept_tree_1"), false, false, false);//改变全选按钮状态
+        removeNode(treeNode, "xz", "bm");
+      }
+
+    }
+
+    function bmTreeOnChecked(event, treeId, treeNode) {
+      // alert(treeNode.id);
+      if (treeNode.id == 'checkAll') {//全选
+        treeNode.checked = !(treeNode.checked);
+        checkAll(bm_tree, treeNode, 'bm');
+        return;
+      }
+
+      if (treeNode.checked) {
+        bm_tree.checkNode(bm_tree.getNodeByTId("dept_tree_1"), false, false, false);
+        bm_tree.checkNode(treeNode, false, false, false);
+        removeNode(treeNode, "xz", "bm");
+      } else {
+        bm_tree.checkNode(treeNode, true, false, false);
+        add_treeNode(bm_tree, "bm", "(部门)", treeNode, "xz");
+      }
+    }
+
+    function gwTreeOnDblClick(event, treeId, treeNode) {
+      //add_treeNodes(gw_tree, "gw", "(岗位)");
+      if (treeNode.id == 'checkAll') {
+        checkAll(gw_tree, treeNode, 'gw');
+        return;
+      }
+      if (treeNode.checked) {
+        if (openry) {
+          getYhListByGw(treeNode);
+        } else {
+          add_treeNode(gw_tree, "gw", "(岗位)", treeNode, "xz");
+        }
+      } else {
+        if (openry) {
+          removeGw(treeNode, "xz");
+        } else {
+          gw_tree.checkNode(gw_tree.getNodes()[0], false, false, false);//改变全选按钮状态
+          removeNode(treeNode, "xz", "gw");
+        }
+      }
+    }
+
+    function gwTreeOnChecked(event, treeId, treeNode) {
+      if (treeNode.id == 'checkAll') {//全选
+        treeNode.checked = !(treeNode.checked);
+        checkAll(gw_tree, treeNode, 'gw');
+        return;
+      }
+      if (treeNode.checked) {
+        if (!openry) {
+          gw_tree.checkNode(gw_tree.getNodes()[0], false, false, false);//改变全选按钮状态
+        }
+        gw_tree.checkNode(treeNode, false, true, false);
+        if (openry) {
+          removeGw(treeNode, "xz");
+        } else {
+          removeNode(treeNode, "xz", "gw");
+        }
+      } else {
+        gw_tree.checkNode(treeNode, true, true, false);
+        if (openry) {
+          getYhListByGw(treeNode);
+        } else {
+          add_treeNode(gw_tree, "gw", "(岗位)", treeNode, "xz");
+        }
+      }
+    }
+    var gwid_selected = "";
+    var gwmc_selected = "";
+    function getYhListByGw(treeNode) {
+      var node = treeNode;
+      sys_ajaxGet("/ryxz/default.do?method=getUserListByTitle&gangwid=" + treeNode.id, function (json) {
+        var flag = true;
+        var yhList = json.yhList;
+        for (var i = 0; i < yhList.length; i++) {
+          //判断用户是否已存在
+          var obj = $("#yh" + yhList[i].yhid);
+          if (obj.length > 0) {//用户存在
+            if (obj.attr("gwid") == undefined) {//用户已经存在，该用户不是点击岗位获取
+              flag = false;
+            } else if (obj.attr("gwid").indexOf("gw" + node.id + ",") < 0) {
+              obj.attr("gwid", obj.attr("gwid") + "gw" + node.id + ",");
+              obj.attr("gwmc", obj.attr("gwmc") + "(岗位)" + node.mc + ",");
+            }
+          } else {
+            var opstr = "<li  onclick=\"szbjs(this.id);qxGwYh('yh" + yhList[i].yhid + "')\" gwid='gw" + node.id + ",' gwmc='(岗位)" + node.mc + ",' id='yh" + yhList[i].yhid + "'><a style='cursor:pointer;'>(用户)" + yhList[i].xm + "(" + yhList[i].bmmc + ")" + "</a></li>";
+            $(opstr).appendTo("#xz");
+          }
+
+        }
+        if (flag) {
+          gwid_selected = gwid_selected + "gw" + node.id + ",";
+          gwmc_selected = gwmc_selected + "(岗位)" + node.mc + ",";
+        }
+        setJsNumber();
+      });
+
+    }
+    //取消选择
+    function qxGwYh(id) {
+      var gwid = $("#" + id).attr("gwid");
+      var gwmc = $("#" + id).attr("gwmc");
+      gwid_selected = gwid_selected.replace(gwid, '');
+      gwmc_selected = gwmc_selected.replace(gwmc, '');
+      $("#xz li[id='" + id + "']").remove();
+      setJsNumber();
+
+      var typeid = gwid.replace(/gw/g, '');
+      var typeidArr = typeid.split(',');
+      for (var i = 0; i < typeidArr.length; i++) {
+        var node = gw_tree.getNodeByParam("id", typeidArr[i], null);
+        gw_tree.checkNode(node, false, false, false);
+      }
+    }
+
+    function removeGw(treenode, selectname) {
+      var optionid = treenode.id;
+      gwid_selected = gwid_selected.replace("gw" + optionid + ",", '');
+      gwmc_selected = gwmc_selected.replace("(岗位)" + treenode.mc + ",", '');
+      $("#" + selectname + " li[gwid='gw" + optionid + ",']").remove();
+      $("#" + selectname + " li[gwid]").each(function () {
+        $(this).attr("gwid", $(this).attr("gwid").replace("gw" + optionid + ",", ""));
+        $(this).attr("gwmc", $(this).attr("gwmc").replace("(岗位)" + treenode.mc + ",", ""));
+      });
+
+      setJsNumber();
+    }
+
+
+
+    function jsTreeOnDblClick(event, treeId, treeNode) {
+      //add_treeNodes(js_tree, "js", "(角色)");
+      if (treeNode.id == 'checkAll') {
+        if (openry) {
+          checkAllJs(js_tree, treeNode);
+        } else {
+          checkAll(js_tree, treeNode, 'js');
+        }
+        return;
+      }
+      if (treeNode.checked) {
+        if (openry) {
+          getYhListByRole(treeNode);
+        } else {
+          add_treeNode(js_tree, "js", "(角色)", treeNode, "xz");
+        }
+      } else {
+        if (openry) {
+          removeJs(treeNode, "xz");
+        } else {
+          js_tree.checkNode(js_tree.getNodes()[0], false, false, false);//改变全选按钮状态
+          removeNode(treeNode, "xz", "js");
+        }
+      }
+    }
+    var jsid_selected = "";
+    var jsmc_selected = "";
+    function jsTreeOnChecked(event, treeId, treeNode) {
+      if (treeNode.id == 'checkAll') {//全选
+        treeNode.checked = !(treeNode.checked);
+        if (openry) {
+          checkAllJs(js_tree, treeNode, 'js');
+        } else {
+          checkAll(js_tree, treeNode, 'js');
+        }
+        return;
+      }
+      if (treeNode.checked) {
+        if (!openry) {
+          js_tree.checkNode(js_tree.getNodes()[0], false, false, false);//改变全选按钮状态
+        }
+        js_tree.checkNode(treeNode, false, false, false);
+        if (openry) {
+          removeJs(treeNode, "xz");
+        } else {
+          removeNode(treeNode, "xz", "js");
+        }
+      } else {
+        js_tree.checkNode(treeNode, true, false, false);
+        if (openry) {
+          getYhListByRole(treeNode);
+        } else {
+          add_treeNode(js_tree, "js", "(角色)", treeNode, "xz");
+        }
+      }
+    }
+
+    function getYhListByRole(treeNode) {
+      var node = treeNode;
+      sys_ajaxGet("/ryxz/default.do?method=getUserListByRole&jsid=" + treeNode.id, function (json) {
+        var flag = true;
+        var yhList = json.yhList;
+        for (var i = 0; i < yhList.length; i++) {
+          //判断用户是否已存在
+          var obj = $("#yh" + yhList[i].yhid);
+          if (obj.length > 0) {
+            if (obj.attr("jsid") == undefined) {//用户已经存在，该用户不是点击角色获取
+              flag = false;
+            } else {
+              obj.attr("jsid", obj.attr("jsid") + "js" + node.id + ",");
+              obj.attr("jsmc", obj.attr("jsmc") + "(角色)" + node.mc + ",");
+            }
+          } else {
+            var opstr = "<li  onclick=\"szbjs(this.id);qxJsYh('yh" + yhList[i].yhid + "')\" jsid='js" + node.id + ",' jsmc='(角色)" + node.mc + ",' id='yh" + yhList[i].yhid + "'><a style='cursor:pointer;'>(用户)" + yhList[i].xm + "(" + yhList[i].bmmc + ")" + "</a></li>";
+            $(opstr).appendTo("#xz");
+          }
+
+        }
+        if (flag) {
+          jsid_selected = jsid_selected + "js" + node.id + ",";
+          jsmc_selected = jsmc_selected + "(角色)" + node.mc + ",";
+        }
+        setJsNumber();
+      });
+
+    }
+    //取消选择
+    function qxJsYh(id) {
+      var jsid = $("#" + id).attr("jsid");
+      var jsmc = $("#" + id).attr("jsmc");
+      jsid_selected = jsid_selected.replace(jsid, '');
+      jsmc_selected = jsmc_selected.replace(jsmc, '');
+      $("#xz li[id='" + id + "']").remove();
+      setJsNumber();
+
+      var typeid = jsid.replace(/js/g, '');
+      var typeidArr = typeid.split(',');
+      for (var i = 0; i < typeidArr.length; i++) {
+        var node = js_tree.getNodeByParam("id", typeidArr[i], null);
+        js_tree.checkNode(node, false, false, false);
+      }
+
+    }
+
+    function removeJs(treenode, selectname) {
+      var optionid = treenode.id;
+      jsid_selected = jsid_selected.replace("js" + optionid + ",", '');
+      jsmc_selected = jsmc_selected.replace("(角色)" + treenode.mc + ",", '');
+      $("#" + selectname + " li[jsid='js" + optionid + ",']").remove();
+      $("#" + selectname + " li[jsid]").each(function () {
+        $(this).attr("jsid", $(this).attr("jsid").replace("js" + optionid + ",", ""));
+        $(this).attr("jsmc", $(this).attr("jsmc").replace("(角色)" + treenode.mc + ",", ""));
+      });
+      setJsNumber();
+    }
+
+    function checkAllJs(treeObj, treeNode) {
+      if (treeNode.checked) {
+        treeObj.checkAllNodes(true);
+        var nodes = treeObj.getNodes();
+        for (var i = 1; i < nodes.length; i++) {
+          //add_treeNode(treeObj, lx, prefix,nodes[i],"xz");
+          getYhListByRole(nodes[i])
+        }
+      } else {
+        treeObj.checkAllNodes(false);
+        var nodes = treeObj.getNodes();
+        for (var i = 1; i < nodes.length; i++) {
+          removeJs(nodes[i], "xz");
+        }
+      }
+    }
+    function setJsNumber() {
+      $("#yznum").html($("#xz li").length);
+    }
+    function yhTreeOnDblClick(event, treeId, treeNode) {
+      if (treeNode.lx_dm == 204) {
+        if (treeNode.id == 'checkAll') {
+          if (isOrg) {
+            checkAll(yh_tree, treeNode, 'yh');
+          } else {
+            checkAll(yh_tree, treeNode, 'txl');
+          }
+          return;
+        }
+        //add_treeNodes(yh_tree,"yh", "(用户)", true);
+        if (treeNode.checked) {
+          if (isOrg) {
+            add_treeNode(yh_tree, "yh", "(用户)", treeNode, "xz", true);
+          } else {
+            add_treeNode(yh_tree, "txl", "", treeNode, "xz", true);
+          }
+        } else {
+          yh_tree.checkNode(yh_tree.getNodes()[0], false, false, false);//改变全选按钮状态
+          if (isOrg) {
+            removeNode(treeNode, "xz", "yh");
+          } else {
+            removeNode(treeNode, "xz", "txl");
+          }
+        }
+      }
+    }
+
+    function yhTreeOnChecked(event, treeId, treeNode) {
+      expandNodes(event, treeId, treeNode);
+      if (treeNode.lx_dm == 204) {
+        if (treeNode.id == 'checkAll') {//全选
+          treeNode.checked = !(treeNode.checked);
+          if (isOrg) {
+            checkAll(yh_tree, treeNode, 'yh');
+          } else {
+            checkAll(yh_tree, treeNode, 'txl');
+          }
+          return;
+        }
+        if (treeNode.checked) {
+          yh_tree.checkNode(yh_tree.getNodes()[0], false, false, false);//改变全选按钮状态
+          yh_tree.checkNode(treeNode, false, false, false);
+          if (isOrg) {
+            removeNode(treeNode, "xz", "yh");
+          } else {
+            removeNode(treeNode, "xz", "txl");
+          }
+        } else {
+          yh_tree.checkNode(treeNode, true, false, false);
+          if (isOrg) {
+            add_treeNode(yh_tree, "yh", "(用户)", treeNode, "xz", true);
+          } else {
+            add_treeNode(yh_tree, "txl", "", treeNode, "xz", true);
+          }
+        }
+      }
+    }
+
+    function expandNodes(event, treeId, treeNode) {
+      yh_tree.expandNode(treeNode, null, null, null, null);
+    }
+
+    function bmyhTreeOnDblClick(event, treeId, treeNode) {
+      if (treeNode.id == 'checkAll') {
+        if (isOrg) {
+          bmyhcheckAll(bmyh_tree, treeNode, 'bm');
+        } else {
+          bmyhcheckAll(bmyh_tree, treeNode, 'txz');
+        }
+        return;
+      }
+      if (treeNode.checked) {
+        if (treeNode.lx_dm == 201) {
+          if (isOrg) {
+            add_treeNode(bmyh_tree, "bm", "(部门)", treeNode, "xz");
+
+          } else {
+            add_treeNode(bmyh_tree, "txz", "(组别)", treeNode, "xz");
+          }
+        }
+        if (treeNode.lx_dm == 204) {
+          if (isOrg) {
+            add_treeNode(bmyh_tree, "yh", "(用户)", treeNode, "xz", true);
+          } else {
+            add_treeNode(yh_tree, "txl", "", treeNode, "xz", true);
+          }
+        }
+
+        var node_children = bmyh_tree.getNodesByParamFuzzy("sjid", treeNode.id, treeNode); //去除子节点
+        if (node_children.length > 0) {
+          for (var i = 0; i < node_children.length; i++) {
+            if (node_children[i].lx_dm == 201) {
+              if (isOrg) {
+                removeNode(node_children[i], "xz", "bm");
+              } else {
+                removeNode(node_children[i], "xz", "txz");
+              }
+            }
+            if (node_children[i].lx_dm == 204) {
+              if (isOrg) {
+                removeNode(node_children[i], "xz", "yh");
+              } else {
+                removeNode(node_children[i], "xz", "txl");
+              }
+            }
+          }
+        }
+      } else {
+        bmyh_tree.checkNode(bmyh_tree.getNodes()[0], false, false, false);//改变全选按钮状态
+        if (treeNode.lx_dm == 201) { //去除自身
+          if (isOrg) {
+            removeNode(treeNode, "xz", "bm");
+          } else {
+            removeNode(treeNode, "xz", "txz");
+          }
+        }
+        if (treeNode.lx_dm == 204) { //去除自身
+          if (isOrg) {
+            removeNode(treeNode, "xz", "yh");
+          } else {
+            removeNode(treeNode, "xz", "txl");
+          }
+        }
+        var node_children = bmyh_tree.getNodesByParamFuzzy("sjid", treeNode.id, treeNode); //去除子节点
+        if (node_children.length > 0) {
+          for (var i = 0; i < node_children.length; i++) {
+            if (node_children[i].lx_dm == 201) {
+              if (isOrg) {
+                removeNode(node_children[i], "xz", "bm");
+              } else {
+                removeNode(node_children[i], "xz", "txz");
+              }
+            }
+            if (node_children[i].lx_dm == 204) {
+              if (isOrg) {
+                removeNode(node_children[i], "xz", "yh");
+              } else {
+                removeNode(node_children[i], "xz", "txl");
+              }
+            }
+          }
+        }
+        var nodes_allcheck = bmyh_tree.getCheckedNodes(true);
+        if (nodes_allcheck.length > 0) {
+          for (var i = 0; i < nodes_allcheck.length; i++) {
+            if (nodes_allcheck[i].getCheckStatus().half) {//半勾选状态
+              continue;
+            }
+            if (nodes_allcheck[i].sjid == treeNode.sjid) {
+              if (nodes_allcheck[i].lx_dm == 201) {
+                if (isOrg) {
+                  add_treeNode(bmyh_tree, "bm", "(部门)", nodes_allcheck[i], "xz");
+                } else {
+                  add_treeNode(bmyh_tree, "txz", "(组别)", nodes_allcheck[i], "xz");
+                }
+              }
+              if (nodes_allcheck[i].lx_dm == 204) {
+                if (isOrg) {
+                  add_treeNode(bmyh_tree, "yh", "(用户)", nodes_allcheck[i], "xz", true);
+                } else {
+                  add_treeNode(bmyh_tree, "txl", "", nodes_allcheck[i], "xz", true);
+                }
+              }
+              continue;
+            }
+            if (treeNode.level > 1) {
+              var node_sj = treeNode.getParentNode();
+              while (node_sj) {
+                if (nodes_allcheck[i].sjid == node_sj.sjid) {
+                  if (nodes_allcheck[i].lx_dm == 201) {
+                    if (isOrg) {
+                      add_treeNode(bmyh_tree, "bm", "(部门)", nodes_allcheck[i], "xz");
+                    } else {
+                      add_treeNode(bmyh_tree, "txz", "(组别)", nodes_allcheck[i], "xz");
+                    }
+                  }
+                  if (nodes_allcheck[i].lx_dm == 204) {
+                    if (isOrg) {
+                      add_treeNode(bmyh_tree, "yh", "(用户)", nodes_allcheck[i], "xz", true);
+                    } else {
+                      add_treeNode(bmyh_tree, "txl", "", nodes_allcheck[i], "xz", true);
+                    }
+                  }
+                }
+                if (node_sj.sjid == '0') {
+                  break;
+                }
+                node_sj = node_sj.getParentNode();
+              }
+            }
+          }
+        }
+
+        var sjtreeNode = treeNode.getParentNode();
+        while (sjtreeNode) {//移除上级节点
+          bmyh_tree.checkNode(sjtreeNode, false, false, false);
+          if (isOrg) {
+            removeNode(sjtreeNode, "xz", "bm");
+          } else {
+            removeNode(sjtreeNode, "xz", "txz");
+          }
+          if (sjtreeNode.sjid == '0') {
+            break;
+          }
+          sjtreeNode = sjtreeNode.getParentNode();
+        }
+      }
+    }
+
+    function bmyhTreeOnChecked(event, treeId, treeNode) {
+      if (treeNode.id == 'checkAll') {
+        treeNode.checked = !(treeNode.checked);
+        if (isOrg) {
+          bmyhcheckAll(bmyh_tree, treeNode, 'bm');
+        } else {
+          bmyhcheckAll(bmyh_tree, treeNode, 'txz');
+        }
+        return;
+      }
+      if (treeNode.checked) {
+        bmyh_tree.checkNode(bmyh_tree.getNodes()[0], false, false, false);
+        bmyh_tree.checkNode(treeNode, false, false, false);
+        if (treeNode.lx_dm == 201) {
+          if (isOrg) {
+            removeNode(treeNode, "xz", "bm"); //去除自身
+          } else {
+            removeNode(treeNode, "xz", "txz"); //去除自身
+          }
+        }
+        if (treeNode.lx_dm == 204) {
+          if (isOrg) {
+            removeNode(treeNode, "xz", "yh");
+          } else {
+            removeNode(treeNode, "xz", "txl");
+          }
+        }
+
+        var node_children = bmyh_tree.getNodesByParamFuzzy("sjid", treeNode.id, treeNode); //去除子节点
+        if (node_children.length > 0) {
+          for (var i = 0; i < node_children.length; i++) {
+            bmyh_tree.checkNode(node_children[i], false, false, false);
+            if (node_children[i].lx_dm == 201) {
+              if (isOrg) {
+                removeNode(node_children[i], "xz", "bm");
+              } else {
+                removeNode(node_children[i], "xz", "txz");
+              }
+            }
+            if (node_children[i].lx_dm == 204) {
+              if (isOrg) {
+                removeNode(node_children[i], "xz", "yh");
+              } else {
+                removeNode(node_children[i], "xz", "txl");
+              }
+            }
+          }
+        }
+
+        var nodes_allcheck = bmyh_tree.getCheckedNodes(true);
+        if (nodes_allcheck.length > 0) {
+          for (var i = 0; i < nodes_allcheck.length; i++) {
+            if (nodes_allcheck[i].sjid == treeNode.sjid) {
+              bmyh_tree.checkNode(nodes_allcheck[i], true, false, false);
+              if (nodes_allcheck[i].lx_dm == 201) {
+                if (isOrg) {
+                  add_treeNode(bmyh_tree, "bm", "(部门)", nodes_allcheck[i], "xz");
+                } else {
+                  add_treeNode(bmyh_tree, "txz", "(组别)", nodes_allcheck[i], "xz");
+                }
+              }
+              if (nodes_allcheck[i].lx_dm == 204) {
+                if (isOrg) {
+                  add_treeNode(bmyh_tree, "yh", "(用户)", nodes_allcheck[i], "xz", true);
+                } else {
+                  add_treeNode(bmyh_tree, "txl", "", nodes_allcheck[i], "xz", true);
+                }
+              }
+              continue;
+            }
+            var node_sj = treeNode.getParentNode();
+            while (node_sj) {
+              if (nodes_allcheck[i].sjid == node_sj.sjid) {
+                bmyh_tree.checkNode(nodes_allcheck[i], true, false, false);
+                if (nodes_allcheck[i].lx_dm == 201) {
+                  if (isOrg) {
+                    add_treeNode(bmyh_tree, "bm", "(部门)", nodes_allcheck[i], "xz");
+                  } else {
+                    add_treeNode(bmyh_tree, "txz", "(组别)", nodes_allcheck[i], "xz");
+                  }
+                }
+                if (nodes_allcheck[i].lx_dm == 204) {
+                  if (isOrg) {
+                    add_treeNode(bmyh_tree, "yh", "(用户)", nodes_allcheck[i], "xz", true);
+                  } else {
+                    add_treeNode(bmyh_tree, "txl", "", nodes_allcheck[i], "xz", true);
+                  }
+                }
+              }
+              if (node_sj.sjid == '0') {
+                break;
+              }
+              node_sj = node_sj.getParentNode();
+            }
+          }
+        }
+
+        var sjtreeNode = treeNode.getParentNode();
+        while (sjtreeNode) {//移除上级节点
+          bmyh_tree.checkNode(sjtreeNode, false, false, false);
+          if (isOrg) {
+            removeNode(sjtreeNode, "xz", "bm");
+          } else {
+            removeNode(sjtreeNode, "xz", "txz");
+          }
+          if (sjtreeNode.sjid == '0') {
+            break;
+          }
+          sjtreeNode = sjtreeNode.getParentNode();
+        }
+      } else {
+        bmyh_tree.checkNode(treeNode, true, false, false);
+        if (treeNode.lx_dm == 201) {
+          if (isOrg) {
+            add_treeNode(bmyh_tree, "bm", "(部门)", treeNode, "xz");
+          } else {
+            add_treeNode(bmyh_tree, "txz", "(组别)", treeNode, "xz");
+          }
+        }
+        if (treeNode.lx_dm == 204) {
+          if (isOrg) {
+            add_treeNode(bmyh_tree, "yh", "(用户)", treeNode, "xz", true);
+          } else {
+            add_treeNode(bmyh_tree, "txl", "", treeNode, "xz", true);
+          }
+        }
+
+        var node_children = bmyh_tree.getNodesByParamFuzzy("sjid", treeNode.id, treeNode); //去除子节点
+        if (node_children.length > 0) {
+          for (var i = 0; i < node_children.length; i++) {
+            bmyh_tree.checkNode(node_children[i], true, false, false);
+            if (node_children[i].lx_dm == 201) {
+              if (isOrg) {
+                removeNode(node_children[i], "xz", "bm");
+              } else {
+                removeNode(node_children[i], "xz", "txz");
+              }
+            }
+            if (node_children[i].lx_dm == 204) {
+              if (isOrg) {
+                removeNode(node_children[i], "xz", "yh");
+              } else {
+                removeNode(node_children[i], "xz", "txl");
+              }
+            }
+          }
+        }
+      }
+    }
+
+    function zdyTreeOnDblClick(event, treeId, treeNode) {
+      if (treeNode.sjid != '0') {
+        //add_treeNodes(zdy_tree, "user", "(用户)");
+        if (treeNode.checked) {
+          if (treeNode.lx_dm == 201) {
+            add_treeNode(zdy_tree, "zdy", "(部门)", treeNode, "xz");
+          } else if (treeNode.lx_dm == 204) {
+            add_treeNode(zdy_tree, "user", "(用户)", treeNode, "xz");
+          }
+        } else {
+          if (treeNode.lx_dm == 201) {
+            removeNode(treeNode, "xz", "zdy");
+          } else if (treeNode.lx_dm == 204) {
+            removeNode(treeNode, "xz", "user");
+          }
+        }
+      }
+      /* 选择自定义组时，组别不进行添加只添加组内数据
+      else {
+        //add_treeNodes(zdy_tree, "zdy", "(用户组)");
+        if(treeNode.checked){
+              add_treeNode(zdy_tree, "zdy", "(用户组)",treeNode,"xz");
+             }else{
+              removeNode(treeNode,"xz","zdy");
+             }
+      }
+      */
+    }
+
+    function yhTreeAjaxSuccess(event, treeId, treeNode, msg) {
+      if (!msg || msg.length == 0) {
+        return;
+      }
+      if (treeNode) {
+        treeNode.icon = "";
+        yh_tree.updateNode(treeNode);
+        var children = treeNode.nodes;
+        $.each(children, function (n, node) {
+          if ($("#xz option[value=yh" + node.yhid + "]").length > 0
+            || $("#xz option[value=user" + node.yhid + "]").length > 0
+            || $("#xz option[value=" + node.yhid + "]").length > 0
+            || $("#xz li[id='yh" + node.yhid + "']").length > 0
+            || $("#xz li[id='txl" + node.yhid + "']").length > 0) {
+            //yh_tree.selectNode(node, true);
+            yh_tree.checkNode(node, true, false, false);
+          }
+        });
+      }
+    }
+
+    function yhTreeAjaxError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+      alert("异步获取数据出现异常！");
+      if (treeNode) {
+        treeNode.icon = "";
+        yh_tree.updateNode(treeNode);
+      }
+    }
+
+    function bmyhTreeAjaxSuccess(event, treeId, treeNode, msg) {
+      if (!msg || msg.length == 0) {
+        return;
+      }
+      if (treeNode) {
+        treeNode.icon = "";
+        bmyh_tree.updateNode(treeNode);
+        var children = treeNode.nodes;
+        $.each(children, function (n, node) {
+          if (treeNode.checked) {
+            bmyh_tree.checkNode(node, true, false, false);
+          }
+          if ($("#xz li[id='bm" + node.id + "']").length > 0
+            || $("#xz li[id='txz" + node.id + "']").length > 0
+            || $("#xz li[id='yh" + node.yhid + "']").length > 0
+            || $("#xz li[id='txl" + node.yhid + "']").length > 0) {
+            bmyh_tree.checkNode(node, true, false, false);
+          }
+        });
+      }
+    }
+
+    function bmyhTreeAjaxError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+      alert("异步获取数据出现异常！");
+      if (treeNode) {
+        treeNode.icon = "";
+        bmyh_tree.updateNode(treeNode);
+      }
+    }
+
+    function bmyhTreeOnExpand(event, treeId, treeNode) {
+      var childcount = treeNode.childcount;
+      if (treeNode.id != 'checkAll' && childcount > 0) {
+        bmyh_tree.reAsyncChildNodes(treeNode, "add", false);
+      }
+    }
+
+    var bmyh_setting = "", bm_setting = "", gw_setting = "", yh_setting = "", js_setting = "", zdy_setting = "";
+    var bmlist_str = "", gwlist_str = "", jslist_str = "", zdylist_str = "", yhlist_str = "";
+
+    $(function () {
+    // 初始渲染tab列表
+    for (var index = 0; index < paramShowArr.length; index++) {
+      var element = paramShowArr[index];
+      if(element=='yh'||element=='bm'){
+        if(paramShowArr.indexOf('yh')>-1&&paramShowArr.indexOf('bm')>-1){
+          if(bmyhflag=='1'){
+            $('#tab_bmyh').show();
+            continue;
+          }
+        }
+      }
+      $('#tab_'+element).show();
+    }
+    
+    if(defaultTab){
+      choose('s_td_5');
+    }else{
+      $("#"+paramShowArr[0]).show();
+      $(".c_current_tab").removeClass("c_current_tab");
+      $("#tab_"+paramShowArr[0]).addClass("c_current_tab");
+    }
+      bind({});
+      bm_setting = {
+        check: {
+          enable: true,
+          autoCheckTrigger: true,
+          nocheckInherit: true,//true 表示 新加入子节点时，自动继承父节点 nocheck = true 的属性。
+          chkboxType: { 'Y': '', 'N': '' }
+
+        },
+        data: {
+          key: {
+            name: "mc",
+            title: "mc",
+            children: "nodes"
+          },
+          simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "sjid",
+            rootPId: 0
+          }
+        },
+        callback: {
+          onClick: bmTreeOnChecked,
+          onCheck: bmTreeOnDblClick
+        },
+        view: {
+          dblClickExpand: false,
+          autoCancelSelected: false
+
+        }
+      };
+
+      gw_setting = {
+        check: {
+          enable: true,
+          autoCheckTrigger: true,
+          nocheckInherit: true,//true 表示 新加入子节点时，自动继承父节点 nocheck = true 的属性。
+          chkboxType: { "Y": "s", "N": "s" }
+
+        },
+        data: {
+          key: {
+            name: "mc",
+            title: "mc",
+            children: "nodes"
+          },
+          simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "sjid",
+            rootPId: 0
+          }
+        },
+        callback: {
+          //onDblClick:gwTreeOnDblClick
+          onClick: gwTreeOnChecked,
+          onCheck: gwTreeOnDblClick
+        },
+        view: {
+          dblClickExpand: false,
+          autoCancelSelected: false
+        }
+      };
+
+      yh_setting = {
+        check: {
+          enable: true,
+          autoCheckTrigger: true,
+          nocheckInherit: false,//true 表示 新加入子节点时，自动继承父节点 nocheck = true 的属性。
+          chkboxType: { "Y": "s", "N": "s" }
+
+        },
+        data: {
+          key: {
+            name: "mc",
+            title: "mc",
+            children: "nodes"
+
+          },
+          simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "sjid",
+            rootPId: 0
+          }
+        },
+        async: {
+          enable: isAsnycLoad,
+          url: "/ryxz/default.do?method=getYhList&bmidvalue=&fwbz=&mk_dm=180",
+          autoParam: ["id"],
+          dataType: "text"
+        },
+        callback: {
+          onAsyncSuccess: yhTreeAjaxSuccess,
+          onAsyncError: yhTreeAjaxError,
+          onClick: yhTreeOnChecked,
+          onCheck: yhTreeOnDblClick
+
+        },
+        view: {
+          dblClickExpand: false,
+          autoCancelSelected: false
+        }
+      };
+
+      bmyh_setting = {
+        check: {
+          enable: true,
+          autoCheckTrigger: false,
+          nocheckInherit: false,//true 表示 新加入子节点时，自动继承父节点 nocheck = true 的属性。
+          chkboxType: { "Y": "ps", "N": "ps" }
+
+        },
+        data: {
+          key: {
+            name: "mc",
+            title: "mc",
+            children: "nodes"
+
+          },
+          simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "sjid",
+            rootPId: 0
+          }
+        },
+        async: {
+          enable: isAsnycLoad,
+          url: "/ryxz/default.do?method=getBmYhList&mk_dm=180",
+          autoParam: ["id"],
+          dataType: "text"
+        },
+        callback: {
+          onAsyncSuccess: bmyhTreeAjaxSuccess,
+          onAsyncError: bmyhTreeAjaxError,
+          onClick: bmyhTreeOnChecked,
+          onCheck: bmyhTreeOnDblClick
+        },
+        view: {
+          dblClickExpand: false,
+          autoCancelSelected: false
+        }
+      };
+
+      js_setting = {
+        check: {
+          enable: true,
+          autoCheckTrigger: true,
+          nocheckInherit: true,//true 表示 新加入子节点时，自动继承父节点 nocheck = true 的属性。
+          chkboxType: { "Y": "s", "N": "s" }
+        },
+        data: {
+          key: {
+            name: "mc",
+            title: "mc",
+            children: "nodes"
+          },
+          simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "sjid",
+            rootPId: 0
+          }
+        },
+        callback: {
+          onClick: jsTreeOnChecked,
+          onCheck: jsTreeOnDblClick
+        },
+        view: {
+          dblClickExpand: false,
+          autoCancelSelected: false
+        }
+      };
+      zdy_setting = {
+        check: {
+          enable: true,
+          autoCheckTrigger: true,
+          nocheckInherit: true,//true 表示 新加入子节点时，自动继承父节点 nocheck = true 的属性。
+          chkboxType: { "Y": "s", "N": "s" }
+        },
+        data: {
+          key: {
+            name: "mc",
+            title: "mc",
+            children: "nodes"
+          },
+          simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "sjid",
+            rootPId: 0
+          }
+        },
+        callback: {
+          onCheck: zdyTreeOnDblClick
+        },
+        view: {
+          dblClickExpand: false,
+          autoCancelSelected: false
+        }
+      };
+
+      bmlist_str = eval('null');
+      gwlist_str = eval('null');
+      jslist_str = eval('null');
+      zdylist_str = eval('null');
+      yhlist_str = eval('null');
+
+      //构造各个TAB页的树
+      if (bmyhflag == '0') {
+        bm_tree = $.fn.zTree.init($("#dept_tree"), bm_setting, bmlist_str);
+      }
+      //bm_tree.expandAll(true);
+      //var bmnodes = bm_tree.getNodes();
+      //if (bmnodes.length>0) {
+      //	for (var i = 0; i < bmnodes.length; i++) {
+      //		bm_tree.expandNode(bmnodes[0], true, false, false);
+      //	}
+      //}
+      if (isAsnycLoad) {
+        if (bmyhflag == '0') {
+          yh_tree = $.fn.zTree.init($("#yh_tree"), yh_setting, null);
+        }
+        if (bmyhflag == '1') {
+          bmyh_tree = $.fn.zTree.init($("#bmyh_tree"), bmyh_setting, null);
+        }
+      } else if (yh_flag) {
+        yh_tree = $.fn.zTree.init($("#yh_tree"), yh_setting, yhlist_str);
+      }
+      if (js_flag) {
+        js_tree = $.fn.zTree.init($("#js_tree"), js_setting, jslist_str);
+        //js_tree.expandAll(true);
+      }
+      if (gw_flag) {
+        gw_tree = $.fn.zTree.init($("#gw_tree"), gw_setting, gwlist_str);
+        //gw_tree.expandAll(true);
+      }
+      if (zdy_flag) {
+        zdy_tree = $.fn.zTree.init($("#zdy_tree"), zdy_setting, zdylist_str);
+      }
+      //以下判断哪些TAB显示
+
+      //初始化选项：
+
+
+      setTimeout("init_js()", 90);
+
+
+      setTimeout("init_gw()", 120);
+
+
+      setTimeout("init_zdy()", 150);
+
+
+      setTimeout("initItems()", 300);
+
+      //如果设置了默认TAB页，则选中自定义用户组
+
+
+      sys_g_listNav.userCurViewType = '0';
+      sys_expandTable("table_list", 6, 1);
+
+      $(".c_search_btn").click(function () {
+        //sys_expandTable("table_list",0,1);
+        var queryString = $("#form_query").serialize();
+        // 此处查询要修改参数
+        queryString = queryString + "&show=" + paramShow + "&zzfw=" + '' + "&bmfw=" + '' + "&xzbz=" + '' + "&bmidvalue=" + '';
+
+        sys_ajaxPostDirect(searchUrl, queryString, function (json) {
+          sys_expandTable("table_list", json.gridData.table_list.data.length, 1);
+          bind(json);
+        });
+      });
+
+      $("#txtSearchKey").keydown(function (event) {
+        //sys_expandTable("table_list",0,1);
+        if (event.keyCode == 13) {
+          var queryString = $("#form_query").serialize();
+          // 此处查询要修改参数
+          queryString = queryString + "&show=" + paramShow + "&zzfw=" + '';
+          sys_ajaxPostDirect(searchUrl, queryString, function (json) {
+            sys_expandTable("table_list", json.gridData.table_list.data.length, 1);
+            bind(json);
+          });
+          return false;
+        }
+      });
+
+      $("input").filter(function (index) {
+        return this.outerHTML.indexOf("placeholder") > -1;
+      }).placeholder({ color: '#bbbbbb' });
+    });
+
+    function callback_trclick_table_list(guid) {
+      var type = guid.split(",")[0];
+      var lxid = guid.split(",")[1];
+      var found = false;
+      $("#xz li").each(function () {
+        val = this.id;
+
+        if (val == (type + lxid)) {
+          found = true;
+          return;
+        }
+      });
+      if (!found) {
+
+        $("#table_list").children("tbody").find("tr").each(function () {
+          if ($(this).find("td:eq(0)").html() == guid) {
+            text = '(' + $(this).find("td:eq(1)").html() + ')' + $(this).find("td:eq(2)").html();
+          }
+        });
+
+        var opstr = "<li id='" + type + lxid + "'  onclick='szbjs(this.id);qxxz(\"" + type + '","' + lxid + "\")'><a style='cursor:pointer;'>" + text + "</a></li>";
+        $(opstr).appendTo("#xz");
+        $("#yznum").html($("#xz li").length);
+        if (type == 'bm') {
+          if (bmyhflag == '0') {
+            var node = bm_tree.getNodeByParam("id", lxid, null);
+            bm_tree.checkNode(node, true, false, false);
+          } else {
+            var node = bmyh_tree.getNodeByParam("id", lxid, null);
+            if (node) {
+              bmyh_tree.checkNode(node, true, false, false);
+            }
+          }
+
+        }
+        if (type == 'gw') {
+          var node = gw_tree.getNodeByParam("id", lxid, null);
+          gw_tree.checkNode(node, true, false, false);
+        }
+        if (type == 'js') {
+          var node = js_tree.getNodeByParam("id", lxid, null);
+          js_tree.checkNode(node, true, false, false);
+        }
+        if (type == 'yh') {
+          var node = bmyh_tree.getNodeByParam("id", lxid, null);
+          if (node) {
+            bmyh_tree.checkNode(node, true, false, false);
+
+          }
+
+        }
+
+      }
+
+    }
+
+    function delSearchSelect() {
+      $("#xz option:selected").remove();
+    }
+
+    function init_gw() {
+
+      gwlist_str = eval('[{"iconSkin":"gw","id":"73070","mc":"管理员","sjid":"0"},{"iconSkin":"gw","id":"73940","mc":"测试岗位1","sjid":"0"},{"iconSkin":"gw","id":"73221","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"71120","mc":"人员5","sjid":"0"},{"iconSkin":"gw","id":"70690","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"71035","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"71165","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"71170","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"71221","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"71223","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"71671","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"71134","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"73240","mc":"人员","sjid":"0"},{"iconSkin":"gw","id":"73940_73950","mc":"测试岗位2","sjid":"73940"},{"iconSkin":"gw","id":"73070_70920","mc":"测试","sjid":"73070"},{"iconSkin":"gw","id":"70690_70671","mc":"领导","sjid":"70690"}]');
+    }
+
+    function init_yh() {
+      if (!yh_flag && !isAsnycLoad) {
+
+        yhlist_str = eval('null');
+      }
+    }
+
+    function init_js() {
+      if (!js_flag) {
+
+        jslist_str = eval('[{"iconSkin":"js","id":"2018042217275962393478","mc":"管理员","sjid":0},{"iconSkin":"js","id":"2018060122060658643183","mc":"办公室信息员","sjid":0},{"iconSkin":"js","id":"2018060122061570636484","mc":"一处信息员","sjid":0},{"iconSkin":"js","id":"2018060122062396256248","mc":"二处信息员","sjid":0},{"iconSkin":"js","id":"2018060122070371556473","mc":"三处信息员","sjid":0},{"iconSkin":"js","id":"2018060122070938997827","mc":"四处信息员","sjid":0},{"iconSkin":"js","id":"2018060122071802078539","mc":"五处信息员","sjid":0},{"iconSkin":"js","id":"2018060122073299047805","mc":"六处信息员","sjid":0},{"iconSkin":"js","id":"2018060215195271316016","mc":"机关门诊部","sjid":0},{"iconSkin":"js","id":"2018060215200750536607","mc":"机关财务处","sjid":0},{"iconSkin":"js","id":"2018121314272655038739","mc":"11","sjid":0},{"iconSkin":"js","id":"gzry","mc":"工作人员","sjid":0},{"iconSkin":"js","id":"lgb","mc":"老干部","sjid":0}]');
+      }
+    }
+
+    function init_zdy() {
+      if (!zdy_flag) {
+
+        zdylist_str = eval('[{"iconSkin":"gw","id":"2019082215303492614587","lx_dm":0,"mc":"测试组","sjid":"0","xh":0},{"iconSkin":"gw","id":"2019092419145051250347","lx_dm":0,"mc":"234","sjid":"0","xh":0},{"iconSkin":"bm","id":"70670_70672","lx_dm":201,"mc":"工作人员","sjbmmc":"老干部局","sjid":"2019082215303492614587","xh":10001},{"iconSkin":"bm","id":"70670_73250","lx_dm":201,"mc":"服务人员","sjbmmc":"老干部局","sjid":"2019092419145051250347","xh":10003},{"bmmc":"老干部局-工作人员","iconSkin":"yh","id":"73010","lx_dm":204,"mc":"赵子轩","sjid":"2019092419145051250347","xh":10002}]');
+      }
+    }
+
+    //切换TAB页
+    function choose(id) {
+      if (id == "s_td_7") {
+        $("#bmyh").show();
+        $("#bm").hide();
+        $("#gw").hide();
+        $("#yh").hide();
+        $("#js").hide();
+        $("#zdy").hide();
+        $("#cx").hide();
+        $(".c_current_tab").removeClass("c_current_tab");
+        $("#tab_bmyh").addClass("c_current_tab");
+        //已选择个数
+        //$("#yxzgs").css("display","none");
+        renew_yxz = true;
+      }
+
+      if (id == "s_td_1") {
+        $("#bmyh").hide();
+        $("#bm").show();
+        $("#gw").hide();
+        $("#yh").hide();
+        $("#js").hide();
+        $("#zdy").hide();
+        $("#cx").hide();
+        $(".c_current_tab").removeClass("c_current_tab");
+        $("#tab_bm").addClass("c_current_tab");
+        //已选择个数
+        //$("#yxzgs").css("display","none");
+        //renew_yxz = false;
+      }
+      if (id == "s_td_2") {
+        $("#bmyh").hide();
+        $("#bm").hide();
+        $("#gw").show();
+        $("#yh").hide();
+        $("#js").hide();
+        $("#zdy").hide();
+        $("#cx").hide();
+        $(".c_current_tab").removeClass("c_current_tab");
+        $("#tab_gw").addClass("c_current_tab");
+        if (!gw_flag) {
+          if (!gw_tree) {
+            gw_tree = $.fn.zTree.init($("#gw_tree"), gw_setting, gwlist_str);
+          }
+        }
+        //已选择个数
+        $("#yxzgs").css("display", "");
+        setJsNumber();
+        renew_yxz = false;
+      }
+      if (id == "s_td_3") {
+        $("#bmyh").hide();
+        $("#bm").hide();
+        $("#gw").hide();
+        $("#yh").show();
+        $("#js").hide();
+        $("#zdy").hide();
+        $("#cx").hide();
+        $(".c_current_tab").removeClass("c_current_tab");
+        $("#tab_yh").addClass("c_current_tab");
+        if (!yh_flag && !isAsnycLoad) {
+          if (!yh_tree) {
+            yh_tree = $.fn.zTree.init($("#yh_tree"), yh_setting, yhlist_str);
+          }
+        }
+        //已选择个数
+        //$("#yxzgs").css("display","none");
+        //renew_yxz = false;
+      }
+      if (id == "s_td_4") {
+        $("#bmyh").hide();
+        $("#bm").hide();
+        $("#gw").hide();
+        $("#yh").hide();
+        $("#js").show();
+        $("#zdy").hide();
+        $("#cx").hide();
+        $(".c_current_tab").removeClass("c_current_tab");
+        $("#tab_js").addClass("c_current_tab");
+        if (!js_flag) {
+          if (!js_tree) {
+            js_tree = $.fn.zTree.init($("#js_tree"), js_setting, jslist_str);
+          }
+        }
+        //已选择个数
+        $("#yxzgs").css("display", "");
+        setJsNumber();
+        renew_yxz = false;
+      }
+      if (id == "s_td_5") {
+        $("#bmyh").hide();
+        $("#bm").hide();
+        $("#gw").hide();
+        $("#yh").hide();
+        $("#js").hide();
+        $("#zdy").show();
+        $("#cx").hide();
+        $(".c_current_tab").removeClass("c_current_tab");
+        $("#tab_zdy").addClass("c_current_tab");
+        if (!zdy_flag) {
+          if (!zdy_tree) {
+            zdy_tree = $.fn.zTree.init($("#zdy_tree"), zdy_setting, zdylist_str);
+          }
+        }
+        //已选择个数
+        $("#yxzgs").css("display", "");
+        renew_yxz = true;
+        $("#yznum").html($("#xz li").length);
+      }
+      if (id == "s_td_6") {
+        $("#bmyh").hide();
+        $("#bm").hide();
+        $("#gw").hide();
+        $("#yh").hide();
+        $("#js").hide();
+        $("#zdy").hide();
+        $("#cx").show();
+        $(".c_current_tab").removeClass("c_current_tab");
+        $("#tab_cx").addClass("c_current_tab");
+        //$("#txtSearchKey").focus();
+        //已选择个数
+        //	$("#yxzgs").css("display","none");
+        //renew_yxz = false;
+        $("#yxzgs").css("display", "");
+        renew_yxz = true;
+        $("#yznum").html($("#xz li").length);
+      }
+    }
+    function containStr(str, subStr) {
+      var arr = subStr.split(",");
+      for (var i = 0; i < arr.length; i++) {
+        if (str.indexOf(arr[i]) < 0) {
+          return false;
+        }
+      }
+      return true;
+    }
+    //确认选择
+    function confirmSelect() {
+      var num = 0;//标识选择的种类，比如选择既有用户又有角色，则num=2;
+      $("#xz li").each(function () {
+        if (!((this.jsid != undefined && containStr(jsid_selected, this.jsid)) ||
+          (this.gwid != undefined && containStr(gwid_selected, this.gwid)))) {//不处理角色和岗位
+          // if(this.gwid==undefined||!containStr(gwid_selected,this.gwid)){
+          names = names + $(this).text() + ",";
+          ids = ids + this.id + ",";
+          // }
+        }
+      });
+      names = names + jsmc_selected;
+      ids = ids + jsid_selected;
+      names = names + gwmc_selected;
+      ids = ids + gwid_selected;
+
+      if (isOrg) {
+        if (ids != "" && ids.indexOf("bm") >= 0) {
+          num = num + 1;
+        }
+      } else {
+        if (ids != "" && ids.indexOf("txz") >= 0) {
+          num = num + 1;
+        }
+      }
+
+      if (ids != "" && ids.indexOf("gw") >= 0) {
+        num = num + 1;
+      }
+
+
+      if (isOrg) {
+        if (ids != "" && ids.indexOf("yh") >= 0) {
+          num = num + 1;
+        }
+      } else {
+        if (ids != "" && ids.indexOf("txl") >= 0) {
+          num = num + 1;
+        }
+      }
+
+
+      if (ids != "" && ids.indexOf("js") >= 0) {
+        num = num + 1;
+      }
+      //自定义用户组
+      if (ids != "" && ids.indexOf("user") >= 0) {
+        num = num + 1;
+      }
+
+
+      if ('0' == "0" && ids == "") {
+        alert("请选择信息");
+        return;
+      }
+
+
+
+      var lbzj = sys_fsfw_lb;
+
+      //清空下拉列表
+      window.opener.$("#"+sys_fsfw_lb).empty();
+      var mc_list = names.split(",");
+      var id_list = ids.split(",");
+
+      if ("" != "") {
+        window.opener.$("#"+sys_fsfw_lb).append("<option value='" + id_list[0] + "'>" + mc_list[0] + "</option>");
+        window.opener.dyncAddLine2(mc_list, id_list, lbzj);
+        window.opener.$("#"+sys_fsfw).attr("value", id_list[0]);
+      } else {
+        if (mc_list.length - 1 > 1 && "" == "") {//选择大于1个的时候给出提示
+          window.opener.$("#"+sys_fsfw_lb).append("<option value=''>已选择" + (mc_list.length - 1) + "个</option>");
+        }
+        for (i = 0; i < mc_list.length - 1; i++) {
+          if ("" == "") {
+            window.opener.$("#"+sys_fsfw_lb).append("<option value='" + id_list[i] + "'>" + mc_list[i] + "</option>");
+          }
+        }
+
+        if ("" != "") {
+          if (mc_list.length - 1 > 1) {
+            window.opener.$("#"+sys_fsfw_lb).attr("value", "已选择" + (mc_list.length - 1) + "个");
+          } else {
+            window.opener.$("#"+sys_fsfw_lb).attr("value", names.substring(0, names.length - 1));
+          }
+        }
+        window.opener.$("#"+sys_fsfw).attr("value", ids);
+        window.opener.$("#"+sys_fsfw).trigger("input");
+      }
+      if ("0" == "1") {
+        window.opener.saveSubFormData("fbfw_value", ids);
+      }
+
+      if (window.opener.ryxzCallback) {
+        window.opener.ryxzCallback(ids, names.substring(0, names.length - 1));
+      }
+
+      window.close();
+
+
+    }
+    //初始化已选择的
+    function initItems() {
+      ////////////////////////////////
+
+      var items;
+      var itemtexts;
+      var initItems = "";
+      var initItem_arr = initItems.split(",");
+      if (initItems == "" && '0' == "0") {//非工作流应用
+        var sys_fsfwbak = window.opener.$("#"+sys_fsfw).val();
+        if (sys_fsfwbak != "")
+          items = sys_fsfwbak.split(",");
+
+        if ("" != "") {
+          var sys_fsfw_lbbak = window.opener.$("#"+sys_fsfw_lb).attr("value");
+          itemtexts = sys_fsfw_lbbak.split(",");
+        }
+      } else {
+        items = initItem_arr;
+      }
+      if (items) {
+        for (i = 0; i < items.length - 1; i++) {
+          if (items[i].indexOf("bm") >= 0) {
+            var bmid = '';
+            var bmmc = '';
+            if (initItems != "" && '0' == "1") {
+              var bmitem = items[i];
+              bmid = items[i].split(";")[0];
+              bmid = bmid.replace("bm", "");
+              bmmc = items[i].split(";")[1];
+            } else {
+              bmid = items[i].replace("bm", "");
+              if ("" != "") {
+                bmmc = itemtexts[i];
+              } else {
+                bmmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + items[i] + "]").text();
+                if (bmmc == '') {
+                  bmmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + bmid + "]").text();
+                }
+                if (bmmc.indexOf("(部门)") <= -1) {
+                  bmmc = '(部门)' + bmmc;
+                }
+              }
+
+            }
+
+
+            if (bmyhflag == '0') {
+              var node = bm_tree.getNodeByParam("id", bmid, null);
+              //bm_tree.selectNode(node,true);
+              if (node) {
+                bm_tree.checkNode(node, true, false, false);
+                //add_treeNodes(bm_tree, "bm", "(部门)");
+                add_treeNode(bm_tree, "bm", "(部门)", node, "xz");
+              } else {
+                var type = "bm";
+                var opstr = "";
+                if (initItems != "" && '0' == "1") {
+                  opstr = "<li id='bm" + bmid + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + bmid + "\")'><a style='cursor:pointer;'>" + bmmc + "</a></li>";
+                } else {
+                  opstr = "<li id='" + items[i] + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + bmid + "\")'><a style='cursor:pointer;'>" + bmmc + "</a></li>";
+                }
+                $(opstr).appendTo("#xz");
+              }
+            } else if (bmyhflag == '1') {
+              var node = bmyh_tree.getNodeByParam("id", bmid, null);
+              if (node) {
+                bmyh_tree.checkNode(node, true, false, false);
+                add_treeNode(bmyh_tree, "bm", "(部门)", node, "xz");
+              } else {
+                var type = "bm";
+                var opstr = "";
+                if (initItems != "" && '0' == "1") {
+                  opstr = "<li id='bm" + bmid + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + bmid + "\")'><a style='cursor:pointer;'>" + bmmc + "</a></li>";
+                } else {
+                  opstr = "<li id='" + items[i] + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + bmid + "\")'><a style='cursor:pointer;'>" + bmmc + "</a></li>";
+                }
+                $(opstr).appendTo("#xz");
+              }
+            }
+          } else if (items[i].indexOf("txz") >= 0) {
+            var bmid = '';
+            var bmmc = '';
+            if (initItems != "" && '0' == "1") {
+              var bmitem = items[i];
+              bmid = items[i].split(";")[0];
+              bmid = bmid.replace("txz", "");
+            } else {
+              bmid = items[i].replace("txz", "");
+            }
+            if ("" != "") {
+              bmmc = itemtexts[i];
+            } else {
+              bmmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + items[i] + "]").text();
+              if (bmmc == '') {
+                bmmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + bmid + "]").text();
+              }
+            }
+
+            if (bmyhflag == '1') {
+              var node = bmyh_tree.getNodeByParam("id", bmid, null);
+              if (node) {
+                bmyh_tree.checkNode(node, true, false, false);
+                add_treeNode(bmyh_tree, "txz", "(组别)", node, "xz");
+              } else {
+                var type = "txz";
+                var opstr = "<li id='" + items[i] + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + bmid + "\")'><a style='cursor:pointer;'>" + bmmc + "</a></li>";
+                $(opstr).appendTo("#xz");
+              }
+            }
+          } else if (items[i].indexOf("gw") >= 0) {
+            //初始化岗位树
+            if (!gw_flag) {
+              if (!gw_tree) {
+                gw_tree = $.fn.zTree.init($("#gw_tree"), gw_setting, gwlist_str);
+              }
+            }
+            var gwid = '';
+            if (initItems != "" && '0' == "1") {
+              var gwitem = items[i];
+              gwid = items[i].split(";")[0];
+              gwid = gwid.replace("gw", "");
+            } else {
+              gwid = items[i].replace("gw", "");
+            }
+            var node = gw_tree.getNodeByParam("id", gwid);
+            if (node)
+              gw_tree.checkNode(node, true, false, false);
+            //gw_tree.selectNode(node,true);
+            //add_treeNodes(gw_tree, "gw", "(岗位)");
+            if (openry) {
+              getYhListByGw(node);
+            } else {
+              add_treeNode(gw_tree, "gw", "(岗位)", node, "xz");
+            }
+
+          } else if (items[i].indexOf("js") >= 0) {
+            //初始化角色树
+            if (!js_flag) {
+              if (!js_tree) {
+                js_tree = $.fn.zTree.init($("#js_tree"), js_setting, jslist_str);
+              }
+            }
+
+            var jsid = '';
+            if (initItems != "" && '0' == "1") {
+              var jsitem = items[i];
+              jsid = items[i].split(";")[0];
+              jsid = jsid.replace("js", "");
+            } else {
+              jsid = items[i].replace("js", "");
+            }
+            var node = js_tree.getNodeByParam("id", jsid);
+            if (node)
+              js_tree.checkNode(node, true, false, false);
+            if (openry) {
+              getYhListByRole(node);
+            } else {
+              add_treeNode(js_tree, "js", "(角色)", node, "xz");
+            }
+          } else if (items[i].indexOf("yh") >= 0) {
+            //初始化树
+            if (!yh_flag && !isAsnycLoad) {
+              if (!yh_tree) {
+                yh_tree = $.fn.zTree.init($("#yh_tree"), yh_setting, yhlist_str);
+              }
+            }
+
+            if (initItems == "" && '0' == "0" && "" == "") {//非工作流应用
+              var yhmc = '';
+              var yhid = items[i].replace("yh", "");
+              if ("" != "") {
+                yhmc = itemtexts[i];
+              } else {
+                yhmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + items[i] + "]").text();
+                //alert(window.opener.$("#"+sys_fsfw_lb+" option").eq(i).text());
+                if (yhmc == '') {
+                  yhmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + yhid + "]").text();
+                  //var obj = window.opener.$("#"+sys_fsfw_lb+" option").eq(i);
+                  // if(obj.val()==''){
+                  //	 yhmc = window.opener.$("#"+sys_fsfw_lb+" option").eq(i+1).text(); 
+                  //}else{
+                  //	 yhmc = window.opener.$("#"+sys_fsfw_lb+" option").eq(i).text();
+                  // }
+
+                }
+              }
+              if (bmyhflag == '0') {
+                var node = yh_tree.getNodeByParam("id", yhid);
+                if (node)
+                  yh_tree.checkNode(node, true, false, false);
+              } else if (bmyhflag == '1') {
+                var node = bmyh_tree.getNodeByParam("id", yhid);
+                if (node)
+                  bmyh_tree.checkNode(node, true, false, false);
+              }
+              //zdy_tree.selectNode(node,true);
+
+              //var opstr="<option value='"+items[i]+"'>" +yhmc+"</option>";
+              //$(opstr).appendTo("#xz");
+              var type = "yh";
+              var opstr = "<li id='" + items[i] + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + yhid + "\")'><a style='cursor:pointer;'>" + yhmc + "</a></li>";
+              $(opstr).appendTo("#xz");
+
+            } else if (initItems != "" && '0' == "1") {
+              var yhitem = items[i];
+              var yhid = items[i].split(";")[0];
+              var yhmc = items[i].split(";")[1];
+              //var opstr="<option value='"+yhid+"'>" +yhmc+"</option>";
+              //$(opstr).appendTo("#xz");
+              var type = "yh";
+              var opstr = "<li id='" + yhid + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + yhid + "\")'><a style='cursor:pointer;'>" + yhmc + "</a></li>";
+              $(opstr).appendTo("#xz");
+              if (bmyhflag == '0') {
+                var node = yh_tree.getNodeByParam("id", yhid);
+                //zdy_tree.selectNode(node,true);
+                if (node)
+                  yh_tree.checkNode(node, true, false, false);
+              } else if (bmyhflag == '1') {
+                var node = bmyh_tree.getNodeByParam("id", yhid);
+                if (node)
+                  bmyh_tree.checkNode(node, true, false, false);
+              }
+            }
+          } else if (items[i].indexOf("txl") >= 0) {
+            //初始化树
+            if (!yh_flag && !isAsnycLoad) {
+              if (!yh_tree) {
+                yh_tree = $.fn.zTree.init($("#yh_tree"), yh_setting, yhlist_str);
+              }
+            }
+
+            if (initItems == "" && '0' == "0" && "" == "") {//非工作流应用
+              var yhmc = '';
+              var yhid = items[i].replace("txl", "");
+              if ("" != "") {
+                yhmc = itemtexts[i];
+              } else {
+                yhmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + items[i] + "]").text();
+                if (yhmc == '') {
+                  yhmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + yhid + "]").text();
+                }
+              }
+              if (bmyhflag == '0') {
+                var node = yh_tree.getNodeByParam("id", yhid);
+                if (node)
+                  yh_tree.checkNode(node, true, false, false);
+              } else if (bmyhflag == '1') {
+                var node = bmyh_tree.getNodeByParam("id", yhid);
+                if (node)
+                  bmyh_tree.checkNode(node, true, false, false);
+              }
+              var type = "txl";
+              var opstr = "<li id='" + items[i] + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + yhid + "\")'><a style='cursor:pointer;'>" + yhmc + "</a></li>";
+              $(opstr).appendTo("#xz");
+
+            } else if (initItems != "" && '0' == "1") {
+              var yhitem = items[i];
+              var yhid = items[i].split(";")[0];
+              var yhmc = items[i].split(";")[1];
+              var type = "txl";
+              var opstr = "<li id='" + yhid + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + yhid + "\")'><a style='cursor:pointer;'>" + yhmc + "</a></li>";
+              $(opstr).appendTo("#xz");
+              if (bmyhflag == '0') {
+                var node = yh_tree.getNodeByParam("id", yhid);
+                if (node)
+                  yh_tree.checkNode(node, true, false, false);
+              } else if (bmyhflag == '1') {
+                var node = bmyh_tree.getNodeByParam("id", yhid);
+                if (node)
+                  bmyh_tree.checkNode(node, true, false, false);
+              }
+            }
+          } else if (items[i].indexOf("zdy") >= 0 || items[i].indexOf("user") >= 0) {
+            //初始化树
+            if (!zdy_flag) {
+              if (!zdy_tree) {
+                zdy_tree = $.fn.zTree.init($("#zdy_tree"), zdy_setting, zdylist_str);
+              }
+            }
+
+            if (initItems == "" && '0' == "0" && "" == "") {//非工作流应用
+              var yhmc = '';
+              var yhid = items[i].replace("user", "").replace("zdy", "");
+              if ("" != "") {
+                yhmc = itemtexts[i];
+              } else {
+                yhmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + items[i] + "]").text();
+                if (yhmc == '') {
+                  yhmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + yhid + "]").text();
+                }
+              }
+
+              var node = zdy_tree.getNodeByParam("id", yhid);
+              //zdy_tree.selectNode(node,true);
+              if (node)
+                zdy_tree.checkNode(node, true, false, false);
+              //var opstr="<option value='"+items[i]+"'>" +yhmc+"</option>";
+              //$(opstr).appendTo("#xz");
+              var type = "";
+              if (items[i].indexOf("user") >= 0) {
+                type = "user";
+              }
+              if (items[i].indexOf("zdy") >= 0) {
+                type = "zdy";
+              }
+              var opstr = "<li id='" + items[i] + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + yhid + "\")'><a style='cursor:pointer;'>" + yhmc + "</a></li>";
+              $(opstr).appendTo("#xz");
+            }
+
+          } else {
+            //初始化树
+            if (!zdy_flag) {
+              if (!zdy_tree) {
+                zdy_tree = $.fn.zTree.init($("#zdy_tree"), zdy_setting, zdylist_str);
+              }
+            }
+
+            if (initItems == "" && '0' == "0" && "" == "") {//非工作流应用
+              var yhmc = '';
+              var yhid = items[i];
+              if ("" != "") {
+                yhmc = itemtexts[i];
+              } else {
+                yhmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + items[i] + "]").text();
+                if (yhmc == '') {
+                  yhmc = window.opener.$("#"+sys_fsfw_lb+" option[value=" + yhid + "]").text();
+                }
+              }
+
+              var node = zdy_tree.getNodeByParam("id", yhid);
+              if (node)
+                zdy_tree.checkNode(node, true, false, false);
+              //  zdy_tree.selectNode(node,true);
+
+              //var opstr="<option value='"+items[i]+"'>" +yhmc+"</option>";
+              // $(opstr).appendTo("#xz");
+              var type = "yh";
+              var opstr = "<li id='" + items[i] + "' onclick='szbjs(this.id);qxxz(\"" + type + '","' + yhid + "\")' ><a style='cursor:pointer;'>" + yhmc + "</a></li>";
+              $(opstr).appendTo("#xz");
+            } else if (initItems != "" && '0' == "1") {
+              var yhitem = items[i];
+              var yhid = items[i].split(";")[0];
+              var yhmc = items[i].split(";")[1];
+              //var opstr="<option value='"+yhid+"'>" +yhmc+"</option>";
+              //$(opstr).appendTo("#xz");
+              var type = "yh";
+              var opstr = "<li onclick='szbjs(this.id);qxxz(\"" + type + '","' + yhid + "\")' id='" + yhid + "' ><a style='cursor:pointer;'>" + yhmc + ">/a></li>";
+              $(opstr).appendTo("#xz");
+            }
+          }
+        }
+        //$("#xz option").attr("selected", true);
+      }
+      $("#yznum").html($("#xz li").length);
+    }
+
+    //维护用户组
+    function yhzwh() {
+      //window.showModalDialog("/org/ryxz/yhz/default.jsp",null,"dialogWidth:700px;dialogHeight:600px;status:no;help:no;scroll:no;");
+      window.open("./维护自定义组.html", "", "width=700,height=700");
+    }
+
+    //刷新用户组
+    function shuaxin() {
+      var url = location.href;
+      url = url.replace(/#/, '');
+      url = url + "&defaultTab=zdy#";
+      location.replace(url);
+    }
+
+    function checkAll(treeObj, treeNode, lx) {
+      var prefix = "";
+      if (lx == 'bm') {
+        prefix = "(部门)";
+      } else if (lx == 'gw') {
+        prefix = "(岗位)";
+      } else if (lx == 'js') {
+        prefix = "(角色)";
+      } else if (lx == 'yh') {
+        prefix = "(用户)";
+      }
+      if (treeNode.checked) {
+        treeObj.checkAllNodes(true);
+        var nodes = treeObj.getNodes();
+        for (var i = 1; i < nodes.length; i++) {
+          add_treeNode(treeObj, lx, prefix, nodes[i], "xz");
+        }
+      } else {
+        treeObj.checkAllNodes(false);
+        var nodes = treeObj.getNodes();
+        for (var i = 1; i < nodes.length; i++) {
+          removeNode(nodes[i], "xz", lx);
+        }
+      }
+    }
+    function bmyhcheckAll(treeObj, treeNode, lx) {
+      var prefix = "";
+      if (lx == 'bm') {
+        prefix = "(部门)";
+      } else if (lx == 'gw') {
+        prefix = "(岗位)";
+      } else if (lx == 'js') {
+        prefix = "(角色)";
+      } else if (lx == 'yh') {
+        prefix = "(用户)";
+      } else if (lx == 'txz') {
+        prefix = "(组别)";
+      }
+      if (treeNode.checked) {
+        $("#xz li").each(function () {
+          $(this).remove();
+        });
+        treeObj.checkAllNodes(true);
+        var nodes = treeObj.getNodes();
+        for (var i = 1; i < nodes.length; i++) {
+          add_treeNode(treeObj, lx, prefix, nodes[i], "xz");
+        }
+      } else {
+        treeObj.checkAllNodes(false);
+        var nodes = treeObj.getNodes();
+        for (var i = 1; i < nodes.length; i++) {
+          removeNode(nodes[i], "xz", lx);
+        }
+      }
+    }
+    function removeAllSelected() {
+      $("#xz").empty();
+      names = "";
+      ids = "";
+      gwid_selected = "";
+      gwmc_selected = "";
+      jsid_selected = "";
+      jsmc_selected = "";
+      if (bmyh_tree) {
+        bmyh_tree.checkAllNodes(false);
+      }
+      if (bm_tree) {
+        bm_tree.checkAllNodes(false);
+      }
+      if (yh_tree) {
+        yh_tree.checkAllNodes(false);
+      }
+      if (gw_tree) {
+        gw_tree.checkAllNodes(false);
+      }
+      if (js_tree) {
+        js_tree.checkAllNodes(false);
+      }
+
+      if (zdy_tree) {
+        zdy_tree.checkAllNodes(false);
+      }
+      $("#yznum").html("0");
+
+    }
+  </script>
+</body>
+
+</html>
