@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>请选择</title>
+  <meta name="keywords" content="离退休老同志服务管理平台">
+  <meta name="description" content="离退休老同志服务管理平台">
+  <link rel="Shortcut Icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../js/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../js/plugins/bootstrap-table/bootstrap-table.min.css">
+  <link rel="stylesheet" href="../js/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="bg-white">
+  <div class="tree-content">
+    <div class="clearfix">
+      <div class="l pct50">
+        <ul class="my-tab tab-active">
+          <!-- <li class="active">部门人员</li>
+          <li>部门</li>
+          <li>岗位</li>
+          <li>人员</li>
+          <li>角色</li>
+          <li>自定义组</li>
+          <li>查询</li> -->
+        </ul>
+        <div class="tab-ct">
+          <!-- 人员 -->
+          <div class="item-ct">
+            <ul id="userZTree" class="ztree"></ul>
+          </div>
+          <!-- 查询 -->
+          <div class="item-ct dn">
+            <div class="">
+              <input type="textbox" id="txtSearchKey" name="key" class="c_search_inputbox vm" placeholder="请输入名称或拼音"
+                style="width:150px">
+              <div id="seachBtn" class="c_search_btn vm"></div>
+            </div>
+            <table id="table" class="table-list table-hover table-striped table-bordered">
+              <thead>
+                <tr>
+                  <td width="28%">姓名</td>
+                  <td width="68%">性别</td>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="l pct50">
+        <ul class="my-tab">
+          <li>已选择用户</li>
+        </ul>
+        <div class="item-ct bd-lf">
+          <ul id="userCheckList" class="checklist">
+          </ul>
+        </div>
+        <div class="tips-ct">
+          <span class="poi" id="clearAll">清空选择人员 </span>
+          <span class="total">已选择个数:</span>
+        </div>
+      </div>
+    </div>
+    <div class="tc mt5">
+      <button type="button" id="comfimSelect" class="btn btn-danger btn-sm">
+        确认选择
+      </button>
+    </div>
+  </div>
+  <!-- 公共js start -->
+  <script src="../js/plugins/jquery-3.3.1.min.js"></script>
+  <script src="../js/libs.min.js"></script>
+  <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="../js/plugins/echarts.min.js"></script>
+  <script src="../js/plugins/My97DatePicker/WdatePicker.js"></script>
+  <script src="../js/plugins/layer/layer.js"></script>
+  <script src="../js/plugins/zTree_v3/js/jquery.ztree.all.min.js"></script>
+  <script src="../js/common.js"></script>
+  <!-- 公共js end -->
+  <script>
+    $(function () {
+      //data
+      var treedata = [{
+        "iconSkin": "bm",
+        "id": "70680",
+        "isParent": true,
+        "mc": "老同志",
+        "sjid": "70670"
+      },
+      {
+        "bmmc": "一支部",
+        "childcount": 1,
+        "iconSkin": "bm",
+        "id": "70710",
+        "isParent": true,
+        "lx_dm": 201,
+        "mc": "一支部",
+        "sjid": "70680",
+        "xh": 10001,
+        "yhid": "70670_70680_70710"
+      }, {
+        "bmmc": "一支部",
+        "childcount": 28,
+        "iconSkin": "gw",
+        "id": "71134",
+        "isParent": true,
+        "lx_dm": 202,
+        "mc": "人员",
+        "sjid": "70710",
+        "xh": 10000,
+        "yhid": "71134"
+      }, {
+        "bmmc": "一支部",
+        "childcount": 0,
+        "iconSkin": "yh",
+        "id": "73791",
+        "isParent": false,
+        "lx_dm": 204,
+        "mc": "ltz13",
+        "sjid": "71134",
+        "xh": 1010000,
+        "yhid": "73791"
+      }, {
+        "bmmc": "一支部",
+        "childcount": 0,
+        "iconSkin": "yh",
+        "id": "73841",
+        "isParent": false,
+        "lx_dm": 204,
+        "mc": "cdc",
+        "sjid": "71134",
+        "xh": 1010000,
+        "yhid": "73841"
+      }, {
+        "bmmc": "一支部",
+        "childcount": 0,
+        "iconSkin": "yh",
+        "id": "73850",
+        "isParent": false,
+        "lx_dm": 204,
+        "mc": "ltz12",
+        "sjid": "71134",
+        "xh": 1010000,
+        "yhid": "73850"
+      }];
+      //全局树形对象
+      var userZTree = null;
+      //选中类型
+      var check_id = 0;
+      //选中集合
+      var check_list = [];
+      //选中方法
+      var click_tree = null;
+      //缓存集合
+      var cache_tree = [
+        {
+          id: 0,
+          name: '部门人员',
+          //组名称,项名称
+          text: {
+            group: "(部门)",
+            item: "(用户)"
+          },
+          //是否展开到人员
+          show: false,
+          //树形配置
+          config_tree: {
+            check: {
+              enable: true,
+              autoCheckTrigger: true,
+              nocheckInherit: false,
+              chkboxType: {
+                "Y": "s",
+                "N": "s"
+              }
+            },
+            data: {
+              key: {
+                name: "mc",
+                title: "mc",
+                children: "nodes"
+              },
+              simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "sjid",
+                rootPId: 0
+              }
+            },
+            async: {
+              enable: true,
+              url: "http://119.188.117.54:8081/ryxz/default.do?method=getYhList&bmidvalue=70670_70680&fwbz=&mk_dm=15203",
+              autoParam: ["id"],
+              dataType: "text"
+            },
+            callback: {
+              onAsyncSuccess: function (event, treeId, treeNode, msg) { },
+              onAsyncError: function (event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) { },
+              onClick: function (event, treeId, treeNode) { },
+              onCheck: function (event, treeId, treeNode) {
+                click_tree(event, treeId, treeNode)
+              },
+            },
+            view: {
+              dblClickExpand: false,
+              autoCancelSelected: false
+            }
+          },
+          //当前选中项
+          ck: []
+        }, {
+          id: 1,
+          name: '岗位',
+          //组名称,项名称
+          text: {
+            group: "",
+            item: ""
+          },
+          //是否展开到人员
+          show: false,
+          //树形配置
+          config_tree: {
+            check: {
+              enable: true,
+              autoCheckTrigger: true,
+              nocheckInherit: false,
+              chkboxType: {
+                "Y": "s",
+                "N": "s"
+              }
+            },
+            data: {
+              key: {
+                name: "mc",
+                title: "mc",
+                children: "nodes"
+              },
+              simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "sjid",
+                rootPId: 0
+              }
+            },
+            async: {
+              enable: true,
+              url: "http://119.188.117.54:8081/ryxz/default.do?method=getYhList&bmidvalue=70670_70680&fwbz=&mk_dm=15203",
+              autoParam: ["id"],
+              dataType: "text"
+            },
+            callback: {
+              onAsyncSuccess: function (event, treeId, treeNode, msg) { },
+              onAsyncError: function (event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) { },
+              onClick: function (event, treeId, treeNode) { },
+              onCheck: function (event, treeId, treeNode) {
+                click_tree(event, treeId, treeNode)
+              },
+            },
+            view: {
+              dblClickExpand: false,
+              autoCancelSelected: false
+            }
+          },
+          //当前选中项
+          ck: []
+        }
+      ]
+      //验证数据是否存在
+      var IsCheck = function (treeNode) {
+        var bl = -1;
+        check_list.forEach((item, index) => {
+          if (item.id == treeNode.id) {
+            bl = index;
+            return false;
+          }
+        });
+        return bl;
+      }
+      //树形点击事件
+      click_tree = function (event, treeId, treeNode) {
+        //获取配置
+        var option = cache_tree[check_id];
+        if (treeNode.checked) {
+          var type_name = option.text.item;
+          if (treeNode.children && treeNode.children.length) {
+            type_name = option.text.group;
+          }
+          if (IsCheck(treeNode) == -1) {
+            check_list.push({
+              id: treeNode.id,
+              text: type_name + treeNode.mc + '(' + (treeNode.bmmc ? treeNode.bmmc : "无") + ')',
+              tId: treeNode.tId
+            })
+          }
+        } else {
+          if (IsCheck(treeNode) > -1) {
+            check_list.splice(IsCheck(treeNode), 1);
+          }
+        }
+        //更新界面
+        changeView();
+      }
+      //根据类型绑定树形 ck_id：即将选中的ID
+      var bindTree = function (ck_id) {
+        var option = cache_tree[ck_id];
+        //重新初始化前 缓存当前树形数据 销毁当前树
+        if (userZTree) {
+          //缓存选中
+          cache_tree[check_id].ck = userZTree.getCheckedNodes(true);
+          //销毁
+          $.fn.zTree.destroy("userZTree");
+        }
+        //初始化
+        userZTree = $.fn.zTree.init($("#userZTree"), option.config_tree, treedata);
+        //标记当前类型
+        check_id = ck_id;
+        //恢复之前数据选中
+        if (option.ck.length) {
+          option.ck.forEach(item => {
+            //checkNode 第一个true表示选择 第二个表示下级是否选中
+            var node = userZTree.getNodeByTId(item.tId);
+            userZTree.checkNode(node, true, true);
+          })
+        }
+        userZTree.expandAll(true);
+      }
+      //更新选中视图
+      var changeView = function () {
+        $('#userCheckList').empty()
+        check_list.forEach((item, index) => {
+          $('#userCheckList').append('<li class="poi" index="' + index + '" id="check_li_' + item.id + '" >' + item.text + '</li>');
+        });
+        $('#userCheckList li').click(function () {
+          var i = parseInt($(this).attr("index"));
+          //取消树形选中 
+          var node = userZTree.getNodeByTId(check_list[i].tId);
+          userZTree.checkNode(node, false, false);
+          //删除数组
+          check_list.splice(i, 1);
+          //删除界面
+          $(this).remove();
+        });
+      }
+      //加载tab及点击事件
+      var loadtab = function () {
+        $('.tab-active').empty();
+        cache_tree.forEach((item, index) => {
+          $('.tab-active').append('<li ck_id="' + item.id + '" class="' + (index == 0 ? "active" : "") + '">' + item.name + '</li>');
+        });
+        $('.tab-active li').click(function () {
+          $('.tab-active li').removeAttr("class");
+          $(this).addClass("active");
+          bindTree(parseInt($(this).attr("ck_id")));
+        })
+      }
+      //确定事件
+      var comfimSelect = function () {
+
+      }
+
+      //加载
+      bindTree(0);
+      loadtab();
+
+      //1、参数传递处理，
+      //2、确定回调处理
+      //3、自定义事件处理，
+      //4、清空处理 （把选中list清空 changeView一下）
+      //5、查询处理，
+      //6、全选在数据返回成功后，增加数据，然后在选中里面判断点击设置全部选中
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // $(function () {
+
+
+    //   // 链接上的参数
+    //   var parms_multiple = getURLString('multiple');
+    //   parms_multiple = isNaN(parms_multiple) ? (parms_multiple === 'true' ? true : false) : Number(parms_multiple)
+    //   var parms_id = getURLString('id');
+    //   var parms_callback = getURLString('callback');
+    //   $('.tab-active li').each(function (index) {
+    //     $(this).on('click', function () {
+    //       console.log(index)
+    //       $(this).addClass('active').siblings().removeClass('active')
+    //       console.log($(this).addClass('active').siblings())
+    //       $('.tab-ct .item-ct').eq(index).removeClass('dn').siblings().addClass('dn');
+    //     })
+    //   })
+    //   // 初始化用户树
+    //   yh_setting = {
+    //     check: {
+    //       enable: true,
+    //       autoCheckTrigger: true,
+    //       nocheckInherit: false, //true 表示 新加入子节点时，自动继承父节点 nocheck = true 的属性。
+    //       chkboxType: {
+    //         "Y": "s",
+    //         "N": "s"
+    //       }
+
+    //     },
+    //     data: {
+    //       key: { // 第一步 key和simpleData 字段名要对应好
+    //         name: "mc",
+    //         title: "mc",
+    //         children: "nodes"
+    //       },
+    //       simpleData: {
+    //         enable: true,
+    //         idKey: "id",
+    //         pIdKey: "sjid",
+    //         rootPId: 0
+    //       }
+    //     },
+    //     async: {
+    //       enable: false, //  第二步这里要设置成 true
+    //       url: "http://119.188.117.54:8081/ryxz/default.do?method=getYhList&bmidvalue=70670_70680&fwbz=&mk_dm=15203", //  第三步这里换成自己的接口
+    //       autoParam: ["id"],
+    //       dataType: "text"
+    //     },
+    //     callback: {
+    //       onAsyncSuccess: yhTreeAjaxSuccess,
+    //       onAsyncError: yhTreeAjaxError,
+    //       onClick: yhTreeOnChecked,
+    //       onCheck: yhTreeOnDblClick
+
+    //     },
+    //     view: {
+    //       dblClickExpand: false,
+    //       autoCancelSelected: false
+    //     }
+    //   };
+    //   var yhlist_data = [{
+    //     "iconSkin": "bm",
+    //     "id": "70680",
+    //     "isParent": true,
+    //     "mc": "老同志",
+    //     "sjid": "70670"
+    //   },
+    //   {
+    //     "bmmc": "一支部",
+    //     "childcount": 1,
+    //     "iconSkin": "bm",
+    //     "id": "70710",
+    //     "isParent": true,
+    //     "lx_dm": 201,
+    //     "mc": "一支部",
+    //     "nocheck": true,
+    //     "sjid": "70680",
+    //     "xh": 10001,
+    //     "yhid": "70670_70680_70710"
+    //   }, {
+    //     "bmmc": "一支部",
+    //     "childcount": 28,
+    //     "iconSkin": "gw",
+    //     "id": "71134",
+    //     "isParent": true,
+    //     "lx_dm": 202,
+    //     "mc": "人员",
+    //     "nocheck": true,
+    //     "sjid": "70710",
+    //     "xh": 10000,
+    //     "yhid": "71134"
+    //   }, {
+    //     "bmmc": "一支部",
+    //     "childcount": 0,
+    //     "iconSkin": "yh",
+    //     "id": "73791",
+    //     "isParent": false,
+    //     "lx_dm": 204,
+    //     "mc": "ltz13",
+    //     "sjid": "71134",
+    //     "xh": 1010000,
+    //     "yhid": "73791"
+    //   }, {
+    //     "bmmc": "一支部",
+    //     "childcount": 0,
+    //     "iconSkin": "yh",
+    //     "id": "73841",
+    //     "isParent": false,
+    //     "lx_dm": 204,
+    //     "mc": "cdc",
+    //     "sjid": "71134",
+    //     "xh": 1010000,
+    //     "yhid": "73841"
+    //   }, {
+    //     "bmmc": "一支部",
+    //     "childcount": 0,
+    //     "iconSkin": "yh",
+    //     "id": "73850",
+    //     "isParent": false,
+    //     "lx_dm": 204,
+    //     "mc": "ltz12",
+    //     "sjid": "71134",
+    //     "xh": 1010000,
+    //     "yhid": "73850"
+    //   }];
+    //   //  第四步yhlist_data 要设置=null，现在数据是写死的
+    //   var userZTree = $.fn.zTree.init($("#userZTree"), yh_setting, yhlist_data);
+    //   function yhTreeAjaxSuccess(event, treeId, treeNode, msg) {
+    //     // ajax请求成功
+    //   }
+
+    //   function yhTreeAjaxError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+    //     alert("异步获取数据出现异常！");
+    //     if (treeNode) {
+    //       treeNode.icon = "";
+    //       yh_tree.updateNode(treeNode);
+    //     }
+    //   }
+
+    //   function yhTreeOnChecked(event, treeId, treeNode) {
+    //     console.log('yhTreeOnChecked')
+    //   }
+    //   // 多选框点击事件
+    //   var selectData = {}; // 选择框数据
+    //   function yhTreeOnDblClick(event, treeId, treeNode) {
+    //     if (treeNode.level === 3) {
+    //       if (selectData[treeNode.id]) {
+    //         selectData[treeNode.id].checked = treeNode.checked;
+    //       } else {
+    //         selectData[treeNode.id] = {
+    //           id: treeNode.id,
+    //           text: '(用户)' + treeNode.mc + '(' + treeNode.bmmc + ')',
+    //           mc: treeNode.mc,
+    //           bmmc: treeNode.bmmc,
+    //           checked: treeNode.checked
+    //         }
+    //       }
+    //       ChangeSelectList(treeNode.id)
+    //     }
+    //     console.log('yhTreeOnDblClick', treeNode.id)
+    //   }
+    //   function ChangeSelectList(key) {
+    //     var element = selectData[key];
+    //     if ($('#' + element.id).length) { // 选择框中存在该数据且为选中
+    //       if (!element.checked) {
+    //         $('#' + element.id).remove();
+    //         checkNodeTree(element.id);
+    //       }
+    //     } else {
+    //       if (element.checked) {
+    //         $('#userCheckList').append('<li class="poi" id="' + element.id + '" >' + element.text + '</li>');
+    //         $('#' + element.id).on('click', function () {
+    //           removeUserItem(element.id)
+    //         })
+    //       }
+    //     }
+    //   }
+    //   // 清空所有选中的数据
+    //   $('#clearAll').on('click', function () {
+    //     $('#userCheckList li').each(function () {
+    //       removeUserItem($(this).attr('id'));
+    //     })
+    //   })
+    //   // 选择框数据点击事件
+    //   function removeUserItem(id) {
+    //     selectData[id].checked = false;
+    //     ChangeSelectList(id);
+    //   }
+    //   // 清楚数据的时候同步tree选中状态
+    //   function checkNodeTree(id) {
+    //     var node = '';
+    //     node = userZTree.getNodeByParam("id", id, null);
+    //     if (node) {
+    //       userZTree.checkNode(node, false, false, false);
+    //     }
+    //   }
+    //   // 确认选择事件
+    //   $('#comfimSelect').on('click', function () {
+    //     var selectArr = [];
+    //     for (var key in selectData) {
+    //       if (selectData[key].checked) {
+    //         selectArr.push(selectData[key]);
+    //       }
+    //     }
+    //     if (!selectArr.length) {
+    //       alert('请选择用户');
+    //       return
+    //     }
+    //     if (!parms_multiple && selectArr.length > 1) { // 是否多选
+    //       alert('最多选择一个用户');
+    //       return
+    //     }
+    //     if (parms_multiple) {
+    //       if (typeof parms_multiple === 'number' && selectArr.length > parms_multiple) {
+    //         alert('最多选择' + parms_multiple + '个用户');
+    //         return
+    //       }
+    //     }
+    //     var optionHtml = ''
+    //     if (selectArr.length > 1) {
+    //       optionHtml = '<option value="" >已选择' + selectArr.length + '个</option>'
+    //     }
+    //     for (var j = 0; j < selectArr.length; j++) {
+    //       var element = selectArr[j];
+    //       optionHtml += "<option value='" + element.id + "'>" + element.text + "</option>"
+    //     }
+    //     if (parms_id && window.opener.$("#" + parms_id).length) {
+    //       window.opener.$("#" + parms_id).empty();
+    //       window.opener.$("#" + parms_id).append(optionHtml);
+    //     }
+    //     parms_callback && window.opener[parms_callback] && window.opener[parms_callback](selectArr);
+    //     window.close();
+    //   })
+    //   // 查询事件
+    //   $('#seachBtn').on('click', function () {
+    //     var seachtxt = $('#txtSearchKey').val();
+    //     //用ajax获取数据成功后处理
+    //     var obj = {
+    //       "bmmc": "一支部",
+    //       "childcount": 0,
+    //       "iconSkin": "yh",
+    //       "id": "73841",
+    //       "isParent": false,
+    //       "lx_dm": 204,
+    //       "mc": "cdc",
+    //       "sjid": "71134",
+    //       "xh": 1010000,
+    //       "yhid": "73841"
+    //     }
+    //     $('#table tbody').empty()
+    //     $('#table tbody').append('<tr class="poi" data-id="' + obj.id + '" data-mc="' + obj.mc + '" data-bmmc="' + obj.bmmc + '" ><td width="28%" >' + obj.bmmc + '</td><td width="68%">' + obj.mc + '</td></tr>')
+    //     //然后tr赋值事件
+    //     $('#table tbody tr').on('click', function () {
+    //       selectData[$(this).data('id')] = {
+    //         id: $(this).data('id'),
+    //         text: '(用户)' + $(this).data('mc') + '(' + $(this).data('bmmc') + ')',
+    //         mc: $(this).data('mc'),
+    //         bmmc: $(this).data('bmmc'),
+    //         checked: true
+    //       }
+    //       ChangeSelectList($(this).data('id'));
+    //     })
+    //   })
+    // })
+  </script>
+
+</body>
+
+</html>
