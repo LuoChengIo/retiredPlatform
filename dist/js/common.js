@@ -266,7 +266,7 @@ function openWinSelect(url) {
 	// id // 选择框id 用于回显
 	// callback // 回调函数名称 该函数必须在window下面，回传选中的数组{name:'',value:''}
 	PageAlert({
-		width: '720',
+		width: '820',
 		height: "450",
 		url: url
 	}, true)
