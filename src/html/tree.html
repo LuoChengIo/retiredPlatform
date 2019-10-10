@@ -50,7 +50,7 @@
             </table>
           </div>
         </div>
-        <div class="tree_btn">
+        <div id="kj_quanxuan" class="tree_btn">
           <a href="javascript:;" id="kj_all">
             <input type="checkbox" />
             <font color=black>全选</font>
@@ -180,7 +180,7 @@
       //选中方法
       var click_tree = null;
       //控件
-      var kj_search = $("#kj_search"), kj_tree = $("#kj_tree"), kj_diy = $("#kj_diy"), kj_all = $("#kj_all");
+      var kj_search = $("#kj_search"), kj_tree = $("#kj_tree"), kj_diy = $("#kj_diy"), kj_all = $("#kj_all"), kj_quanxuan = $("#kj_quanxuan");
       //是否全选
       var isAll = false;
       //缓存集合
@@ -607,9 +607,11 @@
           userZTree = null;
           kj_tree.hide();
           kj_search.show();
+          kj_quanxuan.hide();
           return;
         }
         //全选初始化
+        kj_quanxuan.show();
         isAll = false;
         kj_all.find("input:checkbox").prop("checked", false);
         //初始化
