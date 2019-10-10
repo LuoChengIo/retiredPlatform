@@ -570,6 +570,7 @@
             //如果不同类型 显示不同文本 请根据 option.id 区分 如 if(option.id==1){部门该怎么显示数据}
             check_list.push({
               id: treeNode.id,//对应类型的数据ID
+              cid: check_id,//记录对应类型ID
               text: _text, //需要在右侧显示的文本
               tId: treeNode.tId //节点ID
             })
@@ -626,6 +627,20 @@
         }
         userZTree.expandAll(true);
       }
+      //删除临时缓存ck里的值
+      var DeleteCk = function (ck_id, tId) {
+        var option = cache_tree[ck_id];
+        var _ck = option.ck;
+        if (_ck.length) {
+          _ck.forEach((item, index) => {
+            if (item.tId == tId) {
+              _ck.splice(index, 1);
+              return false;
+            }
+          })
+        }
+        cache_tree[ck_id].ck = _ck;
+      }
       //更新选中视图
       var changeView = function () {
         $('#userCheckList').empty()
@@ -641,6 +656,8 @@
           }
           //删除数组
           check_list.splice(i, 1);
+          //删除缓存
+          DeleteCk(check_list[i].cid, check_list[i].tId);
           //删除界面
           $(this).remove();
         });
@@ -686,6 +703,11 @@
           var node = userZTree.getNodeByTId(item.tId);
           userZTree.checkNode(node, false, false);
         })
+        //删除所有临时缓存
+        cache_tree.forEach(item => {
+          item.ck = [];
+        });
+        //清空选中
         check_list = [];
         changeView();
       });
@@ -737,6 +759,7 @@
             //如果不同类型 显示不同文本 请根据 option.id 区分 如 if(option.id==1){部门该怎么显示数据}
             check_list.push({
               id: $(this).data('id'),//对应类型的数据ID
+              cid: check_id,//记录对应类型ID 这里不用更改
               text: _text, //需要在右侧显示的文本
               tId: "search" //节点ID 没有固定 在删除时判定一下
             });
