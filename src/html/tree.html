@@ -550,6 +550,7 @@
         if (IsItem && node.bmmc) {
           text += '(' + node.bmmc + ')';
         }
+        //这里需要确认接口返回 上级名称是否包含sjbmmc
         //如果是部门
         if (option.id == 1 && node.sjbmmc) {
           text += '(' + node.sjbmmc + ')';
@@ -616,7 +617,7 @@
         kj_all.find("input:checkbox").prop("checked", false);
         //初始化
         userZTree = $.fn.zTree.init($("#userZTree"), option.config_tree, treedata); //测试完注释 treedata 也注释
-        //userZTree = $.fn.zTree.init($("#userZTree"), option.config_tree); // 正式
+        //userZTree = $.fn.zTree.init($("#userZTree"), option.config_tree); // 正式 这里需要调用正式接口测试
         //标记当前类型
         check_id = ck_id;
         //恢复之前数据选中
