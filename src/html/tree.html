@@ -106,7 +106,19 @@
           "sjid": "70670"
         },
         {
-          "bmmc": "一支部",
+          "bmmc": "老同志",
+          "childcount": 1,
+          "iconSkin": "bm",
+          "id": "70711",
+          "isParent": true,
+          "lx_dm": 201,
+          "mc": "二支部",
+          "sjid": "70680",
+          "xh": 10001,
+          "yhid": "70670_70680_70710"
+        },
+        {
+          "bmmc": "老同志",
           "childcount": 1,
           "iconSkin": "bm",
           "id": "70710",
@@ -127,8 +139,31 @@
           "sjid": "70710",
           "xh": 10000,
           "yhid": "71134"
-        }, {
+        },
+        {
           "bmmc": "一支部",
+          "childcount": 28,
+          "iconSkin": "gw",
+          "id": "711342",
+          "isParent": true,
+          "lx_dm": 202,
+          "mc": "人员2",
+          "sjid": "70710",
+          "xh": 10000,
+          "yhid": "71134"
+        }, {
+          "bmmc": "人员2",
+          "childcount": 0,
+          "iconSkin": "yh",
+          "id": "737912",
+          "isParent": false,
+          "lx_dm": 204,
+          "mc": "ltz111",
+          "sjid": "711342",
+          "xh": 1010000,
+          "yhid": "737912"
+        }, {
+          "bmmc": "人员",
           "childcount": 0,
           "iconSkin": "yh",
           "id": "73791",
@@ -139,7 +174,7 @@
           "xh": 1010000,
           "yhid": "73791"
         }, {
-          "bmmc": "一支部",
+          "bmmc": "人员",
           "childcount": 0,
           "iconSkin": "yh",
           "id": "73841",
@@ -150,7 +185,7 @@
           "xh": 1010000,
           "yhid": "73841"
         }, {
-          "bmmc": "一支部",
+          "bmmc": "人员",
           "childcount": 0,
           "iconSkin": "yh",
           "id": "73850",
@@ -526,60 +561,134 @@
         }
       ]
       //验证数据是否存在
-      var IsCheck = function (text) {
+      var IsCheck = function (id, cid) {
         var bl = -1;
         check_list.forEach((item, index) => {
-          if (item.text == text) {
+          if (item.id == id && item.cid == cid) {
             bl = index;
             return false;
           }
         });
         return bl;
       }
+      //获取上级文本
+      var checkText = function (treeNode) {
+        var text = "";
+        //获取该节点上级
+        var node = treeNode.getParentNode();
+        //如果上级有数
+        if (node) {
+          text += " > " + node.mc;
+          text += checkText(node);
+        }
+        return text;
+      }
       //获取显示文本
       var getText = function (node) {
         var option = cache_tree[check_id];
         var type_name = option.text.item;
-        var IsItem = true;
         if (node.nodes && node.nodes.length) {
-          IsItem = false;
           type_name = option.text.group;
         }
         var text = type_name + node.mc;
-        //IsItem:true 没有下级，表示节点最后一级  判断它的bmmc 是否存在 则追加 ； 如：用户
-        if (IsItem && node.bmmc) {
-          text += '(' + node.bmmc + ')';
-        }
-        //这里需要确认接口返回 上级名称是否包含sjbmmc
-        //如果是部门
-        if (option.id == 1 && node.sjbmmc) {
-          text += '(' + node.sjbmmc + ')';
-        }
-        //如果是自定义组
-        if (option.id == 5 && node.sjbmmc && node.sjbmmc != 'null') {
-          text += '(' + node.sjbmmc + ')';
+        if (node.mysearch) {
+          if (node.bmmc) {
+            text += '(' + node.bmmc + ')';
+          }
+        } else {
+          var upText = checkText(node);
+          if (upText) {
+            upText = upText.substring(3);
+            text += '(' + upText + ')';
+          }
         }
         return text;
       }
+      //选中向上求合
+      var checkUp = function (treeNode) {
+        //获取该节点上级
+        var node = treeNode.getParentNode();
+        //如果上级有数据
+        if (node) {
+          //并且有nodes数据
+          var all = true;//下级是否全部选中
+          if (node.nodes && node.nodes.length) {
+            node.nodes.forEach(item => {
+              if (!item.checked) {
+                all = false;
+              }
+            });
+          }
+          //如果下级有未选中项，则删除当前父节点
+          if (!all) {
+            //标记界面未选中
+            if (node.checked) {
+              userZTree.checkNode(node, false, false, false);
+              //删除
+              var del_index = IsCheck(node.id, check_id);
+              if (del_index > -1) {
+                check_list.splice(del_index, 1);
+              }
+            }
+            //添加子节点
+            if (node.nodes && node.nodes.length) {
+              node.nodes.forEach(item => {
+                if (item.checked) {
+                  addpush(item);
+                }
+              });
+            }
+          }
+          //如果下级都选中
+          if (all) {
+            //当期节点未选择，则标记选中,并添加
+            if (!node.checked) {
+              userZTree.checkNode(node, true, false, false);
+              addpush(node);
+            }
+            //删除子节点
+            if (node.nodes && node.nodes.length) {
+              node.nodes.forEach(item => {
+                var del_index = IsCheck(item.id, check_id);
+                if (del_index > -1) {
+                  check_list.splice(del_index, 1);
+                }
+              });
+            }
+          }
+          //继续向上求合
+          checkUp(node);
+        }
+      }
+      var addpush = function (treeNode) {
+        var _text = getText(treeNode);
+        if (IsCheck(treeNode.id, check_id) == -1) {
+          //如果不同类型 显示不同文本 请根据 option.id 区分 如 if(option.id==1){部门该怎么显示数据}
+          check_list.push({
+            id: treeNode.id,//对应类型的数据ID
+            cid: check_id,//记录对应类型ID
+            text: _text, //需要在右侧显示的文本
+            tId: treeNode.tId //节点ID
+          })
+        }
+      }
       //树形点击事件
       click_tree = function (event, treeId, treeNode) {
-        //获取配置
         var option = cache_tree[check_id];
-        var _text = getText(treeNode);
+        if (option.id == 5 && treeNode.nodes && treeNode.nodes.length) {
+          return;
+        }
+        //获取配置
         if (treeNode.checked) {
-          if (IsCheck(_text) == -1) {
-            //如果不同类型 显示不同文本 请根据 option.id 区分 如 if(option.id==1){部门该怎么显示数据}
-            check_list.push({
-              id: treeNode.id,//对应类型的数据ID
-              cid: check_id,//记录对应类型ID
-              text: _text, //需要在右侧显示的文本
-              tId: treeNode.tId //节点ID
-            })
-          }
+          addpush(treeNode);
         } else {
-          if (IsCheck(_text) > -1) {
-            check_list.splice(IsCheck(_text), 1);
+          if (IsCheck(treeNode.id, check_id) > -1) {
+            check_list.splice(IsCheck(treeNode.id, check_id), 1);
           }
+        }
+        if (option.id != 5) {
+          //处理选中
+          checkUp(treeNode);
         }
         //更新界面
         changeView();
@@ -653,14 +762,16 @@
         $('#userCheckList li').click(function () {
           var i = parseInt($(this).attr("index"));
           //取消树形选中 
-          if (check_list[i].tId != "search") {
-            var node = userZTree.getNodeByTId(check_list[i].tId);
-            userZTree.checkNode(node, false, false);
+          if (userZTree) {
+            if (check_list[i].tId != "search") {
+              var node = userZTree.getNodeByTId(check_list[i].tId);
+              userZTree.checkNode(node, false, false);
+            }
           }
-          //删除数组
-          check_list.splice(i, 1);
           //删除缓存
           DeleteCk(check_list[i].cid, check_list[i].tId);
+          //删除数组
+          check_list.splice(i, 1);
           //删除界面
           $(this).remove();
         });
@@ -699,13 +810,15 @@
       });
       //清空选择
       $('#clearAll').on('click', function () {
-        check_list.forEach(item => {
-          if (item.tId == "search") {
-            return;
-          }
-          var node = userZTree.getNodeByTId(item.tId);
-          userZTree.checkNode(node, false, false);
-        })
+        if (userZTree) {
+          check_list.forEach(item => {
+            if (item.tId == "search") {
+              return;
+            }
+            var node = userZTree.getNodeByTId(item.tId);
+            userZTree.checkNode(node, false, false);
+          })
+        }
         //删除所有临时缓存
         cache_tree.forEach(item => {
           item.ck = [];
@@ -757,8 +870,9 @@
             nodes: [],
             mc: $(this).data('mc'),
             bmmc: $(this).data('bmmc'),
+            mysearch: true
           });
-          if (IsCheck(_text) == -1) {
+          if (IsCheck($(this).data('id'), check_id) == -1) {
             //如果不同类型 显示不同文本 请根据 option.id 区分 如 if(option.id==1){部门该怎么显示数据}
             check_list.push({
               id: $(this).data('id'),//对应类型的数据ID
