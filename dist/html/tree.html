@@ -213,7 +213,9 @@
       //选中集合
       var check_list = [];
       //选中方法
-      var click_tree = null;
+      var click_tree = null,checkTreeNode=null;
+      //是否加载后执行过选中
+      var loadcheck = false;
       //控件
       var kj_search = $("#kj_search"), kj_tree = $("#kj_tree"), kj_diy = $("#kj_diy"), kj_all = $("#kj_all"), kj_quanxuan = $("#kj_quanxuan");
       //是否全选
@@ -371,7 +373,12 @@
               dataType: "text"
             },
             callback: {
-              onAsyncSuccess: function (event, treeId, treeNode, msg) { },
+              onAsyncSuccess: function (event, treeId, treeNode, msg) { 
+                if(loadcheck){
+                  return;
+                }
+                checkTreeNode();
+              },
               onAsyncError: function (event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) { },
               onClick: function (event, treeId, treeNode) { },
               onCheck: function (event, treeId, treeNode) {
@@ -729,15 +736,19 @@
         //userZTree = $.fn.zTree.init($("#userZTree"), option.config_tree); // 正式 这里需要调用正式接口测试
         //标记当前类型
         check_id = ck_id;
-        //恢复之前数据选中
+        //标记重新选中
+        loadcheck = false;
+      }
+      //恢复选中
+      checkTreeNode = function(){
+        loadcheck = true;
+        var option = cache_tree[check_id];
         if (option.ck.length) {
           option.ck.forEach(item => {
             var node = userZTree.getNodeByTId(item.tId);
-            //checkNode 第一个true表示选择 第二个表示下级是否选中
             userZTree.checkNode(node, true, true);
           })
         }
-        userZTree.expandAll(true);
       }
       //删除临时缓存ck里的值
       var DeleteCk = function (ck_id, tId) {
